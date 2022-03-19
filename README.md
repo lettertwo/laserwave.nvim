@@ -1,5 +1,5 @@
-A Lush Theme for Neovim.
-===
+# LaserWave.nvim
 
-See: http://git.io/lush.nvim for more information on Lush and a helper script
-to setup your repo clone.
+A clean 80's synthwave / outrun inspired theme written in Lua ported from
+the Visual Studio Code [LaserWave](https://github.com/Jaredk3nt/laserwave) theme.
+
