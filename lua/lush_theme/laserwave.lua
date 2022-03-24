@@ -45,10 +45,10 @@ local IGNORE   = hsluv("#7b6995") -- Roman Silver    - Gutter, Ignored
 local INFO     = BLUE
 local HINT     = GRAY
 
-local CHANGE   = GREEN
 local ADD      = BLUE
-local DELETE   = MAGENTA
-local CONFLICT = RED
+local DELETE   = RED
+local CHANGE   = WARNING
+local CONFLICT = ERROR
 -- stylua: ignore end
 
 -- LSP/Linters mistakenly show `undefined global` errors in the spec.
@@ -94,10 +94,10 @@ local theme = lush(function()
     Comment      { fg = GRAY, gui = config.commentStyle }, -- any comment
     Cursor       { Inverse }, -- character under the cursor
     CursorLine   { bg = BLACK.lighten(5)  }, -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
-    DiffAdd      { bg = ADD }, -- diff mode: Added line |diff.txt|
-    DiffChange   { bg = CHANGE }, -- diff mode: Changed line |diff.txt|
-    DiffDelete   { bg = DELETE }, -- diff mode: Deleted line |diff.txt|
-    DiffText     { bg = DiffChange.bg.lighten(50)  }, -- diff mode: Changed text within a changed line |diff.txt|
+    DiffAdd      { bg = ADD.mix(BLACK, 75) }, -- diff mode: Added line |diff.txt|
+    DiffChange   { bg = ADD.mix(BLACK, 75) }, -- diff mode: Changed line |diff.txt|
+    DiffDelete   { bg = DELETE.mix(BLACK, 75) }, -- diff mode: Deleted line |diff.txt|
+    DiffText     { bg = CHANGE.mix(BLACK, 75)  }, -- diff mode: Changed text within a changed line |diff.txt|
     NonText      { fg = IGNORE }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
     Normal       { fg = WHITE, bg = config.transparent and NONE or BLACK }, -- normal text
     NormalNC     { Normal }, -- Normal text in not-current windows.
@@ -175,7 +175,7 @@ local theme = lush(function()
     Keyword        { fg = BLUE, gui = config.keywordStyle }, --  any other keyword
     -- Exception      { }, --  try, catch, throw
 
-    PreProc        { fg = GREEN }, -- (preferred) generic Preprocessor
+    PreProc        { fg = IGNORE }, -- (preferred) generic Preprocessor
     -- Include        { }, --  preprocessor #include
     -- Define         { }, --   preprocessor #define
     -- Macro          { }, --    same as Define
@@ -305,17 +305,67 @@ local theme = lush(function()
     -- gitblame
     gitblame             { NonText },
 
-    -- LspTrouble
-    LspTroubleText       { fg = RED },
-    LspTroubleCount      { fg = RED },
-    LspTroubleNormal     { fg = RED },
-
     -- ExtraWhitespace
     ExtraWhitespace      { bg = ERROR },
 
     -- Telescope
     TelescopeBorder      { NormalFloat, fg = RED },
     TelescopeNormal      { NormalFloat },
+
+    -- diff
+    diffAdded       { fg = ADD },
+    diffRemoved     { fg = DELETE },
+    diffChanged     { fg = CHANGE },
+    diffOldFile     { fg = DELETE },
+    diffNewFile     { fg = ADD },
+    diffFile        { fg = YELLOW },
+    diffLine        { fg = GRAY },
+    diffIndexLine   { fg = GRAY },
+
+    -- GitGutter
+    GitGutterAdd         { fg = ADD }, -- diff mode: Added line |diff.txt|
+    GitGutterChange      { fg = CHANGE }, -- diff mode: Changed line |diff.txt|
+    GitGutterDelete      { fg = DELETE }, -- diff mode: Deleted line |diff.txt|
+
+    -- GitSigns
+    GitSignsAdd          { fg = ADD }, -- diff mode: Added line |diff.txt|
+    GitSignsChange       { fg = CHANGE }, -- diff mode: Changed line |diff.txt|
+    GitSignsDelete       { fg = DELETE }, -- diff mode: Deleted line |diff.txt|
+
+    -- NeoVim
+    healthError     { fg = ERROR },
+    healthSuccess   { fg = GREEN },
+    healthWarning   { fg = WARNING },
+
+    -- Cmp
+    CmpItemAbbr              { fg = GRAY, bg = NONE },
+    CmpItemAbbrDeprecated    { NonText, bg = NONE, gui = "strikethrough" },
+    CmpItemAbbrMatch         { fg = RED, bg = NONE },
+    CmpItemAbbrMatchFuzzy    { fg = RED, bg = NONE },
+    CmpItemMenu              { fg = IGNORE, bg = NONE },
+
+    CmpItemKindText          { Comment },
+    CmpItemKindKeyword       { Keyword },
+    CmpItemKindVariable      { Identifier },
+    CmpItemKindConstant      { Constant },
+    CmpItemKindReference     { Constant },
+    CmpItemKindValue         { Statement },
+    CmpItemKindFunction      { Function },
+    CmpItemKindMethod        { Function },
+    CmpItemKindConstructor   { Function },
+    CmpItemKindClass         { Type },
+    CmpItemKindInterface     { Type },
+    CmpItemKindStruct        { Type },
+    CmpItemKindEvent         { Type },
+    CmpItemKindEnum          { Type },
+    CmpItemKindUnit          { Type },
+    CmpItemKindModule        { PreProc },
+    CmpItemKindProperty      { Operator },
+    CmpItemKindField         { Operator },
+    CmpItemKindTypeParameter { Type },
+    CmpItemKindEnumMember    { Type },
+    CmpItemKindOperator      { Operator },
+    CmpItemKindSnippet       { NonText },
   }
 end)
 
