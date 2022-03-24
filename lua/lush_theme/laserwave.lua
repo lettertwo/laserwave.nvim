@@ -102,8 +102,8 @@ local theme = lush(function()
     Normal       { fg = WHITE, bg = config.transparent and NONE or BLACK }, -- normal text
     NormalNC     { Normal }, -- Normal text in not-current windows.
     NormalFloat  { Normal, bg = BLACK.darken(7)  }, -- Normal text in floating windows.
-    StatusLine   { bg = BLACK, fg = RED }, -- status line of current window
-    StatusLineNC { bg = BLACK, fg = GRAY }, -- status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
+    StatusLine   { bg = BLACK.darken(7), fg = WHITE }, -- status line of current window
+    StatusLineNC { bg = BLACK.darken(7), fg = IGNORE }, -- status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
     TabLine      { StatusLine }, -- tab pages line, not active tab page label
     TabLineFill  { NormalFloat }, -- tab pages line, where there are no labels
     TabLineSel   { fg =BLACK, bg = RED }, -- tab pages line, active tab page label

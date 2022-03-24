@@ -29,9 +29,9 @@ laserwave.replace = {
 }
 
 laserwave.inactive = {
-  a = { bg = theme.StatusLine.bg.hex, fg = theme.ModeInactive.fg.hex },
-  b = { bg = theme.StatusLine.bg.hex, fg = theme.StatusLine.fg.hex, gui = "bold" },
-  c = { bg = theme.StatusLine.bg.hex, fg = theme.StatusLine.fg.hex },
+  a = { bg = theme.StatusLineNC.bg.hex, fg = theme.StatusLineNC.fg.hex },
+  b = { bg = theme.StatusLineNC.bg.hex, fg = theme.StatusLineNC.fg.hex, gui = "bold" },
+  c = { bg = theme.StatusLineNC.bg.hex, fg = theme.StatusLineNC.fg.hex },
 }
 
 return laserwave
