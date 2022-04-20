@@ -1,4 +1,4 @@
-local theme = require("lush_theme.laserwave")
+local theme = require("laserwave.base")
 
 local laserwave = {}
 
