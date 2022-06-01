@@ -234,6 +234,13 @@ local function transform(palette)
     bright_cyan = palette.POWDER_BLUE,
     white = palette.WHITE,
     bright_white = palette.WHITE,
+
+    active_tab_foreground = palette.FG,
+    active_tab_background = palette.BG.lighten(7),
+    inactive_tab_foreground = palette.IGNORE,
+    inactive_tab_background = palette.BG.darken(70),
+    tab_bar_background = palette.BG.darken(70),
+    tab_bar_margin_color = palette.BG.darken(70),
   })
 
   colors = vim.tbl_extend("force", defaults, meta, colors)
