@@ -42,7 +42,7 @@ local config = {
     transparent = opt("transparent", false),
     italic_comments = opt("italic_comments", true),
     italic_keywords = opt("italic_keywords", true),
-    italic_functions = opt("italic_functions", true),
+    italic_functions = opt("italic_functions", false),
     italic_variables = opt("italic_variables", false),
   },
   -- plugins = {},
@@ -70,6 +70,7 @@ function config.apply(base, config_table)
       Statement  { base.Statement,  gui = o.italic_keywords and "italic" or "NONE" },
       Identifier { base.Identifier, gui = o.italic_variables and "italic" or "NONE" },
       TSVariable { base.TSVariable, gui = o.italic_variables and "italic" or "NONE" },
+      TSKeyword  { base.TSKeyword,  gui = o.italic_keywords and "italic" or "NONE" },
     }
   end)
 end

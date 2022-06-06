@@ -199,21 +199,21 @@ local theme = lush(function()
     -- Repeat         { }, --   for, do, while, etc.
     -- Label          { }, --    case, default, etc.
     Operator       { fg = OPERATOR }, -- "sizeof", "+", "*", etc.
-    Keyword        { fg = NUMBER }, --  any other keyword
+    Keyword        { fg = KEYWORD }, --  any other keyword
     -- Exception      { }, --  try, catch, throw
 
     PreProc        { NonText }, -- (preferred) generic Preprocessor
     Include        { Statement }, --  preprocessor #include
     Define         { Statement }, --   preprocessor #define
-    -- Macro          { }, --    same as Define
-    -- PreCondit      { }, --  preprocessor #if, #else, #endif, etc.
+    Macro          { Statement }, --    same as Define
+    PreCondit      { Statement }, --  preprocessor #if, #else, #endif, etc.
 
     Type           { fg = TYPE }, -- (preferred) int, long, char, etc.
     -- StorageClass   { }, -- static, register, volatile, etc.
     -- Structure      { }, --  struct, union, enum, etc.
     -- Typedef        { }, --  A typedef
 
-    Special        { NonText }, -- (preferred) any special symbol
+    Special        { Operator }, -- (preferred) any special symbol
     -- SpecialChar    { }, --  special character in a constant
     -- Tag            { }, --    you can use CTRL-] on this
     -- Delimiter      { }, --  character that needs attention
@@ -282,10 +282,10 @@ local theme = lush(function()
     -- TSFuncBuiltin        { } , -- Built-in functions: `print` in Lua.
     -- TSFuncMacro          { } , -- Macro defined functions (calls and definitions): each `macro_rules` in Rust.
     -- TSInclude            { } , -- File or module inclusion keywords: `#include` in C, `use` or `extern crate` in Rust.
-    -- TSKeyword            { } , -- Keywords that don't fit into other categories.
+    TSKeyword            { Keyword } , -- Keywords that don't fit into other categories.
     -- TSKeywordFunction    { } , -- Keywords used to define a function: `function` in Lua, `def` and `lambda` in Python.
     -- TSKeywordOperator    { } , -- Unary and binary operators that are English words: `and`, `or` in Python; `sizeof` in C.
-    TSKeywordReturn      { Statement } , -- Keywords like `return` and `yield`.
+    -- TSKeywordReturn      { } , -- Keywords like `return` and `yield`.
     -- TSLabel              { } , -- GOTO labels: `label:` in C, and `::label::` in Lua.
     -- TSMethod             { } , -- Method calls and definitions.
     -- TSNamespace          { } , -- Identifiers referring to modules and namespaces.
@@ -323,9 +323,9 @@ local theme = lush(function()
     -- TSWarning            { } , -- Text representation of a warning note.
     -- TSDanger             { } , -- Text representation of a danger note.
     -- TSType               { } , -- Type (and class) definitions and annotations.
-    -- TSTypeBuiltin        { } , -- Built-in types: `i32` in Rust.
-    TSVariable           { }, -- Variable names that don't fit into other categories.
-    -- TSVariableBuiltin    { } , -- Variable names defined by the language: `this` or `self` in Javascript.
+    TSTypeBuiltin        { Type } , -- Built-in types: `i32` in Rust.
+    TSVariable           { Normal }, -- Variable names that don't fit into other categories.
+    TSVariableBuiltin    { Constant } , -- Variable names defined by the language: `this` or `self` in Javascript.
 
     -- Plugins
 
