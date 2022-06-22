@@ -145,8 +145,8 @@ local theme = lush(function()
     CursorColumn { CursorLine }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
     Directory    { fg = KEYWORD }, -- directory names (and other special names in listings)
     EndOfBuffer  { Conceal }, -- filler lines (~) after the end of the buffer.  By default, this is highlighted like |hl-NonText|.
-    TermCursor   { Cursor }, -- cursor in a focused terminal
-    TermCursorNC { Cursor }, -- cursor in an unfocused terminal
+    -- TermCursor   { }, -- cursor in a focused terminal
+    -- TermCursorNC { }, -- cursor in an unfocused terminal
     ErrorMsg     { fg = ERROR }, -- error messages on the command line
     VertSplit    { fg = HIGHLIGHT }, -- the column separating vertically split windows
     Folded       { LineNr, bg = IGNORE.mix(BG, 75)  }, -- line used for closed folds
