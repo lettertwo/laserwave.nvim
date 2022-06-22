@@ -17,6 +17,26 @@ local colors = {
   GARDENIA        = hsluv("#ffb85b"), -- Warnings
 }
 
+---@class LaserwaveTerminal
+local terminal = {
+    BLACK          = colors.OLD_LAVENDER,
+    BRIGHT_BLACK   = colors.AFRICAN_VIOLET,
+    RED            = colors.HOT_PINK,
+    BRIGHT_RED     = colors.VIVID_RASPBERRY,
+    GREEN          = colors.PEARL_AQUA,
+    BRIGHT_GREEN   = colors.PEARL_AQUA,
+    YELLOW         = colors.MUSTARD,
+    BRIGHT_YELLOW  = colors.GARDENIA,
+    BLUE           = colors.MAXIMUM_BLUE,
+    BRIGHT_BLUE    = colors.MAXIMUM_BLUE,
+    MAGENTA        = colors.AFRICAN_VIOLET,
+    BRIGHT_MAGENTA = colors.HOT_PINK,
+    CYAN           = colors.POWDER_BLUE,
+    BRIGHT_CYAN    = colors.POWDER_BLUE,
+    WHITE          = colors.WHITE,
+    BRIGHT_WHITE   = colors.WHITE,
+}
+
 ---@class LaserwaveSemantics
 local semantics = {
   FG        = colors.WHITE,
@@ -57,9 +77,11 @@ local semantics = {
 ---@class LaserwaveColors : LaserwaveSemantics
 ---@field colors LaserwaveColors
 ---@field semantics LaserwaveSemantics
+---@field terminal LaserwaveTerminal
 local M = {
   colors = colors,
   semantics = semantics,
+  terminal = terminal,
 }
 M = vim.tbl_extend("error", M, colors, semantics)
 return M
