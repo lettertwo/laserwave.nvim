@@ -126,6 +126,7 @@ local theme = lush(function()
     DiffDelete   { bg = DELETE.mix(BG, 75) }, -- diff mode: Deleted line |diff.txt|
     DiffText     { bg = CHANGE.mix(BG, 75)  }, -- diff mode: Changed text within a changed line |diff.txt|
     NonText      { fg = IGNORE }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
+    VirtualText  { fg = IGNORE, bg = BG.lighten(5) }, -- I made this one up.
     Normal       { fg = FG, bg = BG }, -- normal text
     NormalNC     { Normal }, -- Normal text in not-current windows.
     NormalFloat  { Normal, bg = BG.darken(7)  }, -- Normal text in floating windows.
@@ -236,9 +237,9 @@ local theme = lush(function()
     LspReferenceText            { Underlined, bg = Visual.bg }, -- used for highlighting "text" references
     LspReferenceRead            { Underlined, bg = Visual.bg }, -- used for highlighting "read" references
     LspReferenceWrite           { Underlined, bg = Visual.bg }, -- used for highlighting "write" references
-    LspCodeLens                 { NonText }, -- Used to color the virtual text of the codelens. See |nvim_buf_set_extmark()|.
-    LspCodeLensSeparator        { NonText }, -- Used to color the seperator between two or more code lens.
-    LspSignatureActiveParameter { NonText }, -- Used to highlight the active parameter in the signature help. See |vim.lsp.handlers.signature_help()|.
+    LspCodeLens                 { VirtualText }, -- Used to color the virtual text of the codelens. See |nvim_buf_set_extmark()|.
+    LspCodeLensSeparator        { VirtualText }, -- Used to color the seperator between two or more code lens.
+    LspSignatureActiveParameter { VirtualText }, -- Used to highlight the active parameter in the signature help. See |vim.lsp.handlers.signature_help()|.
 
     -- See :h diagnostic-highlights, some groups may not be listed, submit a PR fix to lush-template!
 
@@ -330,7 +331,7 @@ local theme = lush(function()
     -- Plugins
 
     -- gitblame
-    gitblame             { NonText },
+    gitblame             { VirtualText },
 
     -- ExtraWhitespace
     ExtraWhitespace      { bg = ERROR },

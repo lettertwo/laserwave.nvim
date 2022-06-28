@@ -104,16 +104,12 @@ highlight MoreMsg guifg=#41B5C5 guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight! link Question MoreMsg
 highlight NonText guifg=#7C6A96 guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight! link CmpItemKindSnippet NonText
-highlight! link LspCodeLens NonText
-highlight! link LspCodeLensSeparator NonText
-highlight! link LspSignatureActiveParameter NonText
 highlight! link MsgArea NonText
 highlight! link PreProc NonText
 highlight! link TSPunctBracket NonText
 highlight! link TSPunctDelimiter NonText
 highlight! link TSPunctSpecial NonText
 highlight! link TSStringSpecial NonText
-highlight! link gitblame NonText
 highlight NormalFloat guifg=#FFFFFF guibg=#251F2C guisp=NONE gui=NONE cterm=NONE
 highlight! link Pmenu NormalFloat
 highlight! link PmenuSbar NormalFloat
@@ -166,6 +162,11 @@ highlight! link TSTypeBuiltin Type
 highlight Undercurl guifg=NONE guibg=NONE guisp=NONE gui=undercurl cterm=undercurl
 highlight Underlined guifg=NONE guibg=NONE guisp=NONE gui=underline cterm=underline
 highlight VertSplit guifg=#EB65B9 guibg=NONE guisp=NONE gui=NONE cterm=NONE
+highlight VirtualText guifg=#7C6A96 guibg=#302938 guisp=NONE gui=NONE cterm=NONE
+highlight! link LspCodeLens VirtualText
+highlight! link LspCodeLensSeparator VirtualText
+highlight! link LspSignatureActiveParameter VirtualText
+highlight! link gitblame VirtualText
 highlight Visual guifg=NONE guibg=#473851 guisp=NONE gui=NONE cterm=NONE
 highlight! link PmenuSel Visual
 highlight! link VisualNOS Visual
