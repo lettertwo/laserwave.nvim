@@ -40,8 +40,6 @@ highlight! link TSConstBuiltin Constant
 highlight! link TSConstMacro Constant
 highlight! link TSVariableBuiltin Constant
 highlight! link CursorIM Cursor
-highlight! link TermCursor Cursor
-highlight! link TermCursorNC Cursor
 highlight! link lCursor Cursor
 highlight CursorLine guifg=NONE guibg=#302938 guisp=NONE gui=NONE cterm=NONE
 highlight! link ColorColumn CursorLine
