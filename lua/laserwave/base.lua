@@ -349,6 +349,9 @@ local theme = lush(function()
     diffLine        { fg = COMMENT },
     diffIndexLine   { fg = COMMENT },
 
+    -- indent-blankline
+    IndentBlanklineChar  { fg = BG.lighten(5) },
+
     -- GitGutter
     GitGutterAdd         { fg = ADD }, -- diff mode: Added line |diff.txt|
     GitGutterChange      { fg = CHANGE }, -- diff mode: Changed line |diff.txt|

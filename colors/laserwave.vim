@@ -80,6 +80,7 @@ highlight GitSignsChange guifg=#FFB961 guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight GitSignsDelete guifg=#EB65B9 guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight Identifier guifg=#FFFFFF guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight! link CmpItemKindVariable Identifier
+highlight IndentBlanklineChar guifg=#302938 guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight Inverse guifg=NONE guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight! link Cursor Inverse
 highlight! link IncSearch Inverse
