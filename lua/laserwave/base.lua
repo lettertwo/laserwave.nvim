@@ -332,6 +332,28 @@ local theme = lush(function()
 
     -- Plugins
 
+    -- alpha (dashboard) header
+    StartLogo1            { fg = INFO.mix(HIGHLIGHT, 0).mix(BG, 0) },
+    StartLogo2            { fg = INFO.mix(HIGHLIGHT, 10).mix(BG, 5) },
+    StartLogo3            { fg = INFO.mix(HIGHLIGHT, 20).mix(BG, 10) },
+    StartLogo4            { fg = INFO.mix(HIGHLIGHT, 30).mix(BG, 15) },
+    StartLogo5            { fg = INFO.mix(HIGHLIGHT, 40).mix(BG, 20) },
+    StartLogo6            { fg = INFO.mix(HIGHLIGHT, 50).mix(BG, 25) },
+    StartLogo7            { fg = INFO.mix(HIGHLIGHT, 60).mix(BG, 30) },
+    StartLogo8            { fg = INFO.mix(HIGHLIGHT, 70).mix(BG, 35) },
+    StartLogo9            { fg = INFO.mix(HIGHLIGHT, 80).mix(BG, 40) },
+    StartLogo10           { fg = INFO.mix(HIGHLIGHT, 90).mix(BG, 45) },
+    StartLogo11           { fg = INFO.mix(HIGHLIGHT, 100).mix(BG, 50) },
+    StartLogo12           { fg = ERROR.mix(INFO, 10).mix(BG, 55) },
+    StartLogo13           { fg = ERROR.mix(INFO, 20).mix(BG, 60) },
+    StartLogo14           { fg = ERROR.mix(INFO, 30).mix(BG, 65) },
+    StartLogo15           { fg = ERROR.mix(INFO, 40).mix(BG, 70) },
+    StartLogo16           { fg = ERROR.mix(INFO, 50).mix(BG, 75) },
+    StartLogo17           { fg = ERROR.mix(INFO, 60).mix(BG, 80) },
+    StartLogo18           { fg = ERROR.mix(INFO, 70).mix(BG, 85) },
+    StartLogo19           { fg = ERROR.mix(INFO, 80).mix(BG, 90) },
+    StartLogo20           { fg = ERROR.mix(INFO, 90).mix(BG, 95) },
+
     -- gitblame
     gitblame             { VirtualText },
 

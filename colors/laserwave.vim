@@ -140,6 +140,26 @@ highlight SpellBad guifg=NONE guibg=NONE guisp=#FF3D7A gui=undercurl cterm=under
 highlight SpellCap guifg=NONE guibg=NONE guisp=#FFB961 gui=undercurl cterm=undercurl
 highlight SpellLocal guifg=NONE guibg=NONE guisp=#41B5C5 gui=undercurl cterm=undercurl
 highlight SpellRare guifg=NONE guibg=NONE guisp=#91889B gui=undercurl cterm=undercurl
+highlight StartLogo1 guifg=#41B5C5 guibg=NONE guisp=NONE gui=NONE cterm=NONE
+highlight StartLogo10 guifg=#864E7A guibg=NONE guisp=NONE gui=NONE cterm=NONE
+highlight StartLogo11 guifg=#804570 guibg=NONE guisp=NONE gui=NONE cterm=NONE
+highlight StartLogo12 guifg=#753F58 guibg=NONE guisp=NONE gui=NONE cterm=NONE
+highlight StartLogo13 guifg=#664055 guibg=NONE guisp=NONE gui=NONE cterm=NONE
+highlight StartLogo14 guifg=#593F52 guibg=NONE guisp=NONE gui=NONE cterm=NONE
+highlight StartLogo15 guifg=#4E3C50 guibg=NONE guisp=NONE gui=NONE cterm=NONE
+highlight StartLogo16 guifg=#45394D guibg=NONE guisp=NONE gui=NONE cterm=NONE
+highlight StartLogo17 guifg=#3C364B guibg=NONE guisp=NONE gui=NONE cterm=NONE
+highlight StartLogo18 guifg=#353248 guibg=NONE guisp=NONE gui=NONE cterm=NONE
+highlight StartLogo19 guifg=#2E2C40 guibg=NONE guisp=NONE gui=NONE cterm=NONE
+highlight StartLogo2 guifg=#59A6B8 guibg=NONE guisp=NONE gui=NONE cterm=NONE
+highlight StartLogo20 guifg=#2B2839 guibg=NONE guisp=NONE gui=NONE cterm=NONE
+highlight StartLogo3 guifg=#689DB2 guibg=NONE guisp=NONE gui=NONE cterm=NONE
+highlight StartLogo4 guifg=#6D90A8 guibg=NONE guisp=NONE gui=NONE cterm=NONE
+highlight StartLogo5 guifg=#7187AB guibg=NONE guisp=NONE gui=NONE cterm=NONE
+highlight StartLogo6 guifg=#7A77A7 guibg=NONE guisp=NONE gui=NONE cterm=NONE
+highlight StartLogo7 guifg=#8768A1 guibg=NONE guisp=NONE gui=NONE cterm=NONE
+highlight StartLogo8 guifg=#8C6093 guibg=NONE guisp=NONE gui=NONE cterm=NONE
+highlight StartLogo9 guifg=#875582 guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight Statement guifg=#41B5C5 guibg=NONE guisp=NONE gui=italic cterm=italic
 highlight! link CmpItemKindValue Statement
 highlight! link Define Statement
