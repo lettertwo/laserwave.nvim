@@ -129,7 +129,9 @@ local theme = lush(function()
     VirtualText  { fg = IGNORE, bg = BG.lighten(5) }, -- I made this one up.
     Normal       { fg = FG, bg = BG }, -- normal text
     NormalNC     { Normal }, -- Normal text in not-current windows.
-    NormalFloat  { Normal, bg = BG.darken(7)  }, -- Normal text in floating windows.
+    NormalFloat  { Normal, bg = BG.darken(10)  }, -- Normal text in floating windows.
+    FloatBorder  { fg = HIGHLIGHT, bg = BG.darken(10) }, -- Border of floating windows.
+    FloatTitle   { NormalFloat, fg = HIGHLIGHT }, -- Title of floating windows (Non-standard).
     StatusLine   { bg = BG.darken(7), fg = FG }, -- status line of current window
     StatusLineNC { bg = BG.darken(7), fg = IGNORE }, -- status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
     TabLine      { StatusLine }, -- tab pages line, not active tab page label
@@ -337,8 +339,15 @@ local theme = lush(function()
     ExtraWhitespace      { bg = ERROR },
 
     -- Telescope
-    TelescopeBorder      { NormalFloat, fg = HIGHLIGHT },
-    TelescopeNormal      { NormalFloat },
+    TelescopeNormal       { NormalFloat },
+    TelescopeSelection    { Visual },
+    TelescopePromptNormal { NormalFloat },
+    TelescopePromptPrefix { NormalFloat, fg = HIGHLIGHT },
+    TelescopePromptBorder { FloatBorder },
+    TelescopePromptTitle  { FloatTitle },
+    TelescopeBorder       { FloatBorder },
+    TelescopePreviewTitle { FloatTitle },
+    TelescopeResultsTitle { FloatTitle },
 
     -- diff
     diffAdded       { fg = ADD },

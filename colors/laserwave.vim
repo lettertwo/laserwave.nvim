@@ -65,6 +65,13 @@ highlight Directory guifg=#41B5C5 guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight Error guifg=#FF3D7A guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight ErrorMsg guifg=#FF3D7A guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight ExtraWhitespace guifg=NONE guibg=#FF3D7A guisp=NONE gui=NONE cterm=NONE
+highlight FloatBorder guifg=#EB65B9 guibg=#251F2C guisp=NONE gui=NONE cterm=NONE
+highlight! link TelescopeBorder FloatBorder
+highlight! link TelescopePromptBorder FloatBorder
+highlight FloatTitle guifg=#EB65B9 guibg=#251F2C guisp=NONE gui=NONE cterm=NONE
+highlight! link TelescopePreviewTitle FloatTitle
+highlight! link TelescopePromptTitle FloatTitle
+highlight! link TelescopeResultsTitle FloatTitle
 highlight FoldColumn guifg=#7C6A96 guibg=#27212E guisp=NONE gui=NONE cterm=NONE
 highlight Folded guifg=#7C6A96 guibg=#3C3347 guisp=NONE gui=NONE cterm=NONE
 highlight Function guifg=#EB65B9 guibg=NONE guisp=NONE gui=NONE cterm=NONE
@@ -116,6 +123,7 @@ highlight! link Pmenu NormalFloat
 highlight! link PmenuSbar NormalFloat
 highlight! link TabLineFill NormalFloat
 highlight! link TelescopeNormal NormalFloat
+highlight! link TelescopePromptNormal NormalFloat
 highlight Number guifg=#B381C5 guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight! link Float Number
 highlight Operator guifg=#75DFC4 guibg=NONE guisp=NONE gui=NONE cterm=NONE
@@ -147,7 +155,7 @@ highlight TSStringEscape guifg=#B381C5 guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight TSStringRegex guifg=#41B5C5 guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight TSVariable guifg=#FFFFFF guibg=#27212E guisp=NONE gui=NONE cterm=NONE
 highlight TabLineSel guifg=#27212E guibg=#EB65B9 guisp=NONE gui=NONE cterm=NONE
-highlight TelescopeBorder guifg=#EB65B9 guibg=#251F2C guisp=NONE gui=NONE cterm=NONE
+highlight TelescopePromptPrefix guifg=#EB65B9 guibg=#251F2C guisp=NONE gui=NONE cterm=NONE
 highlight Title guifg=#41B5C5 guibg=NONE guisp=NONE gui=bold cterm=bold
 highlight Todo guifg=#FFE25F guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight Type guifg=#B381C5 guibg=NONE guisp=NONE gui=NONE cterm=NONE
@@ -170,6 +178,7 @@ highlight! link LspSignatureActiveParameter VirtualText
 highlight! link gitblame VirtualText
 highlight Visual guifg=NONE guibg=#473851 guisp=NONE gui=NONE cterm=NONE
 highlight! link PmenuSel Visual
+highlight! link TelescopeSelection Visual
 highlight! link VisualNOS Visual
 highlight! link WildMenu Visual
 highlight WarningMsg guifg=#FFB961 guibg=NONE guisp=NONE gui=NONE cterm=NONE
