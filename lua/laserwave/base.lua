@@ -361,7 +361,7 @@ local theme = lush(function()
 
     -- indent-blankline
     IndentBlanklineChar  { fg = IGNORE.darken(50) },
-    IndentBlanklineContextChar  { fg = IGNORE.darken(25) },
+    IndentBlanklineContextChar  { fg = HIGHLIGHT },
 
     -- GitGutter
     GitGutterAdd         { fg = ADD }, -- diff mode: Added line |diff.txt|
