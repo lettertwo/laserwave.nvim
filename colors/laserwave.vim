@@ -27,9 +27,9 @@ highlight CmpItemAbbr guifg=#91889B guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight CmpItemAbbrDeprecated guifg=#7C6A96 guibg=NONE guisp=NONE gui=strikethrough cterm=strikethrough
 highlight CmpItemAbbrMatch guifg=#EB65B9 guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight CmpItemAbbrMatchFuzzy guifg=#EB65B9 guibg=NONE guisp=NONE gui=NONE cterm=NONE
+highlight CmpItemKindText guifg=#91889B guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight CmpItemMenu guifg=#7C6A96 guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight Comment guifg=#91889B guibg=NONE guisp=NONE gui=italic cterm=italic
-highlight! link CmpItemKindText Comment
 highlight Conceal guifg=#27212E guibg=#27212E guisp=NONE gui=NONE cterm=NONE
 highlight! link EndOfBuffer Conceal
 highlight! link SpecialKey Conceal

@@ -132,8 +132,8 @@ local theme = lush(function()
     NormalFloat  { Normal, bg = BG.darken(10)  }, -- Normal text in floating windows.
     FloatBorder  { fg = HIGHLIGHT, bg = BG.darken(10) }, -- Border of floating windows.
     FloatTitle   { NormalFloat, fg = HIGHLIGHT }, -- Title of floating windows (Non-standard).
-    StatusLine   { bg = BG.darken(7), fg = FG }, -- status line of current window
-    StatusLineNC { bg = BG.darken(7), fg = IGNORE }, -- status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
+    StatusLine   { bg = BG.darken(10), fg = FG }, -- status line of current window
+    StatusLineNC { bg = BG.darken(10), fg = IGNORE }, -- status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
     TabLine      { StatusLine }, -- tab pages line, not active tab page label
     TabLineFill  { NormalFloat }, -- tab pages line, where there are no labels
     TabLineSel   { fg = BG, bg = HIGHLIGHT }, -- tab pages line, active tab page label
@@ -385,7 +385,7 @@ local theme = lush(function()
     CmpItemAbbrMatchFuzzy    { fg = HIGHLIGHT, bg = NONE },
     CmpItemMenu              { fg = INACTIVE, bg = NONE },
 
-    CmpItemKindText          { Comment },
+    CmpItemKindText          { fg = COMMENT },
     CmpItemKindKeyword       { Keyword },
     CmpItemKindVariable      { Identifier },
     CmpItemKindConstant      { Constant },
