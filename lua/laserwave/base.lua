@@ -330,6 +330,12 @@ local theme = lush(function()
     TSVariable           { Normal }, -- Variable names that don't fit into other categories.
     TSVariableBuiltin    { Constant } , -- Variable names defined by the language: `this` or `self` in Javascript.
 
+    -- Highlights from nvim-treesitter-refactor
+    -- TSDefinition         { } , -- Highlights the definition of the symbol under cursor.
+    -- TSDefinitionUsage    { } , -- Highlights usages of the symbol under cursor.
+    -- TSCurrentScope       { } , -- Highlights the current scope of the cursor position.
+
+
     -- Plugins
 
     -- alpha (dashboard) header
