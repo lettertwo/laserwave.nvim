@@ -90,7 +90,8 @@ local INACTIVE  = palette.INACTIVE
 -- LSP/Linters mistakenly show `undefined global` errors in the spec.
 ---@diagnostic disable: undefined-global
 --stylua: ignore
-local theme = lush(function()
+local theme = lush(function(injected_functions)
+  local sym = injected_functions.sym
   return {
     Bold         { gui = "bold" },
     Inverse      { gui = "inverse" },
@@ -274,9 +275,9 @@ local theme = lush(function()
     -- TSComment            { } , -- Line comments and block comments.
     -- TSConditional        { } , -- Keywords related to conditionals: `if`, `when`, `cond`, etc.
     -- TSConstant           { } , -- Constants identifiers. These might not be semantically constant. E.g. uppercase variables in Python.
-    TSConstBuiltin       { Constant } , -- Built-in constant values: `nil` in Lua.
-    TSConstMacro         { Constant } , -- Constants defined by macros: `NULL` in C.
-    TSConstructor        { Function } , -- Constructor calls and definitions: `{}` in Lua, and Java constructors.
+    sym("@constant.builtin") { Constant } , -- Built-in constant values: `nil` in Lua.
+    sym("@constant.macro")  { Constant } , -- Constants defined by macros: `NULL` in C.
+    sym("@constructor")     { Function } , -- Constructor calls and definitions: `{}` in Lua, and Java constructors.
     -- TSError              { } , -- Syntax/parser errors. This might highlight large sections of code while the user is typing still incomplete code, use a sensible highlight.
     -- TSException          { } , -- Exception related keywords: `try`, `except`, `finally` in Python.
     -- TSField              { } , -- Object and struct fields.
@@ -285,7 +286,7 @@ local theme = lush(function()
     -- TSFuncBuiltin        { } , -- Built-in functions: `print` in Lua.
     -- TSFuncMacro          { } , -- Macro defined functions (calls and definitions): each `macro_rules` in Rust.
     -- TSInclude            { } , -- File or module inclusion keywords: `#include` in C, `use` or `extern crate` in Rust.
-    TSKeyword            { Keyword } , -- Keywords that don't fit into other categories.
+    sym("@keyword")         { Keyword } , -- Keywords that don't fit into other categories.
     -- TSKeywordFunction    { } , -- Keywords used to define a function: `function` in Lua, `def` and `lambda` in Python.
     -- TSKeywordOperator    { } , -- Unary and binary operators that are English words: `and`, `or` in Python; `sizeof` in C.
     -- TSKeywordReturn      { } , -- Keywords like `return` and `yield`.
@@ -298,14 +299,14 @@ local theme = lush(function()
     -- TSParameter          { } , -- Parameters of a function.
     -- TSParameterReference { } , -- References to parameters of a function.
     -- TSProperty           { } , -- Same as `TSField`.
-    TSPunctDelimiter     { NonText }, -- Punctuation delimiters: Periods, commas, semicolons, etc.
-    TSPunctBracket       { NonText }, -- Brackets, braces, parentheses, etc.
-    TSPunctSpecial       { NonText }, -- Special punctuation that doesn't fit into the previous categories.
+    sym("@punctuation.delimiter") { NonText }, -- Punctuation delimiters: Periods, commas, semicolons, etc.
+    sym("@punctuation.bracket")   { NonText }, -- Brackets, braces, parentheses, etc.
+    sym("@punctuation.special")       { NonText }, -- Special punctuation that doesn't fit into the previous categories.
     -- TSRepeat             { } , -- Keywords related to loops: `for`, `while`, etc.
     -- TSString             { } , -- String literals.
-    TSStringRegex        { fg = KEYWORD }, -- Regular expression literals.
-    TSStringEscape       { fg = NUMBER }, -- Escape characters within a string: `\n`, `\t`, etc.
-    TSStringSpecial      { NonText }, -- Strings with special meaning that don't fit into the previous categories.
+    sym("@string.regex")        { fg = KEYWORD }, -- Regular expression literals.
+    sym("@string.escape")       { fg = NUMBER }, -- Escape characters within a string: `\n`, `\t`, etc.
+    sym("@string.special")      { NonText }, -- Strings with special meaning that don't fit into the previous categories.
     -- TSSymbol             { } , -- Identifiers referring to symbols or atoms.
     -- TSTag                { } , -- Tags like HTML tag names.
     -- TSTagAttribute       { } , -- HTML tag attributes.
@@ -326,9 +327,9 @@ local theme = lush(function()
     -- TSWarning            { } , -- Text representation of a warning note.
     -- TSDanger             { } , -- Text representation of a danger note.
     -- TSType               { } , -- Type (and class) definitions and annotations.
-    TSTypeBuiltin        { Type } , -- Built-in types: `i32` in Rust.
-    TSVariable           { Normal }, -- Variable names that don't fit into other categories.
-    TSVariableBuiltin    { Constant } , -- Variable names defined by the language: `this` or `self` in Javascript.
+    sym("@type.builtin")        { Type } , -- Built-in types: `i32` in Rust.
+    sym("@variable")           { Normal }, -- Variable names that don't fit into other categories.
+    sym("@variable.builtin")    { Constant } , -- Variable names defined by the language: `this` or `self` in Javascript.
 
     -- Highlights from nvim-treesitter-refactor
     -- TSDefinition         { } , -- Highlights the definition of the symbol under cursor.
