@@ -217,12 +217,15 @@ local theme = lush(function(injected_functions)
     -- Structure      { }, --  struct, union, enum, etc.
     -- Typedef        { }, --  A typedef
 
+    Punctuation { fg = GUTTER },
+            
     Special        { Operator }, -- (preferred) any special symbol
     -- SpecialChar    { }, --  special character in a constant
-    -- Tag            { }, --    you can use CTRL-] on this
-    -- Delimiter      { }, --  character that needs attention
+    Tag            { Operator }, --    you can use CTRL-] on this
+    Delimiter      { Punctuation }, --  character that needs attention
     -- SpecialComment { }, -- special things inside a comment
     -- Debug          { }, --    debugging statements
+    Attribute      { fg = HIGHLIGHT },
 
     -- ("Ignore", below, may be invisible...)
     -- Ignore         { }, -- (preferred) left blank, hidden  |hl-Ignore|
@@ -308,9 +311,9 @@ local theme = lush(function(injected_functions)
     sym("@string.escape")       { fg = NUMBER }, -- Escape characters within a string: `\n`, `\t`, etc.
     sym("@string.special")      { NonText }, -- Strings with special meaning that don't fit into the previous categories.
     -- TSSymbol             { } , -- Identifiers referring to symbols or atoms.
-    -- TSTag                { } , -- Tags like HTML tag names.
-    -- TSTagAttribute       { } , -- HTML tag attributes.
-    -- TSTagDelimiter       { } , -- Tag delimiters like `<` `>` `/`.
+    sym("@tag")                { Tag } , -- Tags like HTML tag names.
+    sym("@tag.attribute")       { Attribute } , -- HTML tag attributes.
+    sym("@tag.delimiter")       { Delimiter } , -- Tag delimiters like `<` `>` `/`.
     -- TSText               { } , -- Non-structured text. Like text in a markup language.
     -- TSStrong             { } , -- Text to be represented in bold.
     -- TSEmphasis           { } , -- Text to be represented with emphasis.
