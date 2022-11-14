@@ -93,7 +93,7 @@ local INACTIVE  = palette.INACTIVE
 local theme = lush(function()
   return {
     Bold         { gui = "bold" },
-    Inverse      { gui = "inverse" },
+    Inverse      { gui = "reverse" },
     Italic       { gui = "italic" },
     Underlined   { gui = "underline" }, -- (preferred) text that stands out, HTML links
     Undercurl    { gui = "undercurl" }, -- squigglies
