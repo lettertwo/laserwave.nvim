@@ -120,7 +120,7 @@ local theme = lush(function()
     -- Many highlights link to these
     Comment      { fg = COMMENT }, -- any comment
     Cursor       { Inverse }, -- character under the cursor
-    CursorLine   { bg = BG.lighten(5)  }, -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
+    CursorLine   { bg = VISUAL.mix(BG, 90)  }, -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
     DiffAdd      { bg = ADD.mix(BG, 75) }, -- diff mode: Added line |diff.txt|
     DiffChange   { bg = ADD.mix(BG, 75) }, -- diff mode: Changed line |diff.txt|
     DiffDelete   { bg = DELETE.mix(BG, 75) }, -- diff mode: Deleted line |diff.txt|
@@ -157,7 +157,7 @@ local theme = lush(function()
     SignColumn   { Normal, fg = LineNr.fg }, -- column where |signs| are displayed
     IncSearch    { Inverse }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
     Substitute   { Inverse }, -- |:substitute| replacement text highlighting
-    CursorLineNr { CursorLine, fg = COMMENT }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+    CursorLineNr { CursorLine, fg = VISUAL }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
     MatchParen   { Bold, fg = HIGHLIGHT }, -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
     ModeMsg      { NonText, gui = Bold.gui }, -- 'showmode' message (e.g., "-- INSERT -- ")
     MsgArea      { NonText }, -- Area for messages and cmdline
@@ -365,6 +365,10 @@ local theme = lush(function()
 
     -- ExtraWhitespace
     ExtraWhitespace      { bg = ERROR },
+
+    -- Treesitter Context
+    TreesitterContext           { bg = VISUAL.mix(BG, 90) },
+    TreesitterContextLineNumber { fg = VISUAL, bg = VISUAL.mix(BG, 90) },
 
     -- Telescope
     TelescopeNormal       { NormalFloat },

@@ -41,10 +41,10 @@ highlight! link TSConstMacro Constant
 highlight! link TSVariableBuiltin Constant
 highlight! link CursorIM Cursor
 highlight! link lCursor Cursor
-highlight CursorLine guifg=NONE guibg=#302938 guisp=NONE gui=NONE cterm=NONE
+highlight CursorLine guifg=NONE guibg=#342B3C guisp=NONE gui=NONE cterm=NONE
 highlight! link ColorColumn CursorLine
 highlight! link CursorColumn CursorLine
-highlight CursorLineNr guifg=#91889B guibg=#302938 guisp=NONE gui=NONE cterm=NONE
+highlight CursorLineNr guifg=#B381C5 guibg=#342B3C guisp=NONE gui=NONE cterm=NONE
 highlight DiagnosticError guifg=#FF3D7A guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight DiagnosticHint guifg=#91889B guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight DiagnosticInfo guifg=#41B5C5 guibg=NONE guisp=NONE gui=NONE cterm=NONE
@@ -178,6 +178,8 @@ highlight TabLineSel guifg=#27212E guibg=#EB65B9 guisp=NONE gui=NONE cterm=NONE
 highlight TelescopePromptPrefix guifg=#EB65B9 guibg=#251F2C guisp=NONE gui=NONE cterm=NONE
 highlight Title guifg=#41B5C5 guibg=NONE guisp=NONE gui=bold cterm=bold
 highlight Todo guifg=#FFE25F guibg=NONE guisp=NONE gui=NONE cterm=NONE
+highlight TreesitterContext guifg=NONE guibg=#342B3C guisp=NONE gui=NONE cterm=NONE
+highlight TreesitterContextLineNumber guifg=#B381C5 guibg=#342B3C guisp=NONE gui=NONE cterm=NONE
 highlight Type guifg=#B381C5 guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight! link CmpItemKindClass Type
 highlight! link CmpItemKindEnum Type
