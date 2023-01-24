@@ -62,7 +62,7 @@ local semantics = {
 
   ADD       = colors.MAXIMUM_BLUE,
   DELETE    = colors.HOT_PINK,
-  CHANGE    = colors.GARDENIA,
+  CHANGE    = colors.MUSTARD,
   CONFLICT  = colors.VIVID_RASPBERRY,
 
   NORMAL    = colors.MAXIMUM_BLUE,

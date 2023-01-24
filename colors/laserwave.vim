@@ -60,15 +60,17 @@ highlight DiagnosticWarn guifg=#FFB961 guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight DiffAdd guifg=NONE guibg=#39434D guisp=NONE gui=NONE cterm=NONE
 highlight DiffChange guifg=NONE guibg=#39434D guisp=NONE gui=NONE cterm=NONE
 highlight DiffDelete guifg=NONE guibg=#4F354C guisp=NONE gui=NONE cterm=NONE
-highlight DiffText guifg=NONE guibg=#614040 guisp=NONE gui=NONE cterm=NONE
+highlight DiffText guifg=NONE guibg=#554C47 guisp=NONE gui=NONE cterm=NONE
 highlight Directory guifg=#41B5C5 guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight Error guifg=#FF3D7A guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight ErrorMsg guifg=#FF3D7A guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight ExtraWhitespace guifg=NONE guibg=#FF3D7A guisp=NONE gui=NONE cterm=NONE
 highlight FloatBorder guifg=#EB65B9 guibg=#251F2C guisp=NONE gui=NONE cterm=NONE
+highlight! link NeoTreeFloatBorder FloatBorder
 highlight! link TelescopeBorder FloatBorder
 highlight! link TelescopePromptBorder FloatBorder
 highlight FloatTitle guifg=#EB65B9 guibg=#251F2C guisp=NONE gui=NONE cterm=NONE
+highlight! link NeoTreeFloatTitle FloatTitle
 highlight! link TelescopePreviewTitle FloatTitle
 highlight! link TelescopePromptTitle FloatTitle
 highlight! link TelescopeResultsTitle FloatTitle
@@ -80,10 +82,10 @@ highlight! link CmpItemKindFunction Function
 highlight! link CmpItemKindMethod Function
 highlight! link TSConstructor Function
 highlight GitGutterAdd guifg=#41B5C5 guibg=NONE guisp=NONE gui=NONE cterm=NONE
-highlight GitGutterChange guifg=#FFB961 guibg=NONE guisp=NONE gui=NONE cterm=NONE
+highlight GitGutterChange guifg=#FFE25F guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight GitGutterDelete guifg=#EB65B9 guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight GitSignsAdd guifg=#41B5C5 guibg=NONE guisp=NONE gui=NONE cterm=NONE
-highlight GitSignsChange guifg=#FFB961 guibg=NONE guisp=NONE gui=NONE cterm=NONE
+highlight GitSignsChange guifg=#FFE25F guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight GitSignsDelete guifg=#EB65B9 guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight Identifier guifg=#FFFFFF guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight! link CmpItemKindVariable Identifier
@@ -110,6 +112,12 @@ highlight ModeReplace guifg=#EB65B9 guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight ModeVisual guifg=#B381C5 guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight MoreMsg guifg=#41B5C5 guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight! link Question MoreMsg
+highlight NeoTreeGitAdded guifg=#41B5C5 guibg=NONE guisp=NONE gui=bold cterm=bold
+highlight NeoTreeGitConflict guifg=#FF3D7A guibg=NONE guisp=NONE gui=bold cterm=bold
+highlight NeoTreeGitDeleted guifg=#EB65B9 guibg=NONE guisp=NONE gui=bold cterm=bold
+highlight NeoTreeGitIgnored guifg=#7C6A96 guibg=NONE guisp=NONE gui=bold cterm=bold
+highlight NeoTreeGitModified guifg=#FFE25F guibg=NONE guisp=NONE gui=bold cterm=bold
+highlight NeoTreeGitUntracked guifg=#91889B guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight NonText guifg=#7C6A96 guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight! link CmpItemKindSnippet NonText
 highlight! link MsgArea NonText
@@ -206,7 +214,7 @@ highlight! link WildMenu Visual
 highlight WarningMsg guifg=#FFB961 guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight Whitespace guifg=#7C6A96 guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight diffAdded guifg=#41B5C5 guibg=NONE guisp=NONE gui=NONE cterm=NONE
-highlight diffChanged guifg=#FFB961 guibg=NONE guisp=NONE gui=NONE cterm=NONE
+highlight diffChanged guifg=#FFE25F guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight diffFile guifg=#FFE25F guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight diffIndexLine guifg=#91889B guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight diffLine guifg=#91889B guibg=NONE guisp=NONE gui=NONE cterm=NONE
