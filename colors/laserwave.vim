@@ -44,7 +44,9 @@ highlight! link lCursor Cursor
 highlight CursorLine guifg=NONE guibg=#342B3C guisp=NONE gui=NONE cterm=NONE
 highlight! link ColorColumn CursorLine
 highlight! link CursorColumn CursorLine
+highlight CursorLineFold guifg=#B381C5 guibg=#342B3C guisp=NONE gui=NONE cterm=NONE
 highlight CursorLineNr guifg=#B381C5 guibg=#342B3C guisp=NONE gui=NONE cterm=NONE
+highlight CursorLineSign guifg=#B381C5 guibg=#342B3C guisp=NONE gui=NONE cterm=NONE
 highlight DiagnosticError guifg=#FF3D7A guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight DiagnosticHint guifg=#91889B guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight DiagnosticInfo guifg=#41B5C5 guibg=NONE guisp=NONE gui=NONE cterm=NONE

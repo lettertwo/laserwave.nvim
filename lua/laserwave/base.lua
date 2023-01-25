@@ -158,6 +158,8 @@ local theme = lush(function()
     IncSearch    { Inverse }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
     Substitute   { Inverse }, -- |:substitute| replacement text highlighting
     CursorLineNr { CursorLine, fg = VISUAL }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+    CursorLineFold { CursorLine, fg = VISUAL }, -- Like FoldColumn when 'cursorline' is set for the cursor line.
+    CursorLineSign { CursorLine, fg = VISUAL }, -- Like SignColumn when 'cursorline' is set for the cursor line.
     MatchParen   { Bold, fg = HIGHLIGHT }, -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
     ModeMsg      { NonText, gui = Bold.gui }, -- 'showmode' message (e.g., "-- INSERT -- ")
     MsgArea      { NonText }, -- Area for messages and cmdline
