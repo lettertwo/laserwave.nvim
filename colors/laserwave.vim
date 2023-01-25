@@ -105,6 +105,7 @@ highlight LspReferenceRead guifg=NONE guibg=#473851 guisp=NONE gui=underline cte
 highlight LspReferenceText guifg=NONE guibg=#473851 guisp=NONE gui=underline cterm=underline
 highlight LspReferenceWrite guifg=NONE guibg=#473851 guisp=NONE gui=underline cterm=underline
 highlight MatchParen guifg=#EB65B9 guibg=NONE guisp=NONE gui=bold cterm=bold
+highlight MiniIndentscopeSymbol guifg=#EB65B9 guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight ModeCommand guifg=#FFE25F guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight ModeInactive guifg=#7C6A96 guibg=NONE guisp=NONE gui=NONE cterm=NONE
 highlight ModeInsert guifg=#75DFC4 guibg=NONE guisp=NONE gui=NONE cterm=NONE

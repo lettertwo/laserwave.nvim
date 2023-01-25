@@ -397,6 +397,9 @@ local theme = lush(function()
     IndentBlanklineChar  { fg = IGNORE.darken(50) },
     IndentBlanklineContextChar  { fg = HIGHLIGHT },
 
+    -- mini.indentscope
+    MiniIndentscopeSymbol { fg = HIGHLIGHT },
+
     -- GitGutter
     GitGutterAdd         { fg = ADD }, -- diff mode: Added line |diff.txt|
     GitGutterChange      { fg = CHANGE }, -- diff mode: Changed line |diff.txt|
