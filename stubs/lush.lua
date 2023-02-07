@@ -57,39 +57,53 @@
 
 ---@alias LushColor HslValue | HsluvValue | string
 
--- A comma separated list (without spaces) of the
--- following items (in any order):
--- 	 bold
--- 	 underline
--- 	 undercurl      curly underline
--- 	 strikethrough
--- 	 reverse
--- 	 inverse        same as reverse
--- 	 italic
--- 	 standout
--- 	 nocombine      override attributes instead of combining them
--- 	 NONE           no attributes used (used to reset it)
---
--- Note that "bold" can be used here and by using a bold font.  They
--- have the same effect.
--- "undercurl" falls back to "underline" in a terminal that does not
--- support it.  The color is set using the `sp` field.
----@alias LushGui string
-
 ---@class LushSpecValue
+-- sets the `fg` property of a highlight group.
+-- value must be a string, or respond to tostring().
 ---@field fg ?LushColor
+-- sets the `bg` property of a highlight group.
+-- value must be a string, or respond to tostring().
 ---@field bg ?LushColor
+-- sets the `sp` property of a highlight group.
+-- value must be a string, or respond to tostring().
 ---@field sp ?LushColor
----@field gui ?LushGui
+-- sets the `blend` property of a highlight group.
+-- value must be an integer between 0 and 100.
+--
+-- note: you must have enabled blending in neovim via
+-- `pumblend` or `winblend`!
+---@field blend ?number
+-- a string containing any of the following format modifier values,
+-- separated by space or comma.
+--
+-- bold:          boolean, enables or disables bold.
+-- italic:        boolean, enables or disables italics.
+-- underline:     boolean, enables or disables underline.
+-- underlineline: boolean, enables or disables double underline.
+-- underdouble:   boolean, underlineline in nvim 0.8
+-- undercurl:     boolean, enables or disables undercurl.
+-- underdot:      boolean, enables or disables underdot.
+-- underdotted:   boolean, underdot in nvim 0.8
+-- underdash:     boolean, enables or disables underdash.
+-- underdashed:   boolean, underdash in nvim 0.8
+-- strikethrough: boolean, enables or disables strikethrough.
+-- reverse:       boolean, enables or disables flipping fg and bg values.
+-- standout:      boolean, enables or disables standout.
+-- nocombine:     boolean, enables or disables nocombine.
+---@field gui ?string
 
 ---@alias ParsedLushSpec table<string, LushSpecValue>
 
----@alias LushSpec fun():table<string, table>
+---@class LushInjectedFunctions
+-- allow creating groups with an "invalid" symbol
+---@field sym fun(name: string): string
+
+---@alias LushSpec fun(injected: LushInjectedFunctions):table<string, table>
 
 ---@alias CompiledLushSpec table
 
 ---@class ExtendedLushSpec
----@field with fun(spec: LushSpec, options: table): ParsedLushSpec
+---@field with fun(spec: LushSpec, options?: table): ParsedLushSpec
 
 -- We can call lush in two styles, with the intention of making boilerplate
 -- easier.

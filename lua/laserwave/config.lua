@@ -1,19 +1,14 @@
 local lush = require("lush")
--- local base = require("laserwave.base")
 
--- shim vim for generators
-vim = vim or { g = {}, o = {} }
+---@class Config
+---@field options ?Options
+---@field treesitter ?boolean
+---@field plugins ?string[]
 
-local function opt(key, default)
-  key = "laserwave_" .. key
-  if vim.g[key] == nil then
-    return default
-  end
-  if vim.g[key] == 0 then
-    return false
-  end
-  return vim.g[key]
-end
+---@class ParsedConfig
+---@field options ParsedOptions
+---@field treesitter boolean
+---@field plugins string[]
 
 ---@class Options
 ---@field transparent ?boolean
@@ -22,9 +17,6 @@ end
 ---@field italic_keywords ?boolean
 ---@field italic_variables ?boolean
 
----@class Config
----@field options ?Options
-
 ---@class ParsedOptions
 ---@field transparent boolean
 ---@field italic_comments boolean
@@ -32,49 +24,95 @@ end
 ---@field italic_keywords boolean
 ---@field italic_variables boolean
 
----@class ParsedConfig
----@field options ParsedOptions
-
 ---@class DefaultConfig
 local config = {
   ---@type ParsedOptions
   options = {
-    transparent = opt("transparent", false),
-    italic_comments = opt("italic_comments", true),
-    italic_keywords = opt("italic_keywords", true),
-    italic_functions = opt("italic_functions", false),
-    italic_variables = opt("italic_variables", false),
+    transparent = false,
+    italic_comments = true,
+    italic_keywords = true,
+    italic_functions = false,
+    italic_variables = false,
   },
-  -- plugins = {},
-  -- langs = {}
+  treesitter = true,
+  plugins = {
+    "alpha",
+    "cmp",
+    "git",
+    "lsp",
+    "neotree",
+    "space",
+    "telescope",
+  },
+  -- TODO: Support lanaguage-specific highlights?
+  -- filetypes = {}
 }
 
----@param base ParsedLushSpec
+---@param config_table ?Config
+---@return ParsedConfig
+function config.parse(config_table)
+  ---@type ParsedOptions
+  local options = config.options
+  local treesitter = config.treesitter
+  local plugins = config.plugins
+
+  if config_table then
+    if config_table.options then
+      ---@diagnostic disable-next-line: undefined-global
+      options = vim.tbl_extend("force", options, config_table.options)
+    end
+
+    if config_table.treesitter ~= nil then
+      treesitter = config_table.treesitter
+    end
+
+    if config_table.plugins then
+      plugins = config_table.plugins
+    end
+  end
+
+  return {
+    options = options,
+    treesitter = treesitter,
+    plugins = plugins,
+  }
+end
+
+---@param specs ParsedLushSpec[]
 ---@param config_table ?Config
 ---@return ParsedLushSpec
--- function config.apply(base, config_table)
-function config.apply(base, config_table)
-  ---@type ParsedOptions
-  local o = config.options
-  if config_table and config_table.options then
-    o = vim.fn.extend("force", o, config_table.options)
-  end
-  return lush.extends({ base }).with(function()
-    -- LSP/Linters mistakenly show `undefined global` errors in the spec.
+function config.apply(specs, config_table)
+  local cfg = config.parse(config_table)
+
+  local spec = lush.merge(specs)
+
+  spec = lush.extends(specs).with(function()
     ---@diagnostic disable: undefined-global
-    --stylua: ignore
+    --stylua: ignore start
     return {
-      Normal     { base.Normal,     bg = o.transparent and "NONE" or base.Normal.bg },
-      Comment    { base.Comment,    gui = o.italic_comments and "italic" or "NONE" },
-      Function   { base.Function,   gui = o.italic_functions and "italic" or "NONE" },
-      Statement  { base.Statement,  gui = o.italic_keywords and "italic" or "NONE" },
-      Identifier { base.Identifier, gui = o.italic_variables and "italic" or "NONE" },
-      TSVariable { base.TSVariable, gui = o.italic_variables and "italic" or "NONE" },
-      TSKeyword  { base.TSKeyword,  gui = o.italic_keywords and "italic" or "NONE" },
+      Normal     { spec.Normal,     bg =  cfg.options.transparent and "NONE" or spec.Normal.bg },
+      Comment    { spec.Comment,    gui = cfg.options.italic_comments and "italic" or "NONE" },
+      Function   { spec.Function,   gui = cfg.options.italic_functions and "italic" or "NONE" },
+      Statement  { spec.Statement,  gui = cfg.options.italic_keywords and "italic" or "NONE" },
+      Identifier { spec.Identifier, gui = cfg.options.italic_variables and "italic" or "NONE" },
     }
+    --stylua: ignore end
   end)
+
+  if cfg.treesitter then
+    spec = lush.merge({ spec, require("laserwave.treesitter") })
+  end
+
+  for _, plugin in ipairs(cfg.plugins) do
+    local plugin_ok, plugin_spec = pcall(require, "laserwave.plugins." .. plugin)
+    if plugin_ok then
+      spec = lush.merge({ spec, plugin_spec })
+    else
+      vim.notify("Failed to load plugin: " .. plugin, vim.log.levels.ERROR, { title = "Laserwave" })
+    end
+  end
+
+  return spec
 end
 
 return config
-
--- vi:nowrap

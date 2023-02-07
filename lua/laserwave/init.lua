@@ -1,12 +1,56 @@
----@param options Config
-local function config(options)
-  package.loaded["laserwave.base"] = nil
-  package.loaded["laserwave.config"] = nil
+--                  (&&&&&&&&&&&&&&&&&&&(
+--             ,&&&&&&&&&&&&&&&&&&&&&&&&&&&&&,
+--          &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+--        &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+--      &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+--    &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+--   &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+--  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+--
+-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+--
+-- *%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*
+--
+--   ###################################################
+--
+--     ###############################################
+--       ###########################################
+--
+--            #######(#############(##########(
+--
+--       _      _   ___ ___ _____      _____   _____
+--      | |    /_\ / __| __| _ \ \    / /_\ \ / / __|
+--      | |__ / _ \\__ \ _||   /\ \/\/ / _ \ V /| _|
+--      |____/_/ \_\___/___|_|_\ \_/\_/_/ \_\_/ |___|
+--
+-- Built with,
+--
+--        ,gggg,
+--       d8" "8I                         ,dPYb,
+--       88  ,dP                         IP'`Yb
+--    8888888P"                          I8  8I
+--       88                              I8  8'
+--       88        gg      gg    ,g,     I8 dPgg,
+--  ,aa,_88        I8      8I   ,8'8,    I8dP" "8I
+-- dP" "88P        I8,    ,8I  ,8'  Yb   I8P    I8
+-- Yb,_,d88b,,_   ,d8b,  ,d8b,,8'_   8) ,d8     I8,
+--  "Y8P"  "Y888888P'"Y88P"`Y8P' "YY8P8P88P     `Y8
+--
+local M = {}
+
+function M.apply()
+  if M.spec == nil then
+    M.setup()
+  end
+
+  if M.spec == nil then
+    error("Laserwave: Spec is nil")
+  end
 
   local palette = require("laserwave.palette")
-  local base = require("laserwave.base")
-  local defaults = require("laserwave.config")
 
+  ---@diagnostic disable: undefined-global
   vim.o.background = "dark"
   vim.g.colors_name = "laserwave"
 
@@ -26,12 +70,19 @@ local function config(options)
   vim.g.terminal_color_13 = palette.terminal.BRIGHT_MAGENTA.hex
   vim.g.terminal_color_14 = palette.terminal.BRIGHT_CYAN.hex
   vim.g.terminal_color_15 = palette.terminal.BRIGHT_WHITE.hex
+  ---@diagnostic enable: undefined-global
 
-  return defaults.apply(base, options)
+  require("lush")(M.spec, { force_clean = false })
 end
 
-local function apply()
-  require("lush")(config(), { force_clean = false })
+---@param options ?Config
+function M.setup(options)
+  local config = require("laserwave.config")
+
+  M.spec = config.apply({
+    require("laserwave.syntax"),
+    require("laserwave.ui"),
+  }, options)
 end
 
-return { config = config, apply = apply }
+return M

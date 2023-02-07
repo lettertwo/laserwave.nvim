@@ -1,37 +1,38 @@
-local theme = require("laserwave.base")
+local palette = require("laserwave.palette")
+local ui = require("laserwave.ui")
 
 local laserwave = {}
 
 laserwave.normal = {
-  a = { bg = theme.ModeNormal.fg.hex, fg = theme.StatusLine.bg.hex },
-  b = { bg = theme.StatusLine.bg.hex, fg = theme.ModeNormal.fg.hex },
-  c = { bg = theme.StatusLine.bg.hex, fg = theme.StatusLine.fg.hex },
+  a = { bg = palette.NORMAL.hex, fg = ui.StatusLine.bg.hex },
+  b = { bg = ui.StatusLine.bg.hex, fg = palette.NORMAL.hex },
+  c = { bg = ui.StatusLine.bg.hex, fg = ui.StatusLine.fg.hex },
 }
 
 laserwave.insert = {
-  a = { bg = theme.ModeInsert.fg.hex, fg = theme.StatusLine.bg.hex },
-  b = { bg = theme.StatusLine.bg.hex, fg = theme.ModeInsert.fg.hex },
+  a = { bg = palette.INSERT.hex, fg = ui.StatusLine.bg.hex },
+  b = { bg = ui.StatusLine.bg.hex, fg = palette.INSERT.hex },
 }
 
 laserwave.command = {
-  a = { bg = theme.ModeCommand.fg.hex, fg = theme.StatusLine.bg.hex },
-  b = { bg = theme.StatusLine.bg.hex, fg = theme.ModeCommand.fg.hex },
+  a = { bg = palette.COMMAND.hex, fg = ui.StatusLine.bg.hex },
+  b = { bg = ui.StatusLine.bg.hex, fg = palette.COMMAND.hex },
 }
 
 laserwave.visual = {
-  a = { bg = theme.ModeVisual.fg.hex, fg = theme.StatusLine.bg.hex },
-  b = { bg = theme.StatusLine.bg.hex, fg = theme.ModeVisual.fg.hex },
+  a = { bg = palette.VISUAL.hex, fg = ui.StatusLine.bg.hex },
+  b = { bg = ui.StatusLine.bg.hex, fg = palette.VISUAL.hex },
 }
 
 laserwave.replace = {
-  a = { bg = theme.ModeReplace.fg.hex, fg = theme.StatusLine.bg.hex },
-  b = { bg = theme.StatusLine.bg.hex, fg = theme.ModeReplace.fg.hex },
+  a = { bg = palette.REPLACE.hex, fg = ui.StatusLine.bg.hex },
+  b = { bg = ui.StatusLine.bg.hex, fg = palette.REPLACE.hex },
 }
 
 laserwave.inactive = {
-  a = { bg = theme.StatusLineNC.bg.hex, fg = theme.StatusLineNC.fg.hex },
-  b = { bg = theme.StatusLineNC.bg.hex, fg = theme.StatusLineNC.fg.hex, gui = "bold" },
-  c = { bg = theme.StatusLineNC.bg.hex, fg = theme.StatusLineNC.fg.hex },
+  a = { bg = ui.StatusLineNC.bg.hex, fg = ui.StatusLineNC.fg.hex },
+  b = { bg = ui.StatusLineNC.bg.hex, fg = ui.StatusLineNC.fg.hex, gui = "bold" },
+  c = { bg = ui.StatusLineNC.bg.hex, fg = ui.StatusLineNC.fg.hex },
 }
 
 return laserwave
