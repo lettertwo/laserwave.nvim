@@ -88,6 +88,10 @@ local treesitter = lush(function(injected)
     -- sym"@punctuation.bracket"   { }, -- Brackets, braces, parentheses, etc.
     -- sym"@punctuation.special"   { }, -- Special punctuation that doesn't fit into the previous categories.
 
+    sym "@text.diff.delete"     { fg = palette.DELETE },
+    sym "@text.diff.add"        { fg = palette.ADD },
+    sym "@text.diff.change"     { fg = palette.CHANGE },
+
     -- Treesitter Context
     TreesitterContext           { bg = palette.VISUAL.mix(palette.BG, 90) },
     TreesitterContextLineNumber { fg = palette.VISUAL, bg = palette.VISUAL.mix(palette.BG, 90) },
