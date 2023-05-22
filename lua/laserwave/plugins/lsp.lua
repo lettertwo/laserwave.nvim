@@ -12,9 +12,26 @@ local palette = require("laserwave.palette")
 local ui = require("laserwave.ui")
 
 ---@diagnostic disable: undefined-global
-local lsp = lush(function()
+local lsp = lush(function(injected)
+  local sym = injected.sym
   --stylua: ignore start
   return {
+    -- LSP Semantic Token Groups that preserve treesitter highlights
+    -- from https://gist.github.com/swarn/fb37d9eefe1bc616c2a7e476c0bc0316
+    sym"@lsp.type.namespace" { link = '@namespace' },
+    sym"@lsp.type.type" { link = '@type' },
+    sym"@lsp.type.class" { link = '@type' },
+    sym"@lsp.type.enum" { link = '@type' },
+    sym"@lsp.type.interface" { link = '@type' },
+    sym"@lsp.type.struct" { link = '@structure' },
+    sym"@lsp.type.parameter" { link = '@parameter' },
+    sym"@lsp.type.variable" { link = '@variable' },
+    sym"@lsp.type.property" { link = '@property' },
+    sym"@lsp.type.enumMember" { link = '@constant' },
+    sym"@lsp.type.function" { link = '@function' },
+    sym"@lsp.type.method" { link = '@method' },
+    sym"@lsp.type.macro" { link = '@macro' },
+    sym"@lsp.type.decorator" { link = '@function' },
     -- These groups are for the native LSP client and diagnostic system. Some
     -- other LSP clients may use these groups, or use their own. Consult your
     -- LSP client's documentation.
