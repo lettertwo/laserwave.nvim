@@ -1,4 +1,5 @@
 ---@diagnostic disable: unused-local
+---@diagnostic disable: missing-return
 
 ---@class HslValue
 ---@field h number
