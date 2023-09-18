@@ -1,0 +1,34 @@
+# name:     laserwave
+# author:   Eric Eldredge <lettertwo@gmail.com>
+# license:  MIT
+# upstream: https://github.com/lettertwo/laserwave.nvim/dist/alacritty/laserwave.yml
+# blurb:    Based on LaserWave for VSCode by Jared Jones
+
+colors:
+  primary:
+    foreground: '#FFFFFF'
+    background: '#27212E'
+  cursor:
+    cursor: 'CellForeground'
+    text:   'CellBackground'
+  selection:
+    text: 'CellForeground'
+    background: '#473851'
+  normal:
+    black:   '#91889B'
+    red:     '#EB65B9'
+    green:   '#75DFC4'
+    yellow:  '#FFE25F'
+    blue:    '#41B5C5'
+    magenta: '#B381C5'
+    cyan:    '#B3DBE6'
+    white:   '#FFFFFF'
+  bright:
+    black:   '#B381C5'
+    red:     '#FF3D7A'
+    green:   '#75DFC4'
+    yellow:  '#FFB961'
+    blue:    '#41B5C5'
+    magenta: '#EB65B9'
+    cyan:    '#B3DBE6'
+    white:   '#FFFFFF'

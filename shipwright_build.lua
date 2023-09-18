@@ -11,7 +11,9 @@ local overwrite = require("shipwright.transform.overwrite")
 local laserwave = require("laserwave")
 local palette = require("laserwave.transform.palette")
 local kitty = require("laserwave.transform.kitty")
+local alacritty = require("laserwave.transform.alacritty")
 
 laserwave.setup()
 
 shipwright.run(palette, kitty, { overwrite, "dist/kitty/laserwave.conf" })
+shipwright.run(palette, alacritty, { overwrite, "dist/alacritty/laserwave.yml" })
