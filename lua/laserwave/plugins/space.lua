@@ -19,11 +19,14 @@ local plugins = lush(function()
     ExtraWhitespace      { bg = palette.ERROR },
 
     -- indent-blankline
-    IndentBlanklineChar  { fg = palette.IGNORE.darken(50) },
-    IndentBlanklineContextChar  { fg = palette.HIGHLIGHT },
+    IblIndent { fg = palette.IGNORE.darken(30) },
+    IblWhitespace { IblIndent },
+    IndentBlanklineChar  { IblIndent },
+    IblScope { fg = palette.HIGHLIGHT },
+    IndentBlanklineContextChar  { IblScope },
 
     -- mini.indentscope
-    MiniIndentscopeSymbol { fg = palette.HIGHLIGHT },
+    MiniIndentscopeSymbol { IblScope },
   }
   --stylua: ignore end
 end)
