@@ -120,15 +120,17 @@
 ---@type fun(spec: LushSpec | ParsedLushSpec, options?: table): ParsedLushSpec
 local Lush = {}
 
----@param hex string
+---@param hOrHex number | string
+---@param s? number
+---@param l? number
 ---@return HslValue
----@overload fun(h: number, s: number, l: number): HslValue
-Lush.hsl = function(hex) end
+Lush.hsl = function(hOrHex, s, l) end
 
----@param hex string
+---@param hOrHex number | string
+---@param s? number
+---@param l? number
 ---@return HsluvValue
----@overload fun(h: number, s: number, l: number): HsluvValue
-Lush.hsluv = function(hex) end
+Lush.hsluv = function(hOrHex, s, l) end
 
 ---@param options table
 ---@return nil
