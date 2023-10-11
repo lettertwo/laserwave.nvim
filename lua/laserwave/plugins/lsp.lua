@@ -44,6 +44,7 @@ local lsp = lush(function(injected)
     LspCodeLens                 { ui.VirtualText }, -- Used to color the virtual text of the codelens. See |nvim_buf_set_extmark()|.
     LspCodeLensSeparator        { ui.VirtualText }, -- Used to color the seperator between two or more code lens.
     LspSignatureActiveParameter { ui.VirtualText }, -- Used to highlight the active parameter in the signature help. See |vim.lsp.handlers.signature_help()|.
+    LspInfoBorder               { ui.FloatBorder },
 
     -- See :h diagnostic-highlights, some groups may not be listed, submit a PR fix to lush-template!
 
