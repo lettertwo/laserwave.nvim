@@ -74,7 +74,7 @@ local semantics = {
 }
 -- stylua: ignore end
 
----@class LaserwaveColors : LaserwaveSemantics
+---@class LaserwavePalette: LaserwaveColors, LaserwaveSemantics
 ---@field colors LaserwaveColors
 ---@field semantics LaserwaveSemantics
 ---@field terminal LaserwaveTerminal
@@ -83,5 +83,11 @@ local M = {
   semantics = semantics,
   terminal = terminal,
 }
-M = vim.tbl_extend("error", M, colors, semantics)
+
+setmetatable(M, {
+  __index = function(_, key)
+    return M.colors[key] or M.semantics[key]
+  end,
+})
+
 return M
