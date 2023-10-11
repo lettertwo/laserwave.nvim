@@ -41,6 +41,7 @@ local config = {
     "git",
     "lsp",
     "neotree",
+    "package_info",
     "space",
     "telescope",
   },
