@@ -3,11 +3,13 @@ local lush = require("lush")
 ---@class Config
 ---@field options ?Options
 ---@field treesitter ?boolean
+---@field semantic_highlights ?boolean
 ---@field plugins ?string[]
 
 ---@class ParsedConfig
 ---@field options ParsedOptions
 ---@field treesitter boolean
+---@field semantic_highlights boolean
 ---@field plugins string[]
 
 ---@class Options
@@ -35,6 +37,7 @@ local config = {
     italic_variables = false,
   },
   treesitter = true,
+  semantic_highlights = true,
   plugins = {
     "alpha",
     "cmp",
@@ -55,6 +58,7 @@ function config.parse(config_table)
   ---@type ParsedOptions
   local options = config.options
   local treesitter = config.treesitter
+  local semantic_highlights = config.semantic_highlights
   local plugins = config.plugins
 
   if config_table then
@@ -67,6 +71,10 @@ function config.parse(config_table)
       treesitter = config_table.treesitter
     end
 
+    if config_table.semantic_highlights ~= nil then
+      semantic_highlights = config_table.semantic_highlights
+    end
+
     if config_table.plugins then
       plugins = config_table.plugins
     end
@@ -75,6 +83,7 @@ function config.parse(config_table)
   return {
     options = options,
     treesitter = treesitter,
+    semantic_highlights = semantic_highlights,
     plugins = plugins,
   }
 end
@@ -102,6 +111,10 @@ function config.apply(specs, config_table)
 
   if cfg.treesitter then
     spec = lush.merge({ spec, require("laserwave.treesitter") })
+  end
+
+  if cfg.semantic_highlights then
+    spec = lush.merge({ spec, require("laserwave.semantic_highlights") })
   end
 
   for _, plugin in ipairs(cfg.plugins) do
