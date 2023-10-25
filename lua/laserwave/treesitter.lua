@@ -97,8 +97,8 @@ local treesitter = lush(function(injected)
     sym "@text.diff.change"     { fg = palette.CHANGE },
 
     -- Treesitter Context
-    TreesitterContext           { bg = palette.VISUAL.mix(palette.BG, 90) },
-    TreesitterContextLineNumber { fg = palette.VISUAL, bg = palette.VISUAL.mix(palette.BG, 90) },
+    TreesitterContext           { bg = palette.VISUAL.mix(palette.BG, 80) },
+    TreesitterContextLineNumber { fg = palette.VISUAL.mix(palette.FG, 20) },
   }
 end)
 
