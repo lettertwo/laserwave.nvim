@@ -61,7 +61,7 @@ local treesitter = lush(function(injected)
     -- sym"@parameter"             { }, -- Identifier
     -- sym"@method"                { }, -- Function
     -- sym"@field"                 { }, -- Identifier
-    -- sym"@property"              { }, -- Identifier
+    sym"@property"              { fg = palette.KEYWORD }, -- Identifier
     sym"@constructor"           { syntax.Function }, -- Special
     -- sym"@conditional"           { }, -- Conditional
     -- sym"@repeat"                { }, -- Repeat
