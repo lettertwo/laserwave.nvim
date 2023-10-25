@@ -5,12 +5,14 @@ local lush = require("lush")
 ---@field treesitter ?boolean
 ---@field semantic_highlights ?boolean
 ---@field plugins ?string[]
+---@field debug ?boolean
 
 ---@class ParsedConfig
 ---@field options ParsedOptions
 ---@field treesitter boolean
 ---@field semantic_highlights boolean
 ---@field plugins string[]
+---@field debug boolean
 
 ---@class Options
 ---@field transparent ?boolean
@@ -48,6 +50,7 @@ local config = {
     "space",
     "telescope",
   },
+  debug = false,
   -- TODO: Support lanaguage-specific highlights?
   -- filetypes = {}
 }
@@ -60,6 +63,7 @@ function config.parse(config_table)
   local treesitter = config.treesitter
   local semantic_highlights = config.semantic_highlights
   local plugins = config.plugins
+  local debug = config.debug
 
   if config_table then
     if config_table.options then
@@ -78,10 +82,15 @@ function config.parse(config_table)
     if config_table.plugins then
       plugins = config_table.plugins
     end
+
+    if config_table.debug ~= nil then
+      debug = config_table.debug
+    end
   end
 
   return {
     options = options,
+    debug = debug,
     treesitter = treesitter,
     semantic_highlights = semantic_highlights,
     plugins = plugins,
@@ -89,11 +98,9 @@ function config.parse(config_table)
 end
 
 ---@param specs ParsedLushSpec[]
----@param config_table ?Config
+---@param cfg ParsedConfig
 ---@return ParsedLushSpec
-function config.apply(specs, config_table)
-  local cfg = config.parse(config_table)
-
+function config.apply(specs, cfg)
   local spec = lush.merge(specs)
 
   spec = lush.extends(specs).with(function()

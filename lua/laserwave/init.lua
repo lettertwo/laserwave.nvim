@@ -41,7 +41,7 @@ local M = {}
 
 function M.apply()
   if M.spec == nil then
-    M.setup()
+    M.setup(M.options)
   end
 
   if M.spec == nil then
@@ -77,12 +77,40 @@ end
 
 ---@param options ?Config
 function M.setup(options)
-  local config = require("laserwave.config")
+  M.options = options
 
-  M.spec = config.apply({
+  ---@type ParsedConfig
+  local cfg = require("laserwave.config").parse(options)
+
+  M.spec = require("laserwave.config").apply({
     require("laserwave.syntax"),
     require("laserwave.ui"),
-  }, options)
+  }, cfg)
+
+  vim.api.nvim_create_user_command("LaserwaveCompile", function()
+    for name, _ in pairs(package.loaded) do
+      if name:match("^laserwave.") then
+        vim.notify("Unloading " .. name, vim.log.levels.DEBUG, { title = "Laserwave" })
+        package.loaded[name] = nil
+      end
+    end
+    M.spec = nil
+    M.apply()
+    vim.notify("Reloaded!", vim.log.levels.INFO, { title = "Laserwave" })
+    vim.cmd.colorscheme("laserwave")
+  end, {})
+
+  if cfg.debug then
+    vim.api.nvim_create_autocmd("BufWritePost", {
+      group = vim.api.nvim_create_augroup("laserwave", { clear = true }),
+      pattern = "*/laserwave/*",
+      callback = function()
+        vim.schedule(function()
+          vim.cmd("LaserwaveCompile")
+        end)
+      end,
+    })
+  end
 end
 
 return M
