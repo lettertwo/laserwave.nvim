@@ -62,6 +62,8 @@ local treesitter = lush(function(injected)
     -- sym"@method"                { }, -- Function
     -- sym"@field"                 { }, -- Identifier
     sym"@property"              { fg = palette.KEYWORD }, -- Identifier
+    sym"@property.class"        { syntax.Function }, -- e.g., css .class
+    sym"@property.id"           { syntax.Constant }, -- e.g., css #id
     sym"@constructor"           { syntax.Function }, -- Special
     -- sym"@conditional"           { }, -- Conditional
     -- sym"@repeat"                { }, -- Repeat
@@ -75,6 +77,7 @@ local treesitter = lush(function(injected)
     -- sym"@type"                  { }, -- Type
     -- sym"@type.definition"       { }, -- Typedef
     sym"@type.builtin"          { syntax.Constant }, -- Built-in types: `i32` in Rust.
+    sym"@type.tag"              { syntax.Constant }, -- css tag names.
     -- sym"@storageclass"          { }, -- StorageClass
     -- sym"@structure"             { }, -- Structure
     -- sym"@namespace"             { }, -- Identifier
