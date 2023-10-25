@@ -52,10 +52,10 @@ local ui = lush(function()
     ColorColumn    { CursorLine }, -- Columns set with 'colorcolumn'
     CursorColumn   { CursorLine }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
     CursorLineFold { CursorLine, fg = palette.VISUAL }, -- Like FoldColumn when 'cursorline' is set for the cursor line.
-    CursorLineNr   { CursorLine, fg = palette.VISUAL }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+    CursorLineNr   { CursorLine, fg = palette.FG.mix(palette.VISUAL, 50) }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
     CursorLineSign { CursorLine, fg = palette.VISUAL }, -- Like SignColumn when 'cursorline' is set for the cursor line.
 
-    LineNr       { fg = palette.GUTTER }, --Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set. 
+    LineNr       { fg = palette.IGNORE }, --Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set. 
     Folded       { LineNr, bg = palette.IGNORE.mix(palette.BG, 75) }, -- Line used for closed folds
     FoldColumn   { LineNr, bg = palette.BG }, -- 'foldcolumn'
     SignColumn   { LineNr, bg = palette.BG }, -- Column where |signs| are displayed
