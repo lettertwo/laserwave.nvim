@@ -73,7 +73,7 @@ local treesitter = lush(function(injected)
     sym"@variable.builtin"      { syntax.Constant }, -- Variable names defined by the language: `this` or `self` in Javascript.
     -- sym"@type"                  { }, -- Type
     -- sym"@type.definition"       { }, -- Typedef
-    sym"@type.builtin"          { syntax.Type }, -- Built-in types: `i32` in Rust.
+    sym"@type.builtin"          { syntax.Constant }, -- Built-in types: `i32` in Rust.
     -- sym"@storageclass"          { }, -- StorageClass
     -- sym"@structure"             { }, -- Structure
     -- sym"@namespace"             { }, -- Identifier
