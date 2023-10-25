@@ -40,11 +40,11 @@ local syntax = lush(function()
     -- Repeat         { },            --   for, do, while, etc.
     -- Label          { },            --   case, default, etc.
     Operator       { fg = palette.OPERATOR }, --   "sizeof", "+", "*", etc.
-    Keyword        { fg = palette.KEYWORD },  --   any other keyword
+    Keyword        { fg = palette.KEYWORD, gui = "italic" },  --   any other keyword
     -- Exception      { },            --   try, catch, throw
 
     PreProc        { ui.NonText },   -- (*) Generic Preprocessor
-    Include        { fg = palette.KEYWORD }, --   Preprocessor #include
+    Include        { fg = palette.KEYWORD, gui = "italic" }, --   Preprocessor #include
     Define         { fg = palette.KEYWORD }, --   Preprocessor #define
     Macro          { fg = palette.KEYWORD }, --   Same as Define
     PreCondit      { fg = palette.KEYWORD }, --   Preprocessor #if, #else, #endif, etc.
