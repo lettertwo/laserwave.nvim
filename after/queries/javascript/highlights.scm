@@ -1,0 +1,2 @@
+;; extends
+[ "export" ] @keyword.export
