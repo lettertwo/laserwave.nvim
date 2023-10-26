@@ -45,8 +45,8 @@ local syntax = lush(function()
 
     PreProc        { ui.NonText },   -- (*) Generic Preprocessor
     Include        { fg = palette.KEYWORD, gui = "italic" }, --   Preprocessor #include
-    Define         { fg = palette.KEYWORD }, --   Preprocessor #define
-    Macro          { fg = palette.KEYWORD }, --   Same as Define
+    Define         { fg = palette.FUNCTION }, --   Preprocessor #define
+    Macro          { fg = palette.FUNCTION }, --   Same as Define
     PreCondit      { fg = palette.KEYWORD }, --   Preprocessor #if, #else, #endif, etc.
 
     Type           { fg = palette.TYPE }, -- (*) int, long, char, etc.
