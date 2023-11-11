@@ -1,38 +1,34 @@
-local palette = require("laserwave.palette")
-local ui = require("laserwave.ui")
-
+-- GENERATED ON 2023-11-12 AT 16:39:03
+-- name:     laserwave
+-- author:   Eric Eldredge <lettertwo@gmail.com>
+-- license:  MIT
+-- upstream: https://github.com/lettertwo/laserwave.nvim/lua/lualine/laserwave.lua
+-- blurb:    Based on LaserWave for VSCode by Jared Jones
 local laserwave = {}
-
 laserwave.normal = {
-  a = { bg = palette.NORMAL.hex, fg = ui.StatusLine.bg.hex },
-  b = { bg = ui.StatusLine.bg.hex, fg = palette.NORMAL.hex },
-  c = { bg = ui.StatusLine.bg.hex, fg = ui.StatusLine.fg.hex },
+  a = { bg = "#41B5C5", fg = "#251F2C" },
+  b = { bg = "#251F2C", fg = "#41B5C5" },
+  c = { bg = "#251F2C", fg = "#FFFFFF" },
 }
-
 laserwave.insert = {
-  a = { bg = palette.INSERT.hex, fg = ui.StatusLine.bg.hex },
-  b = { bg = ui.StatusLine.bg.hex, fg = palette.INSERT.hex },
+  a = { bg = "#75DFC4", fg = "#251F2C" },
+  b = { bg = "#251F2C", fg = "#75DFC4" },
 }
-
 laserwave.command = {
-  a = { bg = palette.COMMAND.hex, fg = ui.StatusLine.bg.hex },
-  b = { bg = ui.StatusLine.bg.hex, fg = palette.COMMAND.hex },
+  a = { bg = "#FFE25F", fg = "#251F2C" },
+  b = { bg = "#251F2C", fg = "#FFE25F" },
 }
-
 laserwave.visual = {
-  a = { bg = palette.VISUAL.hex, fg = ui.StatusLine.bg.hex },
-  b = { bg = ui.StatusLine.bg.hex, fg = palette.VISUAL.hex },
+  a = { bg = "#B381C5", fg = "#251F2C" },
+  b = { bg = "#251F2C", fg = "#B381C5" },
 }
-
 laserwave.replace = {
-  a = { bg = palette.REPLACE.hex, fg = ui.StatusLine.bg.hex },
-  b = { bg = ui.StatusLine.bg.hex, fg = palette.REPLACE.hex },
+  a = { bg = "#EB65B9", fg = "#251F2C" },
+  b = { bg = "#251F2C", fg = "#EB65B9" },
 }
-
 laserwave.inactive = {
-  a = { bg = ui.StatusLineNC.bg.hex, fg = ui.StatusLineNC.fg.hex },
-  b = { bg = ui.StatusLineNC.bg.hex, fg = ui.StatusLineNC.fg.hex, gui = "bold" },
-  c = { bg = ui.StatusLineNC.bg.hex, fg = ui.StatusLineNC.fg.hex },
+  a = { bg = "#251F2C", fg = "#7C6A96" },
+  b = { bg = "#251F2C", fg = "#7C6A96", gui = "bold" },
+  c = { bg = "#251F2C", fg = "#7C6A96" },
 }
-
 return laserwave

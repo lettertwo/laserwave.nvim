@@ -8,8 +8,8 @@
 
 local lush = require("lush")
 
-local palette = require("laserwave.palette")
-local syntax = require("laserwave.syntax")
+local palette = require("laserwave.spec.palette")
+local syntax = require("laserwave.spec.syntax")
 
 ---@diagnostic disable: undefined-global
 --stylua: ignore

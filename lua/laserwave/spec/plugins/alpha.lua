@@ -8,7 +8,7 @@
 
 local lush = require("lush")
 
-local palette = require("laserwave.palette")
+local palette = require("laserwave.spec.palette")
 
 ---@diagnostic disable: undefined-global
 local alpha = lush(function()

@@ -8,8 +8,7 @@
 
 local lush = require("lush")
 
-local palette = require("laserwave.palette")
-local syntax = require("laserwave.syntax")
+local syntax = require("laserwave.spec.syntax")
 
 -- WIP: These group names lifted from: https://github.com/folke/tokyonight.nvim/blob/f247ee7/lua/tokyonight/theme.lua#L271
 ---@diagnostic disable: undefined-global

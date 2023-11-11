@@ -8,8 +8,7 @@
 
 local lush = require("lush")
 
-local palette = require("laserwave.palette")
-local ui = require("laserwave.ui")
+local palette = require("laserwave.spec.palette")
 
 ---@diagnostic disable: undefined-global
 local plugins = lush(function()

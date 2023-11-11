@@ -8,9 +8,9 @@
 
 local lush = require("lush")
 
-local palette = require("laserwave.palette")
-local syntax = require("laserwave.syntax")
-local ui = require("laserwave.ui")
+local palette = require("laserwave.spec.palette")
+local syntax = require("laserwave.spec.syntax")
+local ui = require("laserwave.spec.ui")
 
 ---@diagnostic disable: undefined-global
 local cmp = lush(function()

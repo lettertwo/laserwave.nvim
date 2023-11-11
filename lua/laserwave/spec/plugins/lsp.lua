@@ -8,8 +8,8 @@
 
 local lush = require("lush")
 
-local palette = require("laserwave.palette")
-local ui = require("laserwave.ui")
+local palette = require("laserwave.spec.palette")
+local ui = require("laserwave.spec.ui")
 
 ---@diagnostic disable: undefined-global
 local lsp = lush(function(injected)

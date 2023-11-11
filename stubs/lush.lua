@@ -116,63 +116,16 @@
 -- lush({...})
 --   -> applying a parsed spec, automatically sets the clear option
 --   -> traditionally called in the colors/colors.vim file
---
----@type fun(spec: LushSpec | ParsedLushSpec, options?: table): ParsedLushSpec
-local Lush = {}
-
----@param hOrHex number | string
----@param s? number
----@param l? number
----@return HslValue
-Lush.hsl = function(hOrHex, s, l) end
-
----@param hOrHex number | string
----@param s? number
----@param l? number
----@return HsluvValue
-Lush.hsluv = function(hOrHex, s, l) end
-
----@param options table
----@return nil
-Lush.ify = function(options) end
-
----@param spec LushSpec
----@param options table
----@return ParsedLushSpec
-Lush.parse = function(spec, options) end
-
----@param ast table
----@param options table
----@return CompiledLushSpec
-Lush.compile = function(ast, options) end
-
--- accepts list of highlight commands from compile() to apply
----@param compiled CompiledLushSpec
----@return nil
-Lush.apply = function(compiled) end
-
----@param parsed_spec ParsedLushSpec
----@param options table
----@return string
-Lush.stringify = function(parsed_spec, options) end
-
----@param parsed_spec ParsedLushSpec
----@return nil
-Lush.export_to_buffer = function(parsed_spec) end
-
----@return nil
-Lush.import = function() end
-
--- accepts list of parsed specs which it passes to the 'with'd specs
--- under the extends option
----@param extends_list ParsedLushSpec[]
----@return ExtendedLushSpec
-Lush.extends = function(extends_list) end
-
--- accepts a list of parsed specs, merges them in order
--- (equivilent to extends({...}).with(empty_spec))
----@param extends_list ParsedLushSpec[]
----@return ParsedLushSpec
-Lush.merge = function(extends_list) end
-
-return Lush
+---@class Lush
+---@field hsl fun(h: number | string, s?: number, l?: number): HslValue
+---@field hsluv fun(h: number | string, s?: number, l?: number): HsluvValue
+---@field ify fun(options: table): nil
+---@field parse fun(spec: LushSpec, options?: table): ParsedLushSpec
+---@field compile fun(ast: table, options?: table): CompiledLushSpec
+---@field apply fun(compiled: CompiledLushSpec): nil
+---@field stringify fun(parsed_spec: ParsedLushSpec, options?: table): string
+---@field export_to_buffer fun(parsed_spec: ParsedLushSpec): nil
+---@field import fun(): nil
+---@field extends fun(extends_list: ParsedLushSpec[]): ExtendedLushSpec
+---@field merge fun(extends_list: ParsedLushSpec[]): ParsedLushSpec
+---@overload fun(spec: LushSpec | ParsedLushSpec, options?: table): ParsedLushSpec

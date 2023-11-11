@@ -1,18 +1,20 @@
-local lush = require("lush")
-
 ---@class Config
 ---@field options ?Options
 ---@field treesitter ?boolean
 ---@field semantic_highlights ?boolean
----@field plugins ?string[]
+---@field terminal_colors ?boolean
+---@field plugins ?table<string, boolean>
 ---@field debug ?boolean
+---@field flavor ?FLAVOR_NAME
 
 ---@class ParsedConfig
 ---@field options ParsedOptions
 ---@field treesitter boolean
 ---@field semantic_highlights boolean
----@field plugins string[]
+---@field terminal_colors boolean
+---@field plugins table<string, boolean>
 ---@field debug boolean
+---@field flavor FLAVOR_NAME
 
 ---@class Options
 ---@field transparent ?boolean
@@ -30,6 +32,7 @@ local lush = require("lush")
 
 ---@class DefaultConfig
 local config = {
+  flavor = "original",
   ---@type ParsedOptions
   options = {
     transparent = false,
@@ -38,17 +41,18 @@ local config = {
     italic_functions = false,
     italic_variables = false,
   },
+  terminal_colors = true,
   treesitter = true,
   semantic_highlights = true,
   plugins = {
-    "alpha",
-    "cmp",
-    "git",
-    "lsp",
-    "neotree",
-    "package_info",
-    "space",
-    "telescope",
+    alpha = true,
+    cmp = true,
+    git = true,
+    lsp = true,
+    neotree = true,
+    package_info = true,
+    space = true,
+    telescope = true,
   },
   debug = false,
   -- TODO: Support lanaguage-specific highlights?
@@ -62,8 +66,10 @@ function config.parse(config_table)
   local options = config.options
   local treesitter = config.treesitter
   local semantic_highlights = config.semantic_highlights
+  local terminal_colors = config.terminal_colors
   local plugins = config.plugins
   local debug = config.debug
+  local flavor = config.flavor
 
   if config_table then
     if config_table.options then
@@ -79,6 +85,10 @@ function config.parse(config_table)
       semantic_highlights = config_table.semantic_highlights
     end
 
+    if config_table.terminal_colors ~= nil then
+      terminal_colors = config_table.terminal_colors
+    end
+
     if config_table.plugins then
       plugins = config_table.plugins
     end
@@ -86,54 +96,22 @@ function config.parse(config_table)
     if config_table.debug ~= nil then
       debug = config_table.debug
     end
-  end
 
-  return {
-    options = options,
-    debug = debug,
-    treesitter = treesitter,
-    semantic_highlights = semantic_highlights,
-    plugins = plugins,
-  }
-end
-
----@param specs ParsedLushSpec[]
----@param cfg ParsedConfig
----@return ParsedLushSpec
-function config.apply(specs, cfg)
-  local spec = lush.merge(specs)
-
-  spec = lush.extends(specs).with(function()
-    ---@diagnostic disable: undefined-global
-    --stylua: ignore start
-    return {
-      Normal     { spec.Normal,     bg =  cfg.options.transparent and "NONE" or spec.Normal.bg },
-      Comment    { spec.Comment,    gui = cfg.options.italic_comments and "italic" or "NONE" },
-      Function   { spec.Function,   gui = cfg.options.italic_functions and "italic" or "NONE" },
-      Statement  { spec.Statement,  gui = cfg.options.italic_keywords and "italic" or "NONE" },
-      Identifier { spec.Identifier, gui = cfg.options.italic_variables and "italic" or "NONE" },
-    }
-    --stylua: ignore end
-  end)
-
-  if cfg.treesitter then
-    spec = lush.merge({ spec, require("laserwave.treesitter") })
-  end
-
-  if cfg.semantic_highlights then
-    spec = lush.merge({ spec, require("laserwave.semantic_highlights") })
-  end
-
-  for _, plugin in ipairs(cfg.plugins) do
-    local plugin_ok, plugin_spec = pcall(require, "laserwave.plugins." .. plugin)
-    if plugin_ok then
-      spec = lush.merge({ spec, plugin_spec })
-    else
-      vim.notify("Failed to load plugin: " .. plugin, vim.log.levels.ERROR, { title = "Laserwave" })
+    if config_table.flavor ~= nil then
+      flavor = config_table.flavor
     end
   end
 
-  return spec
+  ---@type ParsedConfig
+  return vim.tbl_extend("force", config, {
+    options = options,
+    debug = debug,
+    flavor = flavor,
+    treesitter = treesitter,
+    semantic_highlights = semantic_highlights,
+    terminal_colors = terminal_colors,
+    plugins = plugins,
+  })
 end
 
 return config

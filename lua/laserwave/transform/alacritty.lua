@@ -8,6 +8,8 @@ return template
     selection_fg = "CellForeground",
   })
   .create([[
+# GENERATED ON $date AT $time
+
 # name:     $name
 # author:   $author
 # license:  $license

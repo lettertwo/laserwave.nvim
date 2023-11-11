@@ -8,7 +8,7 @@
 
 local lush = require("lush")
 
-local palette = require("laserwave.palette")
+local palette = require("laserwave.spec.palette")
 
 ---@diagnostic disable: undefined-global
 --stylua: ignore
@@ -42,7 +42,7 @@ local ui = lush(function()
     WildMenu     { Visual }, -- Current match in 'wildmenu' completion
     QuickFixLine { Visual, gui = "bold" }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
 
-    Cursor       { gui = "reverse" }, -- Character under the cursor
+    Cursor       { fg = palette.FG, bg = palette.HIGHLIGHT.mix(palette.BG, 75), gui = "reverse" }, -- Character under the cursor
     CursorIM     { Cursor }, -- Like Cursor, but used when in IME mode |CursorIM|
     lCursor      { Cursor }, -- Character under the cursor when |language-mapping| is used (see 'guicursor') 
     -- TermCursor   { }, -- Cursor in a focused terminal
@@ -105,6 +105,13 @@ local ui = lush(function()
     healthError     { fg = palette.ERROR },
     healthSuccess   { fg = palette.OPERATOR },
     healthWarning   { fg = palette.WARNING },
+
+    -- Modes
+    ModeNormal      { fg = palette.NORMAL },
+    ModeInsert      { fg = palette.INSERT },
+    ModeCommand     { fg = palette.COMMAND },
+    ModeVisual      { fg = palette.VISUAL },
+    ModeReplace     { fg = palette.REPLACE },
   }
 end)
 

@@ -1,13 +1,15 @@
 local template = require("laserwave.transform.template")
 
 return template
-    .with_context({
-      cursor_fg = "background",
-      cursor_bg = "none",
-      selection_fg = "none",
-    })
-    .create([[
+  .with_context({
+    cursor_fg = "background",
+    cursor_bg = "none",
+    selection_fg = "none",
+  })
+  .create([[
 # vim:fileencoding=utf-8:ft=kitty.conf:foldmethod=marker
+
+## GENERATED ON $date AT $time
 
 ## name:     $name
 ## author:   $author
