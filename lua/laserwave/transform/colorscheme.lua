@@ -49,6 +49,13 @@ vim.o.background = "dark"
 vim.o.termguicolors = true
 vim.g.colors_name = "$name"
 
+
+if cfg.debug then
+
+require("laserwave.debug").setup(cfg)
+
+else
+
 apply_colors({
 --%% begin spec %%--
 --%% end spec %%--
@@ -115,4 +122,5 @@ if cfg.plugins.telescope then apply_colors({
 --%% end telescope %%--
 }) end
 
+end
 ]])

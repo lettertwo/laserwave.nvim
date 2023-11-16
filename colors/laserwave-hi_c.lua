@@ -1,4 +1,4 @@
--- GENERATED ON 2023-11-12 AT 16:39:03
+-- GENERATED ON 2023-11-16 AT 13:18:54
 -- name:     laserwave
 -- author:   Eric Eldredge <lettertwo@gmail.com>
 -- license:  MIT
@@ -38,6 +38,9 @@ vim.cmd("highlight clear")
 vim.o.background = "dark"
 vim.o.termguicolors = true
 vim.g.colors_name = "laserwave"
+if cfg.debug then
+require("laserwave.debug").setup(cfg)
+else
 apply_colors({
 --%% begin spec %%--
 Normal = {fg = "#FFFFFF", bg = "#1A161F"},
@@ -348,3 +351,4 @@ TelescopePromptPrefix = {fg = "#FF55C0", bg = "#18141D"},
 TelescopeSelection = {link = "Visual"},
 --%% end telescope %%--
 }) end
+end

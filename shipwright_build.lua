@@ -5,7 +5,6 @@ for k, _ in pairs(package.loaded) do
   end
 end
 
-local lush = require("lush")
 local shipwright = require("shipwright")
 local overwrite = require("shipwright.transform.overwrite")
 local patchwrite = require("shipwright.transform.patchwrite")
@@ -14,87 +13,67 @@ local lushwright = require("shipwright.transform.lush")
 ---@type Laserwave
 local laserwave = require("laserwave")
 
-local transforms = {
-  lualine = require("laserwave.transform.lualine"),
-  kitty = require("laserwave.transform.kitty"),
-  alacritty = require("laserwave.transform.alacritty"),
-  colorscheme = require("laserwave.transform.colorscheme"),
-}
+local compiler = require("laserwave.compiler")
+
+local lualine = require("laserwave.transform.lualine")
+local kitty = require("laserwave.transform.kitty")
+local alacritty = require("laserwave.transform.alacritty")
+local colorscheme = require("laserwave.transform.colorscheme")
 
 laserwave.setup()
 
----@param name ?FLAVOR_NAME
-local function build_flavor(name)
-  local config = vim.tbl_extend("force", laserwave._config, { flavor = name })
-  local colorscheme = name ~= "original" and "laserwave-" .. name or "laserwave"
-  local colorspath = "colors/" .. colorscheme .. ".lua"
+---@param spec_name string
+---@param spec ParsedLushSpec
+---@param filepath string
+local function inject_colors(spec_name, spec, filepath)
+  local start = "--%% begin " .. spec_name .. " %%--"
+  local stop = "--%% end " .. spec_name .. " %%--"
 
-  -- clear specs from module cache
-  for k, _ in pairs(package.loaded) do
-    if k:match("^laserwave.spec") then
-      vim.notify("Unloading " .. k, vim.log.levels.DEBUG, { title = "Laserwave" })
-      package.loaded[k] = nil
-    end
+  local build_ok, err = pcall(shipwright.run, spec, lushwright.to_lua, { patchwrite, filepath, start, stop })
+
+  if not build_ok then
+    vim.notify(
+      "Failed to inject " .. spec_name .. " into " .. filepath .. " between " .. start .. " and " .. stop .. "\n" .. err,
+      vim.log.levels.ERROR,
+      { title = "Laserwave" }
+    )
   end
 
-  require("laserwave.spec.flavor").set(config.flavor)
+  return build_ok
+end
 
-  local specs = {
-    spec = lush.merge({
-      require("laserwave.spec.syntax"),
-      require("laserwave.spec.ui"),
-      require("laserwave.spec.terminal"),
-    }),
-    treesitter = require("laserwave.spec.treesitter"),
-    semantic_highlights = require("laserwave.spec.semantic_highlights"),
+---@param transform fun(ctx: ParsedLushSpec, filepath: string): boolean
+---@param spec ParsedLushSpec
+---@param filepath string
+local function run_transform(transform, spec, filepath)
+  local ok, err = pcall(shipwright.run, spec, transform, { overwrite, filepath })
+  if not ok then
+    vim.notify("Failed to build " .. filepath .. "\n" .. err, vim.log.levels.ERROR, { title = "Laserwave" })
+  end
+  return ok
+end
+
+---@param name ?LASERWAVE_FLAVOR_NAME
+local function build_flavor(name)
+  ---@type CompiledLaserwaveSpecs
+  local specs = compiler.compile(vim.tbl_extend("force", laserwave._config, { flavor = name }))
+  local ctx = vim.tbl_extend("force", specs.spec, { name = specs.colorscheme })
+  local colorspath = "colors/" .. specs.colorscheme .. ".lua"
+
+  local flavor_result = {
+    lualine = run_transform(lualine, ctx, "lua/lualine/themes/" .. specs.colorscheme .. ".lua"),
+    kitty = run_transform(kitty, ctx, "dist/kitty/" .. specs.colorscheme .. ".conf"),
+    alacritty = run_transform(alacritty, ctx, "dist/alacritty/" .. specs.colorscheme .. ".yml"),
+    spec = run_transform(colorscheme, ctx, colorspath) and inject_colors("spec", specs.spec, colorspath),
   }
 
-  for plugin in pairs(config.plugins) do
-    local plugin_ok, plugin_spec = pcall(require, "laserwave.spec.plugins." .. plugin)
-    if plugin_ok then
-      specs[plugin] = plugin_spec
-    else
-      vim.notify("Failed to load plugin: " .. plugin, vim.log.levels.ERROR, { title = "Laserwave" })
+  if flavor_result.spec then
+    for plugin_name, plugin_spec in pairs(specs.plugins) do
+      flavor_result[plugin_name] = inject_colors(plugin_name, plugin_spec, colorspath)
     end
   end
 
-  -- TODO: Move this to the template
-  -- spec = lush.extends(specs).with(function()
-  --   ---@diagnostic disable: undefined-global
-  --   --stylua: ignore start
-  --   return {
-  --     Normal     { spec.Normal,     bg =  config.options.transparent and "NONE" or spec.Normal.bg },
-  --     Comment    { spec.Comment,    gui = config.options.italic_comments and "italic" or "NONE" },
-  --     Function   { spec.Function,   gui = config.options.italic_functions and "italic" or "NONE" },
-  --     Statement  { spec.Statement,  gui = config.options.italic_keywords and "italic" or "NONE" },
-  --     Identifier { spec.Identifier, gui = config.options.italic_variables and "italic" or "NONE" },
-  --   }
-  --   --stylua: ignore end
-  -- end)
-
-  local ctx = vim.tbl_extend("force", specs.spec, { name = colorscheme })
-
-  shipwright.run(ctx, transforms.lualine, { overwrite, "lua/lualine/themes/" .. colorscheme .. ".lua" })
-  shipwright.run(ctx, transforms.kitty, { overwrite, "dist/kitty/" .. colorscheme .. ".conf" })
-  shipwright.run(ctx, transforms.alacritty, { overwrite, "dist/alacritty/" .. colorscheme .. ".yml" })
-  shipwright.run(ctx, transforms.colorscheme, { overwrite, colorspath })
-
-  local result = {}
-
-  for spec_name, spec in pairs(specs) do
-    local start = "--%% begin " .. spec_name .. " %%--"
-    local stop = "--%% end " .. spec_name .. " %%--"
-
-    local build_ok, err = pcall(shipwright.run, spec, lushwright.to_lua, { patchwrite, colorspath, start, stop })
-
-    result[spec_name] = build_ok
-
-    if not build_ok then
-      vim.notify("Failed to build " .. spec_name .. "\n" .. err, vim.log.levels.ERROR, { title = "Laserwave" })
-    end
-  end
-
-  return result
+  return flavor_result
 end
 
 local result = {}

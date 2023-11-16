@@ -46,7 +46,7 @@ local LaserwaveFlavor = {
   _current = original,
 }
 
----@param input FLAVOR | FLAVOR_NAME | LaserwaveColors
+---@param input LASERWAVE_FLAVOR | LASERWAVE_FLAVOR_NAME | LaserwaveColors
 function LaserwaveFlavor.set(input)
   local flavor
 

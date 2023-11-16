@@ -1,39 +1,39 @@
----@class Config
----@field options ?Options
+---@class LaserwaveConfig
+---@field options ?LaserwaveOptions
 ---@field treesitter ?boolean
 ---@field semantic_highlights ?boolean
 ---@field terminal_colors ?boolean
 ---@field plugins ?table<string, boolean>
 ---@field debug ?boolean
----@field flavor ?FLAVOR_NAME
+---@field flavor ?LASERWAVE_FLAVOR_NAME
 
----@class ParsedConfig
----@field options ParsedOptions
+---@class ParsedLaserwaveConfig
+---@field options ParsedLaserwaveOptions
 ---@field treesitter boolean
 ---@field semantic_highlights boolean
 ---@field terminal_colors boolean
 ---@field plugins table<string, boolean>
 ---@field debug boolean
----@field flavor FLAVOR_NAME
+---@field flavor LASERWAVE_FLAVOR_NAME
 
----@class Options
+---@class LaserwaveOptions
 ---@field transparent ?boolean
 ---@field italic_comments ?boolean
 ---@field italic_functions ?boolean
 ---@field italic_keywords ?boolean
 ---@field italic_variables ?boolean
 
----@class ParsedOptions
+---@class ParsedLaserwaveOptions
 ---@field transparent boolean
 ---@field italic_comments boolean
 ---@field italic_functions boolean
 ---@field italic_keywords boolean
 ---@field italic_variables boolean
 
----@class DefaultConfig
+---@class DefaultLaserwaveConfig
 local config = {
   flavor = "original",
-  ---@type ParsedOptions
+  ---@type ParsedLaserwaveOptions
   options = {
     transparent = false,
     italic_comments = true,
@@ -59,10 +59,10 @@ local config = {
   -- filetypes = {}
 }
 
----@param config_table ?Config
----@return ParsedConfig
+---@param config_table ?LaserwaveConfig
+---@return ParsedLaserwaveConfig
 function config.parse(config_table)
-  ---@type ParsedOptions
+  ---@type ParsedLaserwaveOptions
   local options = config.options
   local treesitter = config.treesitter
   local semantic_highlights = config.semantic_highlights
@@ -102,7 +102,7 @@ function config.parse(config_table)
     end
   end
 
-  ---@type ParsedConfig
+  ---@type ParsedLaserwaveConfig
   return vim.tbl_extend("force", config, {
     options = options,
     debug = debug,

@@ -40,13 +40,13 @@
 ---@class Laserwave
 local M = {}
 
----@alias FLAVOR_NAME "original" | "hi_c"
+---@alias LASERWAVE_FLAVOR_NAME "original" | "hi_c"
 
----@enum FLAVOR
+---@enum LASERWAVE_FLAVOR
 M.flavors = { original = 1, hi_c = 2 }
 
----@param input ?(FLAVOR | FLAVOR_NAME)
----@return FLAVOR_NAME | nil
+---@param input ?(LASERWAVE_FLAVOR | LASERWAVE_FLAVOR_NAME)
+---@return LASERWAVE_FLAVOR_NAME | nil
 function M.get_flavor(input)
   local flavor
   if type(input == "string") then
@@ -65,7 +65,7 @@ function M.get_flavor(input)
   vim.notify("Invalid flavor: " .. input, vim.log.levels.ERROR, { title = "Laserwave" })
 end
 
----@return ParsedConfig
+---@return ParsedLaserwaveConfig
 function M.get_config()
   local cfg = M._config
   if not cfg then
@@ -76,13 +76,12 @@ function M.get_config()
   return cfg
 end
 
----@param options ?Config
+---@param options ?LaserwaveConfig
 function M.setup(options)
-  -- TODO: Figure out how to apply config without a compile step
   -- TODO: figure out how to choose the right colorscheme without requiring user to explicitly set it.
 
   M._options = options
-  ---@type ParsedConfig
+  ---@type ParsedLaserwaveConfig
   M._config = require("laserwave.config").parse(options)
 
   vim.api.nvim_create_user_command("Laserwave", function(inp)
@@ -102,40 +101,6 @@ function M.setup(options)
       end, vim.tbl_keys(M.flavors))
     end,
   })
-
-  if M._config.debug then
-    -- TODO: Make this stuff work again
-
-    -- require("laserwave.spec.flavor").set(M._config.flavor)
-    --
-    -- M._spec = require("laserwave.config").apply({
-    --   require("laserwave.spec.syntax"),
-    --   require("laserwave.spec.ui"),
-    -- }, M._config)
-
-    -- vim.api.nvim_create_user_command("LaserwaveCompile", function()
-    --   for name, _ in pairs(package.loaded) do
-    --     if name:match("^laserwave.") then
-    --       vim.notify("Unloading " .. name, vim.log.levels.DEBUG, { title = "Laserwave" })
-    --       package.loaded[name] = nil
-    --     end
-    --   end
-    --   M._spec = nil
-    --   require("laserwave.compiler").compile()
-    --   vim.notify("Reloaded!", vim.log.levels.INFO, { title = "Laserwave" })
-    --   vim.cmd.colorscheme("laserwave")
-    -- end, {})
-    --
-    -- vim.api.nvim_create_autocmd("BufWritePost", {
-    --   group = vim.api.nvim_create_augroup("laserwave", { clear = true }),
-    --   pattern = "*/laserwave/*",
-    --   callback = function()
-    --     vim.schedule(function()
-    --       vim.cmd("LaserwaveCompile")
-    --     end)
-    --   end,
-    -- })
-  end
 end
 
 return M
