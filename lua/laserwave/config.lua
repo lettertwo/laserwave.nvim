@@ -4,7 +4,7 @@
 ---@field semantic_highlights ?boolean
 ---@field terminal_colors ?boolean
 ---@field plugins ?table<string, boolean>
----@field debug ?boolean
+---@field dev ?boolean
 ---@field flavor ?LASERWAVE_FLAVOR_NAME
 
 ---@class ParsedLaserwaveConfig
@@ -13,7 +13,7 @@
 ---@field semantic_highlights boolean
 ---@field terminal_colors boolean
 ---@field plugins table<string, boolean>
----@field debug boolean
+---@field dev boolean
 ---@field flavor LASERWAVE_FLAVOR_NAME
 
 ---@class LaserwaveOptions
@@ -54,7 +54,7 @@ local config = {
     space = true,
     telescope = true,
   },
-  debug = false,
+  dev = false,
   -- TODO: Support lanaguage-specific highlights?
   -- filetypes = {}
 }
@@ -68,7 +68,7 @@ function config.parse(config_table)
   local semantic_highlights = config.semantic_highlights
   local terminal_colors = config.terminal_colors
   local plugins = config.plugins
-  local debug = config.debug
+  local dev = config.dev
   local flavor = config.flavor
 
   if config_table then
@@ -93,8 +93,8 @@ function config.parse(config_table)
       plugins = config_table.plugins
     end
 
-    if config_table.debug ~= nil then
-      debug = config_table.debug
+    if config_table.dev ~= nil then
+      dev = config_table.dev
     end
 
     if config_table.flavor ~= nil then
@@ -105,7 +105,7 @@ function config.parse(config_table)
   ---@type ParsedLaserwaveConfig
   return vim.tbl_extend("force", config, {
     options = options,
-    debug = debug,
+    dev = dev,
     flavor = flavor,
     treesitter = treesitter,
     semantic_highlights = semantic_highlights,

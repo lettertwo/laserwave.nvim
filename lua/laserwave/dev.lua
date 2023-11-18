@@ -1,4 +1,4 @@
----@class LaserwaveDebug: Laserwave
+---@class LaserwaveDev: Laserwave
 local M = {}
 
 function M.reset()

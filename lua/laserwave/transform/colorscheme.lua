@@ -50,9 +50,9 @@ vim.o.termguicolors = true
 vim.g.colors_name = "$name"
 
 
-if cfg.debug then
+if cfg.dev then
 
-require("laserwave.debug").setup(cfg)
+require("laserwave.dev").setup(cfg)
 
 else
 

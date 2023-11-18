@@ -1,4 +1,4 @@
--- GENERATED ON 2023-11-16 AT 13:18:54
+-- GENERATED ON 2023-11-18 AT 13:53:23
 -- name:     laserwave
 -- author:   Eric Eldredge <lettertwo@gmail.com>
 -- license:  MIT
@@ -38,8 +38,8 @@ vim.cmd("highlight clear")
 vim.o.background = "dark"
 vim.o.termguicolors = true
 vim.g.colors_name = "laserwave"
-if cfg.debug then
-require("laserwave.debug").setup(cfg)
+if cfg.dev then
+require("laserwave.dev").setup(cfg)
 else
 apply_colors({
 --%% begin spec %%--
