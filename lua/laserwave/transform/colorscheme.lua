@@ -41,14 +41,14 @@ end
 
 -- Load config and apply colors
 
-local cfg = require("laserwave").get_config()
-
 vim.cmd("highlight clear")
 
 vim.o.background = "dark"
 vim.o.termguicolors = true
 vim.g.colors_name = "$name"
 
+require("laserwave").set_flavor("$flavor")
+local cfg = require("laserwave").get_config()
 
 if cfg.dev then
 

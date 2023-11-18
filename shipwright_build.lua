@@ -53,11 +53,11 @@ local function run_transform(transform, spec, filepath)
   return ok
 end
 
----@param name ?LASERWAVE_FLAVOR_NAME
-local function build_flavor(name)
+---@param flavor ?LASERWAVE_FLAVOR_NAME
+local function build_flavor(flavor)
   ---@type CompiledLaserwaveSpecs
-  local specs = compiler.compile(vim.tbl_extend("force", laserwave._config, { flavor = name }))
-  local ctx = vim.tbl_extend("force", specs.spec, { name = specs.colorscheme })
+  local specs = compiler.compile(laserwave._config, flavor)
+  local ctx = vim.tbl_extend("force", specs.spec, { name = specs.colorscheme, flavor = flavor })
   local colorspath = "colors/" .. specs.colorscheme .. ".lua"
 
   local flavor_result = {

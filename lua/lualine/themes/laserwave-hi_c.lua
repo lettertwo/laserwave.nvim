@@ -1,8 +1,8 @@
--- GENERATED ON 2023-11-12 AT 16:39:03
--- name:     laserwave
+-- GENERATED ON 2023-11-18 AT 15:17:37
+-- name:     laserwave-hi_c
 -- author:   Eric Eldredge <lettertwo@gmail.com>
 -- license:  MIT
--- upstream: https://github.com/lettertwo/laserwave.nvim/lua/lualine/laserwave.lua
+-- upstream: https://github.com/lettertwo/laserwave.nvim/lua/lualine/laserwave-hi_c.lua
 -- blurb:    Based on LaserWave for VSCode by Jared Jones
 local laserwave = {}
 laserwave.normal = {

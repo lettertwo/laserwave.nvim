@@ -5,6 +5,7 @@ local Template = {}
 
 ---@class LaserwaveTemplateMetaOptions
 ---@field name? string
+---@field flavor? string
 ---@field author? string
 ---@field license? string
 ---@field upstream? string
@@ -14,6 +15,7 @@ local Template = {}
 
 ---@class LaserwaveTemplateMeta
 ---@field name string
+---@field flavor string
 ---@field author string
 ---@field license string
 ---@field upstream string
@@ -24,6 +26,7 @@ local Template = {}
 ---@class LaserwaveTemplateMetaSpec
 local meta_spec = {
   "name",
+  "flavor",
   "author",
   "license",
   "upstream",
@@ -43,15 +46,20 @@ function Template.validate_meta(meta)
   return meta
 end
 
-local meta_defaults = Template.validate_meta({
-  name = "laserwave",
-  author = "Eric Eldredge <lettertwo@gmail.com>",
-  license = "MIT",
-  upstream = "https://github.com/lettertwo/laserwave.nvim",
-  blurb = "Based on LaserWave for VSCode by Jared Jones",
-  date = "UNKNOWN",
-  time = "UNKNOWN",
-})
+---@param spec ParsedLushSpec
+---@return LaserwaveTemplateMeta
+local function meta_defaults(spec)
+  return Template.validate_meta({
+    name = spec.name or "laserwave",
+    flavor = spec.flavor or "original",
+    author = spec.author or "Eric Eldredge <lettertwo@gmail.com>",
+    license = spec.license or "MIT",
+    upstream = spec.upstream or "https://github.com/lettertwo/laserwave.nvim",
+    blurb = spec.blurb or "Based on LaserWave for VSCode by Jared Jones",
+    date = spec.date or "UNKNOWN",
+    time = spec.time or "UNKNOWN",
+  })
+end
 
 ---@class LaserwaveTemplatePaletteOptions
 ---@field bg? string | HslValue | HsluvValue
@@ -210,8 +218,6 @@ end
 ---@param spec ParsedLushSpec
 ---@return LaserwaveTemplatePalette
 local function palette_defaults(spec)
-  -- vim.print(spec.TerminalBrightBlack.fg)
-
   return Template.validate_palette(Template.stringify_colors({
     bg = spec.Normal.bg,
     fg = spec.Normal.fg,
@@ -240,6 +246,7 @@ local function palette_defaults(spec)
     bright_cyan = spec.TerminalBrightCyan.fg,
     bright_white = spec.TerminalBrightWhite.fg,
 
+    -- FIXME: These hardcoded colors should  be derived from the spec
     url = "#0087bd",
 
     border_active = "#00ff00",
@@ -282,7 +289,7 @@ function Template.with_context(with_context)
   function BoundTemplate.create(template)
     ---@param spec ParsedLushSpec
     local function apply(spec)
-      local default_context = vim.tbl_extend("force", palette_defaults(spec), meta_defaults)
+      local default_context = vim.tbl_extend("force", palette_defaults(spec), meta_defaults(spec))
 
       local bound_context
       if type(with_context) == "function" then

@@ -5,7 +5,6 @@
 ---@field terminal_colors ?boolean
 ---@field plugins ?table<string, boolean>
 ---@field dev ?boolean
----@field flavor ?LASERWAVE_FLAVOR_NAME
 
 ---@class ParsedLaserwaveConfig
 ---@field options ParsedLaserwaveOptions
@@ -14,7 +13,6 @@
 ---@field terminal_colors boolean
 ---@field plugins table<string, boolean>
 ---@field dev boolean
----@field flavor LASERWAVE_FLAVOR_NAME
 
 ---@class LaserwaveOptions
 ---@field transparent ?boolean
@@ -32,7 +30,6 @@
 
 ---@class DefaultLaserwaveConfig
 local config = {
-  flavor = "original",
   ---@type ParsedLaserwaveOptions
   options = {
     transparent = false,
@@ -69,7 +66,6 @@ function config.parse(config_table)
   local terminal_colors = config.terminal_colors
   local plugins = config.plugins
   local dev = config.dev
-  local flavor = config.flavor
 
   if config_table then
     if config_table.options then
@@ -96,17 +92,12 @@ function config.parse(config_table)
     if config_table.dev ~= nil then
       dev = config_table.dev
     end
-
-    if config_table.flavor ~= nil then
-      flavor = config_table.flavor
-    end
   end
 
   ---@type ParsedLaserwaveConfig
   return vim.tbl_extend("force", config, {
     options = options,
     dev = dev,
-    flavor = flavor,
     treesitter = treesitter,
     semantic_highlights = semantic_highlights,
     terminal_colors = terminal_colors,

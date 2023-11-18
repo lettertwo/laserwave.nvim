@@ -1,5 +1,5 @@
--- GENERATED ON 2023-11-18 AT 13:53:23
--- name:     laserwave
+-- GENERATED ON 2023-11-18 AT 15:17:37
+-- name:     laserwave-hi_c
 -- author:   Eric Eldredge <lettertwo@gmail.com>
 -- license:  MIT
 -- upstream: https://github.com/lettertwo/laserwave.nvim
@@ -33,11 +33,12 @@ local function apply_colors(groups, extend)
   end
 end
 -- Load config and apply colors
-local cfg = require("laserwave").get_config()
 vim.cmd("highlight clear")
 vim.o.background = "dark"
 vim.o.termguicolors = true
-vim.g.colors_name = "laserwave"
+vim.g.colors_name = "laserwave-hi_c"
+require("laserwave").set_flavor("hi_c")
+local cfg = require("laserwave").get_config()
 if cfg.dev then
 require("laserwave.dev").setup(cfg)
 else

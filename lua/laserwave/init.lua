@@ -45,8 +45,39 @@ local M = {}
 ---@enum LASERWAVE_FLAVOR
 M.flavors = { original = 1, hi_c = 2 }
 
+---@type LASERWAVE_FLAVOR
+M._flavor = M.flavors.original
+
+---@param input LASERWAVE_FLAVOR | LASERWAVE_FLAVOR_NAME
+function M.set_flavor(input)
+  ---@type LASERWAVE_FLAVOR | nil
+  local flavor
+  if type(input == "string") then
+    flavor = M.flavors[input] or nil
+  else
+    for _, id in pairs(M.flavors) do
+      if id == input then
+        flavor = id
+        break
+      end
+    end
+  end
+
+  if flavor == nil then
+    vim.notify("Invalid flavor: " .. input, vim.log.levels.ERROR, { title = "Laserwave" })
+  elseif flavor ~= M._flavor then
+    M._flavor = flavor
+    local name = M.get_flavor(flavor)
+    if name == "original" then
+      vim.cmd.colorscheme("laserwave")
+    else
+      vim.cmd.colorscheme("laserwave-" .. name)
+    end
+  end
+end
+
 ---@param input ?(LASERWAVE_FLAVOR | LASERWAVE_FLAVOR_NAME)
----@return LASERWAVE_FLAVOR_NAME | nil
+---@return LASERWAVE_FLAVOR_NAME
 function M.get_flavor(input)
   local flavor
   if type(input == "string") then
@@ -54,7 +85,7 @@ function M.get_flavor(input)
   else
     flavor = input
   end
-  flavor = flavor or M._options.flavor
+  flavor = flavor or M._flavor
 
   for name, id in pairs(M.flavors) do
     if id == flavor then
@@ -62,37 +93,33 @@ function M.get_flavor(input)
     end
   end
 
-  vim.notify("Invalid flavor: " .. input, vim.log.levels.ERROR, { title = "Laserwave" })
+  error("Invalid flavor: " .. input)
 end
 
 ---@return ParsedLaserwaveConfig
 function M.get_config()
   local cfg = M._config
   if not cfg then
-    M.setup(M._options)
+    M.setup()
     cfg = M._config
   end
   assert(cfg ~= nil, "Config not initialized")
   return cfg
 end
 
----@param options ?LaserwaveConfig
-function M.setup(options)
-  -- TODO: figure out how to choose the right colorscheme without requiring user to explicitly set it.
-
-  M._options = options
+---@param config ?LaserwaveConfig
+function M.set_config(config)
   ---@type ParsedLaserwaveConfig
-  M._config = require("laserwave.config").parse(options)
+  M._config = require("laserwave.config").parse(vim.tbl_deep_extend("force", M._config or {}, config or {}))
+end
 
-  vim.api.nvim_create_user_command("Laserwave", function(inp)
-    local name = M.get_flavor(inp.args)
-    if name ~= nil and M.flavors[name] ~= nil then
-      if name == "original" then
-        vim.api.nvim_command("colorscheme laserwave")
-      else
-        vim.api.nvim_command("colorscheme laserwave-" .. name)
-      end
-    end
+---@param config ?LaserwaveConfig
+function M.setup(config)
+  M.set_config(config)
+
+  vim.api.nvim_create_user_command("Laserwave", function(input)
+    -- TODO: Support more commands, like toggling options on/off.
+    M.set_flavor(input.args)
   end, {
     nargs = 1,
     complete = function(line)

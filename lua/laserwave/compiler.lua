@@ -8,9 +8,10 @@ local M = {}
 ---@field plugins table<string, ParsedLushSpec>
 
 ---@param config ParsedLaserwaveConfig
+---@param flavor LASERWAVE_FLAVOR_NAME
 ---@return CompiledLaserwaveSpecs
-function M.compile(config)
-  local colorscheme = config.flavor ~= "original" and "laserwave-" .. config.flavor or "laserwave"
+function M.compile(config, flavor)
+  local colorscheme = flavor ~= "original" and "laserwave-" .. flavor or "laserwave"
 
   -- clear specs from module cache
   for k, _ in pairs(package.loaded) do
@@ -20,7 +21,7 @@ function M.compile(config)
     end
   end
 
-  require("laserwave.spec.flavor").set(config.flavor)
+  require("laserwave.spec.flavor").set(flavor)
 
   local result = {
     colorscheme = colorscheme,

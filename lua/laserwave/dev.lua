@@ -14,25 +14,22 @@ function M.reset()
     mt.__index = require("laserwave")
   end
 
-  if M._config == nil then
-    require("laserwave").setup()
-  end
-
   vim.cmd("highlight clear")
 end
 
 ---@param cfg ParsedLaserwaveConfig
-function M.apply(cfg)
+---@param flavor LASERWAVE_FLAVOR_NAME
+function M.apply(cfg, flavor)
   local lush = require("lush")
 
   ---@type CompiledLaserwaveSpecs
-  local compiled = require("laserwave.compiler").compile(cfg)
+  local compiled = require("laserwave.compiler").compile(cfg, flavor)
 
   local palette = require("laserwave.spec.palette")
 
   vim.o.background = "dark"
   vim.o.termguicolors = true
-  -- vim.g.colors_name = "laserwave"
+  vim.g.colors_name = compiled.colorscheme
 
   vim.g.terminal_color_0 = palette.terminal.BLACK.hex
   vim.g.terminal_color_1 = palette.terminal.RED.hex
@@ -87,23 +84,18 @@ function M.apply(cfg)
   end
 
   lush.apply(spec, { force_clean = false })
-  vim.cmd("colorscheme laserwave")
+  vim.cmd.colorscheme(compiled.colorscheme)
 end
 
 ---@param options ?LaserwaveOptions
 function M.setup(options)
   require("laserwave").setup(options)
 
+  -- TODO: Make this a subcommand of Laserwave
   vim.api.nvim_create_user_command("LaserwaveCompile", function()
     M.reset()
-
-    if M._config == nil then
-      error("Laserwave: config is nil")
-    end
-
-    M.apply(M._config)
+    M.apply(M.get_config(), M.get_flavor())
     vim.notify("Reloaded!", vim.log.levels.DEBUG, { title = "Laserwave" })
-    -- vim.cmd.colorscheme("laserwave")
   end, {})
 
   vim.api.nvim_create_autocmd("BufWritePost", {
@@ -116,7 +108,7 @@ function M.setup(options)
     end,
   })
 
-  M.apply(M._config)
+  M.apply(M.get_config(), M.get_flavor())
 end
 
 setmetatable(M, { __index = require("laserwave") })
