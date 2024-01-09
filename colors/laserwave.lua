@@ -1,4 +1,4 @@
--- GENERATED ON 2023-11-18 AT 15:17:37
+-- GENERATED ON 2024-01-09 AT 12:47:30
 -- name:     laserwave
 -- author:   Eric Eldredge <lettertwo@gmail.com>
 -- license:  MIT
@@ -321,6 +321,18 @@ NeoTreeGitIgnored = {fg = "#7C6A96", bold = true},
 NeoTreeGitModified = {fg = "#FFE25F", bold = true},
 NeoTreeGitUntracked = {fg = "#91889B"},
 --%% end neotree %%--
+}) end
+if cfg.plugins.obisidan then apply_colors({
+--%% begin obsidian %%--
+ObsidianDone = {fg = "#91889B"},
+ObsidianExtLinkIcon = {fg = "#91889B"},
+ObsidianHighlightText = {bg = "#EB65B9"},
+ObsidianRefText = {fg = "#B3DBE6", underline = true},
+ObsidianRightArrow = {fg = "#FFB961"},
+ObsidianTag = {fg = "#75DFC4", italic = true},
+ObsidianTilde = {fg = "#FF3D7A"},
+ObsidianTodo = {fg = "#41B5C5"},
+--%% end obsidian %%--
 }) end
 if cfg.plugins.package_info then apply_colors({
 --%% begin package_info %%--

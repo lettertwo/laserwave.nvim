@@ -1,4 +1,4 @@
--- GENERATED ON 2023-11-18 AT 15:17:37
+-- GENERATED ON 2024-01-09 AT 12:47:30
 -- name:     laserwave-hi_c
 -- author:   Eric Eldredge <lettertwo@gmail.com>
 -- license:  MIT
@@ -321,6 +321,18 @@ NeoTreeGitIgnored = {fg = "#B5A9C8", bold = true},
 NeoTreeGitModified = {fg = "#FFE25F", bold = true},
 NeoTreeGitUntracked = {fg = "#B3AABD"},
 --%% end neotree %%--
+}) end
+if cfg.plugins.obisidan then apply_colors({
+--%% begin obsidian %%--
+ObsidianDone = {fg = "#B3AABD"},
+ObsidianExtLinkIcon = {fg = "#B3AABD"},
+ObsidianHighlightText = {bg = "#FF55C0"},
+ObsidianRefText = {fg = "#ADDFEF", underline = true},
+ObsidianRightArrow = {fg = "#FFB961"},
+ObsidianTag = {fg = "#3FEBBF", italic = true},
+ObsidianTilde = {fg = "#FF3D7A"},
+ObsidianTodo = {fg = "#1CD4ED"},
+--%% end obsidian %%--
 }) end
 if cfg.plugins.package_info then apply_colors({
 --%% begin package_info %%--

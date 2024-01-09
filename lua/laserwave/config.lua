@@ -47,6 +47,7 @@ local config = {
     git = true,
     lsp = true,
     neotree = true,
+    obsidian = true,
     package_info = true,
     space = true,
     telescope = true,
