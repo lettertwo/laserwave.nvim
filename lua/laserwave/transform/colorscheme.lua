@@ -107,7 +107,7 @@ if cfg.plugins.neotree then apply_colors({
 --%% end neotree %%--
 }) end
 
-if cfg.plugins.obisidan then apply_colors({
+if cfg.plugins.obsidian then apply_colors({
 --%% begin obsidian %%--
 --%% end obsidian %%--
 }) end
