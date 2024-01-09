@@ -46,6 +46,8 @@ end
 ---@param spec ParsedLushSpec
 ---@param filepath string
 local function run_transform(transform, spec, filepath)
+  ---@diagnostic disable-next-line: assign-type-mismatch
+  spec.upstream = "https://github.com/lettertwo/laserwave.nvim/" .. filepath
   local ok, err = pcall(shipwright.run, spec, transform, { overwrite, filepath })
   if not ok then
     vim.notify("Failed to build " .. filepath .. "\n" .. err, vim.log.levels.ERROR, { title = "Laserwave" })

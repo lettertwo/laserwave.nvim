@@ -20,7 +20,7 @@ return template
 -- name:     $name
 -- author:   $author
 -- license:  $license
--- upstream: https://github.com/lettertwo/laserwave.nvim/lua/lualine/$name.lua
+-- upstream: $upstream
 -- blurb:    $blurb
 local laserwave = {}
 

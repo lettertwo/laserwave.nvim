@@ -2,7 +2,6 @@ local template = require("laserwave.transform.template")
 
 return template
   .with_context({
-    upstream = "https://github.com/lettertwo/laserwave.nvim/dist/alacritty/laserwave.yml",
     cursor_fg = "CellBackground",
     cursor_bg = "CellForeground",
     selection_fg = "CellForeground",

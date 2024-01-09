@@ -1,8 +1,8 @@
--- GENERATED ON 2024-01-09 AT 12:52:38
+-- GENERATED ON 2024-01-09 AT 15:57:31
 -- name:     laserwave-hi_c
 -- author:   Eric Eldredge <lettertwo@gmail.com>
 -- license:  MIT
--- upstream: https://github.com/lettertwo/laserwave.nvim
+-- upstream: https://github.com/lettertwo/laserwave.nvim/colors/laserwave-hi_c.lua
 -- blurb:    Based on LaserWave for VSCode by Jared Jones
 local function apply_terminal_colors()
   vim.g.terminal_color_0 = "#B3AABD"

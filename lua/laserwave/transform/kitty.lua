@@ -14,7 +14,7 @@ return template
 ## name:     $name
 ## author:   $author
 ## license:  $license
-## upstream: https://github.com/lettertwo/laserwave.nvim/dist/kitty/laserwave.conf
+## upstream: $upstream
 ## blurb:    $blurb
 
 #: The basic colors
