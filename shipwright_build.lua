@@ -19,6 +19,7 @@ local lualine = require("laserwave.transform.lualine")
 local kitty = require("laserwave.transform.kitty")
 local alacritty = require("laserwave.transform.alacritty")
 local colorscheme = require("laserwave.transform.colorscheme")
+local textmate = require("laserwave.transform.textmate")
 
 laserwave.setup()
 
@@ -67,6 +68,7 @@ local function build_flavor(flavor)
     kitty = run_transform(kitty, ctx, "dist/kitty/" .. specs.colorscheme .. ".conf"),
     alacritty = run_transform(alacritty, ctx, "dist/alacritty/" .. specs.colorscheme .. ".yml"),
     spec = run_transform(colorscheme, ctx, colorspath) and inject_colors("spec", specs.spec, colorspath),
+    textmate = run_transform(textmate, ctx, "dist/" .. specs.colorscheme .. ".tmTheme"),
   }
 
   if flavor_result.spec then
