@@ -1,4 +1,4 @@
--- GENERATED ON 2024-01-10 AT 19:18:46
+-- GENERATED ON 2024-01-11 AT 17:03:06
 -- name:     laserwave
 -- author:   Eric Eldredge <lettertwo@gmail.com>
 -- license:  MIT
@@ -181,6 +181,7 @@ if cfg.treesitter then apply_colors({
 ["@tag.delimiter"] = {link = "Delimiter"},
 ["@constructor"] = {link = "Function"},
 ["@property.class"] = {link = "Function"},
+["@keyword.operator"] = {link = "Operator"},
 ["@punctuation"] = {link = "Punctuation"},
 TreesitterContext = {bg = "#3E3248"},
 TreesitterContextLineNumber = {fg = "#BD9ECA"},

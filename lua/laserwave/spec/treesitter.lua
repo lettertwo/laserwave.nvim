@@ -70,6 +70,7 @@ local treesitter = lush(function(injected)
     -- sym"@label"                 { }, -- Label
     -- sym"@operator"              { }, -- Operator
     -- sym"@keyword"               { }, -- Keyword
+    sym"@keyword.operator"     { syntax.Operator }, -- Keyword
     sym"@keyword.export"        { syntax.Constant }, -- e.g., js export
     -- sym"@exception"             { }, -- Exception
     -- sym"@variable"              { }, -- Identifier
