@@ -66,6 +66,7 @@ end
 ---@field fg? string | HslValue | HsluvValue
 ---@field cursor_fg? string | HslValue | HsluvValue
 ---@field cursor_bg? string | HslValue | HsluvValue
+---@field line_bg? string | HslValue | HsluvValue
 ---@field selection_fg? string | HslValue | HsluvValue
 ---@field selection_bg? string | HslValue | HsluvValue
 ---@field black? string | HslValue | HsluvValue
@@ -84,6 +85,24 @@ end
 ---@field bright_magenta? string | HslValue | HsluvValue
 ---@field bright_cyan? string | HslValue | HsluvValue
 ---@field bright_white? string | HslValue | HsluvValue
+---@field attribute_fg? string | HslValue | HsluvValue
+---@field class_fg? string | HslValue | HsluvValue
+---@field character_fg? string | HslValue | HsluvValue
+---@field comment_fg? string | HslValue | HsluvValue
+---@field constant_fg? string | HslValue | HsluvValue
+---@field error_fg? string | HslValue | HsluvValue
+---@field function_fg? string | HslValue | HsluvValue
+---@field ignore_fg? string | HslValue | HsluvValue
+---@field keyword_fg? string | HslValue | HsluvValue
+---@field number_fg? string | HslValue | HsluvValue
+---@field operator_fg? string | HslValue | HsluvValue
+---@field string_fg? string | HslValue | HsluvValue
+---@field tag_fg? string | HslValue | HsluvValue
+---@field type_fg? string | HslValue | HsluvValue
+---@field identifier_fg? string | HslValue | HsluvValue
+---@field added_fg? string | HslValue | HsluvValue
+---@field deleted_fg? string | HslValue | HsluvValue
+---@field changed_fg? string | HslValue | HsluvValue
 ---@field url? string | HslValue | HsluvValue
 ---@field border_active? string | HslValue | HsluvValue
 ---@field border_inactive? string | HslValue | HsluvValue
@@ -105,6 +124,7 @@ end
 ---@field fg string
 ---@field cursor_fg string
 ---@field cursor_bg string
+---@field line_bg string
 ---@field selection_fg string
 ---@field selection_bg string
 ---@field black string
@@ -123,6 +143,24 @@ end
 ---@field bright_magenta string
 ---@field bright_cyan string
 ---@field bright_white string
+---@field attribute_fg string
+---@field class_fg string
+---@field character_fg string
+---@field comment_fg string
+---@field constant_fg string
+---@field error_fg string
+---@field function_fg string
+---@field ignore_fg string
+---@field keyword_fg string
+---@field number_fg string
+---@field operator_fg string
+---@field string_fg string
+---@field tag_fg string
+---@field type_fg string
+---@field identifier_fg string
+---@field added_fg string
+---@field deleted_fg string
+---@field changed_fg string
 ---@field url string
 ---@field border_active string
 ---@field border_inactive string
@@ -147,6 +185,8 @@ local palette_spec = {
   "cursor_fg",
   "cursor_bg",
 
+  "line_bg",
+
   "selection_fg",
   "selection_bg",
 
@@ -167,6 +207,26 @@ local palette_spec = {
   "bright_magenta",
   "bright_cyan",
   "bright_white",
+
+  "attribute_fg",
+  "class_fg",
+  "character_fg",
+  "comment_fg",
+  "constant_fg",
+  "error_fg",
+  "function_fg",
+  "ignore_fg",
+  "keyword_fg",
+  "number_fg",
+  "operator_fg",
+  "string_fg",
+  "tag_fg",
+  "type_fg",
+  "identifier_fg",
+
+  "added_fg",
+  "deleted_fg",
+  "changed_fg",
 
   "url",
 
@@ -222,8 +282,12 @@ local function palette_defaults(spec)
     bg = spec.Normal.bg,
     fg = spec.Normal.fg,
 
+    accent = spec.Winseparator.fg,
+
     cursor_fg = spec.Cursor.fg,
     cursor_bg = spec.Cursor.bg,
+
+    line_bg = spec.CursorLine.bg,
 
     selection_fg = spec.Normal.fg,
     selection_bg = spec.Visual.bg,
@@ -245,6 +309,26 @@ local function palette_defaults(spec)
     bright_magenta = spec.TerminalBrightMagenta.fg,
     bright_cyan = spec.TerminalBrightCyan.fg,
     bright_white = spec.TerminalBrightWhite.fg,
+
+    attribute_fg = spec.Attribute.fg,
+    class_fg = spec.Type.fg,
+    character_fg = spec.Character.fg,
+    comment_fg = spec.Comment.fg,
+    constant_fg = spec.Constant.fg,
+    error_fg = spec.Error.fg,
+    function_fg = spec.Function.fg,
+    ignore_fg = spec.Ignore.fg,
+    keyword_fg = spec.Keyword.fg,
+    number_fg = spec.Number.fg,
+    operator_fg = spec.Operator.fg,
+    string_fg = spec.String.fg,
+    tag_fg = spec.Tag.fg,
+    type_fg = spec.Type.fg,
+    identifier_fg = spec.Identifier.fg,
+
+    added_fg = spec.DiffAdd.bg,
+    deleted_fg = spec.DiffDelete.bg,
+    changed_fg = spec.DiffChange.bg,
 
     -- FIXME: These hardcoded colors should  be derived from the spec
     url = "#0087bd",
