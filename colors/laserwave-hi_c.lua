@@ -1,4 +1,4 @@
--- GENERATED ON 2024-01-09 AT 15:57:31
+-- GENERATED ON 2024-01-10 AT 19:18:46
 -- name:     laserwave-hi_c
 -- author:   Eric Eldredge <lettertwo@gmail.com>
 -- license:  MIT
@@ -150,6 +150,9 @@ VisualNOS = {link = "Visual"},
 WildMenu = {link = "Visual"},
 WarningMsg = {fg = "#FFB961"},
 Whitespace = {fg = "#B5A9C8"},
+WinBar = {fg = "#FFFFFF", bg = "#18141D"},
+WinBarNC = {fg = "#B5A9C8", bg = "#18141D"},
+Winseparator = {fg = "#FF55C0"},
 healthError = {fg = "#FF3D7A"},
 healthSuccess = {fg = "#3FEBBF"},
 healthWarning = {fg = "#FFB961"},
@@ -278,13 +281,16 @@ if cfg.plugins.lsp then apply_colors({
 DiagnosticError = {fg = "#FF3D7A"},
 DiagnosticHint = {fg = "#B3AABD"},
 DiagnosticInfo = {fg = "#1CD4ED"},
+DiagnosticOk = {fg = "#3FEBBF"},
 DiagnosticUnderlineError = {sp = "#FF3D7A", undercurl = true},
 DiagnosticUnderlineHint = {sp = "#B3AABD", undercurl = true},
 DiagnosticUnderlineInfo = {sp = "#1CD4ED", undercurl = true},
+DiagnosticUnderlineOk = {sp = "#3FEBBF", undercurl = true},
 DiagnosticUnderlineWarn = {sp = "#FFB961", undercurl = true},
 DiagnosticVirtualTextError = {fg = "#FF3D7A", bg = "#52001E"},
 DiagnosticVirtualTextHint = {fg = "#B3AABD", bg = "#302937"},
 DiagnosticVirtualTextInfo = {fg = "#1CD4ED", bg = "#02363D"},
+DiagnosticVirtualTextOk = {fg = "#3FEBBF", bg = "#083A2D"},
 DiagnosticVirtualTextWarn = {fg = "#FFB961", bg = "#452B00"},
 DiagnosticWarn = {fg = "#FFB961"},
 LspInfoBorder = {link = "FloatBorder"},

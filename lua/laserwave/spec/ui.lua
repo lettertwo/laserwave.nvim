@@ -43,6 +43,7 @@ local ui = lush(function()
     QuickFixLine { Visual, gui = "bold" }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
 
     Cursor       { fg = palette.FG, bg = palette.HIGHLIGHT.mix(palette.BG, 75), gui = "reverse" }, -- Character under the cursor
+    -- CurSearch    { }, -- Highlighting a search pattern under the cursor (see 'hlsearch')
     CursorIM     { Cursor }, -- Like Cursor, but used when in IME mode |CursorIM|
     lCursor      { Cursor }, -- Character under the cursor when |language-mapping| is used (see 'guicursor') 
     -- TermCursor   { }, -- Cursor in a focused terminal
@@ -56,6 +57,9 @@ local ui = lush(function()
     CursorLineSign { CursorLine, fg = palette.VISUAL }, -- Like SignColumn when 'cursorline' is set for the cursor line.
 
     LineNr       { fg = palette.IGNORE }, --Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set. 
+    -- LineNrAbove    { }, -- Line number for when the 'relativenumber' option is set, above the cursor line
+    -- LineNrBelow    { }, -- Line number for when the 'relativenumber' option is set, below the cursor line
+
     Folded       { LineNr, bg = palette.IGNORE.mix(palette.BG, 75) }, -- Line used for closed folds
     FoldColumn   { LineNr, bg = palette.BG }, -- 'foldcolumn'
     SignColumn   { LineNr, bg = palette.BG }, -- Column where |signs| are displayed
@@ -64,6 +68,10 @@ local ui = lush(function()
     Pmenu        { NormalFloat }, -- Popup menu: normal item.
     PmenuSbar    { NormalFloat }, -- Popup menu: scrollbar.
     PmenuThumb   { bg = palette.IGNORE }, -- Popup menu: Thumb of the scrollbar.
+    -- PmenuKind      { }, -- Popup menu: Normal item "kind"
+    -- PmenuKindSel   { }, -- Popup menu: Selected item "kind"
+    -- PmenuExtra     { }, -- Popup menu: Normal item "extra text"
+    -- PmenuExtraSel  { }, -- Popup menu: Selected item "extra text"
 
     FloatTitle   { fg = palette.HIGHLIGHT, bg = palette.BG.darken(10) }, -- Title of floating windows (Non-standard).
     FloatBorder  { fg = palette.HIGHLIGHT, bg = palette.BG.darken(10) }, -- Border of floating windows.
@@ -98,12 +106,15 @@ local ui = lush(function()
     TabLineSel   { fg = palette.BG, bg = palette.HIGHLIGHT }, -- Tab pages line, active tab page label
     TabLineFill  { fg = palette.FG, bg = palette.BG.darken(10) }, -- Tab pages line, where there are no labels
 
+    WinBar       { bg = palette.BG.darken(10), fg = palette.FG }, -- Window bar of current window
+    WinBarNC     { bg = palette.BG.darken(10), fg = palette.IGNORE }, -- Window bar of not-current windows
+
     VertSplit    { fg = palette.HIGHLIGHT }, -- Column separating vertically split windows
-    -- Winseparator   { }, -- Separator between window splits. Inherts from |hl-VertSplit| by default, which it will replace eventually.
+    Winseparator  { fg = palette.HIGHLIGHT }, -- Separator between window splits. Inherts from |hl-VertSplit| by default, which it will replace eventually.
 
     -- NeoVim
     healthError     { fg = palette.ERROR },
-    healthSuccess   { fg = palette.OPERATOR },
+    healthSuccess   { fg = palette.OK },
     healthWarning   { fg = palette.WARNING },
 
     -- Modes

@@ -52,22 +52,27 @@ local lsp = lush(function(injected)
     DiagnosticWarn             { fg = palette.WARNING }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
     DiagnosticInfo             { fg = palette.INFO },    -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
     DiagnosticHint             { fg = palette.HINT },    -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+    DiagnosticOk               { fg = palette.OK },      -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
     DiagnosticVirtualTextError { fg = palette.ERROR, bg = palette.ERROR.darken(75) },     -- Used for "Error" diagnostic virtual text.
     DiagnosticVirtualTextWarn  { fg = palette.WARNING, bg = palette.WARNING.darken(75) }, -- Used for "Warn" diagnostic virtual text.
     DiagnosticVirtualTextInfo  { fg = palette.INFO, bg = palette.INFO.darken(75) },       -- Used for "Info" diagnostic virtual text.
     DiagnosticVirtualTextHint  { fg = palette.HINT, bg = palette.HINT.darken(75) },       -- Used for "Hint" diagnostic virtual text.
+    DiagnosticVirtualTextOk    { fg = palette.OK, bg = palette.OK.darken(75) },           -- Used for "Ok" diagnostic virtual text.
     DiagnosticUnderlineError   { gui = "undercurl", sp = palette.ERROR },   -- Used to underline "Error" diagnostics.
     DiagnosticUnderlineWarn    { gui = "undercurl", sp = palette.WARNING }, -- Used to underline "Warn" diagnostics.
     DiagnosticUnderlineInfo    { gui = "undercurl", sp = palette.INFO },    -- Used to underline "Info" diagnostics.
     DiagnosticUnderlineHint    { gui = "undercurl", sp = palette.HINT },    -- Used to underline "Hint" diagnostics.
+    DiagnosticUnderlineOk      { gui = "undercurl", sp = palette.OK },      -- Used to underline "Ok" diagnostics.
     -- DiagnosticFloatingError    { }, -- Used to color "Error" diagnostic messages in diagnostics float. See |vim.diagnostic.open_float()|
     -- DiagnosticFloatingWarn     { }, -- Used to color "Warn" diagnostic messages in diagnostics float.
     -- DiagnosticFloatingInfo     { }, -- Used to color "Info" diagnostic messages in diagnostics float.
     -- DiagnosticFloatingHint     { }, -- Used to color "Hint" diagnostic messages in diagnostics float.
+    -- DiagnosticFloatingOk       { }, -- Used to color "Ok" diagnostic messages in diagnostics float.
     -- DiagnosticSignError        { }, -- Used for "Error" signs in sign column.
     -- DiagnosticSignWarn         { }, -- Used for "Warn" signs in sign column.
     -- DiagnosticSignInfo         { }, -- Used for "Info" signs in sign column.
     -- DiagnosticSignHint         { }, -- Used for "Hint" signs in sign column.
+    -- DiagnosticSignOk           { }, -- Used for "Ok" signs in sign column.
   }
   --stylua: ignore end
 end)
