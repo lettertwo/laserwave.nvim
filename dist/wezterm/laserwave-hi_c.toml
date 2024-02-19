@@ -1,0 +1,59 @@
+## GENERATED ON 2024-02-19 AT 14:03:04
+[metadata]
+aliases = []
+author = "Eric Eldredge <lettertwo@gmail.com>"
+license = "MIT"
+upstream = "https://github.com/lettertwo/laserwave.nvim/dist/wezterm/laserwave-hi_c.toml"
+name = "laserwave-hi_c"
+blurb = "Based on LaserWave for VSCode by Jared Jones"
+[colors]
+foreground = "#FFFFFF"
+background = "#1A161F"
+cursor_bg = "#472C42"
+cursor_border = "#472C42"
+cursor_fg = "#FFFFFF"
+selection_bg = "#432F4E"
+selection_fg = "#FFFFFF"
+split = "#00ff00"
+compose_cursor = "#98d3cb"
+scrollbar_thumb = "#00ff00"
+ansi = [
+"#B3AABD",
+"#FF55C0",
+"#3FEBBF",
+"#FFE25F",
+"#1CD4ED",
+"#D686F4",
+"#ADDFEF",
+"#FFFFFF"
+]
+brights = [
+"#D686F4",
+"#FF3D7A",
+"#3FEBBF",
+"#FFB961",
+"#1CD4ED",
+"#FF55C0",
+"#ADDFEF",
+"#FFFFFF"
+]
+[colors.tab_bar]
+inactive_tab_edge = "#08070B"
+background = "#08070B"
+[colors.tab_bar.active_tab]
+fg_color = "#FFFFFF"
+bg_color = "#27212E"
+[colors.tab_bar.inactive_tab]
+fg_color = "#B5A9C8"
+bg_color = "#08070B"
+[colors.tab_bar.inactive_tab_hover]
+fg_color = "#B5A9C8"
+bg_color = "#08070B"
+# intensity = "Bold"
+[colors.tab_bar.new_tab_hover]
+fg_color = "#FFFFFF"
+bg_color = "#27212E"
+intensity = "Bold"
+[colors.tab_bar.new_tab]
+fg_color = "#FFFFFF"
+bg_color = "#27212E"

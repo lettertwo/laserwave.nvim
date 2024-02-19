@@ -18,6 +18,7 @@ local compiler = require("laserwave.compiler")
 local lualine = require("laserwave.transform.lualine")
 local kitty = require("laserwave.transform.kitty")
 local alacritty = require("laserwave.transform.alacritty")
+local wezterm = require("laserwave.transform.wezterm")
 local colorscheme = require("laserwave.transform.colorscheme")
 local textmate = require("laserwave.transform.textmate")
 
@@ -67,6 +68,7 @@ local function build_flavor(flavor)
     lualine = run_transform(lualine, ctx, "lua/lualine/themes/" .. specs.colorscheme .. ".lua"),
     kitty = run_transform(kitty, ctx, "dist/kitty/" .. specs.colorscheme .. ".conf"),
     alacritty = run_transform(alacritty, ctx, "dist/alacritty/" .. specs.colorscheme .. ".yml"),
+    wezterm = run_transform(wezterm, ctx, "dist/wezterm/" .. specs.colorscheme .. ".toml"),
     spec = run_transform(colorscheme, ctx, colorspath) and inject_colors("spec", specs.spec, colorspath),
     textmate = run_transform(textmate, ctx, "dist/" .. specs.colorscheme .. ".tmTheme"),
   }
