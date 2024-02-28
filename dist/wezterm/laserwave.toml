@@ -1,4 +1,4 @@
-## GENERATED ON 2024-02-19 AT 14:03:04
+## GENERATED ON 2024-02-28 AT 17:22:25
 [metadata]
 aliases = []
 author = "Eric Eldredge <lettertwo@gmail.com>"
@@ -46,10 +46,10 @@ bg_color = "#352D3E"
 [colors.tab_bar.inactive_tab]
 fg_color = "#7C6A96"
 bg_color = "#100D14"
+italic = true
 [colors.tab_bar.inactive_tab_hover]
 fg_color = "#7C6A96"
 bg_color = "#100D14"
-# intensity = "Bold"
 [colors.tab_bar.new_tab_hover]
 fg_color = "#FFFFFF"
 bg_color = "#352D3E"

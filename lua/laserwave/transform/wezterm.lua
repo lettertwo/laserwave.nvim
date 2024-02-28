@@ -57,11 +57,11 @@ bg_color = "$tab_active_bg"
 [colors.tab_bar.inactive_tab]
 fg_color = "$tab_inactive_fg"
 bg_color = "$tab_inactive_bg"
+italic = true
 
 [colors.tab_bar.inactive_tab_hover]
 fg_color = "$tab_inactive_fg"
 bg_color = "$tab_inactive_bg"
-# intensity = "Bold"
 
 [colors.tab_bar.new_tab_hover]
 fg_color = "$tab_active_fg"

@@ -49,8 +49,8 @@ active_tab_foreground           $tab_active_fg
 active_tab_background           $tab_active_bg
 inactive_tab_foreground         $tab_inactive_fg
 inactive_tab_background         $tab_inactive_bg
-tab_bar_background              $tab_bg
-tab_bar_margin_color            $tab_bg
+tab_bar_background              $tab_inactive_bg
+tab_bar_margin_color            $tab_active_bg
 
 
 #: Colors for marks (marked text in the terminal)
