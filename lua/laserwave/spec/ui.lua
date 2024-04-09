@@ -36,7 +36,7 @@ local ui = lush(function()
     SpecialKey   { Conceal }, -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
     -- MsgSeparator {  }, -- Separator for scrolled messages, `msgsep` flag of 'display'
 
-    Visual       { bg = palette.VISUAL.mix(palette.BG, 75)  }, -- Visual mode selection
+    Visual       { bg = palette.VISUAL.mix(palette.BG, 60) }, -- Visual mode selection
     PmenuSel     { Visual }, -- Popup menu: selected item.
     VisualNOS    { Visual }, -- Visual mode selection when vim is "Not Owning the Selection".
     WildMenu     { Visual }, -- Current match in 'wildmenu' completion
@@ -49,7 +49,7 @@ local ui = lush(function()
     -- TermCursor   { }, -- Cursor in a focused terminal
     -- TermCursorNC { }, -- Cursor in an unfocused terminal
 
-    CursorLine     { bg = palette.VISUAL.mix(palette.BG, 90) }, -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermfg OR guifg) is not set.
+    CursorLine     { bg = palette.VISUAL.mix(palette.BG, 85) }, -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermfg OR guifg) is not set.
     ColorColumn    { CursorLine }, -- Columns set with 'colorcolumn'
     CursorColumn   { CursorLine }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
     CursorLineFold { CursorLine, fg = palette.VISUAL }, -- Like FoldColumn when 'cursorline' is set for the cursor line.

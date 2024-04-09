@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- GENERATED ON 2024-01-11 AT 17:03:06
+<!-- GENERATED ON 2024-04-09 AT 10:55:19
 #
 # @author Eric Eldredge <lettertwo@gmail.com>
 # @license MIT
@@ -25,7 +25,7 @@
 		<key>foreground</key>
 		<string>#FFFFFF</string>
 		<key>selectionBackground</key>
-		<string>#432F4E</string>
+		<string>#603D72</string>
 		<key>selectionForeground</key>
 		<string>#FFFFFF</string>
 	</dict>
@@ -43,9 +43,9 @@
 				<key>invisibles</key>
 				<string>#B5A9C8</string>
 				<key>lineHighlight</key>
-				<string>#292031</string>
+				<string>#31253A</string>
 				<key>selection</key>
-				<string>#432F4E</string>
+				<string>#603D72</string>
 				<key>gutter</key>
 				<string>#1A161F</string>
 				<key>gutterForeground</key>
