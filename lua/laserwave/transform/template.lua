@@ -343,11 +343,11 @@ local function palette_defaults(spec)
     changed_bg = spec.DiffChange.bg,
 
     -- FIXME: These hardcoded colors should  be derived from the spec
-    url = "#0087bd",
+    url = spec.TerminalBrightBlue.fg,
 
-    border_active = "#00ff00",
-    border_inactive = "#cccccc",
-    border_bell = "#ff5a00",
+    border_active = spec.TerminalBrightRed.fg,
+    border_inactive = spec.TerminalBrightBlack.fg,
+    border_bell = spec.TerminalBrightRed.fg,
 
     tab_active_fg = spec.Normal.fg,
     tab_active_bg = spec.Normal.bg.lighten(7),
