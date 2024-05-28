@@ -101,8 +101,11 @@ end
 ---@field type_fg? string | HslValue | HsluvValue
 ---@field identifier_fg? string | HslValue | HsluvValue
 ---@field added_fg? string | HslValue | HsluvValue
+---@field added_bg? string | HslValue | HsluvValue
 ---@field deleted_fg? string | HslValue | HsluvValue
+---@field deleted_bg? string | HslValue | HsluvValue
 ---@field changed_fg? string | HslValue | HsluvValue
+---@field changed_bg? string | HslValue | HsluvValue
 ---@field url? string | HslValue | HsluvValue
 ---@field border_active? string | HslValue | HsluvValue
 ---@field border_inactive? string | HslValue | HsluvValue
@@ -159,8 +162,11 @@ end
 ---@field type_fg string
 ---@field identifier_fg string
 ---@field added_fg string
+---@field added_bg string
 ---@field deleted_fg string
+---@field deleted_bg string
 ---@field changed_fg string
+---@field changed_bg string
 ---@field url string
 ---@field border_active string
 ---@field border_inactive string
@@ -225,8 +231,11 @@ local palette_spec = {
   "identifier_fg",
 
   "added_fg",
+  "added_bg",
   "deleted_fg",
+  "deleted_bg",
   "changed_fg",
+  "changed_bg",
 
   "url",
 
@@ -326,9 +335,12 @@ local function palette_defaults(spec)
     type_fg = spec.Type.fg,
     identifier_fg = spec.Identifier.fg,
 
-    added_fg = spec.DiffAdd.bg,
-    deleted_fg = spec.DiffDelete.bg,
-    changed_fg = spec.DiffChange.bg,
+    added_fg = spec.Add.fg,
+    added_bg = spec.DiffAdd.bg,
+    deleted_fg = spec.Delete.fg,
+    deleted_bg = spec.DiffDelete.bg,
+    changed_fg = spec.Change.fg,
+    changed_bg = spec.DiffChange.bg,
 
     -- FIXME: These hardcoded colors should  be derived from the spec
     url = "#0087bd",

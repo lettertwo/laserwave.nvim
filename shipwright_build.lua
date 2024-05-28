@@ -21,6 +21,7 @@ local alacritty = require("laserwave.transform.alacritty")
 local wezterm = require("laserwave.transform.wezterm")
 local colorscheme = require("laserwave.transform.colorscheme")
 local textmate = require("laserwave.transform.textmate")
+local delta = require("laserwave.transform.delta")
 
 laserwave.setup()
 
@@ -71,6 +72,7 @@ local function build_flavor(flavor)
     wezterm = run_transform(wezterm, ctx, "dist/wezterm/" .. specs.colorscheme .. ".toml"),
     spec = run_transform(colorscheme, ctx, colorspath) and inject_colors("spec", specs.spec, colorspath),
     textmate = run_transform(textmate, ctx, "dist/" .. specs.colorscheme .. ".tmTheme"),
+    delta = run_transform(delta, ctx, "dist/delta/" .. specs.colorscheme .. ".gitconfig"),
   }
 
   if flavor_result.spec then

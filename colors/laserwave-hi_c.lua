@@ -1,4 +1,4 @@
--- GENERATED ON 2024-04-09 AT 10:55:19
+-- GENERATED ON 2024-05-28 AT 15:54:27
 -- name:     laserwave-hi_c
 -- author:   Eric Eldredge <lettertwo@gmail.com>
 -- license:  MIT
@@ -46,8 +46,10 @@ apply_colors({
 --%% begin spec %%--
 Normal = {fg = "#FFFFFF", bg = "#1A161F"},
 NormalNC = {link = "Normal"},
+Add = {fg = "#1CD4ED"},
 Attribute = {fg = "#FF55C0"},
 Boolean = {fg = "#FFE25F"},
+Change = {fg = "#FFE25F"},
 Character = {fg = "#3FEBBF"},
 Comment = {fg = "#B3AABD"},
 Conceal = {fg = "#FFFFFF", bg = "#1A161F"},
@@ -64,6 +66,7 @@ CursorLineFold = {fg = "#D686F4", bg = "#31253A"},
 CursorLineNr = {fg = "#DDCBE6", bg = "#31253A"},
 CursorLineSign = {fg = "#D686F4", bg = "#31253A"},
 Define = {fg = "#FF55C0"},
+Delete = {fg = "#FF55C0"},
 Delimiter = {fg = "#B5A9C8"},
 DiffAdd = {bg = "#343F48"},
 DiffChange = {bg = "#343F48"},

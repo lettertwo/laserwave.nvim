@@ -1,0 +1,59 @@
+## GENERATED ON 2024-05-28 AT 15:54:27
+[delta "laserwave"]
+    # author: Eric Eldredge <lettertwo@gmail.com>
+    # license: MIT
+    # upstream: https://github.com/lettertwo/laserwave.nvim/dist/delta/laserwave.gitconfig
+    # blurb: Based on LaserWave for VSCode by Jared Jones
+    syntax-theme = "laserwave"
+    # settings
+    dark = true
+    keep-plus-minus-markers = false
+    line-numbers = true
+    decorations = true
+    hyperlinks = true
+    relative-paths = true
+    navigate = true
+    side-by-side = false
+    width = -4
+    tabs = 2
+    # icons
+    file-added-label = []
+    file-copied-label = []
+    file-modified-label = [󰛄]
+    file-removed-label = []
+    file-renamed-label = []
+    merge-conflict-begin-symbol = 
+    merge-conflict-end-symbol = 
+    # blame
+    blame-code-style = syntax
+    blame-format = "{author:<18} {commit:<6} {timestamp:<15}"
+    blame-palette = "#392E42 #5C4568"
+    blame-separator-format = "{n:^4}│"
+    blame-separator-style = "#EB65B9"
+    # commit
+    commit-decoration-style = "#EB65B9" box
+    commit-style = "#EB65B9" bold italic
+    # hunk header
+    file-style = omit
+    hunk-header-style = file line-number syntax dim italic
+    hunk-header-decoration-style = "#7C6A96" ul
+    hunk-header-file-style = "#B381C5" box bold
+    hunk-header-line-number-style = "#FFE25F" box bold
+    # hunks
+    plus-style = "#41B5C5"
+    plus-emph-style = "#39434D" "#41B5C5"
+    minus-style = "#EB65B9"
+    minus-emph-style = "#4F354C" "#EB65B9"
+    zero-style = syntax dim
+    whitespace-error-style = reverse "#FF3D7A"
+    # line numbers
+    line-numbers-minus-style = "#EB65B9"
+    line-numbers-plus-style = "#41B5C5"
+    line-numbers-left-style = "#7C6A96"
+    line-numbers-right-style = "#7C6A96"
+    line-numbers-zero-style = "#7C6A96" dim
+    # merge conflicts
+    merge-conflict-ours-diff-header-style = "#FFE25F" bold
+    merge-conflict-ours-diff-header-decoration-style = "#FF3D7A" box
+    merge-conflict-theirs-diff-header-style = "#FFE25F" bold
+    merge-conflict-theirs-diff-header-decoration-style = "#FF3D7A" box

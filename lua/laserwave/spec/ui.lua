@@ -80,6 +80,10 @@ local ui = lush(function()
     Search       { bg = palette.VISUAL, fg = palette.BG }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
     Substitute   { gui = "reverse" }, -- |:substitute| replacement text highlighting
 
+    Add      { fg = palette.ADD },
+    Change   { fg = palette.CHANGE },
+    Delete   { fg = palette.DELETE },
+
     DiffAdd      { bg = palette.ADD.mix(palette.BG, 75) }, -- Diff mode: Added line |diff.txt|
     DiffChange   { bg = palette.ADD.mix(palette.BG, 75) }, -- Diff mode: Changed line |diff.txt|
     DiffDelete   { bg = palette.DELETE.mix(palette.BG, 75) }, -- Diff mode: Deleted line |diff.txt|

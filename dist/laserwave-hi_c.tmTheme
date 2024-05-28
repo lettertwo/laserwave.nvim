@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- GENERATED ON 2024-04-09 AT 10:55:19
+<!-- GENERATED ON 2024-05-28 AT 17:00:51
 #
 # @author Eric Eldredge <lettertwo@gmail.com>
 # @license MIT
@@ -266,7 +266,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#343F48</string>
+				<string>#1CD4ED</string>
 			</dict>
 		</dict>
 		<dict>
@@ -277,7 +277,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#472C42</string>
+				<string>#FF55C0</string>
 			</dict>
 		</dict>
 		<dict>
@@ -288,7 +288,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#343F48</string>
+				<string>#FFE25F</string>
 			</dict>
 		</dict>
 	</array>
