@@ -1,4 +1,4 @@
--- GENERATED ON 2024-05-28 AT 15:54:27
+-- GENERATED ON 2024-06-09 AT 11:54:03
 -- name:     laserwave-hi_c
 -- author:   Eric Eldredge <lettertwo@gmail.com>
 -- license:  MIT
@@ -354,6 +354,7 @@ PackageInfoUpToDateVersion = {},
 if cfg.plugins.space then apply_colors({
 --%% begin space %%--
 ExtraWhitespace = {bg = "#FF3D7A"},
+MiniTrailspace = {link = "ExtraWhitespace"},
 IblIndent = {fg = "#836EA1"},
 IblWhitespace = {link = "IblIndent"},
 IndentBlanklineChar = {link = "IblIndent"},

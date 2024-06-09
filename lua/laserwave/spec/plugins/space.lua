@@ -16,6 +16,7 @@ local plugins = lush(function()
   return {
     -- ExtraWhitespace
     ExtraWhitespace      { bg = palette.ERROR },
+    MiniTrailspace       { ExtraWhitespace },
 
     -- indent-blankline
     IblIndent { fg = palette.IGNORE.darken(30) },
