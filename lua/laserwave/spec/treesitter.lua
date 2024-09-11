@@ -72,6 +72,7 @@ local treesitter = lush(function(injected)
     -- sym"@keyword"               { }, -- Keyword
     sym"@keyword.operator"     { syntax.Operator }, -- Keyword
     sym"@keyword.export"        { syntax.Constant }, -- e.g., js export
+    sym"@keyword.jsdoc"         { syntax.Type }, -- jsdoc
     -- sym"@exception"             { }, -- Exception
     -- sym"@variable"              { }, -- Identifier
     sym"@variable.builtin"      { syntax.Constant }, -- Variable names defined by the language: `this` or `self` in Javascript.

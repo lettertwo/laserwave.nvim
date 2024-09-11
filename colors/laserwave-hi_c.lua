@@ -1,4 +1,4 @@
--- GENERATED ON 2024-09-11 AT 13:08:31
+-- GENERATED ON 2024-09-11 AT 13:10:18
 -- name:     laserwave-hi_c
 -- author:   Eric Eldredge <lettertwo@gmail.com>
 -- license:  MIT
@@ -200,6 +200,7 @@ if cfg.treesitter then apply_colors({
 TreesitterContext = {bg = "#18141D"},
 TreesitterContextLineNumber = {fg = "#77458D", bg = "#18141D"},
 TreesitterContextSeparator = {fg = "#100D14"},
+["@keyword.jsdoc"] = {link = "Type"},
 ["@property"] = {fg = "#1CD4ED"},
 ["@string.escape"] = {fg = "#D686F4"},
 ["@string.regex"] = {fg = "#1CD4ED"},
@@ -215,6 +216,8 @@ if cfg.semantic_highlights then apply_colors({
 ["@lsp.type.decorator"] = {link = "Define"},
 ["@lsp.typemod.variable.callable"] = {link = "Function"},
 ["@lsp.typemod.variable.injected"] = {link = "Identifier"},
+["@lsp.type.class"] = {link = "Type"},
+["@lsp.type.keyword"] = {link = "Type"},
 ["@lsp.type.variable"] = {},
 --%% end semantic_highlights %%--
 }) end
