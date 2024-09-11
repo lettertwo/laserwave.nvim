@@ -1,4 +1,4 @@
--- GENERATED ON 2024-01-09 AT 15:57:31
+-- GENERATED ON 2024-09-11 AT 13:00:17
 -- name:     laserwave
 -- author:   Eric Eldredge <lettertwo@gmail.com>
 -- license:  MIT
@@ -25,6 +25,18 @@ laserwave.visual = {
 laserwave.replace = {
   a = { bg = "#EB65B9", fg = "#251F2C" },
   b = { bg = "#251F2C", fg = "#EB65B9" },
+}
+laserwave.select = {
+  a = { bg = "#B381C5", fg = "#251F2C" },
+  b = { bg = "#251F2C", fg = "#B381C5" },
+}
+laserwave.terminal = {
+  a = { bg = "#FFE25F", fg = "#251F2C" },
+  b = { bg = "#251F2C", fg = "#FFE25F" },
+}
+laserwave.terminal_normal = {
+  a = { bg = "#FFE25F", fg = "#251F2C" },
+  b = { bg = "#251F2C", fg = "#FFE25F" },
 }
 laserwave.inactive = {
   a = { bg = "#251F2C", fg = "#7C6A96" },

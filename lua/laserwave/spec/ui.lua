@@ -122,11 +122,22 @@ local ui = lush(function()
     healthWarning   { fg = palette.WARNING },
 
     -- Modes
-    ModeNormal      { fg = palette.NORMAL },
-    ModeInsert      { fg = palette.INSERT },
-    ModeCommand     { fg = palette.COMMAND },
-    ModeVisual      { fg = palette.VISUAL },
-    ModeReplace     { fg = palette.REPLACE },
+    ModeNormal         { fg = palette.NORMAL },
+    ModeInsert         { fg = palette.INSERT },
+    ModeCommand        { fg = palette.COMMAND },
+    ModeVisual         { fg = palette.VISUAL },
+    ModeReplace        { fg = palette.REPLACE },
+    ModeSelect         { fg = palette.VISUAL },
+    ModeTerminal       { fg = palette.COMMAND },
+    ModeTerminalNormal { fg = palette.COMMAND },
+    NormalMode         { bg = palette.NORMAL.mix(palette.BG, 75) },
+    InsertMode         { bg = palette.INSERT.mix(palette.BG, 75) },
+    VisualMode         { bg = palette.VISUAL.mix(palette.BG, 75) },
+    CommandMode        { bg = palette.COMMAND.mix(palette.BG, 75) },
+    ReplaceMode        { bg = palette.REPLACE.mix(palette.BG, 75) },
+    SelectMode         { bg = palette.VISUAL.mix(palette.BG, 75) },
+    TerminalMode       { bg = palette.COMMAND.mix(palette.BG, 75) },
+    TerminalNormalMode { bg = palette.COMMAND.mix(palette.BG, 75) },
   }
 end)
 

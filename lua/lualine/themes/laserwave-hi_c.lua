@@ -1,4 +1,4 @@
--- GENERATED ON 2024-01-09 AT 15:57:31
+-- GENERATED ON 2024-09-11 AT 13:00:17
 -- name:     laserwave-hi_c
 -- author:   Eric Eldredge <lettertwo@gmail.com>
 -- license:  MIT
@@ -25,6 +25,18 @@ laserwave.visual = {
 laserwave.replace = {
   a = { bg = "#FF55C0", fg = "#18141D" },
   b = { bg = "#18141D", fg = "#FF55C0" },
+}
+laserwave.select = {
+  a = { bg = "#D686F4", fg = "#18141D" },
+  b = { bg = "#18141D", fg = "#D686F4" },
+}
+laserwave.terminal = {
+  a = { bg = "#FFE25F", fg = "#18141D" },
+  b = { bg = "#18141D", fg = "#FFE25F" },
+}
+laserwave.terminal_normal = {
+  a = { bg = "#FFE25F", fg = "#18141D" },
+  b = { bg = "#18141D", fg = "#FFE25F" },
 }
 laserwave.inactive = {
   a = { bg = "#18141D", fg = "#B5A9C8" },

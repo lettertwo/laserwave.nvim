@@ -8,6 +8,9 @@ return template
       command_fg = spec.ModeCommand.fg,
       visual_fg = spec.ModeVisual.fg,
       replace_fg = spec.ModeReplace.fg,
+      select_fg = spec.ModeSelect.fg,
+      terminal_fg = spec.ModeTerminal.fg,
+      terminal_normal_fg = spec.ModeTerminalNormal.fg,
       statusline_bg = spec.StatusLine.bg,
       statusline_fg = spec.StatusLine.fg,
       statusline_inactive_bg = spec.StatusLineNC.bg,
@@ -48,6 +51,21 @@ laserwave.visual = {
 laserwave.replace = {
   a = { bg = "$replace_fg", fg = "$statusline_bg" },
   b = { bg = "$statusline_bg", fg = "$replace_fg" },
+}
+
+laserwave.select = {
+  a = { bg = "$select_fg", fg = "$statusline_bg" },
+  b = { bg = "$statusline_bg", fg = "$select_fg" },
+}
+
+laserwave.terminal = {
+  a = { bg = "$terminal_fg", fg = "$statusline_bg" },
+  b = { bg = "$statusline_bg", fg = "$terminal_fg" },
+}
+
+laserwave.terminal_normal = {
+  a = { bg = "$terminal_normal_fg", fg = "$statusline_bg" },
+  b = { bg = "$statusline_bg", fg = "$terminal_normal_fg" },
 }
 
 laserwave.inactive = {
