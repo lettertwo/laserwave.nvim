@@ -1,4 +1,4 @@
--- GENERATED ON 2024-09-11 AT 13:05:55
+-- GENERATED ON 2024-09-11 AT 13:08:31
 -- name:     laserwave-hi_c
 -- author:   Eric Eldredge <lettertwo@gmail.com>
 -- license:  MIT
@@ -49,7 +49,7 @@ NormalNC = {link = "Normal"},
 Add = {fg = "#1CD4ED"},
 Attribute = {fg = "#FF55C0"},
 Boolean = {fg = "#FFE25F"},
-Change = {fg = "#FFE25F"},
+Change = {fg = "#3FEBBF"},
 Character = {fg = "#3FEBBF"},
 CommandMode = {bg = "#4A433E"},
 Comment = {fg = "#B3AABD"},
@@ -69,10 +69,10 @@ CursorLineSign = {fg = "#D686F4", bg = "#31253A"},
 Define = {fg = "#FF55C0"},
 Delete = {fg = "#FF55C0"},
 Delimiter = {fg = "#B5A9C8"},
-DiffAdd = {bg = "#343F48"},
-DiffChange = {bg = "#343F48"},
-DiffDelete = {bg = "#472C42"},
-DiffText = {bg = "#4A433E"},
+DiffAdd = {fg = "#1CD4ED", bg = "#343F48"},
+DiffChange = {fg = "#1CD4ED", bg = "#343F48"},
+DiffDelete = {fg = "#FF55C0", bg = "#472C42"},
+DiffText = {fg = "#3FEBBF", bg = "#394142"},
 Directory = {fg = "#1CD4ED"},
 Error = {fg = "#FF3D7A"},
 ErrorMsg = {fg = "#FF3D7A"},
@@ -204,7 +204,7 @@ TreesitterContextSeparator = {fg = "#100D14"},
 ["@string.escape"] = {fg = "#D686F4"},
 ["@string.regex"] = {fg = "#1CD4ED"},
 ["@text.diff.add"] = {fg = "#1CD4ED"},
-["@text.diff.change"] = {fg = "#FFE25F"},
+["@text.diff.change"] = {fg = "#3FEBBF"},
 ["@text.diff.delete"] = {fg = "#FF55C0"},
 --%% end treesitter %%--
 }) end
@@ -277,20 +277,12 @@ CmpItemMenu = {fg = "#B5A9C8", bg = "NONE"},
 if cfg.plugins.git then apply_colors({
 --%% begin git %%--
 GitGutterAdd = {fg = "#1CD4ED"},
-GitGutterChange = {fg = "#FFE25F"},
+GitGutterChange = {fg = "#3FEBBF"},
 GitGutterDelete = {fg = "#FF55C0"},
 GitSignsAdd = {fg = "#1CD4ED"},
-GitSignsChange = {fg = "#FFE25F"},
+GitSignsChange = {fg = "#3FEBBF"},
 GitSignsDelete = {fg = "#FF55C0"},
 gitblame = {link = "VirtualText"},
-diffAdded = {fg = "#1CD4ED"},
-diffChanged = {fg = "#FFE25F"},
-diffFile = {fg = "#FFE25F"},
-diffIndexLine = {fg = "#B3AABD"},
-diffLine = {fg = "#B3AABD"},
-diffNewFile = {fg = "#1CD4ED"},
-diffOldFile = {fg = "#FF55C0"},
-diffRemoved = {fg = "#FF55C0"},
 --%% end git %%--
 }) end
 if cfg.plugins.lsp then apply_colors({
@@ -341,7 +333,7 @@ NeoTreeGitAdded = {fg = "#1CD4ED", bold = true},
 NeoTreeGitConflict = {fg = "#FF3D7A", bold = true},
 NeoTreeGitDeleted = {fg = "#FF55C0", bold = true},
 NeoTreeGitIgnored = {fg = "#B5A9C8", bold = true},
-NeoTreeGitModified = {fg = "#FFE25F", bold = true},
+NeoTreeGitModified = {fg = "#3FEBBF", bold = true},
 NeoTreeGitUntracked = {fg = "#B3AABD"},
 --%% end neotree %%--
 }) end

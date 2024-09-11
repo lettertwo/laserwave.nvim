@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-field
 local flavor = require("laserwave.spec.flavor")
 
 -- stylua: ignore start
@@ -47,7 +48,7 @@ local semantics = {
 
   ADD       = flavor.MAXIMUM_BLUE,
   DELETE    = flavor.HOT_PINK,
-  CHANGE    = flavor.MUSTARD,
+  CHANGE    = flavor.PEARL_AQUA,
   CONFLICT  = flavor.VIVID_RASPBERRY,
 
   NORMAL    = flavor.MAXIMUM_BLUE,
