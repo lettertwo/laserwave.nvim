@@ -1,4 +1,4 @@
--- GENERATED ON 2024-09-11 AT 13:00:17
+-- GENERATED ON 2024-09-11 AT 13:05:55
 -- name:     laserwave-hi_c
 -- author:   Eric Eldredge <lettertwo@gmail.com>
 -- license:  MIT
@@ -197,8 +197,9 @@ if cfg.treesitter then apply_colors({
 ["@property.class"] = {link = "Function"},
 ["@keyword.operator"] = {link = "Operator"},
 ["@punctuation"] = {link = "Punctuation"},
-TreesitterContext = {bg = "#3A2A44"},
-TreesitterContextLineNumber = {fg = "#D5A4EA"},
+TreesitterContext = {bg = "#18141D"},
+TreesitterContextLineNumber = {fg = "#77458D", bg = "#18141D"},
+TreesitterContextSeparator = {fg = "#100D14"},
 ["@property"] = {fg = "#1CD4ED"},
 ["@string.escape"] = {fg = "#D686F4"},
 ["@string.regex"] = {fg = "#1CD4ED"},
