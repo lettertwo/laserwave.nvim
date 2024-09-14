@@ -1,4 +1,4 @@
-## GENERATED ON 2024-05-28 AT 15:54:27
+## GENERATED ON 2024-09-13 AT 13:19:29
 [delta "laserwave"]
     # author: Eric Eldredge <lettertwo@gmail.com>
     # license: MIT
@@ -41,9 +41,9 @@
     hunk-header-line-number-style = "#FFE25F" box bold
     # hunks
     plus-style = "#41B5C5"
-    plus-emph-style = "#39434D" "#41B5C5"
+    plus-emph-style = "#2B2D3C" "#41B5C5"
     minus-style = "#EB65B9"
-    minus-emph-style = "#4F354C" "#EB65B9"
+    minus-emph-style = "#372A3A" "#EB65B9"
     zero-style = syntax dim
     whitespace-error-style = reverse "#FF3D7A"
     # line numbers

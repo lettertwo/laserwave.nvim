@@ -84,10 +84,10 @@ local ui = lush(function()
     Change   { fg = palette.CHANGE },
     Delete   { fg = palette.DELETE },
 
-    DiffAdd      { fg = palette.ADD, bg = palette.ADD.mix(palette.BG, 75) }, -- Diff mode: Added line |diff.txt|
-    DiffChange   { fg = palette.ADD, bg = palette.ADD.mix(palette.BG, 75) }, -- Diff mode: Changed line |diff.txt|
-    DiffDelete   { fg = palette.DELETE, bg = palette.DELETE.mix(palette.BG, 75) }, -- Diff mode: Deleted line |diff.txt|
-    DiffText     { fg = palette.CHANGE, bg = palette.CHANGE.mix(palette.BG, 75)  }, -- Diff mode: Changed text within a changed line |diff.txt|
+    DiffAdd      { fg = palette.ADD, bg = palette.ADD.mix(palette.BG, 90) }, -- Diff mode: Added line |diff.txt|
+    DiffChange   { fg = palette.ADD, bg = palette.ADD.mix(palette.BG, 90) }, -- Diff mode: Changed line |diff.txt|
+    DiffDelete   { fg = palette.DELETE, bg = palette.DELETE.mix(palette.BG, 90) }, -- Diff mode: Deleted line |diff.txt|
+    DiffText     { fg = palette.CHANGE, bg = palette.CHANGE.mix(palette.BG, 90)  }, -- Diff mode: Changed text within a changed line |diff.txt|
 
     Directory    { fg = palette.KEYWORD }, -- Directory names (and other special names in listings)
     ErrorMsg     { fg = palette.ERROR }, -- Error messages on the command line

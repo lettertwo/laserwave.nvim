@@ -1,4 +1,4 @@
--- GENERATED ON 2024-09-11 AT 13:10:18
+-- GENERATED ON 2024-09-13 AT 13:19:29
 -- name:     laserwave-hi_c
 -- author:   Eric Eldredge <lettertwo@gmail.com>
 -- license:  MIT
@@ -69,10 +69,10 @@ CursorLineSign = {fg = "#D686F4", bg = "#31253A"},
 Define = {fg = "#FF55C0"},
 Delete = {fg = "#FF55C0"},
 Delimiter = {fg = "#B5A9C8"},
-DiffAdd = {fg = "#1CD4ED", bg = "#343F48"},
-DiffChange = {fg = "#1CD4ED", bg = "#343F48"},
-DiffDelete = {fg = "#FF55C0", bg = "#472C42"},
-DiffText = {fg = "#3FEBBF", bg = "#394142"},
+DiffAdd = {fg = "#1CD4ED", bg = "#222530"},
+DiffChange = {fg = "#1CD4ED", bg = "#222530"},
+DiffDelete = {fg = "#FF55C0", bg = "#2B202D"},
+DiffText = {fg = "#3FEBBF", bg = "#25282D"},
 Directory = {fg = "#1CD4ED"},
 Error = {fg = "#FF3D7A"},
 ErrorMsg = {fg = "#FF3D7A"},
