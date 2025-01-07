@@ -9,6 +9,7 @@
 local lush = require("lush")
 
 local palette = require("laserwave.spec.palette")
+local syntax = require("laserwave.spec.syntax")
 
 ---@diagnostic disable: undefined-global
 local plugins = lush(function()
@@ -22,11 +23,17 @@ local plugins = lush(function()
     IblIndent { fg = palette.IGNORE.darken(30) },
     IblWhitespace { IblIndent },
     IndentBlanklineChar  { IblIndent },
-    IblScope { fg = palette.HIGHLIGHT },
+    IblScope { fg = syntax.Special.fg },
     IndentBlanklineContextChar  { IblScope },
 
     -- mini.indentscope
     MiniIndentscopeSymbol { IblScope },
+
+    -- snacks
+    SnacksIndent      { IblIndent },
+    SnacksIndentScope { IblScope },
+    SnacksIndentChunk { IblScope },
+    SnacksIndentBlank  { ExtraWhitespace },
   }
   --stylua: ignore end
 end)

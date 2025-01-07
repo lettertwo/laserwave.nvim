@@ -87,6 +87,11 @@ if cfg.plugins.alpha then apply_colors({
 --%% end alpha %%--
 }) end
 
+if cfg.plugins.blink then apply_colors({
+--%% begin blink %%--
+--%% end blink %%--
+}) end
+
 if cfg.plugins.cmp then apply_colors({
 --%% begin cmp %%--
 --%% end cmp %%--
@@ -115,6 +120,11 @@ if cfg.plugins.obsidian then apply_colors({
 if cfg.plugins.package_info then apply_colors({
 --%% begin package_info %%--
 --%% end package_info %%--
+}) end
+
+if cfg.plugins.snacks then apply_colors({
+--%% begin snacks %%--
+--%% end snacks %%--
 }) end
 
 if cfg.plugins.space then apply_colors({

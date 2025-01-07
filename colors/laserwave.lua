@@ -1,4 +1,4 @@
--- GENERATED ON 2024-09-13 AT 13:19:29
+-- GENERATED ON 2025-01-07 AT 17:29:14
 -- name:     laserwave
 -- author:   Eric Eldredge <lettertwo@gmail.com>
 -- license:  MIT
@@ -245,6 +245,40 @@ StartLogo8 = {fg = "#8C6093"},
 StartLogo9 = {fg = "#875582"},
 --%% end alpha %%--
 }) end
+if cfg.plugins.blink then apply_colors({
+--%% begin blink %%--
+BlinkCmpKindClass = {fg = "#B381C5"},
+BlinkCmpKindConstant = {fg = "#FFE25F"},
+BlinkCmpKindConstructor = {fg = "#EB65B9"},
+BlinkCmpKindCopilot = {fg = "#FFE25F"},
+BlinkCmpKindEnum = {fg = "#B381C5"},
+BlinkCmpKindEnumMember = {fg = "#B381C5"},
+BlinkCmpKindEvent = {fg = "#B381C5"},
+BlinkCmpKindField = {fg = "#75DFC4"},
+BlinkCmpKindFunction = {fg = "#EB65B9"},
+BlinkCmpKindInterface = {fg = "#B381C5"},
+BlinkCmpKindKeyword = {fg = "#41B5C5"},
+BlinkCmpKindMethod = {fg = "#EB65B9"},
+BlinkCmpKindModule = {fg = "#7C6A96"},
+BlinkCmpKindOperator = {fg = "#75DFC4"},
+BlinkCmpKindProperty = {fg = "#75DFC4"},
+BlinkCmpKindReference = {fg = "#FFE25F"},
+BlinkCmpKindSnippet = {fg = "#7C6A96"},
+BlinkCmpKindStruct = {fg = "#B381C5"},
+BlinkCmpKindText = {fg = "#91889B"},
+BlinkCmpKindTypeParameter = {fg = "#B381C5"},
+BlinkCmpKindUnit = {fg = "#B381C5"},
+BlinkCmpKindValue = {fg = "#41B5C5"},
+BlinkCmpKindVariable = {fg = "#FFFFFF"},
+BlinkCmpLabel = {fg = "#91889B", bg = "NONE"},
+BlinkCmpLabelDeprecated = {fg = "#7C6A96", bg = "NONE", strikethrough = true},
+BlinkCmpLabelMatch = {fg = "#EB65B9", bg = "NONE"},
+BlinkCmpMenu = {},
+BlinkCmpDocBorder = {link = "FloatBorder"},
+BlinkCmpMenuBorder = {link = "FloatBorder"},
+BlinkCmpSignatureHelpBorder = {link = "FloatBorder"},
+--%% end blink %%--
+}) end
 if cfg.plugins.cmp then apply_colors({
 --%% begin cmp %%--
 CmpItemAbbr = {fg = "#91889B", bg = "NONE"},
@@ -358,16 +392,48 @@ PackageInfoOutdatedVersion = {fg = "#FF3D7A"},
 PackageInfoUpToDateVersion = {},
 --%% end package_info %%--
 }) end
+if cfg.plugins.snacks then apply_colors({
+--%% begin snacks %%--
+SnacksDashboardDesc = {link = "Normal"},
+SnacksDashboardFooter = {fg = "#7C6A96"},
+SnacksDashboardHeader = {fg = "#41B5C5"},
+SnacksDashboardHeader1 = {fg = "#41B5C5"},
+SnacksDashboardHeader10 = {fg = "#864E7A"},
+SnacksDashboardHeader11 = {fg = "#804570"},
+SnacksDashboardHeader12 = {fg = "#753F58"},
+SnacksDashboardHeader13 = {fg = "#664055"},
+SnacksDashboardHeader14 = {fg = "#593F52"},
+SnacksDashboardHeader15 = {fg = "#4E3C50"},
+SnacksDashboardHeader16 = {fg = "#45394D"},
+SnacksDashboardHeader17 = {fg = "#3C364B"},
+SnacksDashboardHeader18 = {fg = "#353248"},
+SnacksDashboardHeader19 = {fg = "#2E2C40"},
+SnacksDashboardHeader2 = {fg = "#59A6B8"},
+SnacksDashboardHeader20 = {fg = "#2B2839"},
+SnacksDashboardHeader3 = {fg = "#689DB2"},
+SnacksDashboardHeader4 = {fg = "#6D90A8"},
+SnacksDashboardHeader5 = {fg = "#7187AB"},
+SnacksDashboardHeader6 = {fg = "#7A77A7"},
+SnacksDashboardHeader7 = {fg = "#8768A1"},
+SnacksDashboardHeader8 = {fg = "#8C6093"},
+SnacksDashboardHeader9 = {fg = "#875582"},
+SnacksDashboardIcon = {fg = "#B3DBE6"},
+--%% end snacks %%--
+}) end
 if cfg.plugins.space then apply_colors({
 --%% begin space %%--
 ExtraWhitespace = {bg = "#FF3D7A"},
 MiniTrailspace = {link = "ExtraWhitespace"},
+SnacksIndentBlank = {link = "ExtraWhitespace"},
 IblIndent = {fg = "#584A6D"},
 IblWhitespace = {link = "IblIndent"},
 IndentBlanklineChar = {link = "IblIndent"},
-IblScope = {fg = "#EB65B9"},
+SnacksIndent = {link = "IblIndent"},
+IblScope = {fg = "#75DFC4"},
 IndentBlanklineContextChar = {link = "IblScope"},
 MiniIndentscopeSymbol = {link = "IblScope"},
+SnacksIndentChunk = {link = "IblScope"},
+SnacksIndentScope = {link = "IblScope"},
 --%% end space %%--
 }) end
 if cfg.plugins.telescope then apply_colors({
