@@ -1,4 +1,4 @@
--- GENERATED ON 2025-01-07 AT 17:29:14
+-- GENERATED ON 2025-01-10 AT 16:21:00
 -- name:     laserwave
 -- author:   Eric Eldredge <lettertwo@gmail.com>
 -- license:  MIT
@@ -361,6 +361,22 @@ LspSignatureActiveParameter = {link = "VirtualText"},
 ["@lsp.type.type"] = {},
 ["@lsp.type.variable"] = {},
 --%% end lsp %%--
+}) end
+if cfg.plugins.mini_pick then apply_colors({
+--%% begin mini_pick %%--
+MiniPickPreviewLine = {link = "CursorLine"},
+MiniPickBorder = {link = "FloatBorder"},
+MiniPickBorderText = {link = "FloatTitle"},
+MiniPickBorderBusy = {fg = "#FFB961", bg = "#251F2C"},
+MiniPickCursor = {fg = "#EB65B9", bg = "#251F2C"},
+MiniPickMatchCurrent = {bg = "#392E42", bold = true},
+MiniPickMatchRanges = {fg = "#EB65B9", bold = true},
+MiniPickPreviewRegion = {fg = "#EB65B9", bg = "#5C4568", bold = true},
+MiniPickNormal = {link = "NormalFloat"},
+MiniPickHeader = {link = "Title"},
+MiniPickPrompt = {link = "Title"},
+MiniPickMatchMarked = {link = "Visual"},
+--%% end mini_pick %%--
 }) end
 if cfg.plugins.neotree then apply_colors({
 --%% begin neotree %%--

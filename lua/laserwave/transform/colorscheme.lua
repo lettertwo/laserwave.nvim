@@ -107,6 +107,11 @@ if cfg.plugins.lsp then apply_colors({
 --%% end lsp %%--
 }) end
 
+if cfg.plugins.mini_pick then apply_colors({
+--%% begin mini_pick %%--
+--%% end mini_pick %%--
+}) end
+
 if cfg.plugins.neotree then apply_colors({
 --%% begin neotree %%--
 --%% end neotree %%--

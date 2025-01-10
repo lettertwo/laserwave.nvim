@@ -47,6 +47,7 @@ local config = {
     cmp = false,
     git = true,
     lsp = true,
+    mini_pick = true,
     neotree = false,
     obsidian = true,
     package_info = false,
