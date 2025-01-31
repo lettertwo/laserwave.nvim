@@ -38,10 +38,9 @@ local lsp = lush(function(injected)
 
     -- See :h lsp-highlight, some groups may not be listed, submit a PR fix to lush-template!
 
-    LspReferenceText            { gui = "underline", bg = ui.Visual.bg }, -- Used for highlighting "text" references
-    LspReferenceRead            { gui = "underline", bg = ui.Visual.bg }, -- Used for highlighting "read" references
-    LspReferenceWrite           { gui = "underline", bg = ui.Visual.bg }, -- Used for highlighting "write" references
-    LspCodeLens                 { ui.VirtualText }, -- Used to color the virtual text of the codelens. See |nvim_buf_set_extmark()|.
+    LspReferenceText            { bg = palette.VISUAL.mix(palette.BG, 80) }, -- Used for highlighting "text" references
+    LspReferenceRead            { bg = palette.VISUAL.mix(palette.BG, 80) }, -- Used for highlighting "read" references
+    LspReferenceWrite           { bg = palette.VISUAL.mix(palette.BG, 80) }, -- Used for highlighting "write" references
     LspCodeLensSeparator        { ui.VirtualText }, -- Used to color the seperator between two or more code lens.
     LspSignatureActiveParameter { ui.VirtualText }, -- Used to highlight the active parameter in the signature help. See |vim.lsp.handlers.signature_help()|.
     LspInfoBorder               { ui.FloatBorder },

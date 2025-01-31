@@ -1,4 +1,4 @@
-## GENERATED ON 2024-09-13 AT 13:19:29
+## GENERATED ON 2025-02-18 AT 18:29:31
 [delta "laserwave-hi_c"]
     # author: Eric Eldredge <lettertwo@gmail.com>
     # license: MIT
@@ -27,7 +27,7 @@
     # blame
     blame-code-style = syntax
     blame-format = "{author:<18} {commit:<6} {timestamp:<15}"
-    blame-palette = "#31253A #603D72"
+    blame-palette = "#31253A #3A2A44"
     blame-separator-format = "{n:^4}│"
     blame-separator-style = "#FF55C0"
     # commit

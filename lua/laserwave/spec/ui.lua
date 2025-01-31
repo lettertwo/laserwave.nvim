@@ -36,14 +36,14 @@ local ui = lush(function()
     SpecialKey   { Conceal }, -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
     -- MsgSeparator {  }, -- Separator for scrolled messages, `msgsep` flag of 'display'
 
-    Visual       { bg = palette.VISUAL.mix(palette.BG, 60) }, -- Visual mode selection
+    Visual       { bg = palette.VISUAL.mix(palette.BG, 80) }, -- Visual mode selection
     PmenuSel     { Visual }, -- Popup menu: selected item.
     VisualNOS    { Visual }, -- Visual mode selection when vim is "Not Owning the Selection".
     WildMenu     { Visual }, -- Current match in 'wildmenu' completion
     QuickFixLine { Visual, gui = "bold" }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
 
     Cursor       { fg = palette.FG, bg = palette.HIGHLIGHT.mix(palette.BG, 75), gui = "reverse" }, -- Character under the cursor
-    -- CurSearch    { }, -- Highlighting a search pattern under the cursor (see 'hlsearch')
+    CurSearch    { gui = "reverse" }, -- Highlighting a search pattern under the cursor (see 'hlsearch')
     CursorIM     { Cursor }, -- Like Cursor, but used when in IME mode |CursorIM|
     lCursor      { Cursor }, -- Character under the cursor when |language-mapping| is used (see 'guicursor') 
     -- TermCursor   { }, -- Cursor in a focused terminal
@@ -56,7 +56,7 @@ local ui = lush(function()
     CursorLineNr   { CursorLine, fg = palette.FG.mix(palette.VISUAL, 50) }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
     CursorLineSign { CursorLine, fg = palette.VISUAL }, -- Like SignColumn when 'cursorline' is set for the cursor line.
 
-    LineNr       { fg = palette.IGNORE }, --Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set. 
+    LineNr       { fg = palette.IGNORE.mix(palette.BG, 50) }, --Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
     -- LineNrAbove    { }, -- Line number for when the 'relativenumber' option is set, above the cursor line
     -- LineNrBelow    { }, -- Line number for when the 'relativenumber' option is set, below the cursor line
 
@@ -76,9 +76,9 @@ local ui = lush(function()
     FloatTitle   { fg = palette.HIGHLIGHT, bg = palette.BG.darken(10) }, -- Title of floating windows (Non-standard).
     FloatBorder  { fg = palette.HIGHLIGHT, bg = palette.BG.darken(10) }, -- Border of floating windows.
 
-    IncSearch    { gui = "reverse" }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
-    Search       { bg = palette.VISUAL, fg = palette.BG }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
-    Substitute   { gui = "reverse" }, -- |:substitute| replacement text highlighting
+    IncSearch    { CurSearch }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+    Search       { bg = palette.VISUAL.mix(palette.BG, 50) }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
+    Substitute   { CurSearch }, -- |:substitute| replacement text highlighting
 
     Add      { fg = palette.ADD },
     Change   { fg = palette.CHANGE },

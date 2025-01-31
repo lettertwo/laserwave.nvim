@@ -1,4 +1,4 @@
-## GENERATED ON 2024-05-28 AT 17:00:51
+## GENERATED ON 2025-02-18 AT 18:29:31
 [metadata]
 aliases = []
 author = "Eric Eldredge <lettertwo@gmail.com>"
@@ -12,7 +12,7 @@ background = "#1A161F"
 cursor_bg = "#472C42"
 cursor_border = "#472C42"
 cursor_fg = "#FFFFFF"
-selection_bg = "#603D72"
+selection_bg = "#3A2A44"
 selection_fg = "#FFFFFF"
 split = "#FF3D7A"
 compose_cursor = "#98d3cb"
