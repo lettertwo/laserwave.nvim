@@ -15,6 +15,7 @@ return template
       statusline_fg = spec.StatusLine.fg,
       statusline_inactive_bg = spec.StatusLineNC.bg,
       statusline_inactive_fg = spec.StatusLineNC.fg,
+      statusline_bg_b = spec.StatusLine.bg.lighten(10),
     }
   end)
   .create([[
@@ -29,43 +30,43 @@ local laserwave = {}
 
 laserwave.normal = {
   a = { bg = "$normal_fg", fg = "$statusline_bg" },
-  b = { bg = "$statusline_bg", fg = "$normal_fg" },
+  b = { bg = "$statusline_bg_b", fg = "$normal_fg" },
   c = { bg = "$statusline_bg", fg = "$statusline_fg" },
 }
 
 laserwave.insert = {
   a = { bg = "$insert_fg", fg = "$statusline_bg" },
-  b = { bg = "$statusline_bg", fg = "$insert_fg" },
+  b = { bg = "$statusline_bg_b", fg = "$insert_fg" },
 }
 
 laserwave.command = {
   a = { bg = "$command_fg", fg = "$statusline_bg" },
-  b = { bg = "$statusline_bg", fg = "$command_fg" },
+  b = { bg = "$statusline_bg_b", fg = "$command_fg" },
 }
 
 laserwave.visual = {
   a = { bg = "$visual_fg", fg = "$statusline_bg" },
-  b = { bg = "$statusline_bg", fg = "$visual_fg" },
+  b = { bg = "$statusline_bg_b", fg = "$visual_fg" },
 }
 
 laserwave.replace = {
   a = { bg = "$replace_fg", fg = "$statusline_bg" },
-  b = { bg = "$statusline_bg", fg = "$replace_fg" },
+  b = { bg = "$statusline_bg_b", fg = "$replace_fg" },
 }
 
 laserwave.select = {
   a = { bg = "$select_fg", fg = "$statusline_bg" },
-  b = { bg = "$statusline_bg", fg = "$select_fg" },
+  b = { bg = "$statusline_bg_b", fg = "$select_fg" },
 }
 
 laserwave.terminal = {
   a = { bg = "$terminal_fg", fg = "$statusline_bg" },
-  b = { bg = "$statusline_bg", fg = "$terminal_fg" },
+  b = { bg = "$statusline_bg_b", fg = "$terminal_fg" },
 }
 
 laserwave.terminal_normal = {
   a = { bg = "$terminal_normal_fg", fg = "$statusline_bg" },
-  b = { bg = "$statusline_bg", fg = "$terminal_normal_fg" },
+  b = { bg = "$statusline_bg_b", fg = "$terminal_normal_fg" },
 }
 
 laserwave.inactive = {
