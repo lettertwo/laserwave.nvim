@@ -1,4 +1,4 @@
--- GENERATED ON 2025-02-18 AT 18:29:31
+-- GENERATED ON 2025-03-29 AT 16:11:40
 -- name:     laserwave
 -- author:   Eric Eldredge <lettertwo@gmail.com>
 -- license:  MIT
@@ -441,11 +441,11 @@ if cfg.plugins.space then apply_colors({
 ExtraWhitespace = {bg = "#FF3D7A"},
 MiniTrailspace = {link = "ExtraWhitespace"},
 SnacksIndentBlank = {link = "ExtraWhitespace"},
-IblIndent = {fg = "#584A6D"},
+IblIndent = {fg = "#332A41"},
 IblWhitespace = {link = "IblIndent"},
 IndentBlanklineChar = {link = "IblIndent"},
 SnacksIndent = {link = "IblIndent"},
-IblScope = {fg = "#75DFC4"},
+IblScope = {fg = "#584A6D"},
 IndentBlanklineContextChar = {link = "IblScope"},
 MiniIndentscopeSymbol = {link = "IblScope"},
 SnacksIndentChunk = {link = "IblScope"},

@@ -20,10 +20,10 @@ local plugins = lush(function()
     MiniTrailspace       { ExtraWhitespace },
 
     -- indent-blankline
-    IblIndent { fg = palette.IGNORE.darken(30) },
+    IblIndent { fg = palette.IGNORE.darken(60) },
     IblWhitespace { IblIndent },
     IndentBlanklineChar  { IblIndent },
-    IblScope { fg = syntax.Special.fg },
+    IblScope { fg = palette.IGNORE.darken(30) },
     IndentBlanklineContextChar  { IblScope },
 
     -- mini.indentscope
