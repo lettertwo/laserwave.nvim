@@ -27,7 +27,7 @@ scrollbar_thumb = "$border_active"
 ansi = [
 "$black",
 "$red",
-"$green",
+"$blue",
 "$yellow",
 "$blue",
 "$magenta",

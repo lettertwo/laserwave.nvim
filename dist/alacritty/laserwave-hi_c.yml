@@ -1,4 +1,4 @@
-# GENERATED ON 2025-02-18 AT 18:29:31
+# GENERATED ON 2025-07-11 AT 18:47:28
 # name:     laserwave-hi_c
 # author:   Eric Eldredge <lettertwo@gmail.com>
 # license:  MIT
@@ -17,7 +17,7 @@ colors:
   normal:
     black:   '#B3AABD'
     red:     '#FF55C0'
-    green:   '#3FEBBF'
+    green:   '#1CD4ED'
     yellow:  '#FFE25F'
     blue:    '#1CD4ED'
     magenta: '#D686F4'

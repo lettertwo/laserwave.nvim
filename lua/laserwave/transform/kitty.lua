@@ -74,7 +74,7 @@ color1 $red
 color9 $bright_red
 
 #: green
-color2  $green
+color2  $blue
 color10 $bright_green
 
 #: yellow

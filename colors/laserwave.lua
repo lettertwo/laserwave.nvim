@@ -1,4 +1,4 @@
--- GENERATED ON 2025-03-29 AT 16:11:40
+-- GENERATED ON 2025-07-11 AT 18:47:28
 -- name:     laserwave
 -- author:   Eric Eldredge <lettertwo@gmail.com>
 -- license:  MIT
@@ -7,7 +7,7 @@
 local function apply_terminal_colors()
   vim.g.terminal_color_0 = "#91889B"
   vim.g.terminal_color_1 = "#EB65B9"
-  vim.g.terminal_color_2 = "#75DFC4"
+  vim.g.terminal_color_2 = "#41B5C5"
   vim.g.terminal_color_3 = "#FFE25F"
   vim.g.terminal_color_4 = "#41B5C5"
   vim.g.terminal_color_5 = "#B381C5"
