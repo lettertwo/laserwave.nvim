@@ -1,4 +1,4 @@
-## GENERATED ON 2025-02-18 AT 18:29:31
+## GENERATED ON 2025-07-11 AT 18:47:28
 [metadata]
 aliases = []
 author = "Eric Eldredge <lettertwo@gmail.com>"
@@ -20,7 +20,7 @@ scrollbar_thumb = "#FF3D7A"
 ansi = [
 "#B3AABD",
 "#FF55C0",
-"#3FEBBF",
+"#1CD4ED",
 "#FFE25F",
 "#1CD4ED",
 "#D686F4",

@@ -12,7 +12,7 @@ return template.create([[
 local function apply_terminal_colors()
   vim.g.terminal_color_0 = "$black"
   vim.g.terminal_color_1 = "$red"
-  vim.g.terminal_color_2 = "$green"
+  vim.g.terminal_color_2 = "$blue"
   vim.g.terminal_color_3 = "$yellow"
   vim.g.terminal_color_4 = "$blue"
   vim.g.terminal_color_5 = "$magenta"

@@ -28,7 +28,7 @@ colors:
   normal:
     black:   '$black'
     red:     '$red'
-    green:   '$green'
+    green:   '$blue'
     yellow:  '$yellow'
     blue:    '$blue'
     magenta: '$magenta'
