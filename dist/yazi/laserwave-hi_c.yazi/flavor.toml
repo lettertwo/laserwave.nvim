@@ -1,0 +1,141 @@
+"$schema" = "https://yazi-rs.github.io/schemas/theme.json"
+## GENERATED ON 2025-07-21 AT 19:33:45
+## name:     laserwave-hi_c
+## author:   Eric Eldredge <lettertwo@gmail.com>
+## license:  MIT
+## upstream: https://github.com/lettertwo/laserwave.nvim/dist/yazi/laserwave-hi_c.yazi/flavor.toml
+## blurb:    Based on LaserWave for VSCode by Jared Jones
+# : Manager {{{
+[mgr]
+cwd = { fg = "#ADDFEF" }
+# Hovered
+hovered = { reversed = true }
+preview_hovered = { reversed = true }
+# Find
+find_keyword = { reversed = true, bold = true }
+find_position = { bg = "#ADDFEF", fg = "#D686F4", bold = true }
+# Symlink
+symlink_target = { italic = true }
+# Marker
+marker_copied = { fg = "#3FEBBF", bg = "#3FEBBF" }
+marker_cut = { fg = "#FF3D7A", bg = "#FF3D7A" }
+marker_marked = { fg = "#ADDFEF", bg = "#ADDFEF" }
+marker_selected = { fg = "#D686F4", bg = "#D686F4" }
+# Count
+count_copied = { fg = "#FFFFFF", bg = "#1CD4ED" }
+count_cut = { fg = "#FFFFFF", bg = "#FF55C0" }
+count_selected = { fg = "#FFFFFF", bg = "#D686F4" }
+# Border
+border_style = { fg = "#FF55C0" }
+# : }}}
+# : Tabs {{{
+[tabs]
+active = { fg = "#1A161F", bg = "#1CD4ED", bold = true }
+inactive = { fg = "#B3AABD", bg = "#1A161F" }
+# : }}}
+# : Mode {{{
+[mode]
+normal_main = { fg = "#1A161F", bg = "#1CD4ED", bold = true }
+normal_alt = { fg = "#1CD4ED", bg = "#1A161F" }
+# Select mode
+select_main = { fg = "#1A161F", bg = "#D686F4", bold = true }
+select_alt = { fg = "#D686F4", bg = "#1A161F" }
+# Unset mode
+unset_main = { fg = "#1A161F", bg = "#FF55C0", bold = true }
+unset_alt = { fg = "#FF55C0", bg = "#1A161F" }
+# : }}}
+# : Status bar {{{
+[status]
+# Permissions
+perm_sep = { fg = "#B3AABD" }
+perm_type = { fg = "#1CD4ED" }
+perm_read = { fg = "#FFE25F" }
+perm_write = { fg = "#FF55C0" }
+perm_exec = { fg = "#ADDFEF" }
+# Progress
+progress_label = { bold = true }
+progress_normal = { fg = "#1CD4ED", bg = "#1A161F" }
+progress_error = { fg = "#FF55C0", bg = "#1A161F" }
+# : }}}
+# : Which {{{
+[which]
+mask = { bg = "#1A161F" }
+cand = { fg = "#ADDFEF" }
+rest = { fg = "#B3AABD" }
+desc = { fg = "#FF55C0" }
+separator_style = { fg = "#B3AABD" }
+# : }}}
+# : Confirmation {{{
+[confirm]
+border = { fg = "#FF55C0" }
+title = { fg = "#FF55C0" }
+# : }}}
+# : Spotter {{{
+[spot]
+border = { fg = "#FF55C0" }
+title = { fg = "#FF55C0" }
+# Table
+tbl_col = { fg = "#1CD4ED" }
+tbl_cell = { fg = "#FFE25F", reversed = true }
+# : }}}
+# : Notification {{{
+[notify]
+title_info = { fg = "#1CD4ED" }
+title_warn = { fg = "#FFE25F" }
+title_error = { fg = "#FF55C0" }
+# : }}}
+# : Picker {{{
+[pick]
+border = { fg = "#FF55C0" }
+active = { fg = "#FF55C0", bold = true }
+inactive = {}
+# : }}}
+# : Input {{{
+[input]
+border = { fg = "#FF55C0" }
+title = {}
+value = {}
+selected = { reversed = true }
+# : }}}
+# : Completion {{{
+[cmp]
+border = { fg = "#FF55C0" }
+active = { reversed = true }
+# : }}}
+# : Task manager {{{
+[tasks]
+border = { fg = "#FF55C0" }
+title = {}
+hovered = { fg = "#D686F4", underline = true }
+# : }}}
+# : Help menu {{{
+[help]
+on = { fg = "#ADDFEF" }
+run = { fg = "#D686F4" }
+hovered = { reversed = true, bold = true }
+footer = { fg = "#B3AABD", bg = "#1A161F" }
+# : }}}
+# : File-specific styles {{{
+[filetype]
+rules = [
+  # Images
+  { mime = "image/*", fg = "#FFE25F" },
+  # Media
+  { mime = "{audio,video}/*", fg = "#D686F4" },
+  # Archives
+  { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "#FF55C0" },
+  # Documents
+  { mime = "application/{pdf,doc,rtf}", fg = "#ADDFEF" },
+  # Empty files
+  # { mime = "inode/empty", fg = "#FF55C0" },
+  # Special files
+  { name = "*", is = "orphan", bg = "#FF55C0" },
+  { name = "*", is = "exec", fg = "#1CD4ED" },
+  # Dummy files
+  { name = "*", is = "dummy", bg = "#FF55C0" },
+  { name = "*/", is = "dummy", bg = "#FF55C0" },
+  # Fallback
+  # { name = "*", fg = "#FFFFFF" },
+  { name = "*/", fg = "#1CD4ED" },
+]
+# : }}}
