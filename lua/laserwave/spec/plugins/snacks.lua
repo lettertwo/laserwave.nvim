@@ -26,7 +26,6 @@ local snacks = lush(function()
     -- SnacksDashboardSpecial  { },
     -- SnacksDashboardTerminal { },
     -- SnacksDashboardTitle    { },
-
     SnacksDashboardHeader1  { fg = palette.INFO.mix(palette.HIGHLIGHT, 0).mix(palette.BG, 0) },
     SnacksDashboardHeader2  { fg = palette.INFO.mix(palette.HIGHLIGHT, 10).mix(palette.BG, 5) },
     SnacksDashboardHeader3  { fg = palette.INFO.mix(palette.HIGHLIGHT, 20).mix(palette.BG, 10) },
@@ -48,6 +47,16 @@ local snacks = lush(function()
     SnacksDashboardHeader19 { fg = palette.ERROR.mix(palette.INFO, 80).mix(palette.BG, 90) },
     SnacksDashboardHeader20 { fg = palette.ERROR.mix(palette.INFO, 90).mix(palette.BG, 95) },
 
+    -- SnacksPickerGitStatus          { },
+    -- SnacksPickerGitStatusRenamed   { },
+    -- SnacksPickerGitStatusCopied    { },
+    SnacksPickerGitStatusDeleted   { fg = palette.DELETE },
+    SnacksPickerGitStatusUnmerged  { fg = palette.ERROR },
+    SnacksPickerGitStatusModified  { fg = palette.CHANGE },
+    SnacksPickerGitStatusAdded     { fg = palette.ADD },
+    SnacksPickerGitStatusStaged    { fg = palette.INFO },
+    -- SnacksPickerGitStatusUntracked { },
+    -- SnacksPickerGitStatusIgnored   { },
   }
   --stylua: ignore end
 end)
