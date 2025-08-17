@@ -1,4 +1,4 @@
--- GENERATED ON 2025-07-11 AT 18:47:28
+-- GENERATED ON 2025-08-17 AT 18:07:55
 -- name:     laserwave
 -- author:   Eric Eldredge <lettertwo@gmail.com>
 -- license:  MIT
@@ -434,6 +434,11 @@ SnacksDashboardHeader7 = {fg = "#8768A1"},
 SnacksDashboardHeader8 = {fg = "#8C6093"},
 SnacksDashboardHeader9 = {fg = "#875582"},
 SnacksDashboardIcon = {fg = "#B3DBE6"},
+SnacksPickerGitStatusAdded = {fg = "#41B5C5"},
+SnacksPickerGitStatusDeleted = {fg = "#EB65B9"},
+SnacksPickerGitStatusModified = {fg = "#75DFC4"},
+SnacksPickerGitStatusStaged = {fg = "#41B5C5"},
+SnacksPickerGitStatusUnmerged = {fg = "#FF3D7A"},
 --%% end snacks %%--
 }) end
 if cfg.plugins.space then apply_colors({
