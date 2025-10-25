@@ -50,6 +50,7 @@ local config = {
     mini_pick = true,
     neotree = false,
     obsidian = true,
+    occurrence = true,
     package_info = false,
     snacks = true,
     space = true,

@@ -122,6 +122,11 @@ if cfg.plugins.obsidian then apply_colors({
 --%% end obsidian %%--
 }) end
 
+if cfg.plugins.occurrence then apply_colors({
+--%% begin occurrence %%--
+--%% end occurrence %%--
+}) end
+
 if cfg.plugins.package_info then apply_colors({
 --%% begin package_info %%--
 --%% end package_info %%--

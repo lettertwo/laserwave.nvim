@@ -1,4 +1,4 @@
--- GENERATED ON 2025-08-17 AT 18:07:55
+-- GENERATED ON 2025-10-25 AT 01:15:04
 -- name:     laserwave-hi_c
 -- author:   Eric Eldredge <lettertwo@gmail.com>
 -- license:  MIT
@@ -401,6 +401,13 @@ ObsidianTag = {fg = "#3FEBBF", italic = true},
 ObsidianTilde = {fg = "#FF3D7A"},
 ObsidianTodo = {fg = "#1CD4ED"},
 --%% end obsidian %%--
+}) end
+if cfg.plugins.occurrence then apply_colors({
+--%% begin occurrence %%--
+OccurrenceCurrent = {reverse = true, underline = true},
+OccurrenceMark = {underline = true},
+OccurrenceMatch = {link = "Visual"},
+--%% end occurrence %%--
 }) end
 if cfg.plugins.package_info then apply_colors({
 --%% begin package_info %%--
