@@ -1,0 +1,8 @@
+laserwave-configuration	laserwave.txt	/*laserwave-configuration*
+laserwave-extras	laserwave.txt	/*laserwave-extras*
+laserwave-installation	laserwave.txt	/*laserwave-installation*
+laserwave-laserwave.nvim	laserwave.txt	/*laserwave-laserwave.nvim*
+laserwave-table-of-contents	laserwave.txt	/*laserwave-table-of-contents*
+laserwave-usage	laserwave.txt	/*laserwave-usage*
+laserwave-usage-lualine	laserwave.txt	/*laserwave-usage-lualine*
+laserwave.txt	laserwave.txt	/*laserwave.txt*
