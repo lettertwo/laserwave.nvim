@@ -1,0 +1,49 @@
+name: "Check Documentation"
+description: "Generate vimdoc and check if there are meaningful changes"
+outputs:
+  has_changes:
+    description: "Whether there are meaningful documentation changes"
+    value: ${{ steps.check_docs.outputs.has_changes }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Generate vimdoc with panvimdoc
+      uses: kdheepak/panvimdoc@main
+      with:
+        vimdoc: laserwave.nvim
+        pandoc: "README.md"
+        version: "NVIM >= v0.10.0"
+        toc: true
+        description: ""
+        titledatepattern: "%Y %B %d"
+        demojify: false
+        dedupsubheadings: true
+        treesitter: true
+        ignorerawblocks: true
+        docmapping: false
+        docmappingprojectname: true
+        shiftheadinglevelby: 0
+        incrementheadinglevelby: 0
+
+    - name: Check if docs have meaningful changes
+      id: check_docs
+      shell: bash
+      run: |
+        # Check if there are any changes
+        if git diff --quiet doc/; then
+          echo "has_changes=false" >> $GITHUB_OUTPUT
+          echo "No documentation changes"
+        else
+          # Check if only the timestamp line changed
+          # The timestamp is in the format: "Last change: YYYY Month DD"
+          if git diff doc/ | grep -E '^\+.*Last change:' > /dev/null && \
+             git diff doc/ | grep -E '^-.*Last change:' > /dev/null && \
+             [ $(git diff doc/ | grep -E '^[\+\-]' | grep -v -E '[\+\-].*Last change:' | wc -l) -eq 0 ]; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "Only timestamp changed, ignoring"
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "Documentation has meaningful changes"
+          fi
+        fi

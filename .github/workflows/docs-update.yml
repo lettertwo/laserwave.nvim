@@ -1,0 +1,78 @@
+name: Auto-update Documentation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "README.md"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-docs:
+    name: Create PR for docs updates
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Check documentation
+        id: check_docs
+        uses: ./.github/actions/docs-check
+
+      - name: Create or Update Pull Request
+        if: steps.check_docs.outputs.has_changes == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Configure git
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+          # Use a consistent branch name
+          BRANCH="docs/auto-update"
+
+          # Commit changes
+          git add doc/
+          git commit -m "docs: update vimdoc from README.md"
+
+          # Check if branch exists remotely
+          if git ls-remote --heads origin "$BRANCH" | grep -q "$BRANCH"; then
+            # Branch exists - fetch and force push to update it
+            git fetch origin "$BRANCH"
+            git checkout -b "$BRANCH"
+            git push --force origin "$BRANCH"
+            echo "Updated existing branch $BRANCH"
+          else
+            # Branch doesn't exist - create and push it
+            git checkout -b "$BRANCH"
+            git push origin "$BRANCH"
+            echo "Created new branch $BRANCH"
+          fi
+
+          # Check if PR already exists
+          EXISTING_PR=$(gh pr list --head "$BRANCH" --base main --json number --jq '.[0].number')
+
+          if [ -n "$EXISTING_PR" ]; then
+            echo "PR #$EXISTING_PR already exists and has been updated with the latest changes"
+          else
+            # Create new PR
+            gh pr create \
+              --title "docs: update vimdoc from README.md" \
+              --body "This PR was automatically generated because the vimdoc is out of sync with README.md.
+
+          ## Changes
+          The vimdoc has been regenerated from README.md using panvimdoc.
+
+          ## How to review
+          - Check that the changes in \`doc/laserwave.nvim.txt\` accurately reflect the README.md content
+          - Verify no unintended formatting changes were introduced
+
+          🤖 This PR was created automatically by the docs-update workflow." \
+              --label documentation \
+              --base main \
+              --head "$BRANCH"
+            echo "Created new PR for branch $BRANCH"
+          fi

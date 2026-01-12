@@ -1,0 +1,109 @@
+#!/bin/sh
+#
+# Git commit-msg hook to validate Conventional Commits format
+#
+# This hook validates that commit messages follow the Conventional Commits
+# specification: https://www.conventionalcommits.org/
+#
+# This hook also chains to global hooks if they exist, allowing both
+# repo-specific and global validations to run.
+#
+# To install this hook, run: make install-hooks
+#
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+# Get the commit message (first argument is the file containing the message)
+COMMIT_MSG_FILE=$1
+COMMIT_MSG=$(cat "$COMMIT_MSG_FILE")
+
+# Get just the first line (subject)
+COMMIT_SUBJECT=$(echo "$COMMIT_MSG" | head -n 1)
+
+# Skip merge commits
+if echo "$COMMIT_SUBJECT" | grep -qE '^Merge (branch|remote-tracking branch|pull request)'; then
+  exit 0
+fi
+
+# Skip revert commits (they have a special format)
+if echo "$COMMIT_SUBJECT" | grep -qE '^Revert '; then
+  exit 0
+fi
+
+# Skip fixup/squash/amend commits (temporary commits for interactive rebase)
+if echo "$COMMIT_SUBJECT" | grep -qE '^(fixup|squash|amend)! '; then
+  exit 0
+fi
+
+# Conventional Commits pattern
+# Matches: type(scope): subject or type: subject
+# Optional ! for breaking changes
+PATTERN='^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\(.+\))?!?: .{1,72}$'
+
+# Validate the commit message
+if ! echo "$COMMIT_SUBJECT" | grep -qE "$PATTERN"; then
+  echo ""
+  echo "${RED}✗ Invalid commit message format${NC}"
+  echo ""
+  echo "Your commit message:"
+  echo "  ${YELLOW}${COMMIT_SUBJECT}${NC}"
+  echo ""
+  echo "Expected format:"
+  echo "  ${GREEN}<type>(<scope>): <subject>${NC}"
+  echo ""
+  echo "Valid types:"
+  echo "  ${GREEN}feat${NC}     - A new feature"
+  echo "  ${GREEN}fix${NC}      - A bug fix"
+  echo "  ${GREEN}docs${NC}     - Documentation changes"
+  echo "  ${GREEN}style${NC}    - Code style changes (formatting, etc)"
+  echo "  ${GREEN}refactor${NC} - Code refactoring"
+  echo "  ${GREEN}perf${NC}     - Performance improvements"
+  echo "  ${GREEN}test${NC}     - Adding or updating tests"
+  echo "  ${GREEN}build${NC}    - Build system changes"
+  echo "  ${GREEN}ci${NC}       - CI configuration changes"
+  echo "  ${GREEN}chore${NC}    - Other changes"
+  echo "  ${GREEN}revert${NC}   - Revert a previous commit"
+  echo ""
+  echo "Examples:"
+  echo "  ${GREEN}feat: add new operator${NC}"
+  echo "  ${GREEN}fix(api): prevent buffer errors${NC}"
+  echo "  ${GREEN}docs: update README${NC}"
+  echo "  ${GREEN}refactor(keymap)!: breaking API change${NC}"
+  echo ""
+  echo "Common issues:"
+  echo "  - Subject must not be capitalized (use 'add' not 'Add')"
+  echo "  - Must have space after colon (use ': ' not ':')"
+  echo "  - Subject must be 1-72 characters"
+  echo "  - Type must be lowercase"
+  echo ""
+  echo "See CONTRIBUTING.md for more details."
+  echo ""
+  echo "To use the commit template helper:"
+  echo "  ${YELLOW}git config commit.template .gitmessage${NC}"
+  echo ""
+  exit 1
+fi
+
+echo "${GREEN}✓${NC} Commit message follows Conventional Commits format"
+
+# Chain to global hook if it exists
+# This allows both repo-specific and global hooks to run
+GLOBAL_HOOKS_PATH=$(git config --global --get core.hooksPath || echo "")
+
+if [ -n "$GLOBAL_HOOKS_PATH" ]; then
+  # Expand ~ to home directory
+  GLOBAL_HOOKS_PATH="${GLOBAL_HOOKS_PATH/#\~/$HOME}"
+  GLOBAL_HOOK="$GLOBAL_HOOKS_PATH/commit-msg"
+
+  if [ -x "$GLOBAL_HOOK" ]; then
+    # Run the global hook with the same arguments
+    "$GLOBAL_HOOK" "$@"
+    exit $?
+  fi
+fi
+
+exit 0

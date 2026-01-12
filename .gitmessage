@@ -1,0 +1,47 @@
+# <type>(<scope>): <subject>
+#
+# <body>
+#
+# <footer>
+
+# --- COMMIT TYPES ---
+# feat:     A new feature
+# fix:      A bug fix
+# docs:     Documentation only changes
+# style:    Code style changes (formatting, missing semi colons, etc)
+# refactor: Code change that neither fixes a bug nor adds a feature
+# perf:     Performance improvements
+# test:     Adding or updating tests
+# build:    Changes to build system or dependencies
+# ci:       Changes to CI configuration files and scripts
+# chore:    Other changes that don't modify src or test files
+# revert:   Reverts a previous commit
+
+# --- COMMON SCOPES ---
+# api       - API changes
+# config    - Configuration changes
+# operators - Operator-related changes
+# actions   - Action-related changes
+# keymap    - Keymap changes
+# extmarks  - Extmark/highlighting changes
+# tests     - Test-related changes
+# docs      - Documentation changes
+
+# --- EXAMPLES ---
+# feat(operators): add support for 'p' (put) operator
+# fix(api): prevent extmark errors on buffer delete
+# docs: add custom operator configuration examples
+# refactor(keymap)!: simplify configuration API
+#
+# BREAKING CHANGE: Remove 'actions' and 'preset_actions' config options.
+
+# --- GUIDELINES ---
+# * Use imperative, present tense: "change" not "changed" nor "changes"
+# * Don't capitalize first letter of subject
+# * No period (.) at the end of subject
+# * Limit subject line to 72 characters
+# * Separate subject from body with a blank line
+# * Use body to explain what and why vs. how
+# * Use footer to reference issues: Fixes #123, Closes #456
+# * Use ! after type/scope or BREAKING CHANGE: for breaking changes
+

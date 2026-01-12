@@ -5,6 +5,10 @@ for k, _ in pairs(package.loaded) do
   end
 end
 
+if not vim.list_contains(vim.opt.rtp:get(), "vendor/shipwright.nvim") then
+  vim.opt.rtp:append("vendor/shipwright.nvim")
+end
+
 local shipwright = require("shipwright")
 local overwrite = require("shipwright.transform.overwrite")
 local patchwrite = require("shipwright.transform.patchwrite")

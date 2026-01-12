@@ -1,3 +1,7 @@
+if not vim.list_contains(vim.opt.rtp:get(), "vendor/lush.nvim") then
+  vim.opt.rtp:append("vendor/lush.nvim")
+end
+
 ---@class LaserwaveDev: Laserwave
 local M = {}
 

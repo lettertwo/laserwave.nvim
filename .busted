@@ -1,0 +1,9 @@
+return {
+  default = {
+    coverage = false,
+    verbose = true,
+    recursive = true,
+    ROOT = { "lua/" },
+    lpath = "lua/?.lua;lua/?/init.lua",
+  },
+}

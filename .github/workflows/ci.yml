@@ -1,0 +1,232 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: write
+  statuses: write
+
+jobs:
+  # Validate conventional commits for PRs
+  conventional-commits:
+    name: Validate Conventional Commits
+    if: github.event_name == 'pull_request' && github.actor != 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Validate PR Title
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          PATTERN='^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\(.+\))?!?: .{1,72}$'
+
+          echo "Validating PR title: $PR_TITLE"
+
+          if echo "$PR_TITLE" | grep -qE "$PATTERN"; then
+            echo "✓ PR title follows Conventional Commits format"
+          else
+            echo "✗ PR title does not follow Conventional Commits format"
+            echo ""
+            echo "Expected format: <type>(<scope>): <subject>"
+            echo ""
+            echo "Examples:"
+            echo "  feat: add new feature"
+            echo "  fix(api): resolve bug in API"
+            echo "  docs: update README"
+            echo ""
+            echo "Valid types: feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert"
+            exit 1
+          fi
+
+      - name: Validate All Commits in PR
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          PATTERN='^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\(.+\))?!?: .+'
+
+          echo "Validating commits in range: $BASE_SHA..$HEAD_SHA"
+          echo ""
+
+          INVALID_COMMITS=()
+
+          while IFS= read -r commit_sha; do
+            commit_msg=$(git log -1 --format=%s "$commit_sha")
+
+            if echo "$commit_msg" | grep -qE "$PATTERN"; then
+              echo "✓ $commit_sha: $commit_msg"
+            else
+              echo "✗ $commit_sha: $commit_msg"
+              INVALID_COMMITS+=("$commit_sha: $commit_msg")
+            fi
+          done < <(git rev-list "$BASE_SHA..$HEAD_SHA")
+
+          echo ""
+
+          if [ ${#INVALID_COMMITS[@]} -gt 0 ]; then
+            echo "❌ Found ${#INVALID_COMMITS[@]} commit(s) that don't follow Conventional Commits:"
+            echo ""
+            for commit in "${INVALID_COMMITS[@]}"; do
+              echo "  - $commit"
+            done
+            echo ""
+            echo "Please update commit messages to follow the Conventional Commits format:"
+            echo "  <type>(<scope>): <subject>"
+            echo ""
+            echo "Valid types: feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert"
+            echo ""
+            echo "Examples:"
+            echo "  feat: add new feature"
+            echo "  fix(api): resolve bug in API"
+            echo "  docs: update README"
+            echo "  refactor(keymap)!: breaking change to keymap"
+            echo ""
+            echo "See CONTRIBUTING.md for more details."
+            exit 1
+          else
+            echo "✅ All commits follow Conventional Commits format!"
+          fi
+
+      - name: Add Comment on Failure
+        if: failure()
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const message = `## ❌ Conventional Commits Validation Failed
+
+            Your PR title or commit messages don't follow the [Conventional Commits](https://www.conventionalcommits.org/) specification.
+
+            ### Required Format
+            \`\`\`
+            <type>(<scope>): <subject>
+            \`\`\`
+
+            ### Valid Types
+            - **feat**: A new feature
+            - **fix**: A bug fix
+            - **docs**: Documentation changes
+            - **style**: Code style changes (formatting, etc)
+            - **refactor**: Code refactoring
+            - **perf**: Performance improvements
+            - **test**: Adding or updating tests
+            - **build**: Build system changes
+            - **ci**: CI configuration changes
+            - **chore**: Other changes
+            - **revert**: Revert a previous commit
+
+            ### Examples
+            \`\`\`
+            feat: add new operator
+            fix(api): prevent buffer errors
+            docs: update configuration examples
+            refactor(keymap)!: simplify API (breaking change)
+            \`\`\`
+
+            ### Using the Commit Template
+            To help write valid commits, configure the git commit template:
+            \`\`\`bash
+            git config commit.template .gitmessage
+            \`\`\`
+
+            See [CONTRIBUTING.md](../blob/main/CONTRIBUTING.md) for more details.
+            `;
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: message
+            });
+
+  # Run tests on multiple Neovim versions
+  test:
+    name: Test (Neovim ${{ matrix.nvim-version }})
+    strategy:
+      matrix:
+        nvim-version: [stable, nightly]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v6
+
+      - name: Setup Neovim
+        uses: rhysd/action-setup-vim@v1
+        with:
+          neovim: true
+          version: ${{ matrix.nvim-version }}
+
+      - name: Setup Lua
+        uses: leafo/gh-actions-lua@v12
+        with:
+          luaVersion: "5.1"
+
+      - name: Setup LuaRocks
+        uses: leafo/gh-actions-luarocks@v6
+
+      - name: Install dependencies
+        run: |
+          luarocks --local install busted
+          luarocks --local install nlua
+
+      - name: Run tests
+        run: |
+          eval $(luarocks --local path)
+          busted --lua nlua --exclude-pattern=perf_ tests/
+
+      - name: Run performance tests
+        run: |
+          eval $(luarocks --local path)
+          busted --lua nlua tests/perf_spec.lua
+
+  # Type checking
+  typecheck:
+    name: Type Check (Neovim ${{ matrix.nvim-version }})
+    strategy:
+      matrix:
+        nvim-version: [stable, nightly]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v6
+
+      - name: Run type checking
+        uses: stevearc/nvim-typecheck-action@v2
+        with:
+          path: lua
+          level: warning
+          nvim-version: ${{ matrix.nvim-version }}
+
+  # Documentation validation and generation
+  docs:
+    name: Documentation
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Check documentation
+        id: check_docs
+        uses: ./.github/actions/docs-check
+
+      - name: Check if docs are up-to-date (PR only)
+        if: github.event_name == 'pull_request' && steps.check_docs.outputs.has_changes == 'true'
+        run: |
+          echo "✗ Documentation is out of sync with README.md"
+          echo ""
+          echo "Please run 'make doc' locally and commit the changes:"
+          echo "  make doc"
+          echo "  git add doc/"
+          echo "  git commit -m 'docs: update vimdoc'"
+          echo ""
+          git diff doc/
+          exit 1

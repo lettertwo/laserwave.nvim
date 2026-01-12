@@ -1,0 +1,64 @@
+#!/bin/sh
+#
+# Git pre-push hook to prevent pushing fixup/squash/amend commits
+#
+# This hook prevents accidentally pushing temporary commits that should be
+# autosquashed before sharing. These commits pollute history and break
+# conventional commits enforcement.
+#
+# To bypass this check (e.g., for WIP branches): git push --no-verify
+#
+
+# Colors for output
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
+
+# Read from stdin: <local ref> <local sha> <remote ref> <remote sha>
+while read local_ref local_sha remote_ref remote_sha
+do
+  # Skip if deleting a branch
+  if [ "$local_sha" = "0000000000000000000000000000000000000000" ]; then
+    continue
+  fi
+
+  # Get the remote branch name
+  remote_branch=$(echo "$remote_ref" | sed 's|refs/heads/||')
+
+  # If remote_sha is all zeros, we're pushing a new branch
+  if [ "$remote_sha" = "0000000000000000000000000000000000000000" ]; then
+    # For new branches, check all commits
+    range="$local_sha"
+  else
+    # For existing branches, check commits between remote and local
+    range="$remote_sha..$local_sha"
+  fi
+
+  # Check for fixup/squash/amend commits in the range
+  fixup_commits=$(git log --format=%s "$range" | grep -E '^(fixup|squash|amend)! ')
+
+  if [ -n "$fixup_commits" ]; then
+    echo ""
+    echo "${RED}✗ Cannot push fixup/squash/amend commits${NC}"
+    echo ""
+    echo "The following temporary commits were found:"
+    echo ""
+    echo "$fixup_commits" | while read commit_msg; do
+      echo "  ${YELLOW}$commit_msg${NC}"
+    done
+    echo ""
+    echo "These commits should be autosquashed before pushing:"
+    echo "  ${GREEN}git rebase -i --autosquash origin/$remote_branch${NC}"
+    echo ""
+    echo "Or, if pushing to main:"
+    echo "  ${GREEN}git rebase -i --autosquash main${NC}"
+    echo ""
+    echo "To push anyway (for WIP branches), use:"
+    echo "  ${YELLOW}git push --no-verify${NC}"
+    echo ""
+    exit 1
+  fi
+done
+
+exit 0
