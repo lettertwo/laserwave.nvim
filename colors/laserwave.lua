@@ -1,4 +1,4 @@
--- GENERATED ON 2025-10-25 AT 01:15:04
+-- GENERATED ON 2026-01-12 AT 18:48:41
 -- name:     laserwave
 -- author:   Eric Eldredge <lettertwo@gmail.com>
 -- license:  MIT
@@ -39,9 +39,6 @@ vim.o.termguicolors = true
 vim.g.colors_name = "laserwave"
 require("laserwave").set_flavor("original")
 local cfg = require("laserwave").get_config()
-if cfg.dev then
-require("laserwave.dev").setup(cfg)
-else
 apply_colors({
 --%% begin spec %%--
 Normal = {fg = "#FFFFFF", bg = "#27212E"},
@@ -180,6 +177,8 @@ apply_colors({
   Comment = { italic = cfg.options.italic_comments },
   Function = { italic = cfg.options.italic_functions },
   Statement = { italic = cfg.options.italic_keywords },
+  Keyword = { italic = cfg.options.italic_keywords },
+  Include = { italic = cfg.options.italic_keywords },
   Identifier = { italic = cfg.options.italic_variables },
 }, true)
 if cfg.treesitter then apply_colors({
@@ -477,4 +476,3 @@ TelescopePromptPrefix = {fg = "#EB65B9", bg = "#251F2C"},
 TelescopeSelection = {link = "Visual"},
 --%% end telescope %%--
 }) end
-end
