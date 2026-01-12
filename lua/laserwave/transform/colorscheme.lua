@@ -50,12 +50,6 @@ vim.g.colors_name = "$name"
 require("laserwave").set_flavor("$flavor")
 local cfg = require("laserwave").get_config()
 
-if cfg.dev then
-
-require("laserwave.dev").setup(cfg)
-
-else
-
 apply_colors({
 --%% begin spec %%--
 --%% end spec %%--
@@ -69,6 +63,8 @@ apply_colors({
   Comment = { italic = cfg.options.italic_comments },
   Function = { italic = cfg.options.italic_functions },
   Statement = { italic = cfg.options.italic_keywords },
+  Keyword = { italic = cfg.options.italic_keywords },
+  Include = { italic = cfg.options.italic_keywords },
   Identifier = { italic = cfg.options.italic_variables },
 }, true)
 
