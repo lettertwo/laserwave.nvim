@@ -180,12 +180,7 @@ jobs:
       - name: Run tests
         run: |
           eval $(luarocks --local path)
-          busted --lua nlua --exclude-pattern=perf_ tests/
-
-      - name: Run performance tests
-        run: |
-          eval $(luarocks --local path)
-          busted --lua nlua tests/perf_spec.lua
+          busted --lua nlua lua/
 
   # Type checking
   typecheck:

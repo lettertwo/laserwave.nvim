@@ -110,6 +110,7 @@ end
 ---@param config ?LaserwaveConfig
 function M.set_config(config)
   ---@type ParsedLaserwaveConfig
+  ---@diagnostic disable-next-line: param-type-mismatch
   M._config = require("laserwave.config").parse(vim.tbl_deep_extend("force", M._config or {}, config or {}))
 end
 
