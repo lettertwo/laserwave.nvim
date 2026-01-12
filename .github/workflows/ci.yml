@@ -180,12 +180,7 @@ jobs:
       - name: Run tests
         run: |
           eval $(luarocks --local path)
-          busted --lua nlua --exclude-pattern=perf_ tests/
-
-      - name: Run performance tests
-        run: |
-          eval $(luarocks --local path)
-          busted --lua nlua tests/perf_spec.lua
+          busted --lua nlua lua/
 
   # Type checking
   typecheck:
@@ -202,6 +197,8 @@ jobs:
         uses: stevearc/nvim-typecheck-action@v2
         with:
           path: lua
+          libraries: |
+            ${{ github.workspace }}/stubs
           level: warning
           nvim-version: ${{ matrix.nvim-version }}
 
