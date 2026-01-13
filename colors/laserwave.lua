@@ -1,4 +1,4 @@
--- GENERATED ON 2026-01-13 AT 00:21:42
+-- GENERATED ON 2026-01-13 AT 01:10:52
 -- name:     laserwave
 -- author:   Eric Eldredge <lettertwo@gmail.com>
 -- license:  MIT
@@ -73,6 +73,7 @@ DiffAdd = {fg = "#40B4C4", bg = "#322B43"},
 DiffChange = {fg = "#40B4C4", bg = "#322B43"},
 DiffDelete = {fg = "#EB64B9", bg = "#35293D"},
 DiffText = {fg = "#74DFC4", bg = "#332F48"},
+DiffTextAdd = {fg = "#40B4C4", bg = "#322B43"},
 Directory = {fg = "#40B4C4"},
 Error = {fg = "#FF3E7B"},
 ErrorMsg = {fg = "#FF3E7B"},
@@ -108,6 +109,7 @@ Pmenu = {link = "NormalFloat"},
 PmenuSbar = {link = "NormalFloat"},
 NormalMode = {bg = "#3A3C6C"},
 Number = {fg = "#B381C5"},
+OkMsg = {fg = "#74DFC4"},
 Operator = {fg = "#74DFC4"},
 PmenuThumb = {bg = "#7B6995"},
 PreCondit = {fg = "#40B4C4"},
@@ -153,7 +155,6 @@ Title = {fg = "#40B4C4", bold = true},
 Todo = {fg = "#FFE261"},
 Type = {fg = "#B381C5"},
 Underlined = {underline = true},
-VertSplit = {fg = "#EB64B9"},
 VirtualText = {fg = "#7B6995", bg = "#312A39"},
 Visual = {bg = "#3F334A"},
 PmenuSel = {link = "Visual"},
