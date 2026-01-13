@@ -1,4 +1,4 @@
-## GENERATED ON 2025-02-18 AT 18:29:31
+## GENERATED ON 2026-01-13 AT 00:21:42
 [delta "laserwave-hi_c"]
     # author: Eric Eldredge <lettertwo@gmail.com>
     # license: MIT
@@ -27,33 +27,33 @@
     # blame
     blame-code-style = syntax
     blame-format = "{author:<18} {commit:<6} {timestamp:<15}"
-    blame-palette = "#31253A #3A2A44"
+    blame-palette = "#30253A #382A45"
     blame-separator-format = "{n:^4}│"
-    blame-separator-style = "#FF55C0"
+    blame-separator-style = "#FF52BF"
     # commit
-    commit-decoration-style = "#FF55C0" box
-    commit-style = "#FF55C0" bold italic
+    commit-decoration-style = "#FF52BF" box
+    commit-style = "#FF52BF" bold italic
     # hunk header
     file-style = omit
     hunk-header-style = file line-number syntax dim italic
-    hunk-header-decoration-style = "#B5A9C8" ul
-    hunk-header-file-style = "#D686F4" box bold
-    hunk-header-line-number-style = "#FFE25F" box bold
+    hunk-header-decoration-style = "#B4A8C8" ul
+    hunk-header-file-style = "#D887F5" box bold
+    hunk-header-line-number-style = "#FFE261" box bold
     # hunks
-    plus-style = "#1CD4ED"
-    plus-emph-style = "#222530" "#1CD4ED"
-    minus-style = "#FF55C0"
-    minus-emph-style = "#2B202D" "#FF55C0"
+    plus-style = "#1ED3EC"
+    plus-emph-style = "#282236" "#1ED3EC"
+    minus-style = "#FF52BF"
+    minus-emph-style = "#271E2E" "#FF52BF"
     zero-style = syntax dim
-    whitespace-error-style = reverse "#FF3D7A"
+    whitespace-error-style = reverse "#FF3E7B"
     # line numbers
-    line-numbers-minus-style = "#FF55C0"
-    line-numbers-plus-style = "#1CD4ED"
-    line-numbers-left-style = "#B5A9C8"
-    line-numbers-right-style = "#B5A9C8"
-    line-numbers-zero-style = "#B5A9C8" dim
+    line-numbers-minus-style = "#FF52BF"
+    line-numbers-plus-style = "#1ED3EC"
+    line-numbers-left-style = "#B4A8C8"
+    line-numbers-right-style = "#B4A8C8"
+    line-numbers-zero-style = "#B4A8C8" dim
     # merge conflicts
-    merge-conflict-ours-diff-header-style = "#FFE25F" bold
-    merge-conflict-ours-diff-header-decoration-style = "#FF3D7A" box
-    merge-conflict-theirs-diff-header-style = "#FFE25F" bold
-    merge-conflict-theirs-diff-header-decoration-style = "#FF3D7A" box
+    merge-conflict-ours-diff-header-style = "#FFE261" bold
+    merge-conflict-ours-diff-header-decoration-style = "#FF3E7B" box
+    merge-conflict-theirs-diff-header-style = "#FFE261" bold
+    merge-conflict-theirs-diff-header-decoration-style = "#FF3E7B" box

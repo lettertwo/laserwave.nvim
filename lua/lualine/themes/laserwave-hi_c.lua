@@ -1,4 +1,4 @@
--- GENERATED ON 2025-02-18 AT 18:47:57
+-- GENERATED ON 2026-01-13 AT 00:21:42
 -- name:     laserwave-hi_c
 -- author:   Eric Eldredge <lettertwo@gmail.com>
 -- license:  MIT
@@ -6,41 +6,41 @@
 -- blurb:    Based on LaserWave for VSCode by Jared Jones
 local laserwave = {}
 laserwave.normal = {
-  a = { bg = "#1CD4ED", fg = "#18141D" },
-  b = { bg = "#2B2533", fg = "#1CD4ED" },
-  c = { bg = "#18141D", fg = "#FFFFFF" },
+  a = { bg = "#1ED3EC", fg = "#17131C" },
+  b = { bg = "#2C2633", fg = "#1ED3EC" },
+  c = { bg = "#17131C", fg = "#FFFFFF" },
 }
 laserwave.insert = {
-  a = { bg = "#3FEBBF", fg = "#18141D" },
-  b = { bg = "#2B2533", fg = "#3FEBBF" },
+  a = { bg = "#3FEABF", fg = "#17131C" },
+  b = { bg = "#2C2633", fg = "#3FEABF" },
 }
 laserwave.command = {
-  a = { bg = "#FFE25F", fg = "#18141D" },
-  b = { bg = "#2B2533", fg = "#FFE25F" },
+  a = { bg = "#FFE261", fg = "#17131C" },
+  b = { bg = "#2C2633", fg = "#FFE261" },
 }
 laserwave.visual = {
-  a = { bg = "#D686F4", fg = "#18141D" },
-  b = { bg = "#2B2533", fg = "#D686F4" },
+  a = { bg = "#D887F5", fg = "#17131C" },
+  b = { bg = "#2C2633", fg = "#D887F5" },
 }
 laserwave.replace = {
-  a = { bg = "#FF55C0", fg = "#18141D" },
-  b = { bg = "#2B2533", fg = "#FF55C0" },
+  a = { bg = "#FF52BF", fg = "#17131C" },
+  b = { bg = "#2C2633", fg = "#FF52BF" },
 }
 laserwave.select = {
-  a = { bg = "#D686F4", fg = "#18141D" },
-  b = { bg = "#2B2533", fg = "#D686F4" },
+  a = { bg = "#D887F5", fg = "#17131C" },
+  b = { bg = "#2C2633", fg = "#D887F5" },
 }
 laserwave.terminal = {
-  a = { bg = "#FFE25F", fg = "#18141D" },
-  b = { bg = "#2B2533", fg = "#FFE25F" },
+  a = { bg = "#FFE261", fg = "#17131C" },
+  b = { bg = "#2C2633", fg = "#FFE261" },
 }
 laserwave.terminal_normal = {
-  a = { bg = "#FFE25F", fg = "#18141D" },
-  b = { bg = "#2B2533", fg = "#FFE25F" },
+  a = { bg = "#FFE261", fg = "#17131C" },
+  b = { bg = "#2C2633", fg = "#FFE261" },
 }
 laserwave.inactive = {
-  a = { bg = "#18141D", fg = "#B5A9C8" },
-  b = { bg = "#18141D", fg = "#B5A9C8", gui = "bold" },
-  c = { bg = "#18141D", fg = "#B5A9C8" },
+  a = { bg = "#17131C", fg = "#B4A8C8" },
+  b = { bg = "#17131C", fg = "#B4A8C8", gui = "bold" },
+  c = { bg = "#17131C", fg = "#B4A8C8" },
 }
 return laserwave

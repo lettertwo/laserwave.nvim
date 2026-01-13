@@ -1,4 +1,4 @@
-# GENERATED ON 2025-07-11 AT 18:47:28
+# GENERATED ON 2026-01-13 AT 00:21:42
 # name:     laserwave-hi_c
 # author:   Eric Eldredge <lettertwo@gmail.com>
 # license:  MIT
@@ -7,28 +7,28 @@
 colors:
   primary:
     foreground: '#FFFFFF'
-    background: '#1A161F'
+    background: '#19151E'
   cursor:
     cursor: 'CellForeground'
     text:   'CellBackground'
   selection:
     text: 'CellForeground'
-    background: '#3A2A44'
+    background: '#382A45'
   normal:
-    black:   '#B3AABD'
-    red:     '#FF55C0'
-    green:   '#1CD4ED'
-    yellow:  '#FFE25F'
-    blue:    '#1CD4ED'
-    magenta: '#D686F4'
-    cyan:    '#ADDFEF'
+    black:   '#B4ABBE'
+    red:     '#FF52BF'
+    green:   '#1ED3EC'
+    yellow:  '#FFE261'
+    blue:    '#1ED3EC'
+    magenta: '#D887F5'
+    cyan:    '#ACDFEF'
     white:   '#FFFFFF'
   bright:
-    black:   '#D686F4'
-    red:     '#FF3D7A'
-    green:   '#3FEBBF'
-    yellow:  '#FFB961'
-    blue:    '#1CD4ED'
-    magenta: '#FF55C0'
-    cyan:    '#ADDFEF'
+    black:   '#D887F5'
+    red:     '#FF3E7B'
+    green:   '#3FEABF'
+    yellow:  '#FFB85B'
+    blue:    '#1ED3EC'
+    magenta: '#FF52BF'
+    cyan:    '#ACDFEF'
     white:   '#FFFFFF'

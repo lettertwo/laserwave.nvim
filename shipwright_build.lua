@@ -1,23 +1,15 @@
 -- clear module cache
 for k, _ in pairs(package.loaded) do
-  if k:match("^laserwave") or k:match("^lush") or k:match("^shipwright") then
+  if k:match("^laserwave") then
     package.loaded[k] = nil
   end
 end
-
-if not vim.list_contains(vim.opt.rtp:get(), "vendor/shipwright.nvim") then
-  vim.opt.rtp:append("vendor/shipwright.nvim")
-end
-
-local shipwright = require("shipwright")
-local overwrite = require("shipwright.transform.overwrite")
-local patchwrite = require("shipwright.transform.patchwrite")
-local lushwright = require("shipwright.transform.lush")
 
 ---@type Laserwave
 local laserwave = require("laserwave")
 
 local compiler = require("laserwave.compiler")
+local transformer = require("laserwave.transformer")
 
 local lualine = require("laserwave.transform.lualine")
 local kitty = require("laserwave.transform.kitty")
@@ -30,40 +22,7 @@ local yazi = require("laserwave.transform.yazi")
 
 laserwave.setup()
 
----@param spec_name string
----@param spec ParsedLushSpec
----@param filepath string
-local function inject_colors(spec_name, spec, filepath)
-  local start = "--%% begin " .. spec_name .. " %%--"
-  local stop = "--%% end " .. spec_name .. " %%--"
-
-  local build_ok, err = pcall(shipwright.run, spec, lushwright.to_lua, { patchwrite, filepath, start, stop })
-
-  if not build_ok then
-    vim.notify(
-      "Failed to inject " .. spec_name .. " into " .. filepath .. " between " .. start .. " and " .. stop .. "\n" .. err,
-      vim.log.levels.ERROR,
-      { title = "Laserwave" }
-    )
-  end
-
-  return build_ok
-end
-
----@param transform fun(ctx: ParsedLushSpec, filepath: string): boolean
----@param spec ParsedLushSpec
----@param filepath string
-local function run_transform(transform, spec, filepath)
-  ---@diagnostic disable-next-line: assign-type-mismatch
-  spec.upstream = "https://github.com/lettertwo/laserwave.nvim/" .. filepath
-  local ok, err = pcall(shipwright.run, spec, transform, { overwrite, filepath })
-  if not ok then
-    vim.notify("Failed to build " .. filepath .. "\n" .. err, vim.log.levels.ERROR, { title = "Laserwave" })
-  end
-  return ok
-end
-
----@param flavor ?LASERWAVE_FLAVOR_NAME
+---@param flavor LASERWAVE_FLAVOR_NAME
 local function build_flavor(flavor)
   ---@type CompiledLaserwaveSpecs
   local specs = compiler.compile(laserwave._config, flavor)
@@ -71,22 +30,22 @@ local function build_flavor(flavor)
   local colorspath = "colors/" .. specs.colorscheme .. ".lua"
 
   local flavor_result = {
-    lualine = run_transform(lualine, ctx, "lua/lualine/themes/" .. specs.colorscheme .. ".lua"),
-    kitty = run_transform(kitty, ctx, "dist/kitty/" .. specs.colorscheme .. ".conf"),
-    alacritty = run_transform(alacritty, ctx, "dist/alacritty/" .. specs.colorscheme .. ".yml"),
-    wezterm = run_transform(wezterm, ctx, "dist/wezterm/" .. specs.colorscheme .. ".toml"),
-    spec = run_transform(colorscheme, ctx, colorspath) and inject_colors("spec", specs.spec, colorspath),
-    textmate = run_transform(textmate, ctx, "dist/" .. specs.colorscheme .. ".tmTheme"),
-    delta = run_transform(delta, ctx, "dist/delta/" .. specs.colorscheme .. ".gitconfig"),
+    lualine = transformer.run(lualine, ctx, "lua/lualine/themes/" .. specs.colorscheme .. ".lua"),
+    kitty = transformer.run(kitty, ctx, "dist/kitty/" .. specs.colorscheme .. ".conf"),
+    alacritty = transformer.run(alacritty, ctx, "dist/alacritty/" .. specs.colorscheme .. ".yml"),
+    wezterm = transformer.run(wezterm, ctx, "dist/wezterm/" .. specs.colorscheme .. ".toml"),
+    spec = transformer.run(colorscheme, ctx, colorspath) and transformer.inject_colors("spec", specs.spec, colorspath),
+    textmate = transformer.run(textmate, ctx, "dist/" .. specs.colorscheme .. ".tmTheme"),
+    delta = transformer.run(delta, ctx, "dist/delta/" .. specs.colorscheme .. ".gitconfig"),
     yazi = {
-      flavor = run_transform(yazi, ctx, "dist/yazi/" .. specs.colorscheme .. ".yazi/flavor.toml"),
-      tmtheme = run_transform(textmate, ctx, "dist/yazi/" .. specs.colorscheme .. ".yazi/tmtheme.xml"),
+      flavor = transformer.run(yazi, ctx, "dist/yazi/" .. specs.colorscheme .. ".yazi/flavor.toml"),
+      tmtheme = transformer.run(textmate, ctx, "dist/yazi/" .. specs.colorscheme .. ".yazi/tmtheme.xml"),
     },
   }
 
   if flavor_result.spec then
     for plugin_name, plugin_spec in pairs(specs.plugins) do
-      flavor_result[plugin_name] = inject_colors(plugin_name, plugin_spec, colorspath)
+      flavor_result[plugin_name] = transformer.inject_colors(plugin_name, plugin_spec, colorspath)
     end
   end
 

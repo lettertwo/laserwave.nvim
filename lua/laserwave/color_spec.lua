@@ -1,0 +1,70 @@
+local assert = require("luassert")
+local Color = require("laserwave.color")
+local hsluv = require("hsluv")
+
+describe("Color", function()
+  it("should create a color from a hex string", function()
+    local color = Color.hex("#FF5733")
+    local hsl = hsluv.hex_to_hsluv("#FF5733")
+    assert.equals("#FF5733", color.hex)
+    assert.equals(hsl[1], color.h)
+    assert.equals(hsl[2], color.s)
+    assert.equals(hsl[3], color.l)
+  end)
+
+  it("should create a color from a hex string via __call", function()
+    local color = Color("#FF5733")
+    local hsl = hsluv.hex_to_hsluv("#FF5733")
+    assert.equals("#FF5733", color.hex)
+    assert.equals(hsl[1], color.h)
+    assert.equals(hsl[2], color.s)
+    assert.equals(hsl[3], color.l)
+  end)
+
+  it("should create a color from HSLUV values", function()
+    local h, s, l = 14, 100, 60
+    local color = Color.hsluv(h, s, l)
+    local hex = hsluv.hsluv_to_hex({ h, s, l }):upper()
+    assert.equals(hex, color.hex)
+    assert.equals(h, color.h)
+    assert.equals(s, color.s)
+    assert.equals(l, color.l)
+  end)
+
+  it("should convert a color to string correctly", function()
+    local color = Color.hex("#FF5733")
+    assert.equals("#FF5733", tostring(color))
+  end)
+
+  it("should darken a color correctly", function()
+    local color = Color.hex("#FF5733")
+    local darkenedColor = color:darken(20)
+    local expectedL = color.l - (color.l * 0.2)
+    assert.equals(color.h, darkenedColor.h)
+    assert.equals(color.s, darkenedColor.s)
+    assert.equals(expectedL, darkenedColor.l)
+  end)
+
+  it("should lighten a color correctly", function()
+    local color = Color.hex("#FF5733")
+    local lightenedColor = color:lighten(20)
+    local expectedL = color.l + ((100 - color.l) * 0.2)
+    assert.equals(color.h, lightenedColor.h)
+    assert.equals(color.s, lightenedColor.s)
+    assert.equals(expectedL, lightenedColor.l)
+  end)
+
+  it("should mix two colors correctly", function()
+    local color1 = Color.hex("#FF0000")
+    local color2 = Color.hex("#0000FF")
+    local mixedColor = color1:mix(color2, 50)
+    local expectedHsl = {
+      (color1.h + color2.h) / 2,
+      (color1.s + color2.s) / 2,
+      (color1.l + color2.l) / 2,
+    }
+    assert.equals(expectedHsl[1], mixedColor.h)
+    assert.equals(expectedHsl[2], mixedColor.s)
+    assert.equals(expectedHsl[3], mixedColor.l)
+  end)
+end)

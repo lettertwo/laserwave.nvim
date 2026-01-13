@@ -1,4 +1,4 @@
-## GENERATED ON 2025-07-11 AT 18:47:28
+## GENERATED ON 2026-01-13 AT 00:21:42
 [metadata]
 aliases = []
 author = "Eric Eldredge <lettertwo@gmail.com>"
@@ -9,51 +9,51 @@ blurb = "Based on LaserWave for VSCode by Jared Jones"
 [colors]
 foreground = "#FFFFFF"
 background = "#27212E"
-cursor_bg = "#4F354C"
-cursor_border = "#4F354C"
+cursor_bg = "#4C3554"
+cursor_border = "#4C3554"
 cursor_fg = "#FFFFFF"
-selection_bg = "#3E3248"
+selection_bg = "#3F334A"
 selection_fg = "#FFFFFF"
-split = "#FF3D7A"
+split = "#FF3E7B"
 compose_cursor = "#98d3cb"
-scrollbar_thumb = "#FF3D7A"
+scrollbar_thumb = "#FF3E7B"
 ansi = [
 "#91889B",
-"#EB65B9",
-"#41B5C5",
-"#FFE25F",
-"#41B5C5",
+"#EB64B9",
+"#40B4C4",
+"#FFE261",
+"#40B4C4",
 "#B381C5",
-"#B3DBE6",
+"#B4DCE7",
 "#FFFFFF"
 ]
 brights = [
 "#B381C5",
-"#FF3D7A",
-"#75DFC4",
-"#FFB961",
-"#41B5C5",
-"#EB65B9",
-"#B3DBE6",
+"#FF3E7B",
+"#74DFC4",
+"#FFB85B",
+"#40B4C4",
+"#EB64B9",
+"#B4DCE7",
 "#FFFFFF"
 ]
 [colors.tab_bar]
-inactive_tab_edge = "#100D14"
-background = "#100D14"
+inactive_tab_edge = "#110D15"
+background = "#110D15"
 [colors.tab_bar.active_tab]
 fg_color = "#FFFFFF"
-bg_color = "#352D3E"
+bg_color = "#352D3D"
 [colors.tab_bar.inactive_tab]
-fg_color = "#7C6A96"
-bg_color = "#100D14"
+fg_color = "#7B6995"
+bg_color = "#110D15"
 italic = true
 [colors.tab_bar.inactive_tab_hover]
-fg_color = "#7C6A96"
-bg_color = "#100D14"
+fg_color = "#7B6995"
+bg_color = "#110D15"
 [colors.tab_bar.new_tab_hover]
 fg_color = "#FFFFFF"
-bg_color = "#352D3E"
+bg_color = "#352D3D"
 intensity = "Bold"
 [colors.tab_bar.new_tab]
 fg_color = "#FFFFFF"
-bg_color = "#352D3E"
+bg_color = "#352D3D"

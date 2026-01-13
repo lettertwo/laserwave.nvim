@@ -1,7 +1,7 @@
 ---@diagnostic disable: undefined-field
 local flavor = require("laserwave.spec.flavor")
 
--- stylua: ignore start
+-- stylua: ignore
 ---@class LaserwaveTerminal
 local terminal = {
     BLACK          = flavor.OLD_LAVENDER,
@@ -22,6 +22,7 @@ local terminal = {
     BRIGHT_WHITE   = flavor.WHITE,
 }
 
+-- stylua: ignore
 ---@class LaserwaveSemantics
 local semantics = {
   FG        = flavor.WHITE,
@@ -58,7 +59,6 @@ local semantics = {
   REPLACE   = flavor.HOT_PINK,
   INACTIVE  = flavor.ROMAN_SILVER,
 }
--- stylua: ignore end
 
 ---@class LaserwavePalette: LaserwaveFlavor, LaserwaveSemantics
 ---@field colors LaserwaveFlavor

@@ -6,8 +6,8 @@
   "workspace": {
     "checkThirdParty": false,
     "library": [
-      "./stubs",
       "./lua",
+      "./lua_modules/share/lua/5.1",
       "./vendor/shipwright.nvim/lua",
       "$VIMRUNTIME/lua",
       "${3rd}/luv/library",

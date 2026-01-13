@@ -46,7 +46,7 @@ function Template.validate_meta(meta)
   return meta
 end
 
----@param spec ParsedLushSpec
+---@param spec LaserwaveSpec
 ---@return LaserwaveTemplateMeta
 local function meta_defaults(spec)
   return Template.validate_meta({
@@ -284,14 +284,14 @@ function Template.stringify_colors(colors)
   return extracted
 end
 
----@param spec ParsedLushSpec
+---@param spec LaserwaveSpec
 ---@return LaserwaveTemplatePalette
 local function palette_defaults(spec)
   return Template.validate_palette(Template.stringify_colors({
     bg = spec.Normal.bg,
     fg = spec.Normal.fg,
 
-    accent = spec.Winseparator.fg,
+    accent = spec.WinSeparator.fg,
 
     cursor_fg = spec.Cursor.fg,
     cursor_bg = spec.Cursor.bg,
@@ -350,10 +350,10 @@ local function palette_defaults(spec)
     border_bell = spec.TerminalBrightRed.fg,
 
     tab_active_fg = spec.Normal.fg,
-    tab_active_bg = spec.Normal.bg.lighten(7),
+    tab_active_bg = spec.Normal.bg:lighten(7),
     tab_inactive_fg = spec.NonText.fg,
-    tab_inactive_bg = spec.Normal.bg.darken(70),
-    tab_bg = spec.Normal.bg.darken(70),
+    tab_inactive_bg = spec.Normal.bg:darken(70),
+    tab_bg = spec.Normal.bg:darken(70),
 
     mark1_fg = spec.TerminalBlack.fg,
     mark1_bg = "#98d3cb",
@@ -375,15 +375,15 @@ function Template.validate_context(opts)
   return opts
 end
 
----@param with_context LaserwaveTemplateOptions | fun(ctx: LaserwaveTemplateContext, spec: ParsedLushSpec):LaserwaveTemplateOptions
+---@param with_context LaserwaveTemplateOptions | fun(ctx: LaserwaveTemplateContext, spec: LaserwaveSpec):LaserwaveTemplateOptions
 function Template.with_context(with_context)
   ---@class BoundLaserwaveTemplate
   local BoundTemplate = {}
 
   ---@param template string
-  ---@return fun(spec: ParsedLushSpec): string[]
+  ---@return fun(spec: LaserwaveSpec): string[]
   function BoundTemplate.create(template)
-    ---@param spec ParsedLushSpec
+    ---@param spec LaserwaveSpec
     local function apply(spec)
       local default_context = vim.tbl_extend("force", palette_defaults(spec), meta_defaults(spec))
 

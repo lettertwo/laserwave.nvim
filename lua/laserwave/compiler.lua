@@ -1,11 +1,36 @@
-local lush = require("lush")
-
 local M = {}
+
+---@class LaserwaveSpecValue
+---@field fg LaserwaveColor?
+---@field bg LaserwaveColor?
+---@field sp LaserwaveColor?
+---@field bold boolean?
+---@field underline boolean?
+---@field undercurl boolean?
+---@field underdouble boolean?
+---@field underdotted boolean?
+---@field underdashed boolean?
+---@field strikethrough boolean?
+---@field italic boolean?
+---@field reverse boolean?
+---@field [any] 'never'
+
+---@alias LaserwaveSpec table<string, LaserwaveSpecValue | string>
 
 ---@class CompiledLaserwaveSpecs
 ---@field colorscheme string
----@field spec ParsedLushSpec
----@field plugins table<string, ParsedLushSpec>
+---@field spec LaserwaveSpec
+---@field plugins table<string, LaserwaveSpec>
+
+local function merge_specs(specs)
+  local result = {}
+  for _, spec in ipairs(specs) do
+    for group, attrs in pairs(spec) do
+      result[group] = attrs
+    end
+  end
+  return result
+end
 
 ---@param config ParsedLaserwaveConfig
 ---@param flavor LASERWAVE_FLAVOR_NAME
@@ -25,7 +50,7 @@ function M.compile(config, flavor)
 
   local result = {
     colorscheme = colorscheme,
-    spec = lush.merge({
+    spec = merge_specs({
       require("laserwave.spec.syntax"),
       require("laserwave.spec.ui"),
       require("laserwave.spec.terminal"),

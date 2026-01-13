@@ -1,24 +1,9 @@
--- Enable lush.ify on this file, run:
---
---  `:Lushify`
---
---  or
---
---  `:lua require('lush').ify()`
+---@type LaserwaveSpec
+--stylua: ignore
+local occurrence = {
+  OccurrenceMatch   = "Visual", -- Default is Search
+  OccurrenceMark    = { underline = true }, -- Default is IncSearch
+  OccurrenceCurrent = { underline = true, reverse = true }, -- Default is CurSearch
+}
 
-local lush = require("lush")
-
-local ui = require("laserwave.spec.ui")
-
----@diagnostic disable: undefined-global
-local plugins = lush(function()
-  --stylua: ignore start
-  return {
-    OccurrenceMatch   { ui.Visual }, -- Default is Search
-    OccurrenceMark    { gui = "underline" }, -- Default is IncSearch
-    OccurrenceCurrent { gui = "underline,reverse" }, -- Default is CurSearch
-  }
-  --stylua: ignore end
-end)
-
-return plugins
+return occurrence

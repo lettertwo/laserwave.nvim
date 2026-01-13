@@ -1,4 +1,4 @@
-# GENERATED ON 2025-07-11 AT 18:47:28
+# GENERATED ON 2026-01-13 AT 00:21:42
 # name:     laserwave
 # author:   Eric Eldredge <lettertwo@gmail.com>
 # license:  MIT
@@ -13,22 +13,22 @@ colors:
     text:   'CellBackground'
   selection:
     text: 'CellForeground'
-    background: '#3E3248'
+    background: '#3F334A'
   normal:
     black:   '#91889B'
-    red:     '#EB65B9'
-    green:   '#41B5C5'
-    yellow:  '#FFE25F'
-    blue:    '#41B5C5'
+    red:     '#EB64B9'
+    green:   '#40B4C4'
+    yellow:  '#FFE261'
+    blue:    '#40B4C4'
     magenta: '#B381C5'
-    cyan:    '#B3DBE6'
+    cyan:    '#B4DCE7'
     white:   '#FFFFFF'
   bright:
     black:   '#B381C5'
-    red:     '#FF3D7A'
-    green:   '#75DFC4'
-    yellow:  '#FFB961'
-    blue:    '#41B5C5'
-    magenta: '#EB65B9'
-    cyan:    '#B3DBE6'
+    red:     '#FF3E7B'
+    green:   '#74DFC4'
+    yellow:  '#FFB85B'
+    blue:    '#40B4C4'
+    magenta: '#EB64B9'
+    cyan:    '#B4DCE7'
     white:   '#FFFFFF'

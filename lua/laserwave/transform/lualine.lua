@@ -15,7 +15,7 @@ return template
       statusline_fg = spec.StatusLine.fg,
       statusline_inactive_bg = spec.StatusLineNC.bg,
       statusline_inactive_fg = spec.StatusLineNC.fg,
-      statusline_bg_b = spec.StatusLine.bg.lighten(10),
+      statusline_bg_b = spec.StatusLine.bg:lighten(10),
     }
   end)
   .create([[
