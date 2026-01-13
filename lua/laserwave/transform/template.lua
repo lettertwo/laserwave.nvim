@@ -408,7 +408,7 @@ function Template.with_context(with_context)
       local ok, result = pcall(apply, spec)
 
       if not ok then
-        vim.notify(result, vim.log.levels.ERROR, { title = "Laserwave" })
+        vim.notify(string.format("Failed to apply spec:\n%s", result), vim.log.levels.ERROR, { title = "Laserwave" })
         error(result)
       end
 

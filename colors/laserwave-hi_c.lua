@@ -1,4 +1,4 @@
--- GENERATED ON 2026-01-13 AT 01:10:52
+-- GENERATED ON 2026-01-14 AT 18:15:31
 -- name:     laserwave-hi_c
 -- author:   Eric Eldredge <lettertwo@gmail.com>
 -- license:  MIT
@@ -271,9 +271,9 @@ BlinkCmpKindTypeParameter = {fg = "#D887F5"},
 BlinkCmpKindUnit = {fg = "#D887F5"},
 BlinkCmpKindValue = {fg = "#1ED3EC"},
 BlinkCmpKindVariable = {fg = "#FFFFFF"},
-BlinkCmpLabel = {fg = "#B4ABBE", bg = "NONE"},
-BlinkCmpLabelDeprecated = {fg = "#B4A8C8", bg = "NONE", strikethrough = true},
-BlinkCmpLabelMatch = {fg = "#FF52BF", bg = "NONE"},
+BlinkCmpLabel = {fg = "#B4ABBE"},
+BlinkCmpLabelDeprecated = {fg = "#B4A8C8", strikethrough = true},
+BlinkCmpLabelMatch = {fg = "#FF52BF"},
 BlinkCmpMenu = {link = "Float"},
 BlinkCmpDocBorder = {link = "FloatBorder"},
 BlinkCmpMenuBorder = {link = "FloatBorder"},
@@ -282,10 +282,10 @@ BlinkCmpSignatureHelpBorder = {link = "FloatBorder"},
 }) end
 if cfg.plugins.cmp then apply_colors({
 --%% begin cmp %%--
-CmpItemAbbr = {fg = "#B4ABBE", bg = "NONE"},
-CmpItemAbbrDeprecated = {fg = "#B4A8C8", bg = "NONE", strikethrough = true},
-CmpItemAbbrMatch = {fg = "#FF52BF", bg = "NONE"},
-CmpItemAbbrMatchFuzzy = {fg = "#FF52BF", bg = "NONE"},
+CmpItemAbbr = {fg = "#B4ABBE"},
+CmpItemAbbrDeprecated = {fg = "#B4A8C8", strikethrough = true},
+CmpItemAbbrMatch = {fg = "#FF52BF"},
+CmpItemAbbrMatchFuzzy = {fg = "#FF52BF"},
 CmpItemKindClass = {fg = "#D887F5"},
 CmpItemKindConstant = {fg = "#FFE261"},
 CmpItemKindConstructor = {fg = "#FF52BF"},
@@ -309,7 +309,7 @@ CmpItemKindTypeParameter = {fg = "#D887F5"},
 CmpItemKindUnit = {fg = "#D887F5"},
 CmpItemKindValue = {fg = "#1ED3EC"},
 CmpItemKindVariable = {fg = "#FFFFFF"},
-CmpItemMenu = {fg = "#B4A8C8", bg = "NONE"},
+CmpItemMenu = {fg = "#B4A8C8"},
 --%% end cmp %%--
 }) end
 if cfg.plugins.git then apply_colors({
@@ -413,7 +413,7 @@ OccurrenceMatch = {link = "Visual"},
 if cfg.plugins.package_info then apply_colors({
 --%% begin package_info %%--
 PackageInfoOutdatedVersion = {fg = "#FF3E7B"},
-PackageInfoUpToDateVersion = {},
+PackageInfoUpToDateVersion = {fg = "#3FEABF"},
 --%% end package_info %%--
 }) end
 if cfg.plugins.snacks then apply_colors({

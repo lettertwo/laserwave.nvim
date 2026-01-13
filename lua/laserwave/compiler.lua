@@ -19,9 +19,12 @@ local M = {}
 
 ---@class CompiledLaserwaveSpecs
 ---@field colorscheme string
+---@field palette LaserwavePalette
 ---@field spec LaserwaveSpec
 ---@field plugins table<string, LaserwaveSpec>
 
+---@param specs LaserwaveSpec[]
+---@return LaserwaveSpec
 local function merge_specs(specs)
   local result = {}
   for _, spec in ipairs(specs) do
@@ -50,6 +53,7 @@ function M.compile(config, flavor)
 
   local result = {
     colorscheme = colorscheme,
+    palette = require("laserwave.palette"),
     spec = merge_specs({
       require("laserwave.spec.syntax"),
       require("laserwave.spec.ui"),

@@ -1,4 +1,4 @@
--- GENERATED ON 2026-01-13 AT 01:10:52
+-- GENERATED ON 2026-01-14 AT 18:15:31
 -- name:     laserwave
 -- author:   Eric Eldredge <lettertwo@gmail.com>
 -- license:  MIT
@@ -271,9 +271,9 @@ BlinkCmpKindTypeParameter = {fg = "#B381C5"},
 BlinkCmpKindUnit = {fg = "#B381C5"},
 BlinkCmpKindValue = {fg = "#40B4C4"},
 BlinkCmpKindVariable = {fg = "#FFFFFF"},
-BlinkCmpLabel = {fg = "#91889B", bg = "NONE"},
-BlinkCmpLabelDeprecated = {fg = "#7B6995", bg = "NONE", strikethrough = true},
-BlinkCmpLabelMatch = {fg = "#EB64B9", bg = "NONE"},
+BlinkCmpLabel = {fg = "#91889B"},
+BlinkCmpLabelDeprecated = {fg = "#7B6995", strikethrough = true},
+BlinkCmpLabelMatch = {fg = "#EB64B9"},
 BlinkCmpMenu = {link = "Float"},
 BlinkCmpDocBorder = {link = "FloatBorder"},
 BlinkCmpMenuBorder = {link = "FloatBorder"},
@@ -282,10 +282,10 @@ BlinkCmpSignatureHelpBorder = {link = "FloatBorder"},
 }) end
 if cfg.plugins.cmp then apply_colors({
 --%% begin cmp %%--
-CmpItemAbbr = {fg = "#91889B", bg = "NONE"},
-CmpItemAbbrDeprecated = {fg = "#7B6995", bg = "NONE", strikethrough = true},
-CmpItemAbbrMatch = {fg = "#EB64B9", bg = "NONE"},
-CmpItemAbbrMatchFuzzy = {fg = "#EB64B9", bg = "NONE"},
+CmpItemAbbr = {fg = "#91889B"},
+CmpItemAbbrDeprecated = {fg = "#7B6995", strikethrough = true},
+CmpItemAbbrMatch = {fg = "#EB64B9"},
+CmpItemAbbrMatchFuzzy = {fg = "#EB64B9"},
 CmpItemKindClass = {fg = "#B381C5"},
 CmpItemKindConstant = {fg = "#FFE261"},
 CmpItemKindConstructor = {fg = "#EB64B9"},
@@ -309,7 +309,7 @@ CmpItemKindTypeParameter = {fg = "#B381C5"},
 CmpItemKindUnit = {fg = "#B381C5"},
 CmpItemKindValue = {fg = "#40B4C4"},
 CmpItemKindVariable = {fg = "#FFFFFF"},
-CmpItemMenu = {fg = "#7B6995", bg = "NONE"},
+CmpItemMenu = {fg = "#7B6995"},
 --%% end cmp %%--
 }) end
 if cfg.plugins.git then apply_colors({
@@ -413,7 +413,7 @@ OccurrenceMatch = {link = "Visual"},
 if cfg.plugins.package_info then apply_colors({
 --%% begin package_info %%--
 PackageInfoOutdatedVersion = {fg = "#FF3E7B"},
-PackageInfoUpToDateVersion = {},
+PackageInfoUpToDateVersion = {fg = "#74DFC4"},
 --%% end package_info %%--
 }) end
 if cfg.plugins.snacks then apply_colors({

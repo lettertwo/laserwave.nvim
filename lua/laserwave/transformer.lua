@@ -2,9 +2,9 @@ if not package.path:find("./vendor/shipwright.nvim/lua") then
   package.path = package.path .. "./vendor/shipwright.nvim/lua/?.lua;./vendor/shipwright.nvim/lua/?/init.lua;"
 end
 
-local ok, shipwright = pcall(require, "shipwright")
+local shipwright_ok, shipwright = pcall(require, "shipwright")
 
-if not ok then
+if not shipwright_ok then
   error("shipwright.nvim module not found. You may need to run `make install` to install dependencies.")
 end
 

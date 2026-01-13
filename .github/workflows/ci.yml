@@ -176,6 +176,7 @@ jobs:
         run: |
           luarocks --local install busted
           luarocks --local install nlua
+          luarocks --local install hsluv
 
       - name: Run tests
         run: |
@@ -197,8 +198,6 @@ jobs:
         uses: stevearc/nvim-typecheck-action@v2
         with:
           path: lua
-          libraries: |
-            ${{ github.workspace }}/stubs
           level: warning
           nvim-version: ${{ matrix.nvim-version }}
 

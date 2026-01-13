@@ -5,11 +5,11 @@ local ui = require("laserwave.spec.ui")
 ---@type LaserwaveSpec
 --stylua: ignore
 local cmp = {
-  CmpItemAbbr           = { fg = palette.HINT, bg = "NONE" },
-  CmpItemAbbrDeprecated = { fg = palette.IGNORE, bg = "NONE", strikethrough = true },
-  CmpItemAbbrMatch      = { fg = palette.HIGHLIGHT, bg = "NONE" },
-  CmpItemAbbrMatchFuzzy = { fg = palette.HIGHLIGHT, bg = "NONE" },
-  CmpItemMenu           = { fg = palette.INACTIVE, bg = "NONE" },
+  CmpItemAbbr           = { fg = palette.HINT},
+  CmpItemAbbrDeprecated = { fg = palette.IGNORE, strikethrough = true },
+  CmpItemAbbrMatch      = { fg = palette.HIGHLIGHT},
+  CmpItemAbbrMatchFuzzy = { fg = palette.HIGHLIGHT},
+  CmpItemMenu           = { fg = palette.INACTIVE},
 
   CmpItemKindText          = { fg = palette.COMMENT },
   CmpItemKindKeyword       = { fg = syntax.Keyword.fg },

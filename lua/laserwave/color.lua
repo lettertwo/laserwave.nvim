@@ -69,6 +69,7 @@ function M.hsluv(h, s, l)
   }, LaserwaveColor)
 end
 
+---@diagnostic disable-next-line: param-type-mismatch
 setmetatable(M, {
   __call = function(_, hex)
     return M.hex(hex)

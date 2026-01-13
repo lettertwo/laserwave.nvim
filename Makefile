@@ -19,6 +19,17 @@ LUA_CPATH := './lua_modules/lib/lua/5.1/?.so;;'
 	@luarocks config --scope project lua_version 5.1
 	@luarocks install $*
 
+./vendor/lua-language-server/bin/lua-language-server: OS := $(shell uname | tr '[:upper:]' '[:lower:]')
+./vendor/lua-language-server/bin/lua-language-server: ARCH := $(shell uname -m | sed 's/x86_64/x64/')
+./vendor/lua-language-server/bin/lua-language-server: VERSION := $(shell curl -s https://api.github.com/repos/LuaLS/lua-language-server/releases/latest | jq -r .tag_name)
+./vendor/lua-language-server/bin/lua-language-server:
+	@mkdir -p $(@D)
+	@cd $(patsubst %/bin, %, $(@D)) && \
+		curl -#L "https://github.com/LuaLS/lua-language-server/releases/download/$(VERSION)/lua-language-server-$(VERSION)-$(OS)-$(ARCH).tar.gz" -o lua-language-server.tar.gz && \
+		tar -zxf lua-language-server.tar.gz && \
+		rm -f lua-language-server.tar.gz
+	@echo installed lua-language-server $(shell $@ --version)
+
 ./vendor/shipwright.nvim:
 	@mkdir -p $@
 	@git clone git@github.com:rktjmp/shipwright.nvim.git $@
@@ -60,3 +71,13 @@ install-vendor: ./vendor/shipwright.nvim ./vendor/panvimdoc/panvimdoc.sh
 
 .PHONY: install
 install: install-rocks install-vendor install-hooks
+
+.PHONY: typecheck
+typecheck: VIMRUNTIME := $(shell nvim --headless --noplugin -u /dev/null -c 'echo $$VIMRUNTIME' -c q 2>&1)
+typecheck: CONFIGPATH := $(CURDIR)/.luarc.json
+typecheck: CHECKLEVEL := Warning
+typecheck: PATHS := lua/ tests/
+typecheck: ./vendor/lua-language-server/bin/lua-language-server
+	@VIMRUNTIME=$(VIMRUNTIME) $< --check_format pretty --checklevel $(CHECKLEVEL) --configpath $(CONFIGPATH) --check $(PATHS)
+
+

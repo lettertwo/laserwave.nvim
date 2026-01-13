@@ -5,9 +5,9 @@ local ui = require("laserwave.spec.ui")
 ---@type LaserwaveSpec
 --stylua: ignore
 local blink = {
-  BlinkCmpLabel           = { fg = palette.HINT, bg = "NONE" },
-  BlinkCmpLabelDeprecated = { fg = palette.IGNORE, bg = "NONE", strikethrough = true },
-  BlinkCmpLabelMatch      = { fg = palette.HIGHLIGHT, bg = "NONE" },
+  BlinkCmpLabel           = { fg = palette.HINT },
+  BlinkCmpLabelDeprecated = { fg = palette.IGNORE, strikethrough = true },
+  BlinkCmpLabelMatch      = { fg = palette.HIGHLIGHT },
 
   BlinkCmpMenu                = "Float",
   BlinkCmpMenuBorder          = "FloatBorder",
