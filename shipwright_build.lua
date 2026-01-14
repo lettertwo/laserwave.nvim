@@ -15,7 +15,7 @@ local lualine = require("laserwave.transform.lualine")
 local kitty = require("laserwave.transform.kitty")
 local alacritty = require("laserwave.transform.alacritty")
 local wezterm = require("laserwave.transform.wezterm")
-local colorscheme = require("laserwave.transform.colorscheme")
+local neovim = require("laserwave.transform.neovim")
 local textmate = require("laserwave.transform.textmate")
 local delta = require("laserwave.transform.delta")
 local yazi = require("laserwave.transform.yazi")
@@ -30,11 +30,11 @@ local function build_flavor(flavor)
   local colorspath = "colors/" .. specs.colorscheme .. ".lua"
 
   local flavor_result = {
+    neovim = transformer.run(neovim, ctx, colorspath) and transformer.inject_colors("spec", specs.spec, colorspath),
     lualine = transformer.run(lualine, ctx, "lua/lualine/themes/" .. specs.colorscheme .. ".lua"),
     kitty = transformer.run(kitty, ctx, "dist/kitty/" .. specs.colorscheme .. ".conf"),
     alacritty = transformer.run(alacritty, ctx, "dist/alacritty/" .. specs.colorscheme .. ".yml"),
     wezterm = transformer.run(wezterm, ctx, "dist/wezterm/" .. specs.colorscheme .. ".toml"),
-    spec = transformer.run(colorscheme, ctx, colorspath) and transformer.inject_colors("spec", specs.spec, colorspath),
     textmate = transformer.run(textmate, ctx, "dist/" .. specs.colorscheme .. ".tmTheme"),
     delta = transformer.run(delta, ctx, "dist/delta/" .. specs.colorscheme .. ".gitconfig"),
     yazi = {
@@ -43,7 +43,7 @@ local function build_flavor(flavor)
     },
   }
 
-  if flavor_result.spec then
+  if flavor_result.neovim then
     for plugin_name, plugin_spec in pairs(specs.plugins) do
       flavor_result[plugin_name] = transformer.inject_colors(plugin_name, plugin_spec, colorspath)
     end

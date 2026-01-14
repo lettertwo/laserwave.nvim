@@ -1,5 +1,6 @@
-local template = require("laserwave.transform.template")
+local template = require("laserwave.template")
 
+-- Generate the Laserwave colorscheme for neovim.
 return template.create([[
 -- GENERATED ON $date AT $time
 

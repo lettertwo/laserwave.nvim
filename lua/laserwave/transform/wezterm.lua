@@ -1,4 +1,4 @@
-local template = require("laserwave.transform.template")
+local template = require("laserwave.template")
 
 return template.create([[
 ## GENERATED ON $date AT $time

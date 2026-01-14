@@ -62,126 +62,126 @@ local function meta_defaults(spec)
 end
 
 ---@class LaserwaveTemplatePaletteOptions
----@field bg? string | HslValue | HsluvValue
----@field fg? string | HslValue | HsluvValue
----@field cursor_fg? string | HslValue | HsluvValue
----@field cursor_bg? string | HslValue | HsluvValue
----@field line_bg? string | HslValue | HsluvValue
----@field selection_fg? string | HslValue | HsluvValue
----@field selection_bg? string | HslValue | HsluvValue
----@field black? string | HslValue | HsluvValue
----@field red? string | HslValue | HsluvValue
----@field green? string | HslValue | HsluvValue
----@field yellow? string | HslValue | HsluvValue
----@field blue? string | HslValue | HsluvValue
----@field magenta? string | HslValue | HsluvValue
----@field cyan? string | HslValue | HsluvValue
----@field white? string | HslValue | HsluvValue
----@field bright_black? string | HslValue | HsluvValue
----@field bright_red? string | HslValue | HsluvValue
----@field bright_green? string | HslValue | HsluvValue
----@field bright_yellow? string | HslValue | HsluvValue
----@field bright_blue? string | HslValue | HsluvValue
----@field bright_magenta? string | HslValue | HsluvValue
----@field bright_cyan? string | HslValue | HsluvValue
----@field bright_white? string | HslValue | HsluvValue
----@field attribute_fg? string | HslValue | HsluvValue
----@field class_fg? string | HslValue | HsluvValue
----@field character_fg? string | HslValue | HsluvValue
----@field comment_fg? string | HslValue | HsluvValue
----@field constant_fg? string | HslValue | HsluvValue
----@field error_fg? string | HslValue | HsluvValue
----@field function_fg? string | HslValue | HsluvValue
----@field ignore_fg? string | HslValue | HsluvValue
----@field keyword_fg? string | HslValue | HsluvValue
----@field number_fg? string | HslValue | HsluvValue
----@field operator_fg? string | HslValue | HsluvValue
----@field string_fg? string | HslValue | HsluvValue
----@field tag_fg? string | HslValue | HsluvValue
----@field type_fg? string | HslValue | HsluvValue
----@field identifier_fg? string | HslValue | HsluvValue
----@field added_fg? string | HslValue | HsluvValue
----@field added_bg? string | HslValue | HsluvValue
----@field deleted_fg? string | HslValue | HsluvValue
----@field deleted_bg? string | HslValue | HsluvValue
----@field changed_fg? string | HslValue | HsluvValue
----@field changed_bg? string | HslValue | HsluvValue
----@field url? string | HslValue | HsluvValue
----@field border_active? string | HslValue | HsluvValue
----@field border_inactive? string | HslValue | HsluvValue
----@field border_bell? string | HslValue | HsluvValue
----@field tab_active_fg? string | HslValue | HsluvValue
----@field tab_active_bg? string | HslValue | HsluvValue
----@field tab_inactive_fg? string | HslValue | HsluvValue
----@field tab_inactive_bg? string | HslValue | HsluvValue
----@field tab_bg? string | HslValue | HsluvValue
----@field mark1_fg? string | HslValue | HsluvValue
----@field mark1_bg? string | HslValue | HsluvValue
----@field mark2_fg? string | HslValue | HsluvValue
----@field mark2_bg? string | HslValue | HsluvValue
----@field mark3_fg? string | HslValue | HsluvValue
----@field mark3_bg? string | HslValue | HsluvValue
+---@field bg? LaserwaveColor | string
+---@field fg? LaserwaveColor | string
+---@field cursor_fg? LaserwaveColor | string
+---@field cursor_bg? LaserwaveColor | string
+---@field line_bg? LaserwaveColor | string
+---@field selection_fg? LaserwaveColor | string
+---@field selection_bg? LaserwaveColor | string
+---@field black? LaserwaveColor | string
+---@field red? LaserwaveColor | string
+---@field green? LaserwaveColor | string
+---@field yellow? LaserwaveColor | string
+---@field blue? LaserwaveColor | string
+---@field magenta? LaserwaveColor | string
+---@field cyan? LaserwaveColor | string
+---@field white? LaserwaveColor | string
+---@field bright_black? LaserwaveColor | string
+---@field bright_red? LaserwaveColor | string
+---@field bright_green? LaserwaveColor | string
+---@field bright_yellow? LaserwaveColor | string
+---@field bright_blue? LaserwaveColor | string
+---@field bright_magenta? LaserwaveColor | string
+---@field bright_cyan? LaserwaveColor | string
+---@field bright_white? LaserwaveColor | string
+---@field attribute_fg? LaserwaveColor | string
+---@field class_fg? LaserwaveColor | string
+---@field character_fg? LaserwaveColor | string
+---@field comment_fg? LaserwaveColor | string
+---@field constant_fg? LaserwaveColor | string
+---@field error_fg? LaserwaveColor | string
+---@field function_fg? LaserwaveColor | string
+---@field ignore_fg? LaserwaveColor | string
+---@field keyword_fg? LaserwaveColor | string
+---@field number_fg? LaserwaveColor | string
+---@field operator_fg? LaserwaveColor | string
+---@field string_fg? LaserwaveColor | string
+---@field tag_fg? LaserwaveColor | string
+---@field type_fg? LaserwaveColor | string
+---@field identifier_fg? LaserwaveColor | string
+---@field added_fg? LaserwaveColor | string
+---@field added_bg? LaserwaveColor | string
+---@field deleted_fg? LaserwaveColor | string
+---@field deleted_bg? LaserwaveColor | string
+---@field changed_fg? LaserwaveColor | string
+---@field changed_bg? LaserwaveColor | string
+---@field url? LaserwaveColor | string
+---@field border_active? LaserwaveColor | string
+---@field border_inactive? LaserwaveColor | string
+---@field border_bell? LaserwaveColor | string
+---@field tab_active_fg? LaserwaveColor | string
+---@field tab_active_bg? LaserwaveColor | string
+---@field tab_inactive_fg? LaserwaveColor | string
+---@field tab_inactive_bg? LaserwaveColor | string
+---@field tab_bg? LaserwaveColor | string
+---@field mark1_fg? LaserwaveColor | string
+---@field mark1_bg? LaserwaveColor | string
+---@field mark2_fg? LaserwaveColor | string
+---@field mark2_bg? LaserwaveColor | string
+---@field mark3_fg? LaserwaveColor | string
+---@field mark3_bg? LaserwaveColor | string
 
 ---@class LaserwaveTemplatePalette
----@field bg string
----@field fg string
----@field cursor_fg string
----@field cursor_bg string
----@field line_bg string
----@field selection_fg string
----@field selection_bg string
----@field black string
----@field red string
----@field green string
----@field yellow string
----@field blue string
----@field magenta string
----@field cyan string
----@field white string
----@field bright_black string
----@field bright_red string
----@field bright_green string
----@field bright_yellow string
----@field bright_blue string
----@field bright_magenta string
----@field bright_cyan string
----@field bright_white string
----@field attribute_fg string
----@field class_fg string
----@field character_fg string
----@field comment_fg string
----@field constant_fg string
----@field error_fg string
----@field function_fg string
----@field ignore_fg string
----@field keyword_fg string
----@field number_fg string
----@field operator_fg string
----@field string_fg string
----@field tag_fg string
----@field type_fg string
----@field identifier_fg string
----@field added_fg string
----@field added_bg string
----@field deleted_fg string
----@field deleted_bg string
----@field changed_fg string
----@field changed_bg string
----@field url string
----@field border_active string
----@field border_inactive string
----@field border_bell string
----@field tab_active_fg string
----@field tab_active_bg string
----@field tab_inactive_fg string
----@field tab_inactive_bg string
----@field tab_bg string
----@field mark1_fg string
----@field mark1_bg string
----@field mark2_fg string
----@field mark2_bg string
----@field mark3_fg string
----@field mark3_bg string
+---@field bg LaserwaveColor | string
+---@field fg LaserwaveColor | string
+---@field cursor_fg LaserwaveColor | string
+---@field cursor_bg LaserwaveColor | string
+---@field line_bg LaserwaveColor | string
+---@field selection_fg LaserwaveColor | string
+---@field selection_bg LaserwaveColor | string
+---@field black LaserwaveColor | string
+---@field red LaserwaveColor | string
+---@field green LaserwaveColor | string
+---@field yellow LaserwaveColor | string
+---@field blue LaserwaveColor | string
+---@field magenta LaserwaveColor | string
+---@field cyan LaserwaveColor | string
+---@field white LaserwaveColor | string
+---@field bright_black LaserwaveColor | string
+---@field bright_red LaserwaveColor | string
+---@field bright_green LaserwaveColor | string
+---@field bright_yellow LaserwaveColor | string
+---@field bright_blue LaserwaveColor | string
+---@field bright_magenta LaserwaveColor | string
+---@field bright_cyan LaserwaveColor | string
+---@field bright_white LaserwaveColor | string
+---@field attribute_fg LaserwaveColor | string
+---@field class_fg LaserwaveColor | string
+---@field character_fg LaserwaveColor | string
+---@field comment_fg LaserwaveColor | string
+---@field constant_fg LaserwaveColor | string
+---@field error_fg LaserwaveColor | string
+---@field function_fg LaserwaveColor | string
+---@field ignore_fg LaserwaveColor | string
+---@field keyword_fg LaserwaveColor | string
+---@field number_fg LaserwaveColor | string
+---@field operator_fg LaserwaveColor | string
+---@field string_fg LaserwaveColor | string
+---@field tag_fg LaserwaveColor | string
+---@field type_fg LaserwaveColor | string
+---@field identifier_fg LaserwaveColor | string
+---@field added_fg LaserwaveColor | string
+---@field added_bg LaserwaveColor | string
+---@field deleted_fg LaserwaveColor | string
+---@field deleted_bg LaserwaveColor | string
+---@field changed_fg LaserwaveColor | string
+---@field changed_bg LaserwaveColor | string
+---@field url LaserwaveColor | string
+---@field border_active LaserwaveColor | string
+---@field border_inactive LaserwaveColor | string
+---@field border_bell LaserwaveColor | string
+---@field tab_active_fg LaserwaveColor | string
+---@field tab_active_bg LaserwaveColor | string
+---@field tab_inactive_fg LaserwaveColor | string
+---@field tab_inactive_bg LaserwaveColor | string
+---@field tab_bg LaserwaveColor | string
+---@field mark1_fg LaserwaveColor | string
+---@field mark1_bg LaserwaveColor | string
+---@field mark2_fg LaserwaveColor | string
+---@field mark2_bg LaserwaveColor | string
+---@field mark3_fg LaserwaveColor | string
+---@field mark3_bg LaserwaveColor | string
 
 ---@class LaserwaveTemplatePaletteSpec
 local palette_spec = {

@@ -1,4 +1,4 @@
-local template = require("laserwave.transform.template")
+local template = require("laserwave.template")
 
 return template.create([[
 <?xml version="1.0" encoding="UTF-8"?>
