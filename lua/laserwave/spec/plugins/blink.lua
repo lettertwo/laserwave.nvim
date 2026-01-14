@@ -1,4 +1,4 @@
-local palette = require("laserwave.spec.palette")
+local palette = require("laserwave.palette")
 local syntax = require("laserwave.spec.syntax")
 local ui = require("laserwave.spec.ui")
 

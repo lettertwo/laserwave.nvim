@@ -1,5 +1,4 @@
----@diagnostic disable: undefined-field
-local flavor = require("laserwave.spec.flavor")
+local flavor = require("laserwave.flavor")
 
 -- stylua: ignore
 ---@class LaserwaveTerminal

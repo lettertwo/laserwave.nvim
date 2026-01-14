@@ -1,4 +1,4 @@
-local palette = require("laserwave.spec.palette")
+local palette = require("laserwave.palette")
 
 ---@type LaserwaveSpec
 --stylua: ignore

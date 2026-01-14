@@ -41,15 +41,21 @@ end
 function M.compile(config, flavor)
   local colorscheme = flavor ~= "original" and "laserwave-" .. flavor or "laserwave"
 
+  vim.notify(
+    "Compiling specs for flavor: " .. flavor .. " as " .. colorscheme,
+    vim.log.levels.DEBUG,
+    { title = "Laserwave" }
+  )
+
   -- clear specs from module cache
   for k, _ in pairs(package.loaded) do
-    if k:match("^laserwave.spec") then
+    if k:match("^laserwave.spec") or k:match("^laserwave.flavor") or k:match("^laserwave.palette") then
       vim.notify("Unloading " .. k, vim.log.levels.DEBUG, { title = "Laserwave" })
       package.loaded[k] = nil
     end
   end
 
-  require("laserwave.spec.flavor").set(flavor)
+  require("laserwave.flavor").set(flavor)
 
   local result = {
     colorscheme = colorscheme,

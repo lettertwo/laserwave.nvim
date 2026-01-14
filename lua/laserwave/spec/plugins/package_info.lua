@@ -1,10 +1,10 @@
-local palette = require("laserwave.spec.palette")
+local palette = require("laserwave.palette")
 
 ---@type LaserwaveSpec
 --stylua: ignore
 local package_info = {
   PackageInfoOutdatedVersion = { fg = palette.ERROR },
-  PackageInfoUpToDateVersion = { fg = palette.SUCCESS },
+  PackageInfoUpToDateVersion = { fg = palette.OK },
 }
 
 return package_info

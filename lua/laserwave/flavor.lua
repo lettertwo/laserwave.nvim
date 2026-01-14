@@ -1,7 +1,7 @@
 local Color = require("laserwave.color")
 
 -- stylua: ignore
----@class LaserwaveColors
+---@class LaserwaveFlavorConfig
 local original = {
   WHITE           = Color("#ffffff"), -- Foreground, Variables
   RAISIN_BLACK    = Color("#27212e"), -- Background
@@ -18,7 +18,7 @@ local original = {
 }
 
 -- stylua: ignore
----@type LaserwaveColors
+---@type LaserwaveFlavorConfig
 local hi_c = {
   WHITE           = Color("#ffffff"), -- Foreground, Variables
   RAISIN_BLACK    = Color("#19151e"), -- Background
@@ -34,7 +34,7 @@ local hi_c = {
   GARDENIA        = Color("#ffb85b"), -- Warnings
 }
 
----@class LaserwaveFlavor
+---@class LaserwaveFlavor: LaserwaveFlavorConfig
 local LaserwaveFlavor = {
   ---@class LaserwaveFlavors
   flavors = {
@@ -44,12 +44,12 @@ local LaserwaveFlavor = {
   _current = original,
 }
 
----@param input LASERWAVE_FLAVOR | LASERWAVE_FLAVOR_NAME | LaserwaveColors
+---@param input LASERWAVE_FLAVOR | LASERWAVE_FLAVOR_NAME | LaserwaveFlavorConfig
 function LaserwaveFlavor.set(input)
   local flavor
 
   if type(input) ~= "table" then
-    ---@cast input -LaserwaveColors
+    ---@cast input -LaserwaveFlavorConfig
     local name = require("laserwave").get_flavor(input)
     if name ~= nil then
       flavor = LaserwaveFlavor.flavors[name]

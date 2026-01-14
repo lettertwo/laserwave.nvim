@@ -1,4 +1,4 @@
-local palette = require("laserwave.spec.palette")
+local palette = require("laserwave.palette")
 
 -- These groups are for the native LSP client and diagnostic system. Some
 -- other LSP clients may use these groups, or use their own. Consult your

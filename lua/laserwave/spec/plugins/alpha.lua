@@ -1,4 +1,4 @@
-local palette = require("laserwave.spec.palette")
+local palette = require("laserwave.palette")
 
 -- alpha (dashboard) header
 ---@type LaserwaveSpec
