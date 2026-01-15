@@ -141,21 +141,54 @@ local function spec_to_definition_lines(spec)
   return vim.iter(groups):map(to_definition):totable()
 end
 
----@param spec_name string
----@param spec laserwave.Spec
+---@param specs laserwave.CompiledSpecs
 ---@param filepath string
-function M.inject_colors(spec_name, spec, filepath)
-  local start = "--%% begin " .. spec_name .. " %%--"
-  local stop = "--%% end " .. spec_name .. " %%--"
-  local build_ok, err = pcall(shipwright.run, spec, spec_to_definition_lines, { patchwrite, filepath, start, stop })
-  if not build_ok then
+function M.inject_compiled_specs(specs, filepath)
+  local spec = spec_to_definition_lines(specs.spec)
+  local plugins = vim
+    .iter(specs.plugins)
+    :map(function(plugin_name, plugin_spec)
+      return { plugin_name, spec_to_definition_lines(plugin_spec) }
+    end)
+    :totable()
+
+  table.sort(plugins, function(a, b)
+    return a[1] < b[1]
+  end)
+
+  local start = "--%% begin compiled_specs %%--"
+  local stop = "--%% end compiled_specs %%--"
+
+  local ok, err = pcall(shipwright.run, { spec = spec, plugins = plugins }, function(ctx)
+    local lines = {
+      "  spec = {",
+    }
+    for _, line in ipairs(ctx.spec) do
+      table.insert(lines, "    " .. line)
+    end
+    table.insert(lines, "  },")
+
+    table.insert(lines, "  plugins = {")
+    for _, plugin in ipairs(ctx.plugins) do
+      local plugin_name, plugin_spec_lines = plugin[1], plugin[2]
+      table.insert(lines, "    " .. plugin_name .. " = {")
+      for _, line in ipairs(plugin_spec_lines) do
+        table.insert(lines, "      " .. line)
+      end
+      table.insert(lines, "    },")
+    end
+    table.insert(lines, "  },")
+    return lines
+  end, { patchwrite, filepath, start, stop })
+
+  if not ok then
     vim.notify(
-      string.format("Failed to inject %s into %s between %s and %s\n%s", spec_name, filepath, start, stop, err),
+      string.format("Failed to inject compiled specs into %s\n%s", filepath, err),
       vim.log.levels.ERROR,
       { title = "Laserwave" }
     )
   end
-  return build_ok
+  return ok
 end
 
 ---@param transform fun(ctx: laserwave.Spec, filepath: string): boolean

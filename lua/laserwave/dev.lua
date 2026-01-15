@@ -25,15 +25,10 @@ function M.apply(cfg, flavor)
   local specs = require("laserwave.compiler").compile(cfg, flavor)
   local ctx = vim.tbl_extend("force", specs.spec, { name = specs.colorscheme, flavor = flavor })
   local colorspath = "colors/" .. specs.colorscheme .. ".lua"
-  local flavor_result = {
-    neovim = transformer.run(neovim, ctx, colorspath) and transformer.inject_colors("spec", specs.spec, colorspath),
-  }
 
-  if flavor_result.neovim then
-    for plugin_name, plugin_spec in pairs(specs.plugins) do
-      flavor_result[plugin_name] = transformer.inject_colors(plugin_name, plugin_spec, colorspath)
-    end
-  end
+  local flavor_result = {
+    neovim = transformer.run(neovim, ctx, colorspath) and transformer.inject_compiled_specs(specs, colorspath),
+  }
 
   vim.notify("Built " .. vim.inspect(flavor_result), vim.log.levels.INFO, { title = "Laserwave" })
 

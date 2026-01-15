@@ -30,7 +30,7 @@ local function build_flavor(flavor)
   local colorspath = "colors/" .. specs.colorscheme .. ".lua"
 
   local flavor_result = {
-    neovim = transformer.run(neovim, ctx, colorspath) and transformer.inject_colors("spec", specs.spec, colorspath),
+    neovim = transformer.run(neovim, ctx, colorspath) and transformer.inject_compiled_specs(specs, colorspath),
     lualine = transformer.run(lualine, ctx, "lua/lualine/themes/" .. specs.colorscheme .. ".lua"),
     kitty = transformer.run(kitty, ctx, "dist/kitty/" .. specs.colorscheme .. ".conf"),
     alacritty = transformer.run(alacritty, ctx, "dist/alacritty/" .. specs.colorscheme .. ".yml"),
@@ -42,12 +42,6 @@ local function build_flavor(flavor)
       tmtheme = transformer.run(textmate, ctx, "dist/yazi/" .. specs.colorscheme .. ".yazi/tmtheme.xml"),
     },
   }
-
-  if flavor_result.neovim then
-    for plugin_name, plugin_spec in pairs(specs.plugins) do
-      flavor_result[plugin_name] = transformer.inject_colors(plugin_name, plugin_spec, colorspath)
-    end
-  end
 
   return flavor_result
 end
