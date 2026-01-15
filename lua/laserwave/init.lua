@@ -100,21 +100,55 @@ function M.set_config(config)
   M._config = require("laserwave.config").parse(vim.tbl_deep_extend("force", M._config or {}, config or {}))
 end
 
+local command_initialized = false
+
+-- Create the main `:Laserwave` command with subcommands
+local function init_command()
+  local command = require("laserwave.command")
+
+  if not command_initialized then
+    command.add("flavor", {
+      nargs = 1,
+      impl = function(args)
+        M.set_flavor(args[1])
+      end,
+      complete = function(line)
+        return vim.tbl_filter(function(val)
+          return vim.startswith(val, line)
+        end, vim.tbl_keys(M.flavors))
+      end,
+    })
+
+    vim.api.nvim_create_user_command("Laserwave", command.execute, {
+      nargs = "+",
+      range = 0,
+      force = true,
+      desc = "Laserwave command",
+      complete = command.complete,
+    })
+    command_initialized = true
+  end
+
+  return command
+end
+
 ---@param config ?laserwave.Config
 function M.setup(config)
   M.set_config(config)
-
-  vim.api.nvim_create_user_command("Laserwave", function(input)
-    -- TODO: Support more commands, like toggling options on/off.
-    M.set_flavor(input.args)
-  end, {
-    nargs = 1,
-    complete = function(line)
-      return vim.tbl_filter(function(val)
-        return vim.startswith(val, line)
-      end, vim.tbl_keys(M.flavors))
-    end,
-  })
+  -- init_command()
 end
+
+-- Set up a stub command that will load the full command on first use
+vim.api.nvim_create_user_command("Laserwave", function(...)
+  return init_command().execute(...)
+end, {
+  nargs = "+",
+  range = 0,
+  force = true,
+  desc = "Laserwave command",
+  complete = function(...)
+    return init_command().complete(...)
+  end,
+})
 
 return M

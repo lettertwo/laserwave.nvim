@@ -44,19 +44,20 @@ end
 function M.setup(config)
   require("laserwave").setup(config)
 
-  -- TODO: Make this a subcommand of Laserwave
-  vim.api.nvim_create_user_command("laserwave.Compile", function()
-    M.reset()
-    M.apply(M.get_config(), M.get_flavor())
-    vim.notify("Reloaded!", vim.log.levels.DEBUG, { title = "Laserwave" })
-  end, {})
+  require("laserwave.command").add("compile", {
+    impl = function()
+      M.reset()
+      M.apply(M.get_config(), M.get_flavor())
+      vim.notify("Reloaded!", vim.log.levels.DEBUG, { title = "Laserwave" })
+    end,
+  })
 
   vim.api.nvim_create_autocmd("BufWritePost", {
     group = vim.api.nvim_create_augroup("laserwave", { clear = true }),
     pattern = "*/laserwave/*",
     callback = function()
       vim.schedule(function()
-        vim.cmd("laserwave.Compile")
+        vim.cmd("Laserwave compile")
       end)
     end,
   })
