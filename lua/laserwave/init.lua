@@ -52,7 +52,7 @@ function M.set_flavor(input)
 
   if flavor == nil then
     vim.notify("Invalid flavor: " .. input, vim.log.levels.ERROR, { title = "Laserwave" })
-  elseif flavor ~= M._flavor then
+  else
     M._flavor = flavor
     local name = M.get_flavor(flavor)
     if name == "original" then
@@ -135,6 +135,7 @@ end
 ---@param config ?laserwave.Config
 function M.setup(config)
   M.set_config(config)
+  M.set_flavor(M.get_flavor())
 end
 
 -- Set up a stub command that will load the full command on first use

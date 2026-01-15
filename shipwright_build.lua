@@ -8,6 +8,7 @@ end
 ---@type laserwave
 local laserwave = require("laserwave")
 
+local config = require("laserwave.config").parse()
 local compiler = require("laserwave.compiler")
 local transformer = require("laserwave.transformer")
 
@@ -20,12 +21,10 @@ local textmate = require("laserwave.transform.textmate")
 local delta = require("laserwave.transform.delta")
 local yazi = require("laserwave.transform.yazi")
 
-laserwave.setup()
-
 ---@param flavor laserwave.FLAVOR_NAME
 local function build_flavor(flavor)
   ---@type laserwave.CompiledSpecs
-  local specs = compiler.compile(laserwave._config, flavor)
+  local specs = compiler.compile(config, flavor)
   local ctx = vim.tbl_extend("force", specs.spec, { name = specs.colorscheme, flavor = flavor })
   local colorspath = "colors/" .. specs.colorscheme .. ".lua"
 

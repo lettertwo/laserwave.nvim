@@ -6,7 +6,7 @@
 ---@field plugins ?table<string, boolean>
 ---@field dev ?boolean
 
----@class laserwave.ParsedConfig
+---@class laserwave.ParsedConfig: laserwave.Config
 ---@field options laserwave.ParsedOptions
 ---@field treesitter boolean
 ---@field semantic_highlights boolean
