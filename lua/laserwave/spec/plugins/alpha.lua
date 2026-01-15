@@ -1,7 +1,7 @@
 local palette = require("laserwave.palette")
 
 -- alpha (dashboard) header
----@type LaserwaveSpec
+---@type laserwave.Spec
 --stylua: ignore
 local alpha = {
   StartLogo1  = { fg = palette.INFO:mix(palette.HIGHLIGHT, 0):mix(palette.BG, 0) },

@@ -59,7 +59,7 @@ local function sort_key(name)
   return key
 end
 
----@param value LaserwaveSpecValue | string
+---@param value laserwave.SpecValue | string
 ---@return string[]
 local function sorted_attr_names(value)
   if type(value) ~= "table" then
@@ -92,7 +92,7 @@ local function safe_group_name(name)
   end
 end
 
----@param group { name: string, value: LaserwaveSpecValue | { link: string } }
+---@param group { name: string, value: laserwave.SpecValue | { link: string } }
 ---@return string
 local function to_definition(group)
   return string.format(
@@ -113,8 +113,8 @@ local function to_definition(group)
 end
 
 ---@param name string
----@param value LaserwaveSpecValue | string
----@return { key: string, name: string, value: LaserwaveSpecValue | { link: string } }
+---@param value laserwave.SpecValue | string
+---@return { key: string, name: string, value: laserwave.SpecValue | { link: string } }
 local function to_group(name, value)
   local key = sort_key(name)
 
@@ -132,7 +132,7 @@ local function to_group(name, value)
   return { key = key, name = name, value = value }
 end
 
----@param spec LaserwaveSpec
+---@param spec laserwave.Spec
 local function spec_to_definition_lines(spec)
   local groups = vim.iter(spec):map(to_group):totable()
   table.sort(groups, function(a, b)
@@ -142,7 +142,7 @@ local function spec_to_definition_lines(spec)
 end
 
 ---@param spec_name string
----@param spec LaserwaveSpec
+---@param spec laserwave.Spec
 ---@param filepath string
 function M.inject_colors(spec_name, spec, filepath)
   local start = "--%% begin " .. spec_name .. " %%--"
@@ -158,8 +158,8 @@ function M.inject_colors(spec_name, spec, filepath)
   return build_ok
 end
 
----@param transform fun(ctx: LaserwaveSpec, filepath: string): boolean
----@param spec LaserwaveSpec
+---@param transform fun(ctx: laserwave.Spec, filepath: string): boolean
+---@param spec laserwave.Spec
 ---@param filepath string
 function M.run(transform, spec, filepath)
   ---@diagnostic disable-next-line: assign-type-mismatch

@@ -1,7 +1,7 @@
 local Color = require("laserwave.color")
 
 -- stylua: ignore
----@class LaserwaveFlavorConfig
+---@class laserwave.FlavorConfig
 local original = {
   WHITE           = Color("#ffffff"), -- Foreground, Variables
   RAISIN_BLACK    = Color("#27212e"), -- Background
@@ -18,7 +18,7 @@ local original = {
 }
 
 -- stylua: ignore
----@type LaserwaveFlavorConfig
+---@type laserwave.FlavorConfig
 local hi_c = {
   WHITE           = Color("#ffffff"), -- Foreground, Variables
   RAISIN_BLACK    = Color("#19151e"), -- Background
@@ -34,9 +34,9 @@ local hi_c = {
   GARDENIA        = Color("#ffb85b"), -- Warnings
 }
 
----@class LaserwaveFlavor: LaserwaveFlavorConfig
-local LaserwaveFlavor = {
-  ---@class LaserwaveFlavors
+---@class laserwave.Flavor: laserwave.FlavorConfig
+local Flavor = {
+  ---@class laserwave.Flavors
   flavors = {
     original = original,
     hi_c = hi_c,
@@ -44,27 +44,27 @@ local LaserwaveFlavor = {
   _current = original,
 }
 
----@param input LASERWAVE_FLAVOR | LASERWAVE_FLAVOR_NAME | LaserwaveFlavorConfig
-function LaserwaveFlavor.set(input)
+---@param input laserwave.FLAVOR | laserwave.FLAVOR_NAME | laserwave.FlavorConfig
+function Flavor.set(input)
   local flavor
 
   if type(input) ~= "table" then
-    ---@cast input -LaserwaveFlavorConfig
+    ---@cast input -laserwave.FlavorConfig
     local name = require("laserwave").get_flavor(input)
     if name ~= nil then
-      flavor = LaserwaveFlavor.flavors[name]
+      flavor = Flavor.flavors[name]
     end
   else
     flavor = input
   end
 
-  LaserwaveFlavor._current = flavor or LaserwaveFlavor.flavors.original
+  Flavor._current = flavor or Flavor.flavors.original
 end
 
-setmetatable(LaserwaveFlavor, {
+setmetatable(Flavor, {
   __index = function(_, key)
-    return LaserwaveFlavor._current[key] or LaserwaveFlavor.flavors.original[key]
+    return Flavor._current[key] or Flavor.flavors.original[key]
   end,
 })
 
-return LaserwaveFlavor
+return Flavor

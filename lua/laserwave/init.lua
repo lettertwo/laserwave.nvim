@@ -24,20 +24,20 @@
 --      | |__ / _ \\__ \ _||   /\ \/\/ / _ \ V /| _|
 --      |____/_/ \_\___/___|_|_\ \_/\_/_/ \_\_/ |___|
 --
----@class Laserwave
+---@class laserwave
 local M = {}
 
----@alias LASERWAVE_FLAVOR_NAME "original" | "hi_c"
+---@alias laserwave.FLAVOR_NAME "original" | "hi_c"
 
----@enum LASERWAVE_FLAVOR
+---@enum laserwave.FLAVOR
 M.flavors = { original = 1, hi_c = 2 }
 
----@type LASERWAVE_FLAVOR
+---@type laserwave.FLAVOR
 M._flavor = M.flavors.original
 
----@param input LASERWAVE_FLAVOR | LASERWAVE_FLAVOR_NAME
+---@param input laserwave.FLAVOR | laserwave.FLAVOR_NAME
 function M.set_flavor(input)
-  ---@type LASERWAVE_FLAVOR | nil
+  ---@type laserwave.FLAVOR | nil
   local flavor
   if type(input == "string") then
     flavor = M.flavors[input] or nil
@@ -63,8 +63,8 @@ function M.set_flavor(input)
   end
 end
 
----@param input ?(LASERWAVE_FLAVOR | LASERWAVE_FLAVOR_NAME)
----@return LASERWAVE_FLAVOR_NAME
+---@param input ?(laserwave.FLAVOR | laserwave.FLAVOR_NAME)
+---@return laserwave.FLAVOR_NAME
 function M.get_flavor(input)
   local flavor
   if type(input == "string") then
@@ -83,7 +83,7 @@ function M.get_flavor(input)
   error("Invalid flavor: " .. input)
 end
 
----@return ParsedLaserwaveConfig
+---@return laserwave.ParsedConfig
 function M.get_config()
   local cfg = M._config
   if not cfg then
@@ -94,13 +94,13 @@ function M.get_config()
   return cfg
 end
 
----@param config ?LaserwaveConfig
+---@param config ?laserwave.Config
 function M.set_config(config)
   ---@diagnostic disable-next-line: param-type-mismatch
   M._config = require("laserwave.config").parse(vim.tbl_deep_extend("force", M._config or {}, config or {}))
 end
 
----@param config ?LaserwaveConfig
+---@param config ?laserwave.Config
 function M.setup(config)
   M.set_config(config)
 

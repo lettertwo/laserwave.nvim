@@ -1,4 +1,4 @@
----@class LaserwaveDev: Laserwave
+---@module 'laserwave.dev'
 local M = {}
 
 function M.reset()
@@ -17,8 +17,8 @@ function M.reset()
   vim.cmd("highlight clear")
 end
 
----@param cfg ParsedLaserwaveConfig
----@param flavor LASERWAVE_FLAVOR_NAME
+---@param cfg laserwave.ParsedConfig
+---@param flavor laserwave.FLAVOR_NAME
 function M.apply(cfg, flavor)
   local transformer = require("laserwave.transformer")
   local neovim = require("laserwave.transform.neovim")
@@ -40,12 +40,12 @@ function M.apply(cfg, flavor)
   vim.cmd.colorscheme(specs.colorscheme)
 end
 
----@param config ?LaserwaveConfig
+---@param config ?laserwave.Config
 function M.setup(config)
   require("laserwave").setup(config)
 
   -- TODO: Make this a subcommand of Laserwave
-  vim.api.nvim_create_user_command("LaserwaveCompile", function()
+  vim.api.nvim_create_user_command("laserwave.Compile", function()
     M.reset()
     M.apply(M.get_config(), M.get_flavor())
     vim.notify("Reloaded!", vim.log.levels.DEBUG, { title = "Laserwave" })
@@ -56,7 +56,7 @@ function M.setup(config)
     pattern = "*/laserwave/*",
     callback = function()
       vim.schedule(function()
-        vim.cmd("LaserwaveCompile")
+        vim.cmd("laserwave.Compile")
       end)
     end,
   })

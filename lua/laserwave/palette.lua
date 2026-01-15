@@ -1,7 +1,7 @@
 local flavor = require("laserwave.flavor")
 
 -- stylua: ignore
----@class LaserwaveTerminal
+---@class laserwave.Terminal
 local terminal = {
     BLACK          = flavor.OLD_LAVENDER,
     BRIGHT_BLACK   = flavor.AFRICAN_VIOLET,
@@ -22,7 +22,7 @@ local terminal = {
 }
 
 -- stylua: ignore
----@class LaserwaveSemantics
+---@class laserwave.Semantics
 local semantics = {
   FG        = flavor.WHITE,
   BG        = flavor.RAISIN_BLACK,
@@ -59,10 +59,10 @@ local semantics = {
   INACTIVE  = flavor.ROMAN_SILVER,
 }
 
----@class LaserwavePalette: LaserwaveFlavor, LaserwaveSemantics
----@field colors LaserwaveFlavor
----@field semantics LaserwaveSemantics
----@field terminal LaserwaveTerminal
+---@class laserwave.Palette: laserwave.Flavor, laserwave.Semantics
+---@field colors laserwave.Flavor
+---@field semantics laserwave.Semantics
+---@field terminal laserwave.Terminal
 local M = {
   colors = flavor,
   semantics = semantics,

@@ -1,36 +1,36 @@
----@class LaserwaveConfig
----@field options ?LaserwaveOptions
+---@class laserwave.Config
+---@field options ?laserwave.Options
 ---@field treesitter ?boolean
 ---@field semantic_highlights ?boolean
 ---@field terminal_colors ?boolean
 ---@field plugins ?table<string, boolean>
 ---@field dev ?boolean
 
----@class ParsedLaserwaveConfig
----@field options ParsedLaserwaveOptions
+---@class laserwave.ParsedConfig
+---@field options laserwave.ParsedOptions
 ---@field treesitter boolean
 ---@field semantic_highlights boolean
 ---@field terminal_colors boolean
 ---@field plugins table<string, boolean>
 ---@field dev boolean
 
----@class LaserwaveOptions
+---@class laserwave.Options
 ---@field transparent ?boolean
 ---@field italic_comments ?boolean
 ---@field italic_functions ?boolean
 ---@field italic_keywords ?boolean
 ---@field italic_variables ?boolean
 
----@class ParsedLaserwaveOptions
+---@class laserwave.ParsedOptions
 ---@field transparent boolean
 ---@field italic_comments boolean
 ---@field italic_functions boolean
 ---@field italic_keywords boolean
 ---@field italic_variables boolean
 
----@class DefaultLaserwaveConfig
+---@class laserwave.DefaultConfig
 local config = {
-  ---@type ParsedLaserwaveOptions
+  ---@type laserwave.ParsedOptions
   options = {
     transparent = false,
     italic_comments = true,
@@ -61,10 +61,10 @@ local config = {
   -- filetypes = {}
 }
 
----@param config_table ?LaserwaveConfig
----@return ParsedLaserwaveConfig
+---@param config_table ?laserwave.Config
+---@return laserwave.ParsedConfig
 function config.parse(config_table)
-  ---@type ParsedLaserwaveOptions
+  ---@type laserwave.ParsedOptions
   local options = config.options
   local treesitter = config.treesitter
   local semantic_highlights = config.semantic_highlights
@@ -99,7 +99,7 @@ function config.parse(config_table)
     end
   end
 
-  ---@type ParsedLaserwaveConfig
+  ---@type laserwave.ParsedConfig
   return vim.tbl_extend("force", config, {
     options = options,
     dev = dev,

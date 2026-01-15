@@ -1,9 +1,9 @@
 local helpers = require("shipwright.transform.helpers")
 
----@class LaserwaveTemplate
+---@class laserwave.Template
 local Template = {}
 
----@class LaserwaveTemplateMetaOptions
+---@class laserwave.TemplateMetaOptions
 ---@field name? string
 ---@field flavor? string
 ---@field author? string
@@ -13,7 +13,7 @@ local Template = {}
 ---@field date? string
 ---@field time? string
 
----@class LaserwaveTemplateMeta
+---@class laserwave.TemplateMeta
 ---@field name string
 ---@field flavor string
 ---@field author string
@@ -23,7 +23,7 @@ local Template = {}
 ---@field date string
 ---@field time string
 
----@class LaserwaveTemplateMetaSpec
+---@class laserwave.TemplateMetaSpec
 local meta_spec = {
   "name",
   "flavor",
@@ -36,7 +36,7 @@ local meta_spec = {
 }
 
 ---@param meta unknown
----@return LaserwaveTemplateMeta
+---@return laserwave.TemplateMeta
 function Template.validate_meta(meta)
   for _, key in ipairs(meta_spec) do
     if meta[key] == nil then
@@ -46,8 +46,8 @@ function Template.validate_meta(meta)
   return meta
 end
 
----@param spec LaserwaveSpec
----@return LaserwaveTemplateMeta
+---@param spec laserwave.Spec
+---@return laserwave.TemplateMeta
 local function meta_defaults(spec)
   return Template.validate_meta({
     name = spec.name or "laserwave",
@@ -61,129 +61,129 @@ local function meta_defaults(spec)
   })
 end
 
----@class LaserwaveTemplatePaletteOptions
----@field bg? LaserwaveColor | string
----@field fg? LaserwaveColor | string
----@field cursor_fg? LaserwaveColor | string
----@field cursor_bg? LaserwaveColor | string
----@field line_bg? LaserwaveColor | string
----@field selection_fg? LaserwaveColor | string
----@field selection_bg? LaserwaveColor | string
----@field black? LaserwaveColor | string
----@field red? LaserwaveColor | string
----@field green? LaserwaveColor | string
----@field yellow? LaserwaveColor | string
----@field blue? LaserwaveColor | string
----@field magenta? LaserwaveColor | string
----@field cyan? LaserwaveColor | string
----@field white? LaserwaveColor | string
----@field bright_black? LaserwaveColor | string
----@field bright_red? LaserwaveColor | string
----@field bright_green? LaserwaveColor | string
----@field bright_yellow? LaserwaveColor | string
----@field bright_blue? LaserwaveColor | string
----@field bright_magenta? LaserwaveColor | string
----@field bright_cyan? LaserwaveColor | string
----@field bright_white? LaserwaveColor | string
----@field attribute_fg? LaserwaveColor | string
----@field class_fg? LaserwaveColor | string
----@field character_fg? LaserwaveColor | string
----@field comment_fg? LaserwaveColor | string
----@field constant_fg? LaserwaveColor | string
----@field error_fg? LaserwaveColor | string
----@field function_fg? LaserwaveColor | string
----@field ignore_fg? LaserwaveColor | string
----@field keyword_fg? LaserwaveColor | string
----@field number_fg? LaserwaveColor | string
----@field operator_fg? LaserwaveColor | string
----@field string_fg? LaserwaveColor | string
----@field tag_fg? LaserwaveColor | string
----@field type_fg? LaserwaveColor | string
----@field identifier_fg? LaserwaveColor | string
----@field added_fg? LaserwaveColor | string
----@field added_bg? LaserwaveColor | string
----@field deleted_fg? LaserwaveColor | string
----@field deleted_bg? LaserwaveColor | string
----@field changed_fg? LaserwaveColor | string
----@field changed_bg? LaserwaveColor | string
----@field url? LaserwaveColor | string
----@field border_active? LaserwaveColor | string
----@field border_inactive? LaserwaveColor | string
----@field border_bell? LaserwaveColor | string
----@field tab_active_fg? LaserwaveColor | string
----@field tab_active_bg? LaserwaveColor | string
----@field tab_inactive_fg? LaserwaveColor | string
----@field tab_inactive_bg? LaserwaveColor | string
----@field tab_bg? LaserwaveColor | string
----@field mark1_fg? LaserwaveColor | string
----@field mark1_bg? LaserwaveColor | string
----@field mark2_fg? LaserwaveColor | string
----@field mark2_bg? LaserwaveColor | string
----@field mark3_fg? LaserwaveColor | string
----@field mark3_bg? LaserwaveColor | string
+---@class laserwave.TemplatePaletteOptions
+---@field bg? laserwave.Color | string
+---@field fg? laserwave.Color | string
+---@field cursor_fg? laserwave.Color | string
+---@field cursor_bg? laserwave.Color | string
+---@field line_bg? laserwave.Color | string
+---@field selection_fg? laserwave.Color | string
+---@field selection_bg? laserwave.Color | string
+---@field black? laserwave.Color | string
+---@field red? laserwave.Color | string
+---@field green? laserwave.Color | string
+---@field yellow? laserwave.Color | string
+---@field blue? laserwave.Color | string
+---@field magenta? laserwave.Color | string
+---@field cyan? laserwave.Color | string
+---@field white? laserwave.Color | string
+---@field bright_black? laserwave.Color | string
+---@field bright_red? laserwave.Color | string
+---@field bright_green? laserwave.Color | string
+---@field bright_yellow? laserwave.Color | string
+---@field bright_blue? laserwave.Color | string
+---@field bright_magenta? laserwave.Color | string
+---@field bright_cyan? laserwave.Color | string
+---@field bright_white? laserwave.Color | string
+---@field attribute_fg? laserwave.Color | string
+---@field class_fg? laserwave.Color | string
+---@field character_fg? laserwave.Color | string
+---@field comment_fg? laserwave.Color | string
+---@field constant_fg? laserwave.Color | string
+---@field error_fg? laserwave.Color | string
+---@field function_fg? laserwave.Color | string
+---@field ignore_fg? laserwave.Color | string
+---@field keyword_fg? laserwave.Color | string
+---@field number_fg? laserwave.Color | string
+---@field operator_fg? laserwave.Color | string
+---@field string_fg? laserwave.Color | string
+---@field tag_fg? laserwave.Color | string
+---@field type_fg? laserwave.Color | string
+---@field identifier_fg? laserwave.Color | string
+---@field added_fg? laserwave.Color | string
+---@field added_bg? laserwave.Color | string
+---@field deleted_fg? laserwave.Color | string
+---@field deleted_bg? laserwave.Color | string
+---@field changed_fg? laserwave.Color | string
+---@field changed_bg? laserwave.Color | string
+---@field url? laserwave.Color | string
+---@field border_active? laserwave.Color | string
+---@field border_inactive? laserwave.Color | string
+---@field border_bell? laserwave.Color | string
+---@field tab_active_fg? laserwave.Color | string
+---@field tab_active_bg? laserwave.Color | string
+---@field tab_inactive_fg? laserwave.Color | string
+---@field tab_inactive_bg? laserwave.Color | string
+---@field tab_bg? laserwave.Color | string
+---@field mark1_fg? laserwave.Color | string
+---@field mark1_bg? laserwave.Color | string
+---@field mark2_fg? laserwave.Color | string
+---@field mark2_bg? laserwave.Color | string
+---@field mark3_fg? laserwave.Color | string
+---@field mark3_bg? laserwave.Color | string
 
----@class LaserwaveTemplatePalette
----@field bg LaserwaveColor | string
----@field fg LaserwaveColor | string
----@field cursor_fg LaserwaveColor | string
----@field cursor_bg LaserwaveColor | string
----@field line_bg LaserwaveColor | string
----@field selection_fg LaserwaveColor | string
----@field selection_bg LaserwaveColor | string
----@field black LaserwaveColor | string
----@field red LaserwaveColor | string
----@field green LaserwaveColor | string
----@field yellow LaserwaveColor | string
----@field blue LaserwaveColor | string
----@field magenta LaserwaveColor | string
----@field cyan LaserwaveColor | string
----@field white LaserwaveColor | string
----@field bright_black LaserwaveColor | string
----@field bright_red LaserwaveColor | string
----@field bright_green LaserwaveColor | string
----@field bright_yellow LaserwaveColor | string
----@field bright_blue LaserwaveColor | string
----@field bright_magenta LaserwaveColor | string
----@field bright_cyan LaserwaveColor | string
----@field bright_white LaserwaveColor | string
----@field attribute_fg LaserwaveColor | string
----@field class_fg LaserwaveColor | string
----@field character_fg LaserwaveColor | string
----@field comment_fg LaserwaveColor | string
----@field constant_fg LaserwaveColor | string
----@field error_fg LaserwaveColor | string
----@field function_fg LaserwaveColor | string
----@field ignore_fg LaserwaveColor | string
----@field keyword_fg LaserwaveColor | string
----@field number_fg LaserwaveColor | string
----@field operator_fg LaserwaveColor | string
----@field string_fg LaserwaveColor | string
----@field tag_fg LaserwaveColor | string
----@field type_fg LaserwaveColor | string
----@field identifier_fg LaserwaveColor | string
----@field added_fg LaserwaveColor | string
----@field added_bg LaserwaveColor | string
----@field deleted_fg LaserwaveColor | string
----@field deleted_bg LaserwaveColor | string
----@field changed_fg LaserwaveColor | string
----@field changed_bg LaserwaveColor | string
----@field url LaserwaveColor | string
----@field border_active LaserwaveColor | string
----@field border_inactive LaserwaveColor | string
----@field border_bell LaserwaveColor | string
----@field tab_active_fg LaserwaveColor | string
----@field tab_active_bg LaserwaveColor | string
----@field tab_inactive_fg LaserwaveColor | string
----@field tab_inactive_bg LaserwaveColor | string
----@field tab_bg LaserwaveColor | string
----@field mark1_fg LaserwaveColor | string
----@field mark1_bg LaserwaveColor | string
----@field mark2_fg LaserwaveColor | string
----@field mark2_bg LaserwaveColor | string
----@field mark3_fg LaserwaveColor | string
----@field mark3_bg LaserwaveColor | string
+---@class laserwave.TemplatePalette
+---@field bg laserwave.Color | string
+---@field fg laserwave.Color | string
+---@field cursor_fg laserwave.Color | string
+---@field cursor_bg laserwave.Color | string
+---@field line_bg laserwave.Color | string
+---@field selection_fg laserwave.Color | string
+---@field selection_bg laserwave.Color | string
+---@field black laserwave.Color | string
+---@field red laserwave.Color | string
+---@field green laserwave.Color | string
+---@field yellow laserwave.Color | string
+---@field blue laserwave.Color | string
+---@field magenta laserwave.Color | string
+---@field cyan laserwave.Color | string
+---@field white laserwave.Color | string
+---@field bright_black laserwave.Color | string
+---@field bright_red laserwave.Color | string
+---@field bright_green laserwave.Color | string
+---@field bright_yellow laserwave.Color | string
+---@field bright_blue laserwave.Color | string
+---@field bright_magenta laserwave.Color | string
+---@field bright_cyan laserwave.Color | string
+---@field bright_white laserwave.Color | string
+---@field attribute_fg laserwave.Color | string
+---@field class_fg laserwave.Color | string
+---@field character_fg laserwave.Color | string
+---@field comment_fg laserwave.Color | string
+---@field constant_fg laserwave.Color | string
+---@field error_fg laserwave.Color | string
+---@field function_fg laserwave.Color | string
+---@field ignore_fg laserwave.Color | string
+---@field keyword_fg laserwave.Color | string
+---@field number_fg laserwave.Color | string
+---@field operator_fg laserwave.Color | string
+---@field string_fg laserwave.Color | string
+---@field tag_fg laserwave.Color | string
+---@field type_fg laserwave.Color | string
+---@field identifier_fg laserwave.Color | string
+---@field added_fg laserwave.Color | string
+---@field added_bg laserwave.Color | string
+---@field deleted_fg laserwave.Color | string
+---@field deleted_bg laserwave.Color | string
+---@field changed_fg laserwave.Color | string
+---@field changed_bg laserwave.Color | string
+---@field url laserwave.Color | string
+---@field border_active laserwave.Color | string
+---@field border_inactive laserwave.Color | string
+---@field border_bell laserwave.Color | string
+---@field tab_active_fg laserwave.Color | string
+---@field tab_active_bg laserwave.Color | string
+---@field tab_inactive_fg laserwave.Color | string
+---@field tab_inactive_bg laserwave.Color | string
+---@field tab_bg laserwave.Color | string
+---@field mark1_fg laserwave.Color | string
+---@field mark1_bg laserwave.Color | string
+---@field mark2_fg laserwave.Color | string
+---@field mark2_bg laserwave.Color | string
+---@field mark3_fg laserwave.Color | string
+---@field mark3_bg laserwave.Color | string
 
----@class LaserwaveTemplatePaletteSpec
+---@class laserwave.TemplatePaletteSpec
 local palette_spec = {
   "bg",
   "fg",
@@ -258,7 +258,7 @@ local palette_spec = {
 }
 
 ---@param data unknown
----@return LaserwaveTemplatePalette
+---@return laserwave.TemplatePalette
 function Template.validate_palette(data)
   for _, key in ipairs(palette_spec) do
     if data[key] == nil then
@@ -268,8 +268,8 @@ function Template.validate_palette(data)
   return data
 end
 
----@param colors LaserwaveTemplatePaletteOptions
----@return LaserwaveTemplatePaletteOptions
+---@param colors laserwave.TemplatePaletteOptions
+---@return laserwave.TemplatePaletteOptions
 function Template.stringify_colors(colors)
   local extracted = {}
   for key, value in pairs(colors) do
@@ -284,8 +284,8 @@ function Template.stringify_colors(colors)
   return extracted
 end
 
----@param spec LaserwaveSpec
----@return LaserwaveTemplatePalette
+---@param spec laserwave.Spec
+---@return laserwave.TemplatePalette
 local function palette_defaults(spec)
   return Template.validate_palette(Template.stringify_colors({
     bg = spec.Normal.bg,
@@ -364,26 +364,26 @@ local function palette_defaults(spec)
   }))
 end
 
----@class LaserwaveTemplateOptions : LaserwaveTemplateMetaOptions, LaserwaveTemplatePaletteOptions
----@class LaserwaveTemplateContext : LaserwaveTemplateMeta, LaserwaveTemplatePalette
+---@class laserwave.TemplateOptions : laserwave.TemplateMetaOptions, laserwave.TemplatePaletteOptions
+---@class laserwave.TemplateContext : laserwave.TemplateMeta, laserwave.TemplatePalette
 
 ---@param opts unknown
----@return LaserwaveTemplateContext
+---@return laserwave.TemplateContext
 function Template.validate_context(opts)
   Template.validate_palette(opts)
   Template.validate_meta(opts)
   return opts
 end
 
----@param with_context LaserwaveTemplateOptions | fun(ctx: LaserwaveTemplateContext, spec: LaserwaveSpec):LaserwaveTemplateOptions
+---@param with_context laserwave.TemplateOptions | fun(ctx: laserwave.TemplateContext, spec: laserwave.Spec):laserwave.TemplateOptions
 function Template.with_context(with_context)
-  ---@class BoundLaserwaveTemplate
+  ---@class laserwave.BoundTemplate
   local BoundTemplate = {}
 
   ---@param template string
-  ---@return fun(spec: LaserwaveSpec): string[]
+  ---@return fun(spec: laserwave.Spec): string[]
   function BoundTemplate.create(template)
-    ---@param spec LaserwaveSpec
+    ---@param spec laserwave.Spec
     local function apply(spec)
       local default_context = vim.tbl_extend("force", palette_defaults(spec), meta_defaults(spec))
 

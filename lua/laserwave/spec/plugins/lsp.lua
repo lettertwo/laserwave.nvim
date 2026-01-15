@@ -3,7 +3,7 @@ local palette = require("laserwave.palette")
 -- These groups are for the native LSP client and diagnostic system. Some
 -- other LSP clients may use these groups, or use their own. Consult your
 -- LSP client's documentation.
----@type LaserwaveSpec
+---@type laserwave.Spec
 --stylua: ignore
 local lsp = {
   -- LSP Semantic Token Groups that preserve treesitter highlights

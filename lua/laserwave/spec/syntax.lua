@@ -1,6 +1,6 @@
 local palette = require("laserwave.palette")
 
----@type LaserwaveSpec
+---@type laserwave.Spec
 --stylua: ignore
 local syntax = {
   -- Common vim syntax groups used for all kinds of code and markup.

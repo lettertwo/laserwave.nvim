@@ -1,9 +1,9 @@
 local M = {}
 
----@class LaserwaveSpecValue
----@field fg LaserwaveColor?
----@field bg LaserwaveColor?
----@field sp LaserwaveColor?
+---@class laserwave.SpecValue
+---@field fg laserwave.Color?
+---@field bg laserwave.Color?
+---@field sp laserwave.Color?
 ---@field bold boolean?
 ---@field underline boolean?
 ---@field undercurl boolean?
@@ -15,16 +15,16 @@ local M = {}
 ---@field reverse boolean?
 ---@field [any] 'never'
 
----@alias LaserwaveSpec table<string, LaserwaveSpecValue | string>
+---@alias laserwave.Spec table<string, laserwave.SpecValue | string>
 
----@class CompiledLaserwaveSpecs
+---@class laserwave.CompiledSpecs
 ---@field colorscheme string
----@field palette LaserwavePalette
----@field spec LaserwaveSpec
----@field plugins table<string, LaserwaveSpec>
+---@field palette laserwave.Palette
+---@field spec laserwave.Spec
+---@field plugins table<string, laserwave.Spec>
 
----@param specs LaserwaveSpec[]
----@return LaserwaveSpec
+---@param specs laserwave.Spec[]
+---@return laserwave.Spec
 local function merge_specs(specs)
   local result = {}
   for _, spec in ipairs(specs) do
@@ -35,9 +35,9 @@ local function merge_specs(specs)
   return result
 end
 
----@param config ParsedLaserwaveConfig
----@param flavor LASERWAVE_FLAVOR_NAME
----@return CompiledLaserwaveSpecs
+---@param config laserwave.ParsedConfig
+---@param flavor laserwave.FLAVOR_NAME
+---@return laserwave.CompiledSpecs
 function M.compile(config, flavor)
   local colorscheme = flavor ~= "original" and "laserwave-" .. flavor or "laserwave"
 

@@ -5,7 +5,7 @@ for k, _ in pairs(package.loaded) do
   end
 end
 
----@type Laserwave
+---@type laserwave
 local laserwave = require("laserwave")
 
 local compiler = require("laserwave.compiler")
@@ -22,9 +22,9 @@ local yazi = require("laserwave.transform.yazi")
 
 laserwave.setup()
 
----@param flavor LASERWAVE_FLAVOR_NAME
+---@param flavor laserwave.FLAVOR_NAME
 local function build_flavor(flavor)
-  ---@type CompiledLaserwaveSpecs
+  ---@type laserwave.CompiledSpecs
   local specs = compiler.compile(laserwave._config, flavor)
   local ctx = vim.tbl_extend("force", specs.spec, { name = specs.colorscheme, flavor = flavor })
   local colorspath = "colors/" .. specs.colorscheme .. ".lua"

@@ -8,28 +8,28 @@ if not ok then
   error("hsluv module not found. You may need to run `make install` to install dependencies.")
 end
 
----@overload fun(hex: string): LaserwaveColor
+---@overload fun(hex: string): laserwave.Color
 local M = {}
 
 local function clamp(value, min, max)
   return math.min(math.max(value, min), max)
 end
 
----@class LaserwaveColor
+---@class laserwave.Color
 ---@field hex string
 ---@field h integer
 ---@field s integer
 ---@field l integer
-local LaserwaveColor = {}
-LaserwaveColor.__index = LaserwaveColor
+local Color = {}
+Color.__index = Color
 
-function LaserwaveColor.__tostring(self)
+function Color.__tostring(self)
   return self.hex
 end
 
 -- Mix two colors in HSLuv space
 -- ratio: 0 = 100% self, 100 = 100% other
-function LaserwaveColor:mix(other, ratio)
+function Color:mix(other, ratio)
   ratio = clamp(ratio, 0, 100) / 100
   local h = self.h + (other.h - self.h) * ratio
   local s = self.s + (other.s - self.s) * ratio
@@ -38,13 +38,13 @@ function LaserwaveColor:mix(other, ratio)
 end
 
 -- Darken color by reducing lightness
-function LaserwaveColor:darken(amount)
+function Color:darken(amount)
   local ratio = clamp(amount, 0, 100) / 100
   return M.hsluv(self.h, self.s, self.l + (self.l * -ratio))
 end
 
 -- Lighten color by increasing lightness
-function LaserwaveColor:lighten(amount)
+function Color:lighten(amount)
   local ratio = clamp(amount, 0, 100) / 100
   return M.hsluv(self.h, self.s, self.l + ((100 - self.l) * ratio))
 end
@@ -66,7 +66,7 @@ function M.hsluv(h, s, l)
     h = h,
     s = s,
     l = l,
-  }, LaserwaveColor)
+  }, Color)
 end
 
 ---@diagnostic disable-next-line: param-type-mismatch

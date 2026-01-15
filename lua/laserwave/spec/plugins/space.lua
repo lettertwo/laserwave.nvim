@@ -1,6 +1,6 @@
 local palette = require("laserwave.palette")
 
----@type LaserwaveSpec
+---@type laserwave.Spec
 --stylua: ignore
 local space = {
   -- ExtraWhitespace
