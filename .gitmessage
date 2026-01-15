@@ -18,22 +18,23 @@
 # revert:   Reverts a previous commit
 
 # --- COMMON SCOPES ---
-# api       - API changes
-# config    - Configuration changes
-# operators - Operator-related changes
-# actions   - Action-related changes
-# keymap    - Keymap changes
-# extmarks  - Extmark/highlighting changes
-# tests     - Test-related changes
-# docs      - Documentation changes
+# command     - Command changes
+# compiler    - Compiler-related changes
+# config      - Configuration changes
+# dev         - Dev-related changes
+# flavor      - Flavor-related changes
+# palette     - Color palette changes
+# spec        - Specification changes
+# template    - Template changes
+# transform   - Code transformation changes
 
 # --- EXAMPLES ---
-# feat(operators): add support for 'p' (put) operator
-# fix(api): prevent extmark errors on buffer delete
-# docs: add custom operator configuration examples
-# refactor(keymap)!: simplify configuration API
+# feat: add new plugin
+# fix(transform): prevent buffer errors
+# docs: update README
+# refactor(config)!: breaking API changes
 #
-# BREAKING CHANGE: Remove 'actions' and 'preset_actions' config options.
+# BREAKING CHANGE: Remove config options.
 
 # --- GUIDELINES ---
 # * Use imperative, present tense: "change" not "changed" nor "changes"
