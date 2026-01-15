@@ -91,7 +91,7 @@ function M.get_config()
     cfg = M._config
   end
   assert(cfg ~= nil, "Config not initialized")
-  return cfg
+  return vim.deepcopy(cfg)
 end
 
 ---@param config ?laserwave.Config
