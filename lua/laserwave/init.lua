@@ -135,7 +135,6 @@ end
 ---@param config ?laserwave.Config
 function M.setup(config)
   M.set_config(config)
-  -- init_command()
 end
 
 -- Set up a stub command that will load the full command on first use
