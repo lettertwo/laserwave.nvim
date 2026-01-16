@@ -1,4 +1,4 @@
--- GENERATED ON 2026-01-13 AT 00:21:42
+-- GENERATED ON 2026-01-16 AT 17:44:17
 -- name:     laserwave
 -- author:   Eric Eldredge <lettertwo@gmail.com>
 -- license:  MIT
@@ -8,7 +8,7 @@ local laserwave = {}
 laserwave.normal = {
   a = { bg = "#40B4C4", fg = "#241E2B" },
   b = { bg = "#383041", fg = "#40B4C4" },
-  c = { bg = "#241E2B", fg = "#FFFFFF" },
+  c = { bg = "#241E2B", fg = "#91889B" },
 }
 laserwave.insert = {
   a = { bg = "#74DFC4", fg = "#241E2B" },

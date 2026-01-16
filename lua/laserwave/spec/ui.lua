@@ -109,7 +109,7 @@ local ui = {
   -- StderrMsg    = {}, -- Messages in stderr from shell commands.
   -- StdoutMsg    = {}, -- Messages in stdout from shell commands.
 
-  StatusLine   = { bg = palette.BG:darken(10), fg = palette.FG }, -- Status line of current window
+  StatusLine   = { bg = palette.BG:darken(10), fg = palette.COMMENT }, -- Status line of current window
   StatusLineNC = { bg = palette.BG:darken(10), fg = palette.IGNORE }, -- Status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
 
   -- StatusLineTerm   = {}, -- Status line of |terminal| window.

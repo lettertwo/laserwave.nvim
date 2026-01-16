@@ -1,4 +1,4 @@
--- GENERATED ON 2026-01-16 AT 16:41:48
+-- GENERATED ON 2026-01-16 AT 17:44:17
 -- name:     laserwave-hi_c
 -- author:   Eric Eldredge <lettertwo@gmail.com>
 -- license:  MIT
@@ -92,7 +92,7 @@ local specs = {
     SpellLocal = {sp = "#1ED3EC", undercurl = true},
     SpellRare = {sp = "#B4ABBE", undercurl = true},
     Statement = {fg = "#1ED3EC"},
-    StatusLine = {fg = "#FFFFFF", bg = "#17131C"},
+    StatusLine = {fg = "#B4ABBE", bg = "#17131C"},
     StatusLineNC = {fg = "#B4A8C8", bg = "#17131C"},
     String = {fg = "#ACDFEF"},
     TabLine = {fg = "#FFFFFF", bg = "#17131C"},
