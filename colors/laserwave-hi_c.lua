@@ -1,4 +1,4 @@
--- GENERATED ON 2026-01-15 AT 17:36:45
+-- GENERATED ON 2026-01-16 AT 15:29:04
 -- name:     laserwave-hi_c
 -- author:   Eric Eldredge <lettertwo@gmail.com>
 -- license:  MIT
@@ -416,6 +416,24 @@ local function apply_colors(groups, extend)
     end
   end
 end
+local function apply_terminal_colors()
+  vim.g.terminal_color_0 = "#B4ABBE"
+  vim.g.terminal_color_1 = "#FF52BF"
+  vim.g.terminal_color_2 = "#1ED3EC"
+  vim.g.terminal_color_3 = "#FFE261"
+  vim.g.terminal_color_4 = "#1ED3EC"
+  vim.g.terminal_color_5 = "#D887F5"
+  vim.g.terminal_color_6 = "#ACDFEF"
+  vim.g.terminal_color_7 = "#FFFFFF"
+  vim.g.terminal_color_8 = "#D887F5"
+  vim.g.terminal_color_9 = "#FF3E7B"
+  vim.g.terminal_color_10 = "#3FEABF"
+  vim.g.terminal_color_11 = "#FFB85B"
+  vim.g.terminal_color_12 = "#1ED3EC"
+  vim.g.terminal_color_13 = "#FF52BF"
+  vim.g.terminal_color_14 = "#ACDFEF"
+  vim.g.terminal_color_15 = "#FFFFFF"
+end
 -- Load config and apply colors
 vim.cmd("highlight clear")
 vim.o.background = "dark"
@@ -424,6 +442,9 @@ vim.g.colors_name = "laserwave-hi_c"
 require("laserwave").set_flavor("hi_c")
 local cfg = require("laserwave").get_config()
 apply_colors(specs.spec)
+if cfg.terminal_colors then
+  apply_terminal_colors()
+end
 if cfg.options.transparent then
   apply_colors({ Normal = { bg = nil } }, true)
 end

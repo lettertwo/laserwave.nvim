@@ -26,6 +26,25 @@ local function apply_colors(groups, extend)
   end
 end
 
+local function apply_terminal_colors()
+  vim.g.terminal_color_0 = "$black"
+  vim.g.terminal_color_1 = "$red"
+  vim.g.terminal_color_2 = "$blue"
+  vim.g.terminal_color_3 = "$yellow"
+  vim.g.terminal_color_4 = "$blue"
+  vim.g.terminal_color_5 = "$magenta"
+  vim.g.terminal_color_6 = "$cyan"
+  vim.g.terminal_color_7 = "$white"
+  vim.g.terminal_color_8 = "$bright_black"
+  vim.g.terminal_color_9 = "$bright_red"
+  vim.g.terminal_color_10 = "$bright_green"
+  vim.g.terminal_color_11 = "$bright_yellow"
+  vim.g.terminal_color_12 = "$bright_blue"
+  vim.g.terminal_color_13 = "$bright_magenta"
+  vim.g.terminal_color_14 = "$bright_cyan"
+  vim.g.terminal_color_15 = "$bright_white"
+end
+
 -- Load config and apply colors
 
 vim.cmd("highlight clear")
@@ -38,6 +57,10 @@ require("laserwave").set_flavor("$flavor")
 local cfg = require("laserwave").get_config()
 
 apply_colors(specs.spec)
+
+if cfg.terminal_colors then
+  apply_terminal_colors()
+end
 
 if cfg.options.transparent then
   apply_colors({ Normal = { bg = nil } }, true)
