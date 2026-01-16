@@ -17,7 +17,7 @@ function M.reset()
   vim.cmd("highlight clear")
 end
 
----@param cfg laserwave.ParsedConfig
+---@param cfg laserwave.Config
 ---@param flavor laserwave.FLAVOR_NAME
 function M.apply(cfg, flavor)
   local transformer = require("laserwave.transformer")
@@ -35,9 +35,9 @@ function M.apply(cfg, flavor)
   vim.cmd.colorscheme(specs.colorscheme)
 end
 
----@param config ?laserwave.Config
-function M.setup(config)
-  require("laserwave").setup(config)
+---@param opts ?laserwave.Options
+function M.setup(opts)
+  require("laserwave").setup(opts)
 
   require("laserwave.command").add("compile", {
     impl = function()

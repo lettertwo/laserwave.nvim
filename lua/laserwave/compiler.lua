@@ -35,7 +35,7 @@ local function merge_specs(specs)
   return result
 end
 
----@param config laserwave.ParsedConfig
+---@param config laserwave.Config
 ---@param flavor laserwave.FLAVOR_NAME
 ---@return laserwave.CompiledSpecs
 function M.compile(config, flavor)

@@ -62,16 +62,14 @@ Here are the default settings:
 
 ```lua
 require("laserwave").setup({
-  options = {
-    transparent = false,
-    italic_comments = true,
-    italic_keywords = true,
-    italic_functions = false,
-    italic_variables = false,
-  },
+  transparent = false,
   terminal_colors = true,
   treesitter = true,
   semantic_highlights = true,
+  italic_comments = true,
+  italic_keywords = true,
+  italic_functions = false,
+  italic_variables = false,
   plugins = {
     alpha = false,
     blink = true,

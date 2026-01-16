@@ -83,7 +83,7 @@ function M.get_flavor(input)
   error("Invalid flavor: " .. input)
 end
 
----@return laserwave.ParsedConfig
+---@return laserwave.Config
 function M.get_config()
   local cfg = M._config
   if not cfg then
@@ -91,13 +91,7 @@ function M.get_config()
     cfg = M._config
   end
   assert(cfg ~= nil, "Config not initialized")
-  return vim.deepcopy(cfg)
-end
-
----@param config ?laserwave.Config
-function M.set_config(config)
-  ---@diagnostic disable-next-line: param-type-mismatch
-  M._config = require("laserwave.config").parse(vim.tbl_deep_extend("force", M._config or {}, config or {}))
+  return cfg:clone()
 end
 
 local command_initialized = false
@@ -132,9 +126,9 @@ local function init_command()
   return command
 end
 
----@param config ?laserwave.Config
-function M.setup(config)
-  M.set_config(config)
+---@param opts ?laserwave.Options
+function M.setup(opts)
+  M._config = require("laserwave.config").parse(opts)
   M.set_flavor(M.get_flavor())
 end
 

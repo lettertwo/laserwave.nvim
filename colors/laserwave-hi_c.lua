@@ -1,4 +1,4 @@
--- GENERATED ON 2026-01-16 AT 15:29:04
+-- GENERATED ON 2026-01-16 AT 16:41:48
 -- name:     laserwave-hi_c
 -- author:   Eric Eldredge <lettertwo@gmail.com>
 -- license:  MIT
@@ -445,16 +445,16 @@ apply_colors(specs.spec)
 if cfg.terminal_colors then
   apply_terminal_colors()
 end
-if cfg.options.transparent then
+if cfg.transparent then
   apply_colors({ Normal = { bg = nil } }, true)
 end
 apply_colors({
-  Comment = { italic = cfg.options.italic_comments },
-  Function = { italic = cfg.options.italic_functions },
-  Statement = { italic = cfg.options.italic_keywords },
-  Keyword = { italic = cfg.options.italic_keywords },
-  Include = { italic = cfg.options.italic_keywords },
-  Identifier = { italic = cfg.options.italic_variables },
+  Comment = { italic = cfg.italic_comments },
+  Function = { italic = cfg.italic_functions },
+  Statement = { italic = cfg.italic_keywords },
+  Keyword = { italic = cfg.italic_keywords },
+  Include = { italic = cfg.italic_keywords },
+  Identifier = { italic = cfg.italic_variables },
 }, true)
 if cfg.treesitter and specs.plugins.treesitter then
   apply_colors(specs.plugins.treesitter)
