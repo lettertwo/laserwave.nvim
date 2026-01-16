@@ -1,0 +1,30 @@
+# vim:fileencoding=utf-8:ft=kitty.conf:foldmethod=marker
+## GENERATED ON 2026-01-16 AT 12:52:01
+## name:     laserwave-hi_c
+## author:   Eric Eldredge <lettertwo@gmail.com>
+## license:  MIT
+## upstream: https://github.com/lettertwo/laserwave.nvim/dist/ghostty/laserwave-hi_c
+## blurb:    Based on LaserWave for VSCode by Jared Jones
+palette = 0=#B4ABBE
+palette = 1=#FF52BF
+palette = 2=#1ED3EC
+palette = 3=#FFE261
+palette = 4=#1ED3EC
+palette = 5=#D887F5
+palette = 6=#ACDFEF
+palette = 7=#FFFFFF
+palette = 8=#D887F5
+palette = 9=#FF3E7B
+palette = 10=#3FEABF
+palette = 11=#FFB85B
+palette = 12=#1ED3EC
+palette = 13=#FF52BF
+palette = 14=#ACDFEF
+palette = 15=#FFFFFF
+background = #19151E
+foreground = #FFFFFF
+cursor-color = cell-foreground
+cursor-text = cell-background
+selection-background = #382A45
+selection-foreground = cell-foreground
+split-divider-color = #FF52BF

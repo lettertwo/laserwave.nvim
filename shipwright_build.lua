@@ -16,6 +16,7 @@ local lualine = require("laserwave.transform.lualine")
 local kitty = require("laserwave.transform.kitty")
 local alacritty = require("laserwave.transform.alacritty")
 local wezterm = require("laserwave.transform.wezterm")
+local ghostty = require("laserwave.transform.ghostty")
 local neovim = require("laserwave.transform.neovim")
 local textmate = require("laserwave.transform.textmate")
 local delta = require("laserwave.transform.delta")
@@ -34,6 +35,7 @@ local function build_flavor(flavor)
     kitty = transformer.run(kitty, ctx, "dist/kitty/" .. specs.colorscheme .. ".conf"),
     alacritty = transformer.run(alacritty, ctx, "dist/alacritty/" .. specs.colorscheme .. ".yml"),
     wezterm = transformer.run(wezterm, ctx, "dist/wezterm/" .. specs.colorscheme .. ".toml"),
+    ghostty = transformer.run(ghostty, ctx, "dist/ghostty/" .. specs.colorscheme),
     textmate = transformer.run(textmate, ctx, "dist/" .. specs.colorscheme .. ".tmTheme"),
     delta = transformer.run(delta, ctx, "dist/delta/" .. specs.colorscheme .. ".gitconfig"),
     yazi = {
