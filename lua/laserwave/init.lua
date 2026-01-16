@@ -113,6 +113,61 @@ local function init_command()
       end,
     })
 
+    command.add("toggle", {
+      nargs = 1,
+      impl = function(args)
+        local config = M.get_config()
+        local target_config = config
+        local key = args[1]
+
+        if config[key] == nil then
+          if config.plugins[key] ~= nil then
+            target_config = config.plugins
+          else
+            vim.notify(
+              string.format("Config key %s does not exist", key),
+              vim.log.levels.ERROR,
+              { title = "Laserwave" }
+            )
+            return
+          end
+        end
+
+        if type(target_config[key]) ~= "boolean" then
+          vim.notify(
+            string.format("Config key %s is not a boolean", key),
+            vim.log.levels.ERROR,
+            { title = "Laserwave" }
+          )
+          return
+        end
+
+        target_config[key] = not target_config[key]
+        M.setup(config)
+
+        vim.notify(
+          string.format("Toggled %s to %s", key, tostring(target_config[key])),
+          vim.log.levels.INFO,
+          { title = "Laserwave" }
+        )
+      end,
+      complete = function(line)
+        local config = M.get_config()
+        local keys = {}
+        for key, val in pairs(config) do
+          if type(val) == "boolean" then
+            table.insert(keys, key)
+          end
+        end
+        for key, val in pairs(config.plugins) do
+          if type(val) == "boolean" then
+            table.insert(keys, key)
+          end
+        end
+        return keys
+      end,
+    })
+
     vim.api.nvim_create_user_command("Laserwave", command.execute, {
       nargs = "+",
       range = 0,
