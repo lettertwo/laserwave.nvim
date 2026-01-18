@@ -75,17 +75,17 @@ apply_colors({
   Identifier = { italic = cfg.italic_variables },
 }, true)
 
+for key, value in pairs(cfg.plugins) do
+  if value and specs.plugins[key] then
+    apply_colors(specs.plugins[key])
+  end
+end
+
 if cfg.treesitter and specs.plugins.treesitter then
   apply_colors(specs.plugins.treesitter)
 end
 
 if cfg.semantic_highlights and specs.plugins.semantic_highlights then
   apply_colors(specs.plugins.semantic_highlights)
-end
-
-for key, value in pairs(cfg.plugins) do
-  if value and specs.plugins[key] then
-    apply_colors(specs.plugins[key])
-  end
 end
 ]])

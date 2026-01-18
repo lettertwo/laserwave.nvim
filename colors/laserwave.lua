@@ -1,4 +1,4 @@
--- GENERATED ON 2026-01-16 AT 17:44:17
+-- GENERATED ON 2026-01-16 AT 19:18:05
 -- name:     laserwave
 -- author:   Eric Eldredge <lettertwo@gmail.com>
 -- license:  MIT
@@ -456,14 +456,14 @@ apply_colors({
   Include = { italic = cfg.italic_keywords },
   Identifier = { italic = cfg.italic_variables },
 }, true)
+for key, value in pairs(cfg.plugins) do
+  if value and specs.plugins[key] then
+    apply_colors(specs.plugins[key])
+  end
+end
 if cfg.treesitter and specs.plugins.treesitter then
   apply_colors(specs.plugins.treesitter)
 end
 if cfg.semantic_highlights and specs.plugins.semantic_highlights then
   apply_colors(specs.plugins.semantic_highlights)
-end
-for key, value in pairs(cfg.plugins) do
-  if value and specs.plugins[key] then
-    apply_colors(specs.plugins[key])
-  end
 end
