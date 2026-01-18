@@ -1,6 +1,4 @@
 local palette = require("laserwave.palette")
-local syntax = require("laserwave.spec.syntax")
-local ui = require("laserwave.spec.ui")
 
 ---@type laserwave.Spec
 --stylua: ignore
@@ -15,28 +13,28 @@ local blink = {
   BlinkCmpSignatureHelpBorder = "FloatBorder",
 
   BlinkCmpKindText          = { fg = palette.COMMENT },
-  BlinkCmpKindKeyword       = { fg = syntax.Keyword.fg },
-  BlinkCmpKindVariable      = { fg = syntax.Identifier.fg },
-  BlinkCmpKindConstant      = { fg = syntax.Constant.fg },
-  BlinkCmpKindReference     = { fg = syntax.Constant.fg },
-  BlinkCmpKindValue         = { fg = syntax.Statement.fg },
-  BlinkCmpKindFunction      = { fg = syntax.Function.fg },
-  BlinkCmpKindMethod        = { fg = syntax.Function.fg },
-  BlinkCmpKindConstructor   = { fg = syntax.Function.fg },
-  BlinkCmpKindCopilot       = { fg = syntax.Constant.fg },
-  BlinkCmpKindClass         = { fg = syntax.Type.fg },
-  BlinkCmpKindInterface     = { fg = syntax.Type.fg },
-  BlinkCmpKindStruct        = { fg = syntax.Type.fg },
-  BlinkCmpKindEvent         = { fg = syntax.Type.fg },
-  BlinkCmpKindEnum          = { fg = syntax.Type.fg },
-  BlinkCmpKindUnit          = { fg = syntax.Type.fg },
-  BlinkCmpKindModule        = { fg = syntax.PreProc.fg },
-  BlinkCmpKindProperty      = { fg = syntax.Operator.fg },
-  BlinkCmpKindField         = { fg = syntax.Operator.fg },
-  BlinkCmpKindTypeParameter = { fg = syntax.Type.fg },
-  BlinkCmpKindEnumMember    = { fg = syntax.Type.fg },
-  BlinkCmpKindOperator      = { fg = syntax.Operator.fg },
-  BlinkCmpKindSnippet       = { fg = ui.NonText.fg },
+  BlinkCmpKindKeyword       = { fg = palette.KEYWORD },
+  BlinkCmpKindVariable      = { fg = palette.VARIABLE },
+  BlinkCmpKindConstant      = { fg = palette.CONSTANT },
+  BlinkCmpKindReference     = { fg = palette.CONSTANT },
+  BlinkCmpKindValue         = { fg = palette.KEYWORD },
+  BlinkCmpKindFunction      = { fg = palette.FUNCTION },
+  BlinkCmpKindMethod        = { fg = palette.FUNCTION },
+  BlinkCmpKindConstructor   = { fg = palette.FUNCTION },
+  BlinkCmpKindCopilot       = { fg = palette.CONSTANT },
+  BlinkCmpKindClass         = { fg = palette.TYPE },
+  BlinkCmpKindInterface     = { fg = palette.TYPE },
+  BlinkCmpKindStruct        = { fg = palette.TYPE },
+  BlinkCmpKindEvent         = { fg = palette.TYPE },
+  BlinkCmpKindEnum          = { fg = palette.TYPE },
+  BlinkCmpKindUnit          = { fg = palette.TYPE },
+  BlinkCmpKindModule        = { fg = palette.IGNORE },
+  BlinkCmpKindProperty      = { fg = palette.OPERATOR },
+  BlinkCmpKindField         = { fg = palette.OPERATOR },
+  BlinkCmpKindTypeParameter = { fg = palette.TYPE },
+  BlinkCmpKindEnumMember    = { fg = palette.TYPE },
+  BlinkCmpKindOperator      = { fg = palette.OPERATOR },
+  BlinkCmpKindSnippet       = { fg = palette.IGNORE },
 }
 
 return blink

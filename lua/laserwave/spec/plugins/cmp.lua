@@ -1,6 +1,4 @@
 local palette = require("laserwave.palette")
-local syntax = require("laserwave.spec.syntax")
-local ui = require("laserwave.spec.ui")
 
 ---@type laserwave.Spec
 --stylua: ignore
@@ -12,28 +10,28 @@ local cmp = {
   CmpItemMenu           = { fg = palette.INACTIVE},
 
   CmpItemKindText          = { fg = palette.COMMENT },
-  CmpItemKindKeyword       = { fg = syntax.Keyword.fg },
-  CmpItemKindVariable      = { fg = syntax.Identifier.fg },
-  CmpItemKindConstant      = { fg = syntax.Constant.fg },
-  CmpItemKindReference     = { fg = syntax.Constant.fg },
-  CmpItemKindValue         = { fg = syntax.Statement.fg },
-  CmpItemKindFunction      = { fg = syntax.Function.fg },
-  CmpItemKindMethod        = { fg = syntax.Function.fg },
-  CmpItemKindConstructor   = { fg = syntax.Function.fg },
-  CmpItemKindCopilot       = { fg = syntax.Constant.fg },
-  CmpItemKindClass         = { fg = syntax.Type.fg },
-  CmpItemKindInterface     = { fg = syntax.Type.fg },
-  CmpItemKindStruct        = { fg = syntax.Type.fg },
-  CmpItemKindEvent         = { fg = syntax.Type.fg },
-  CmpItemKindEnum          = { fg = syntax.Type.fg },
-  CmpItemKindUnit          = { fg = syntax.Type.fg },
-  CmpItemKindModule        = { fg = syntax.PreProc.fg },
-  CmpItemKindProperty      = { fg = syntax.Operator.fg },
-  CmpItemKindField         = { fg = syntax.Operator.fg },
-  CmpItemKindTypeParameter = { fg = syntax.Type.fg },
-  CmpItemKindEnumMember    = { fg = syntax.Type.fg },
-  CmpItemKindOperator      = { fg = syntax.Operator.fg },
-  CmpItemKindSnippet       = { fg = ui.NonText.fg },
+  CmpItemKindKeyword       = { fg = palette.KEYWORD },
+  CmpItemKindVariable      = { fg = palette.VARIABLE },
+  CmpItemKindConstant      = { fg = palette.CONSTANT },
+  CmpItemKindReference     = { fg = palette.CONSTANT },
+  CmpItemKindValue         = { fg = palette.KEYWORD },
+  CmpItemKindFunction      = { fg = palette.FUNCTION },
+  CmpItemKindMethod        = { fg = palette.FUNCTION },
+  CmpItemKindConstructor   = { fg = palette.FUNCTION },
+  CmpItemKindCopilot       = { fg = palette.CONSTANT },
+  CmpItemKindClass         = { fg = palette.TYPE },
+  CmpItemKindInterface     = { fg = palette.TYPE },
+  CmpItemKindStruct        = { fg = palette.TYPE },
+  CmpItemKindEvent         = { fg = palette.TYPE },
+  CmpItemKindEnum          = { fg = palette.TYPE },
+  CmpItemKindUnit          = { fg = palette.TYPE },
+  CmpItemKindModule        = { fg = palette.IGNORE },
+  CmpItemKindProperty      = { fg = palette.OPERATOR },
+  CmpItemKindField         = { fg = palette.OPERATOR },
+  CmpItemKindTypeParameter = { fg = palette.TYPE },
+  CmpItemKindEnumMember    = { fg = palette.TYPE },
+  CmpItemKindOperator      = { fg = palette.OPERATOR },
+  CmpItemKindSnippet       = { fg = palette.IGNORE },
 }
 
 return cmp

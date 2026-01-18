@@ -1,5 +1,3 @@
-local syntax = require("laserwave.spec.syntax")
-
 -- WIP: These group names lifted from: https://github.com/folke/tokyonight.nvim/blob/f247ee7/lua/tokyonight/theme.lua#L271
 ---@type laserwave.Spec
 --stylua: ignore

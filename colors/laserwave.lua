@@ -1,4 +1,4 @@
--- GENERATED ON 2026-01-16 AT 19:18:05
+-- GENERATED ON 2026-01-18 AT 13:43:32
 -- name:     laserwave
 -- author:   Eric Eldredge <lettertwo@gmail.com>
 -- license:  MIT
@@ -172,7 +172,7 @@ local specs = {
       BlinkCmpKindInterface = {fg = "#B381C5"},
       BlinkCmpKindKeyword = {fg = "#40B4C4"},
       BlinkCmpKindMethod = {fg = "#EB64B9"},
-      BlinkCmpKindModule = {},
+      BlinkCmpKindModule = {fg = "#7B6995"},
       BlinkCmpKindOperator = {fg = "#74DFC4"},
       BlinkCmpKindProperty = {fg = "#74DFC4"},
       BlinkCmpKindReference = {fg = "#FFE261"},
@@ -208,7 +208,7 @@ local specs = {
       CmpItemKindInterface = {fg = "#B381C5"},
       CmpItemKindKeyword = {fg = "#40B4C4"},
       CmpItemKindMethod = {fg = "#EB64B9"},
-      CmpItemKindModule = {},
+      CmpItemKindModule = {fg = "#7B6995"},
       CmpItemKindOperator = {fg = "#74DFC4"},
       CmpItemKindProperty = {fg = "#74DFC4"},
       CmpItemKindReference = {fg = "#FFE261"},
