@@ -71,7 +71,6 @@ require("laserwave").setup({
   italic_functions = false,
   italic_variables = false,
   plugins = {
-    alpha = false,
     blink = true,
     cmp = false,
     git = true,

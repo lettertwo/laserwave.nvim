@@ -4,7 +4,7 @@ local palette = require("laserwave.palette")
 --stylua: ignore
 local git = {
   -- gitblame
-  gitblame = "VirtualText",
+  gitblame = { fg = palette.IGNORE, bg = palette.BG_VISUAL },
 
   -- GitGutter
   GitGutterAdd    = { fg = palette.ADD }, -- diff mode: Added line |diff.txt|

@@ -1,4 +1,4 @@
-*laserwave.txt*         For NVIM >= 0.10.0        Last change: 2026 January 12
+*laserwave.txt*         For NVIM >= 0.10.0        Last change: 2026 January 18
 
 ==============================================================================
 Table of Contents                                *laserwave-table-of-contents*
@@ -86,18 +86,15 @@ Here are the default settings:
 
 >lua
     require("laserwave").setup({
-      options = {
-        transparent = false,
-        italic_comments = true,
-        italic_keywords = true,
-        italic_functions = false,
-        italic_variables = false,
-      },
+      transparent = false,
       terminal_colors = true,
       treesitter = true,
       semantic_highlights = true,
+      italic_comments = true,
+      italic_keywords = true,
+      italic_functions = false,
+      italic_variables = false,
       plugins = {
-        alpha = false,
         blink = true,
         cmp = false,
         git = true,

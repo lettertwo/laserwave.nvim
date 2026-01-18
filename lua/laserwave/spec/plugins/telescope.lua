@@ -6,7 +6,7 @@ local telescope = {
   TelescopeNormal       = "NormalFloat",
   TelescopeSelection    = "Visual",
   TelescopePromptNormal = "NormalFloat",
-  TelescopePromptPrefix = { fg = palette.HIGHLIGHT, bg = palette.BG:darken(10) },
+  TelescopePromptPrefix = { fg = palette.HIGHLIGHT, bg = palette.BG_FLOAT },
   TelescopePromptBorder = "FloatBorder",
   TelescopePromptTitle  = "FloatTitle",
   TelescopeBorder       = "FloatBorder",

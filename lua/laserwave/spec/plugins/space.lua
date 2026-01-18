@@ -8,10 +8,10 @@ local space = {
   MiniTrailspace = "ExtraWhitespace",
 
   -- indent-blankline
-  IblIndent                  = { fg = palette.IGNORE:darken(60) },
+  IblIndent                  = { fg = palette.INDENT },
   IblWhitespace              = "IblIndent",
   IndentBlanklineChar        = "IblIndent",
-  IblScope                   = { fg = palette.IGNORE:darken(30) },
+  IblScope                   = { fg = palette.SCOPE },
   IndentBlanklineContextChar = "IblScope",
 
   -- mini.indentscope

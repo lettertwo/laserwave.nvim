@@ -5,7 +5,7 @@ local palette = require("laserwave.palette")
 local obsidian = {
   ObsidianTodo          = { fg = palette.INFO },
   ObsidianDone          = { fg = palette.HINT },
-  ObsidianRightArrow    = { fg = palette.WARNING },
+  ObsidianRightArrow    = { fg = palette.WARN },
   ObsidianTilde         = { fg = palette.ERROR },
   ObsidianRefText       = { underline = true, fg = palette.STRING },
   ObsidianExtLinkIcon   = { fg = palette.HINT },

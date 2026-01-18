@@ -23,33 +23,33 @@ local ui = {
   SpecialKey   = "Conceal", -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
   -- MsgSeparator = {}, -- Separator for scrolled messages, `msgsep` flag of 'display'
 
-  Visual       = { bg = palette.VISUAL:mix(palette.BG, 80) }, -- Visual mode selection
+  Visual       = { bg = palette.VISUAL }, -- Visual mode selection
   VisualNOS    = "Visual", -- Visual mode selection when vim is "Not Owning the Selection".
   WildMenu     = "Visual", -- Current match in 'wildmenu' completion
-  QuickFixLine = { bg = palette.VISUAL:mix(palette.BG, 80), bold = true }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
+  QuickFixLine = { bg = palette.VISUAL, bold = true }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
 
-  Cursor     = { fg = palette.FG, bg = palette.HIGHLIGHT:mix(palette.BG, 75), reverse = true }, -- Character under the cursor
+  Cursor     = { fg = palette.FG, bg = palette.BG_CURSOR, reverse = true }, -- Character under the cursor
   CurSearch  = { reverse = true }, -- Highlighting a search pattern under the cursor (see 'hlsearch')
   CursorIM   = "Cursor", -- Like Cursor, but used when in IME mode |CursorIM|
   lCursor    = "Cursor", -- Character under the cursor when |language-mapping| is used (see 'guicursor')
   -- TermCursor = {}, -- Cursor in a focused terminal
 
-  CursorLine     = { bg = palette.VISUAL:mix(palette.BG, 85) }, -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermfg OR guifg) is not set.
+  CursorLine     = { bg = palette.BG_CURSOR_LINE }, -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermfg OR guifg) is not set.
   ColorColumn    = "CursorLine", -- Columns set with 'colorcolumn'
   CursorColumn   = "CursorLine", -- Screen-column at the cursor, when 'cursorcolumn' is set.
-  CursorLineFold = { bg = palette.VISUAL:mix(palette.BG, 85), fg = palette.VISUAL }, -- Like FoldColumn when 'cursorline' is set for the cursor line.
-  CursorLineNr   = { bg = palette.VISUAL:mix(palette.BG, 85), fg = palette.FG:mix(palette.VISUAL, 50) }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
-  CursorLineSign = { bg = palette.VISUAL:mix(palette.BG, 85), fg = palette.VISUAL }, -- Like SignColumn when 'cursorline' is set for the cursor line.
+  CursorLineFold = { bg = palette.BG_CURSOR_LINE, fg = palette.VISUAL }, -- Like FoldColumn when 'cursorline' is set for the cursor line.
+  CursorLineNr   = { bg = palette.BG_CURSOR_LINE, fg = palette.CURSOR_LINE_NUM }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+  CursorLineSign = { bg = palette.BG_CURSOR_LINE, fg = palette.VISUAL }, -- Like SignColumn when 'cursorline' is set for the cursor line.
 
-  LineNr      = { fg = palette.IGNORE:mix(palette.BG, 50) }, --Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
+  LineNr      = { fg = palette.LINE_NUM }, --Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
   -- LineNrAbove = {}, -- Line number for when the 'relativenumber' option is set, above the cursor line
   -- LineNrBelow = {}, -- Line number for when the 'relativenumber' option is set, below the cursor line
 
-  Folded     = { fg = palette.IGNORE:mix(palette.BG, 50), bg = palette.IGNORE:mix(palette.BG, 75) }, -- Line used for closed folds
-  FoldColumn = { fg = palette.IGNORE:mix(palette.BG, 50), bg = palette.BG }, -- 'foldcolumn'
-  SignColumn = { fg = palette.IGNORE:mix(palette.BG, 50), bg = palette.BG }, -- Column where |signs| are displayed
+  Folded     = { fg = palette.LINE_NUM, bg = palette.BG_FOLD }, -- Line used for closed folds
+  FoldColumn = { fg = palette.LINE_NUM, bg = palette.BG }, -- 'foldcolumn'
+  SignColumn = { fg = palette.LINE_NUM, bg = palette.BG }, -- Column where |signs| are displayed
 
-  NormalFloat        = { fg = palette.FG, bg = palette.BG:darken(10) }, -- Normal text in floating windows.
+  NormalFloat        = { fg = palette.FG, bg = palette.BG_FLOAT }, -- Normal text in floating windows.
   Pmenu              = "NormalFloat", -- Popup menu: normal item.
   PmenuSel           = "Visual", -- Popup menu: selected item.
   PmenuSbar          = "NormalFloat", -- Popup menu: scrollbar.
@@ -72,36 +72,35 @@ local ui = {
   -- SnippetTabstop       = {}, -- Tabstops in snippets. |vim.snippet|
   -- SnippetTabstopActive = {}, -- The currently active tabstop. |vim.snippet|
 
-  FloatTitle         = { fg = palette.HIGHLIGHT, bg = palette.BG:darken(10) }, -- Title of floating windows (Non-standard).
-  FloatBorder        = { fg = palette.HIGHLIGHT, bg = palette.BG:darken(10) }, -- Border of floating windows.
+  FloatTitle         = { fg = palette.HIGHLIGHT, bg = palette.BG_FLOAT }, -- Title of floating windows (Non-standard).
+  FloatBorder        = { fg = palette.HIGHLIGHT, bg = palette.BG_FLOAT }, -- Border of floating windows.
   -- FloatFooter        = {}, -- Footer of floating windows.
   -- FloatShadow        = {}, -- Blended areas when border is "shadow".
   -- FloatShadowThrough = {}, -- Shadow corners when border is "shadow".
 
   IncSearch    = "CurSearch", -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
-  Search       = { bg = palette.VISUAL:mix(palette.BG, 50) }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
+  Search       = { bg = palette.BG_SEARCH }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
   Substitute   = "CurSearch", -- |:substitute| replacement text highlighting
 
   Add      = { fg = palette.ADD },
   Change   = { fg = palette.CHANGE },
   Delete   = { fg = palette.DELETE },
 
-  DiffAdd      = { fg = palette.ADD, bg = palette.ADD:mix(palette.BG, 90) }, -- Diff mode: Added line |diff.txt|
-  DiffChange   = { fg = palette.ADD, bg = palette.ADD:mix(palette.BG, 90) }, -- Diff mode: Changed line |diff.txt|
-  DiffDelete   = { fg = palette.DELETE, bg = palette.DELETE:mix(palette.BG, 90) }, -- Diff mode: Deleted line |diff.txt|
-  DiffText     = { fg = palette.CHANGE, bg = palette.CHANGE:mix(palette.BG, 90)  }, -- Diff mode: Changed text within a changed line |diff.txt|
-  DiffTextAdd  = { fg = palette.ADD, bg = palette.ADD:mix(palette.BG, 90) }, -- Diff mode: Added text within a changed line.  Linked to |hl-DiffText| by default. |diff.txt|
+  DiffAdd      = { fg = palette.ADD, bg = palette.BG_ADD }, -- Diff mode: Added line |diff.txt|
+  DiffChange   = { fg = palette.ADD, bg = palette.BG_ADD }, -- Diff mode: Changed line |diff.txt|
+  DiffDelete   = { fg = palette.DELETE, bg = palette.BG_DELETE }, -- Diff mode: Deleted line |diff.txt|
+  DiffText     = { fg = palette.CHANGE, bg = palette.BG_CHANGE  }, -- Diff mode: Changed text within a changed line |diff.txt|
+  DiffTextAdd  = { fg = palette.ADD, bg = palette.BG_ADD }, -- Diff mode: Added text within a changed line.  Linked to |hl-DiffText| by default. |diff.txt|
 
   Directory    = { fg = palette.KEYWORD }, -- Directory names (and other special names in listings)
   ErrorMsg     = { fg = palette.ERROR }, -- Error messages on the command line
   MatchParen   = { bold = true, fg = palette.HIGHLIGHT }, -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
   SpellBad     = { undercurl = true, sp = palette.ERROR }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
-  SpellCap     = { undercurl = true, sp = palette.WARNING }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
+  SpellCap     = { undercurl = true, sp = palette.WARN }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
   SpellLocal   = { undercurl = true, sp = palette.INFO }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
   SpellRare    = { undercurl = true, sp = palette.HINT }, -- Word that is recognized by the spellchecker as one that is hardly ever used.  |spell| Combined with the highlighting used otherwise.
   Title        = { bold = true, fg = palette.KEYWORD }, -- Titles for output from ":set all", ":autocmd" etc.
-  VirtualText  = { fg = palette.IGNORE, bg = palette.BG:lighten(5) }, -- I made this one up.
-  WarningMsg   = { fg = palette.WARNING }, -- Warning messages
+  WarningMsg   = { fg = palette.WARN }, -- Warning messages
   Whitespace   = { fg = palette.IGNORE }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
   MoreMsg      = { fg = palette.INFO }, -- |more-prompt|
   Question     = { fg = palette.INFO }, -- |hit-enter| prompt and yes/no questions
@@ -109,25 +108,25 @@ local ui = {
   -- StderrMsg    = {}, -- Messages in stderr from shell commands.
   -- StdoutMsg    = {}, -- Messages in stdout from shell commands.
 
-  StatusLine   = { bg = palette.BG:darken(10), fg = palette.COMMENT }, -- Status line of current window
-  StatusLineNC = { bg = palette.BG:darken(10), fg = palette.IGNORE }, -- Status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
+  StatusLine   = { bg = palette.BG_FLOAT, fg = palette.COMMENT }, -- Status line of current window
+  StatusLineNC = { bg = palette.BG_FLOAT, fg = palette.IGNORE }, -- Status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
 
   -- StatusLineTerm   = {}, -- Status line of |terminal| window.
   -- StatusLineTermNC = {}, -- Status line of non-current |terminal| windows.
 
-  TabLine      = { bg = palette.BG:darken(10), fg = palette.FG }, -- Tab pages line, not active tab page label
+  TabLine      = { bg = palette.BG_FLOAT, fg = palette.FG }, -- Tab pages line, not active tab page label
   TabLineSel   = { fg = palette.BG, bg = palette.HIGHLIGHT }, -- Tab pages line, active tab page label
-  TabLineFill  = { fg = palette.FG, bg = palette.BG:darken(10) }, -- Tab pages line, where there are no labels
+  TabLineFill  = { fg = palette.FG, bg = palette.BG_FLOAT }, -- Tab pages line, where there are no labels
 
-  WinBar       = { bg = palette.BG:darken(10), fg = palette.FG }, -- Window bar of current window
-  WinBarNC     = { bg = palette.BG:darken(10), fg = palette.IGNORE }, -- Window bar of not-current windows
+  WinBar       = { bg = palette.BG_FLOAT, fg = palette.FG }, -- Window bar of current window
+  WinBarNC     = { bg = palette.BG_FLOAT, fg = palette.IGNORE }, -- Window bar of not-current windows
 
   WinSeparator  = { fg = palette.HIGHLIGHT }, -- Separator between window splits. Inherts from |hl-VertSplit| by default, which it will replace eventually.
 
   -- NeoVim
   healthError     = { fg = palette.ERROR },
   healthSuccess   = { fg = palette.OK },
-  healthWarning   = { fg = palette.WARNING },
+  healthWarning   = { fg = palette.WARN },
 
   -- Modes
   ModeNormal         = { fg = palette.NORMAL },
@@ -138,14 +137,6 @@ local ui = {
   ModeSelect         = { fg = palette.VISUAL },
   ModeTerminal       = { fg = palette.COMMAND },
   ModeTerminalNormal = { fg = palette.COMMAND },
-  NormalMode         = { bg = palette.NORMAL:mix(palette.BG, 75) },
-  InsertMode         = { bg = palette.INSERT:mix(palette.BG, 75) },
-  VisualMode         = { bg = palette.VISUAL:mix(palette.BG, 75) },
-  CommandMode        = { bg = palette.COMMAND:mix(palette.BG, 75) },
-  ReplaceMode        = { bg = palette.REPLACE:mix(palette.BG, 75) },
-  SelectMode         = { bg = palette.VISUAL:mix(palette.BG, 75) },
-  TerminalMode       = { bg = palette.COMMAND:mix(palette.BG, 75) },
-  TerminalNormalMode = { bg = palette.COMMAND:mix(palette.BG, 75) },
 }
 
 return ui

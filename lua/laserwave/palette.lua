@@ -40,7 +40,7 @@ local semantics = {
   STRING    = flavor.POWDER_BLUE,
 
   ERROR     = flavor.VIVID_RASPBERRY,
-  WARNING   = flavor.GARDENIA,
+  WARN      = flavor.GARDENIA,
   IGNORE    = flavor.ROMAN_SILVER,
   INFO      = flavor.MAXIMUM_BLUE,
   HINT      = flavor.OLD_LAVENDER,
@@ -50,30 +50,84 @@ local semantics = {
   DELETE    = flavor.HOT_PINK,
   CHANGE    = flavor.PEARL_AQUA,
   CONFLICT  = flavor.VIVID_RASPBERRY,
-
-  NORMAL    = flavor.MAXIMUM_BLUE,
-  INSERT    = flavor.PEARL_AQUA,
-  COMMAND   = flavor.MUSTARD,
-  VISUAL    = flavor.AFRICAN_VIOLET,
-  REPLACE   = flavor.HOT_PINK,
-  INACTIVE  = flavor.ROMAN_SILVER,
 }
 
----@class laserwave.Palette: laserwave.Flavor, laserwave.Semantics
+-- stylua: ignore
+---@class laserwave.Ui
+local ui           = {
+  NORMAL           = flavor.MAXIMUM_BLUE,
+  INSERT           = flavor.PEARL_AQUA,
+  COMMAND          = flavor.MUSTARD,
+  VISUAL           = flavor.AFRICAN_VIOLET:mix(semantics.BG, 80),
+  REPLACE          = flavor.HOT_PINK,
+  INACTIVE         = flavor.ROMAN_SILVER,
+
+  CURSOR_LINE_NUM = flavor.AFRICAN_VIOLET:mix(semantics.FG, 50),
+  LINE_NUM        = flavor.ROMAN_SILVER:mix(semantics.BG, 50),
+  INDENT          = flavor.ROMAN_SILVER:mix(semantics.BG, 80),
+  SCOPE           = flavor.AFRICAN_VIOLET:mix(semantics.BG, 40),
+
+  BG_FLOAT       = flavor.background == "light" and semantics.BG:darken(5) or semantics.BG:darken(10),
+  BG_SEARCH      = flavor.AFRICAN_VIOLET:mix(semantics.BG, 50),
+  BG_VISUAL      = flavor.AFRICAN_VIOLET:mix(semantics.BG, 80),
+  BG_CURSOR      = flavor.HOT_PINK:mix(semantics.BG, 75),
+  BG_CURSOR_LINE = flavor.AFRICAN_VIOLET:mix(semantics.BG, 85),
+  BG_FOLD        = flavor.ROMAN_SILVER:mix(semantics.BG, 75),
+
+  BG_ERROR  = semantics.ERROR:darken(75),
+  BG_WARN   = semantics.WARN:darken(75),
+  BG_INFO   = semantics.INFO:darken(75),
+  BG_HINT   = semantics.HINT:darken(75),
+  BG_OK     = semantics.OK:darken(75),
+
+  BG_ADD    = semantics.ADD:mix(semantics.BG, 90),
+  BG_DELETE = semantics.DELETE:mix(semantics.BG, 90),
+  BG_CHANGE = semantics.CHANGE:mix(semantics.BG, 90),
+}
+
+-- stylua: ignore
+---@class laserwave.Gradient
+local gradient = {
+  Step1  = flavor.MAXIMUM_BLUE:mix(flavor.HOT_PINK, 0):mix(semantics.BG, 0),
+  Step2  = flavor.MAXIMUM_BLUE:mix(flavor.HOT_PINK, 10):mix(semantics.BG, 5),
+  Step3  = flavor.MAXIMUM_BLUE:mix(flavor.HOT_PINK, 20):mix(semantics.BG, 10),
+  Step4  = flavor.MAXIMUM_BLUE:mix(flavor.HOT_PINK, 30):mix(semantics.BG, 15),
+  Step5  = flavor.MAXIMUM_BLUE:mix(flavor.HOT_PINK, 40):mix(semantics.BG, 20),
+  Step6  = flavor.MAXIMUM_BLUE:mix(flavor.HOT_PINK, 50):mix(semantics.BG, 25),
+  Step7  = flavor.MAXIMUM_BLUE:mix(flavor.HOT_PINK, 60):mix(semantics.BG, 30),
+  Step8  = flavor.MAXIMUM_BLUE:mix(flavor.HOT_PINK, 70):mix(semantics.BG, 35),
+  Step9  = flavor.MAXIMUM_BLUE:mix(flavor.HOT_PINK, 80):mix(semantics.BG, 40),
+  Step10 = flavor.MAXIMUM_BLUE:mix(flavor.HOT_PINK, 90):mix(semantics.BG, 45),
+  Step11 = flavor.MAXIMUM_BLUE:mix(flavor.HOT_PINK, 100):mix(semantics.BG, 50),
+  Step12 = flavor.VIVID_RASPBERRY:mix(flavor.MAXIMUM_BLUE, 10):mix(semantics.BG, 55),
+  Step13 = flavor.VIVID_RASPBERRY:mix(flavor.MAXIMUM_BLUE, 20):mix(semantics.BG, 60),
+  Step14 = flavor.VIVID_RASPBERRY:mix(flavor.MAXIMUM_BLUE, 30):mix(semantics.BG, 65),
+  Step15 = flavor.VIVID_RASPBERRY:mix(flavor.MAXIMUM_BLUE, 40):mix(semantics.BG, 70),
+  Step16 = flavor.VIVID_RASPBERRY:mix(flavor.MAXIMUM_BLUE, 50):mix(semantics.BG, 75),
+  Step17 = flavor.VIVID_RASPBERRY:mix(flavor.MAXIMUM_BLUE, 60):mix(semantics.BG, 80),
+  Step18 = flavor.VIVID_RASPBERRY:mix(flavor.MAXIMUM_BLUE, 70):mix(semantics.BG, 85),
+  Step19 = flavor.VIVID_RASPBERRY:mix(flavor.MAXIMUM_BLUE, 80):mix(semantics.BG, 90),
+  Step20 = flavor.VIVID_RASPBERRY:mix(flavor.MAXIMUM_BLUE, 90):mix(semantics.BG, 95),
+}
+
+---@class laserwave.Palette: laserwave.Flavor, laserwave.Semantics, laserwave.Ui
 ---@field background "dark" | "light"
 ---@field colors laserwave.Flavor
 ---@field semantics laserwave.Semantics
+---@field ui laserwave.Ui
 ---@field terminal laserwave.Terminal
 local M = {
   background = flavor.background,
   colors = flavor,
   semantics = semantics,
+  ui = ui,
   terminal = terminal,
+  gradient = gradient,
 }
 
 setmetatable(M, {
   __index = function(_, key)
-    return M.colors[key] or M.semantics[key]
+    return M.colors[key] or M.semantics[key] or M.ui[key]
   end,
 })
 

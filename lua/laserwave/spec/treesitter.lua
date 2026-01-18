@@ -33,9 +33,9 @@ local treesitter = {
   ["@text.diff.change"]      = { fg = palette.CHANGE },
 
   -- Treesitter Context
-  TreesitterContext           = { bg = palette.BG:darken(10) },
-  TreesitterContextLineNumber = { bg = palette.BG:darken(10), fg = palette.BG:mix(palette.VISUAL, 50) },
-  TreesitterContextSeparator  = { fg = palette.BG:darken(50) },
+  TreesitterContext           = { bg = palette.BG_FLOAT },
+  TreesitterContextLineNumber = { bg = palette.BG_FLOAT, fg = palette.CURSOR_LINE_NUM },
+  TreesitterContextSeparator  = { fg = palette.BG_FLOAT },
 }
 
 return treesitter

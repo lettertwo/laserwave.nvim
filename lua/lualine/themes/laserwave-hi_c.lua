@@ -1,4 +1,4 @@
--- GENERATED ON 2026-01-16 AT 17:44:17
+-- GENERATED ON 2026-01-18 AT 16:18:24
 -- name:     laserwave-hi_c
 -- author:   Eric Eldredge <lettertwo@gmail.com>
 -- license:  MIT
@@ -19,16 +19,16 @@ laserwave.command = {
   b = { bg = "#2C2633", fg = "#FFE261" },
 }
 laserwave.visual = {
-  a = { bg = "#D887F5", fg = "#17131C" },
-  b = { bg = "#2C2633", fg = "#D887F5" },
+  a = { bg = "#382A45", fg = "#17131C" },
+  b = { bg = "#2C2633", fg = "#382A45" },
 }
 laserwave.replace = {
   a = { bg = "#FF52BF", fg = "#17131C" },
   b = { bg = "#2C2633", fg = "#FF52BF" },
 }
 laserwave.select = {
-  a = { bg = "#D887F5", fg = "#17131C" },
-  b = { bg = "#2C2633", fg = "#D887F5" },
+  a = { bg = "#382A45", fg = "#17131C" },
+  b = { bg = "#2C2633", fg = "#382A45" },
 }
 laserwave.terminal = {
   a = { bg = "#FFE261", fg = "#17131C" },
