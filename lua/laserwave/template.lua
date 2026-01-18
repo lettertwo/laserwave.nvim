@@ -48,19 +48,19 @@ function Template.validate_meta(meta)
   return meta
 end
 
----@param spec laserwave.Spec
+---@param input laserwave.TemplateInput
 ---@return laserwave.TemplateMeta
-local function meta_defaults(spec)
+local function meta_defaults(input)
   return Template.validate_meta({
-    name = spec.name or "laserwave",
-    flavor = spec.flavor or "original",
-    background = spec.background or "dark",
-    author = spec.author or "Eric Eldredge <lettertwo@gmail.com>",
-    license = spec.license or "MIT",
-    upstream = spec.upstream or "https://github.com/lettertwo/laserwave.nvim",
-    blurb = spec.blurb or "Based on LaserWave for VSCode by Jared Jones",
-    date = spec.date or "UNKNOWN",
-    time = spec.time or "UNKNOWN",
+    name = input.name or "laserwave",
+    flavor = input.flavor or "original",
+    background = input.background or "dark",
+    author = input.author or "Eric Eldredge <lettertwo@gmail.com>",
+    license = input.license or "MIT",
+    upstream = input.upstream or "https://github.com/lettertwo/laserwave.nvim",
+    blurb = input.blurb or "Based on LaserWave for VSCode by Jared Jones",
+    date = input.date or "UNKNOWN",
+    time = input.time or "UNKNOWN",
   })
 end
 
@@ -287,82 +287,82 @@ function Template.stringify_colors(colors)
   return extracted
 end
 
----@param spec laserwave.Spec
+---@param palette laserwave.Palette
 ---@return laserwave.TemplatePalette
-local function palette_defaults(spec)
+local function palette_defaults(palette)
   return Template.validate_palette(Template.stringify_colors({
-    bg = spec.Normal.bg,
-    fg = spec.Normal.fg,
+    bg = palette.BG,
+    fg = palette.FG,
 
-    accent = spec.WinSeparator.fg,
+    accent = palette.HIGHLIGHT,
 
-    cursor_fg = spec.Cursor.fg,
-    cursor_bg = spec.Cursor.bg,
+    cursor_fg = palette.FG,
+    cursor_bg = palette.BG_CURSOR,
 
-    line_bg = spec.CursorLine.bg,
+    line_bg = palette.BG_CURSOR_LINE,
 
-    selection_fg = spec.Normal.fg,
-    selection_bg = spec.Visual.bg,
+    selection_fg = palette.FG,
+    selection_bg = palette.BG_VISUAL,
 
-    black = spec.TerminalBlack.fg,
-    red = spec.TerminalRed.fg,
-    green = spec.TerminalGreen.fg,
-    yellow = spec.TerminalYellow.fg,
-    blue = spec.TerminalBlue.fg,
-    magenta = spec.TerminalMagenta.fg,
-    cyan = spec.TerminalCyan.fg,
-    white = spec.TerminalWhite.fg,
+    black = palette.terminal.BLACK,
+    red = palette.terminal.RED,
+    green = palette.terminal.GREEN,
+    yellow = palette.terminal.YELLOW,
+    blue = palette.terminal.BLUE,
+    magenta = palette.terminal.MAGENTA,
+    cyan = palette.terminal.CYAN,
+    white = palette.terminal.WHITE,
 
-    bright_black = spec.TerminalBrightBlack.fg,
-    bright_red = spec.TerminalBrightRed.fg,
-    bright_green = spec.TerminalBrightGreen.fg,
-    bright_yellow = spec.TerminalBrightYellow.fg,
-    bright_blue = spec.TerminalBrightBlue.fg,
-    bright_magenta = spec.TerminalBrightMagenta.fg,
-    bright_cyan = spec.TerminalBrightCyan.fg,
-    bright_white = spec.TerminalBrightWhite.fg,
+    bright_black = palette.terminal.BRIGHT_BLACK,
+    bright_red = palette.terminal.BRIGHT_RED,
+    bright_green = palette.terminal.BRIGHT_GREEN,
+    bright_yellow = palette.terminal.BRIGHT_YELLOW,
+    bright_blue = palette.terminal.BRIGHT_BLUE,
+    bright_magenta = palette.terminal.BRIGHT_MAGENTA,
+    bright_cyan = palette.terminal.BRIGHT_CYAN,
+    bright_white = palette.terminal.BRIGHT_WHITE,
 
-    attribute_fg = spec.Attribute.fg,
-    class_fg = spec.Type.fg,
-    character_fg = spec.Character.fg,
-    comment_fg = spec.Comment.fg,
-    constant_fg = spec.Constant.fg,
-    error_fg = spec.Error.fg,
-    function_fg = spec.Function.fg,
-    ignore_fg = spec.Ignore.fg,
-    keyword_fg = spec.Keyword.fg,
-    number_fg = spec.Number.fg,
-    operator_fg = spec.Operator.fg,
-    string_fg = spec.String.fg,
-    tag_fg = spec.Tag.fg,
-    type_fg = spec.Type.fg,
-    identifier_fg = spec.Identifier.fg,
+    attribute_fg = palette.HIGHLIGHT,
+    class_fg = palette.TYPE,
+    character_fg = palette.OPERATOR,
+    comment_fg = palette.COMMENT,
+    constant_fg = palette.CONSTANT,
+    error_fg = palette.ERROR,
+    function_fg = palette.FUNCTION,
+    ignore_fg = palette.IGNORE,
+    keyword_fg = palette.KEYWORD,
+    number_fg = palette.NUMBER,
+    operator_fg = palette.OPERATOR,
+    string_fg = palette.STRING,
+    tag_fg = palette.OPERATOR,
+    type_fg = palette.TYPE,
+    identifier_fg = palette.VARIABLE,
 
-    added_fg = spec.Add.fg,
-    added_bg = spec.DiffAdd.bg,
-    deleted_fg = spec.Delete.fg,
-    deleted_bg = spec.DiffDelete.bg,
-    changed_fg = spec.Change.fg,
-    changed_bg = spec.DiffChange.bg,
+    added_fg = palette.ADD,
+    added_bg = palette.BG_ADD,
+    deleted_fg = palette.DELETE,
+    deleted_bg = palette.BG_DELETE,
+    changed_fg = palette.CHANGE,
+    changed_bg = palette.BG_CHANGE,
 
-    -- FIXME: These hardcoded colors should  be derived from the spec
-    url = spec.TerminalBrightBlue.fg,
+    url = palette.terminal.BRIGHT_BLUE,
 
-    border_active = spec.TerminalBrightRed.fg,
-    border_inactive = spec.TerminalBrightBlack.fg,
-    border_bell = spec.TerminalBrightRed.fg,
+    border_active = palette.terminal.BRIGHT_RED,
+    border_inactive = palette.terminal.BRIGHT_BLACK,
+    border_bell = palette.terminal.BRIGHT_RED,
 
-    tab_active_fg = spec.Normal.fg,
-    tab_active_bg = spec.Normal.bg:lighten(7),
-    tab_inactive_fg = spec.NonText.fg,
-    tab_inactive_bg = spec.Normal.bg:darken(70),
-    tab_bg = spec.Normal.bg:darken(70),
+    tab_active_fg = palette.FG,
+    tab_active_bg = palette.BG:lighten(7),
+    tab_inactive_fg = palette.IGNORE,
+    tab_inactive_bg = palette.BG:darken(70),
+    tab_bg = palette.BG:darken(70),
 
-    mark1_fg = spec.TerminalBlack.fg,
+    -- FIXME: These hardcoded colors should be derived from the palette
+    mark1_fg = palette.terminal.BLACK,
     mark1_bg = "#98d3cb",
-    mark2_fg = spec.TerminalBlack.fg,
+    mark2_fg = palette.terminal.BLACK,
     mark2_bg = "#f2dcd3",
-    mark3_fg = spec.TerminalBlack.fg,
+    mark3_fg = palette.terminal.BLACK,
     mark3_bg = "#f274bc",
   }))
 end
@@ -378,21 +378,21 @@ function Template.validate_context(opts)
   return opts
 end
 
----@param with_context laserwave.TemplateOptions | fun(ctx: laserwave.TemplateContext, spec: laserwave.Spec):laserwave.TemplateOptions
+---@param with_context laserwave.TemplateOptions | fun(ctx: laserwave.TemplateContext, input: laserwave.TemplateInput):laserwave.TemplateOptions
 function Template.with_context(with_context)
   ---@class laserwave.BoundTemplate
   local BoundTemplate = {}
 
   ---@param template string
-  ---@return fun(spec: laserwave.Spec): string[]
+  ---@return fun(input: laserwave.TemplateInput): string[]
   function BoundTemplate.create(template)
-    ---@param spec laserwave.Spec
-    local function apply(spec)
-      local default_context = vim.tbl_extend("force", palette_defaults(spec), meta_defaults(spec))
+    ---@param input laserwave.TemplateInput
+    local function apply(input)
+      local default_context = vim.tbl_extend("force", palette_defaults(input.palette), meta_defaults(input))
 
       local bound_context
       if type(with_context) == "function" then
-        bound_context = with_context(default_context, spec)
+        bound_context = with_context(default_context, input)
       else
         bound_context = with_context or {}
       end
@@ -407,11 +407,11 @@ function Template.with_context(with_context)
       return helpers.split_newlines(text)
     end
 
-    return function(spec)
-      local ok, result = pcall(apply, spec)
+    return function(input)
+      local ok, result = pcall(apply, input)
 
       if not ok then
-        vim.notify(string.format("Failed to apply spec:\n%s", result), vim.log.levels.ERROR, { title = "Laserwave" })
+        vim.notify(string.format("Failed to apply palette:\n%s", result), vim.log.levels.ERROR, { title = "Laserwave" })
         error(result)
       end
 

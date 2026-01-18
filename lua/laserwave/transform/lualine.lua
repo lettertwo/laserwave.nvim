@@ -1,21 +1,21 @@
 local template = require("laserwave.template")
 
 return template
-  .with_context(function(_, spec)
+  .with_context(function(_, input)
     return {
-      normal_fg = spec.ModeNormal.fg,
-      insert_fg = spec.ModeInsert.fg,
-      command_fg = spec.ModeCommand.fg,
-      visual_fg = spec.ModeVisual.fg,
-      replace_fg = spec.ModeReplace.fg,
-      select_fg = spec.ModeSelect.fg,
-      terminal_fg = spec.ModeTerminal.fg,
-      terminal_normal_fg = spec.ModeTerminalNormal.fg,
-      statusline_bg = spec.StatusLine.bg,
-      statusline_fg = spec.StatusLine.fg,
-      statusline_inactive_bg = spec.StatusLineNC.bg,
-      statusline_inactive_fg = spec.StatusLineNC.fg,
-      statusline_bg_b = spec.StatusLine.bg:lighten(10),
+      normal_fg = input.palette.NORMAL,
+      insert_fg = input.palette.INSERT,
+      command_fg = input.palette.COMMAND,
+      visual_fg = input.palette.VISUAL,
+      replace_fg = input.palette.REPLACE,
+      select_fg = input.palette.VISUAL,
+      terminal_fg = input.palette.COMMAND,
+      terminal_normal_fg = input.palette.COMMAND,
+      statusline_bg = input.palette.BG_FLOAT,
+      statusline_fg = input.palette.COMMENT,
+      statusline_inactive_bg = input.palette.BG_FLOAT,
+      statusline_inactive_fg = input.palette.IGNORE,
+      statusline_bg_b = input.palette.BG,
     }
   end)
   .create([[

@@ -23,11 +23,14 @@ function M.apply(cfg, flavor)
   local transformer = require("laserwave.transformer")
   local neovim = require("laserwave.transform.neovim")
   local specs = require("laserwave.compiler").compile(cfg, flavor)
-  local ctx = vim.tbl_extend("force", specs.spec, {
+
+  ---@type laserwave.TemplateInput
+  local ctx = {
     name = specs.colorscheme,
     flavor = flavor,
     background = specs.palette.background,
-  })
+    palette = specs.palette,
+  }
   local colorspath = "colors/" .. specs.colorscheme .. ".lua"
 
   local flavor_result = {

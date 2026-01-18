@@ -191,13 +191,12 @@ function M.inject_compiled_specs(specs, filepath)
   return ok
 end
 
----@param transform fun(ctx: laserwave.Spec, filepath: string): boolean
----@param spec laserwave.Spec
+---@param transform fun(ctx: laserwave.TemplateInput, filepath: string): boolean
+---@param ctx laserwave.TemplateInput
 ---@param filepath string
-function M.run(transform, spec, filepath)
-  ---@diagnostic disable-next-line: assign-type-mismatch
-  spec.upstream = "https://github.com/lettertwo/laserwave.nvim/" .. filepath
-  local ok, err = pcall(shipwright.run, spec, transform, { overwrite, filepath })
+function M.run(transform, ctx, filepath)
+  ctx.upstream = "https://github.com/lettertwo/laserwave.nvim/" .. filepath
+  local ok, err = pcall(shipwright.run, ctx, transform, { overwrite, filepath })
   if not ok then
     vim.notify(string.format("Failed to build %s\n%s", filepath, err), vim.log.levels.ERROR, { title = "Laserwave" })
   end

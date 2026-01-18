@@ -26,25 +26,38 @@ local yazi = require("laserwave.transform.yazi")
 local function build_flavor(flavor)
   ---@type laserwave.CompiledSpecs
   local specs = compiler.compile(config, flavor)
-  local ctx = vim.tbl_extend("force", specs.spec, {
+
+  ---@class laserwave.TemplateInput
+  ---@field name string
+  ---@field flavor laserwave.FLAVOR_NAME
+  ---@field background string
+  ---@field palette laserwave.Palette
+  ---@field author string?
+  ---@field license string?
+  ---@field upstream string?
+  ---@field blurb string?
+  ---@field date string?
+  ---@field time string?
+  local ctx = {
     name = specs.colorscheme,
     flavor = flavor,
     background = specs.palette.background,
-  })
-  local colorspath = "colors/" .. specs.colorscheme .. ".lua"
+    palette = specs.palette,
+  }
+  local colorspath = "colors/" .. ctx.name .. ".lua"
 
   local flavor_result = {
     neovim = transformer.run(neovim, ctx, colorspath) and transformer.inject_compiled_specs(specs, colorspath),
-    lualine = transformer.run(lualine, ctx, "lua/lualine/themes/" .. specs.colorscheme .. ".lua"),
-    kitty = transformer.run(kitty, ctx, "dist/kitty/" .. specs.colorscheme .. ".conf"),
-    alacritty = transformer.run(alacritty, ctx, "dist/alacritty/" .. specs.colorscheme .. ".yml"),
-    wezterm = transformer.run(wezterm, ctx, "dist/wezterm/" .. specs.colorscheme .. ".toml"),
-    ghostty = transformer.run(ghostty, ctx, "dist/ghostty/" .. specs.colorscheme),
-    textmate = transformer.run(textmate, ctx, "dist/" .. specs.colorscheme .. ".tmTheme"),
-    delta = transformer.run(delta, ctx, "dist/delta/" .. specs.colorscheme .. ".gitconfig"),
+    lualine = transformer.run(lualine, ctx, "lua/lualine/themes/" .. ctx.name .. ".lua"),
+    kitty = transformer.run(kitty, ctx, "dist/kitty/" .. ctx.name .. ".conf"),
+    alacritty = transformer.run(alacritty, ctx, "dist/alacritty/" .. ctx.name .. ".yml"),
+    wezterm = transformer.run(wezterm, ctx, "dist/wezterm/" .. ctx.name .. ".toml"),
+    ghostty = transformer.run(ghostty, ctx, "dist/ghostty/" .. ctx.name),
+    textmate = transformer.run(textmate, ctx, "dist/" .. ctx.name .. ".tmTheme"),
+    delta = transformer.run(delta, ctx, "dist/delta/" .. ctx.name .. ".gitconfig"),
     yazi = {
-      flavor = transformer.run(yazi, ctx, "dist/yazi/" .. specs.colorscheme .. ".yazi/flavor.toml"),
-      tmtheme = transformer.run(textmate, ctx, "dist/yazi/" .. specs.colorscheme .. ".yazi/tmtheme.xml"),
+      flavor = transformer.run(yazi, ctx, "dist/yazi/" .. ctx.name .. ".yazi/flavor.toml"),
+      tmtheme = transformer.run(textmate, ctx, "dist/yazi/" .. ctx.name .. ".yazi/tmtheme.xml"),
     },
   }
 
