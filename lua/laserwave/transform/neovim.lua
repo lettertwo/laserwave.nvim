@@ -49,7 +49,7 @@ end
 
 vim.cmd("highlight clear")
 
-vim.o.background = "dark"
+vim.o.background = "$background"
 vim.o.termguicolors = true
 vim.g.colors_name = "$name"
 

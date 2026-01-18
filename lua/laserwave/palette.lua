@@ -24,12 +24,12 @@ local terminal = {
 -- stylua: ignore
 ---@class laserwave.Semantics
 local semantics = {
-  FG        = flavor.WHITE,
-  BG        = flavor.RAISIN_BLACK,
+  FG        = flavor.background == "light" and flavor.RAISIN_BLACK or flavor.WHITE,
+  BG        = flavor.background == "light" and flavor.WHITE or flavor.RAISIN_BLACK,
   GUTTER    = flavor.ROMAN_SILVER,
   HIGHLIGHT = flavor.HOT_PINK,
 
-  VARIABLE  = flavor.WHITE,
+  VARIABLE  = flavor.background == "light" and flavor.RAISIN_BLACK or flavor.WHITE,
   COMMENT   = flavor.OLD_LAVENDER,
   FUNCTION  = flavor.HOT_PINK,
   OPERATOR  = flavor.PEARL_AQUA,
@@ -60,10 +60,12 @@ local semantics = {
 }
 
 ---@class laserwave.Palette: laserwave.Flavor, laserwave.Semantics
+---@field background "dark" | "light"
 ---@field colors laserwave.Flavor
 ---@field semantics laserwave.Semantics
 ---@field terminal laserwave.Terminal
 local M = {
+  background = flavor.background,
   colors = flavor,
   semantics = semantics,
   terminal = terminal,

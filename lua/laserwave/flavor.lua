@@ -2,7 +2,9 @@ local Color = require("laserwave.color")
 
 -- stylua: ignore
 ---@class laserwave.FlavorConfig
+---@field background "dark" | "light"
 local original = {
+  background      = "dark",
   WHITE           = Color("#ffffff"), -- Foreground, Variables
   RAISIN_BLACK    = Color("#27212e"), -- Background
   OLD_LAVENDER    = Color("#91889b"), -- Comments, Hints
@@ -20,6 +22,7 @@ local original = {
 -- stylua: ignore
 ---@type laserwave.FlavorConfig
 local hi_c = {
+  background      = "dark",
   WHITE           = Color("#ffffff"), -- Foreground, Variables
   RAISIN_BLACK    = Color("#19151e"), -- Background
   OLD_LAVENDER    = Color("#b4abbe"), -- Comments, Hints

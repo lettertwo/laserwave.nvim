@@ -26,7 +26,11 @@ local yazi = require("laserwave.transform.yazi")
 local function build_flavor(flavor)
   ---@type laserwave.CompiledSpecs
   local specs = compiler.compile(config, flavor)
-  local ctx = vim.tbl_extend("force", specs.spec, { name = specs.colorscheme, flavor = flavor })
+  local ctx = vim.tbl_extend("force", specs.spec, {
+    name = specs.colorscheme,
+    flavor = flavor,
+    background = specs.palette.background,
+  })
   local colorspath = "colors/" .. specs.colorscheme .. ".lua"
 
   local flavor_result = {

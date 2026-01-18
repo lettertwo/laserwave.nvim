@@ -49,6 +49,15 @@ function Color:lighten(amount)
   return M.hsluv(self.h, self.s, self.l + ((100 - self.l) * ratio))
 end
 
+-- Invert color by flipping lightness around midpoint
+---@param amount? integer 0 = no inversion, 100 = full inversion (default: 70)
+function Color:invert(amount)
+  amount = amount and clamp(amount, 0, 100) or 70
+  local l = 100 - self.l
+  l = l + ((amount - 50) * 2)
+  return M.hsluv(self.h, self.s, clamp(l, 0, 100))
+end
+
 -- Create a color from a hex string
 ---@param hex string
 function M.hex(hex)

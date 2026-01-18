@@ -22,11 +22,13 @@ local Template = {}
 ---@field blurb string
 ---@field date string
 ---@field time string
+---@field background "dark" | "light"
 
 ---@class laserwave.TemplateMetaSpec
 local meta_spec = {
   "name",
   "flavor",
+  "background",
   "author",
   "license",
   "upstream",
@@ -52,6 +54,7 @@ local function meta_defaults(spec)
   return Template.validate_meta({
     name = spec.name or "laserwave",
     flavor = spec.flavor or "original",
+    background = spec.background or "dark",
     author = spec.author or "Eric Eldredge <lettertwo@gmail.com>",
     license = spec.license or "MIT",
     upstream = spec.upstream or "https://github.com/lettertwo/laserwave.nvim",
