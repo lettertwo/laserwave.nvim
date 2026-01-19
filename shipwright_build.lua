@@ -1,17 +1,5 @@
--- clear module cache
-for k, _ in pairs(package.loaded) do
-  if k:match("^laserwave") then
-    package.loaded[k] = nil
-  end
-end
-
----@type laserwave
 local laserwave = require("laserwave")
-
-local config = require("laserwave.config").parse()
-local compiler = require("laserwave.compiler")
 local transformer = require("laserwave.transformer")
-
 local lualine = require("laserwave.transform.lualine")
 local kitty = require("laserwave.transform.kitty")
 local alacritty = require("laserwave.transform.alacritty")
@@ -24,8 +12,16 @@ local yazi = require("laserwave.transform.yazi")
 
 ---@param flavor laserwave.FLAVOR_NAME
 local function build_flavor(flavor)
-  ---@type laserwave.CompiledSpecs
-  local specs = compiler.compile(config, flavor)
+  for k, _ in pairs(package.loaded) do
+    if k:match("^laserwave.spec") or k:match("^laserwave.flavor") or k:match("^laserwave.palette") then
+      vim.notify("Unloading " .. k, vim.log.levels.DEBUG, { title = "Laserwave" })
+      package.loaded[k] = nil
+    end
+  end
+
+  require("laserwave.flavor").set(flavor)
+  local palette = require("laserwave.palette")
+  local specs = require("laserwave.spec")
 
   ---@class laserwave.TemplateInput
   ---@field name string
@@ -39,11 +35,12 @@ local function build_flavor(flavor)
   ---@field date string?
   ---@field time string?
   local ctx = {
-    name = specs.colorscheme,
+    name = flavor ~= "original" and "laserwave-" .. flavor or "laserwave",
     flavor = flavor,
-    background = specs.palette.background,
-    palette = specs.palette,
+    background = palette.background,
+    palette = palette,
   }
+
   local colorspath = "colors/" .. ctx.name .. ".lua"
 
   local flavor_result = {

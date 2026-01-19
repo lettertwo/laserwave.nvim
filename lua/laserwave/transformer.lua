@@ -141,7 +141,7 @@ local function spec_to_definition_lines(spec)
   return vim.iter(groups):map(to_definition):totable()
 end
 
----@param specs laserwave.CompiledSpecs
+---@param specs laserwave.Specs
 ---@param filepath string
 function M.inject_compiled_specs(specs, filepath)
   local spec = spec_to_definition_lines(specs.spec)
