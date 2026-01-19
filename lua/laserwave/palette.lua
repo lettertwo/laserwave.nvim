@@ -45,6 +45,7 @@ local semantics = {
   INFO      = flavor.MAXIMUM_BLUE,
   HINT      = flavor.OLD_LAVENDER,
   OK        = flavor.PEARL_AQUA,
+  TODO      = flavor.MAXIMUM_BLUE,
 
   ADD       = flavor.MAXIMUM_BLUE,
   DELETE    = flavor.HOT_PINK,

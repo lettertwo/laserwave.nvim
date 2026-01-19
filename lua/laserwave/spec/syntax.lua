@@ -55,7 +55,7 @@ local syntax = {
 
   Error       = { fg = palette.ERROR },    -- Any erroneous construct
 
-  Todo        = { fg = palette.CONSTANT }, -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX
+  Todo        = { fg = palette.TODO }, -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
   Attribute   = { fg = palette.HIGHLIGHT },
 
