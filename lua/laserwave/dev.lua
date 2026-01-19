@@ -20,30 +20,9 @@ end
 ---@param cfg laserwave.Config
 ---@param flavor laserwave.FLAVOR_NAME
 function M.apply(cfg, flavor)
-  require("laserwave.flavor").set(flavor)
-  local palette = require("laserwave.palette")
-  local specs = require("laserwave.spec")
-
-  local transformer = require("laserwave.transformer")
-  local neovim = require("laserwave.transform.neovim")
-
-  ---@type laserwave.TemplateInput
-  local ctx = {
-    name = flavor ~= "original" and "laserwave-" .. flavor or "laserwave",
-    flavor = flavor,
-    background = palette.background,
-    palette = palette,
-  }
-
-  local colorspath = "colors/" .. ctx.name .. ".lua"
-
-  local flavor_result = {
-    neovim = transformer.run(neovim, ctx, colorspath) and transformer.inject_compiled_specs(specs, colorspath),
-  }
-
+  local flavor_result = require("shipwright_build").build_flavor(flavor)
   vim.notify("Built " .. vim.inspect(flavor_result), vim.log.levels.INFO, { title = "Laserwave" })
-
-  vim.cmd.colorscheme(ctx.name)
+  vim.cmd.colorscheme(flavor ~= "original" and "laserwave-" .. flavor or "laserwave")
 end
 
 ---@param opts ?laserwave.Options
