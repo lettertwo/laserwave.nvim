@@ -1,4 +1,4 @@
--- GENERATED ON 2026-01-20 AT 18:33:54
+-- GENERATED ON 2026-01-20 AT 18:40:12
 -- name:     laserwave
 -- author:   Eric Eldredge <lettertwo@gmail.com>
 -- license:  MIT
@@ -281,6 +281,7 @@ local specs = {
       ["@lsp.typemod.variable.callable"] = {link = "@function"},
       ["@lsp.typemod.keyword.async"] = {link = "@keyword.coroutine"},
       ["@lsp.type.lifetime"] = {link = "@keyword.storage"},
+      ["@lsp.type.keyword"] = {link = "@keyword"},
       ["@lsp.typemod.keyword.injected"] = {link = "@keyword"},
       ["@lsp.type.class.lua"] = {link = "@lsp.type.class"},
       ["@lsp.type.keyword.lua"] = {link = "@lsp.type.keyword"},
@@ -290,7 +291,6 @@ local specs = {
       ["@lsp.type.namespace"] = {link = "@module"},
       ["@lsp.type.class"] = {link = "@none"},
       ["@lsp.type.number"] = {link = "@number"},
-      ["@lsp.type.keyword"] = {link = "@operator"},
       ["@lsp.type.operator"] = {link = "@operator"},
       ["@lsp.typemod.operator.injected"] = {link = "@operator"},
       ["@lsp.type.property"] = {link = "@property"},
