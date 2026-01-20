@@ -47,6 +47,11 @@ end
 
 -- Load config and apply colors
 
+-- Hide all semantic highlights
+for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do
+  vim.api.nvim_set_hl(0, group, {})
+end
+-- Reset all highlights to the defaults
 vim.cmd("highlight clear")
 
 vim.o.background = "$background"

@@ -1,4 +1,4 @@
--- GENERATED ON 2026-01-20 AT 14:03:44
+-- GENERATED ON 2026-01-20 AT 14:59:54
 -- name:     laserwave
 -- author:   Eric Eldredge <lettertwo@gmail.com>
 -- license:  MIT
@@ -518,6 +518,11 @@ local function apply_terminal_colors()
   vim.g.terminal_color_15 = "#FFFFFF"
 end
 -- Load config and apply colors
+-- Hide all semantic highlights
+for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do
+  vim.api.nvim_set_hl(0, group, {})
+end
+-- Reset all highlights to the defaults
 vim.cmd("highlight clear")
 vim.o.background = "dark"
 vim.o.termguicolors = true

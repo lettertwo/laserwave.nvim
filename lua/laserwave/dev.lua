@@ -14,6 +14,12 @@ function M.reset()
     mt.__index = require("laserwave")
   end
 
+  -- Hide all semantic highlights
+  for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do
+    vim.notify("Clearing highlight " .. group, vim.log.levels.DEBUG, { title = "Laserwave" })
+    pcall(vim.api.nvim_set_hl, 0, group, {})
+  end
+  -- Reset all highlights to the defaults
   vim.cmd("highlight clear")
 end
 
