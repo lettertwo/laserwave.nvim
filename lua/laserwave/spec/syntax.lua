@@ -23,13 +23,14 @@ local syntax = {
   Identifier     = { fg = palette.VARIABLE }, -- (*) Any variable name
   Function       = { fg = palette.FUNCTION }, --   Function name (also: methods for classes)
 
-  Statement      = { fg = palette.KEYWORD },  -- (*) Any statement
-  -- Conditional    = {},            --   if, then, else, endif, switch, etc.
-  -- Repeat         = {},            --   for, do, while, etc.
-  -- Label          = {},            --   case, default, etc.
-  Operator       = { fg = palette.OPERATOR }, --   "sizeof", "+", "*", etc.
+  Statement      = { fg = palette.KEYWORD, italic = true },  -- (*) Any statement
   Keyword        = { fg = palette.KEYWORD, italic = true },  --   any other keyword
   -- Exception      = {},            --   try, catch, throw
+
+  Conditional    = { fg = palette.OPERATOR },            --   if, then, else, endif, switch, etc.
+  Repeat         = { fg = palette.OPERATOR },            --   for, do, while, etc.
+  Label          = { fg = palette.OPERATOR },            --   case, default, etc.
+  Operator       = { fg = palette.OPERATOR }, --   "sizeof", "+", "*", etc.
 
   PreProc        = "NonText",   -- (*) Generic Preprocessor
   Include        = { fg = palette.KEYWORD, italic = true }, --   Preprocessor #include

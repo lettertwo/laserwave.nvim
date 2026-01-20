@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- GENERATED ON 2026-01-13 AT 00:21:42
+<!-- GENERATED ON 2026-01-20 AT 18:33:54
 #
 # @author Eric Eldredge <lettertwo@gmail.com>
 # @license MIT
@@ -95,7 +95,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#3FEABF</string>
+				<string>#1ED3EC</string>
 			</dict>
 		</dict>
 		<dict>
@@ -119,7 +119,7 @@
         <key>fontStyle</key>
         <string>italic</string>
 				<key>foreground</key>
-				<string>#1ED3EC</string>
+				<string>#3FEABF</string>
 			</dict>
 		</dict>
 		<dict>
@@ -130,7 +130,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#3FEABF</string>
+				<string>#1ED3EC</string>
 			</dict>
 		</dict>
 		<dict>
@@ -154,7 +154,7 @@
 				<key>fontStyle</key>
 				<string>italic</string>
 				<key>foreground</key>
-				<string>#1ED3EC</string>
+				<string>#3FEABF</string>
 			</dict>
 		</dict>
 		<dict>
@@ -187,7 +187,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#3FEABF</string>
+				<string>#1ED3EC</string>
 			</dict>
 		</dict>
 		<dict>
