@@ -33,7 +33,6 @@ local Config = {
     blink = true,
     cmp = false,
     git = true,
-    lsp = true,
     mini_pick = true,
     neotree = false,
     obsidian = true,

@@ -1,4 +1,4 @@
-*laserwave.txt*         For NVIM >= 0.10.0        Last change: 2026 January 18
+*laserwave.txt*         For NVIM >= 0.10.0        Last change: 2026 January 20
 
 ==============================================================================
 Table of Contents                                *laserwave-table-of-contents*
@@ -98,7 +98,6 @@ Here are the default settings:
         blink = true,
         cmp = false,
         git = true,
-        lsp = true,
         mini_pick = true,
         neotree = false,
         obsidian = true,
