@@ -86,11 +86,12 @@ for key, value in pairs(cfg.plugins) do
   end
 end
 
-if cfg.treesitter and specs.plugins.treesitter then
+-- all syntax modes except "vim" use treesitter highlights
+if cfg.syntax_mode ~= "vim" then
   apply_colors(specs.plugins.treesitter)
 end
 
-if cfg.semantic_highlights and specs.plugins.semantic_highlights then
+if cfg.syntax_mode == "lsp" then
   apply_colors(specs.plugins.semantic_highlights)
 end
 ]])

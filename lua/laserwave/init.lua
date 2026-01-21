@@ -143,15 +143,20 @@ local function init_command()
         end
 
         target_config[key] = not target_config[key]
-        M.setup(config)
 
-        vim.notify(
-          string.format("Toggled %s to %s", key, tostring(target_config[key])),
-          vim.log.levels.INFO,
-          { title = "Laserwave" }
-        )
+        local ok, err = pcall(require("laserwave.config").validate, config)
+        if not ok then
+          vim.notify(tostring(err), vim.log.levels.WARN, { title = "Laserwave" })
+        else
+          M.setup(config)
+          vim.notify(
+            string.format("Toggled %s to %s", key, tostring(target_config[key])),
+            vim.log.levels.INFO,
+            { title = "Laserwave" }
+          )
+        end
       end,
-      complete = function(line)
+      complete = function()
         local config = M.get_config()
         local keys = {}
         for key, val in pairs(config) do
@@ -165,6 +170,25 @@ local function init_command()
           end
         end
         return keys
+      end,
+    })
+
+    command.add("syntax_mode", {
+      nargs = 1,
+      impl = function(args)
+        local mode = args[1]
+        local config = M.get_config()
+        config.syntax_mode = mode
+        local ok, err = pcall(require("laserwave.config").validate, config)
+        if not ok then
+          vim.notify(tostring(err), vim.log.levels.WARN, { title = "Laserwave" })
+        else
+          M.setup(config)
+          vim.notify(string.format("Set syntax_mode to %s", mode), vim.log.levels.INFO, { title = "Laserwave" })
+        end
+      end,
+      complete = function()
+        return vim.tbl_keys(require("laserwave.config").SYNTAX_MODE)
       end,
     })
 

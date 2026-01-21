@@ -1,4 +1,4 @@
--- GENERATED ON 2026-01-21 AT 16:05:26
+-- GENERATED ON 2026-01-21 AT 17:02:15
 -- name:     laserwave
 -- author:   Eric Eldredge <lettertwo@gmail.com>
 -- license:  MIT
@@ -504,9 +504,10 @@ for key, value in pairs(cfg.plugins) do
     apply_colors(specs.plugins[key])
   end
 end
-if cfg.treesitter and specs.plugins.treesitter then
+-- all syntax modes except "vim" use treesitter highlights
+if cfg.syntax_mode ~= "vim" then
   apply_colors(specs.plugins.treesitter)
 end
-if cfg.semantic_highlights and specs.plugins.semantic_highlights then
+if cfg.syntax_mode == "lsp" then
   apply_colors(specs.plugins.semantic_highlights)
 end

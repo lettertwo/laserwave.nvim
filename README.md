@@ -62,10 +62,10 @@ Here are the default settings:
 
 ```lua
 require("laserwave").setup({
+  -- possible modes: "lsp" (semantic highlights) | "treesitter" (no semantic highlights) | "vim" (builtins only)
+  syntax_mode = "lsp"
   transparent = false,
   terminal_colors = true,
-  treesitter = true,
-  semantic_highlights = true,
   italic_comments = true,
   italic_keywords = true,
   italic_functions = false,
