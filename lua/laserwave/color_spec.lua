@@ -1,6 +1,6 @@
 local assert = require("luassert")
 local Color = require("laserwave.color")
-local hsluv = require("hsluv")
+local hsluv = require("laserwave.hsluv")
 
 describe("Color", function()
   it("should create a color from a hex string", function()

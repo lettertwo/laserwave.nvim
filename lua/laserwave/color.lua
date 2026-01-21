@@ -1,12 +1,4 @@
-if not package.path:find("./lua_modules/share/lua/5.1/") then
-  package.path = package.path .. "./lua_modules/share/lua/5.1/?.lua;./lua_modules/share/lua/5.1/?/init.lua;"
-end
-
-local ok, hsluv = pcall(require, "hsluv")
-
-if not ok then
-  error("hsluv module not found. You may need to run `make install` to install dependencies.")
-end
+local hsluv = require("laserwave.hsluv")
 
 ---@overload fun(hex: string): laserwave.Color
 local M = {}

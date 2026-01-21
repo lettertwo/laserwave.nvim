@@ -13,12 +13,6 @@ LUA_CPATH := './lua_modules/lib/lua/5.1/?.so;;'
 	@luarocks config --scope project lua_version 5.1
 	@luarocks install $*
 
-./lua_modules/share/lua/5.1/%.lua:
-	@mkdir -p $(@D)
-	@mkdir -p .luarocks
-	@luarocks config --scope project lua_version 5.1
-	@luarocks install $*
-
 ./vendor/lua-language-server/bin/lua-language-server: OS := $(shell uname | tr '[:upper:]' '[:lower:]')
 ./vendor/lua-language-server/bin/lua-language-server: ARCH := $(shell uname -m | sed 's/x86_64/x64/')
 ./vendor/lua-language-server/bin/lua-language-server: VERSION := $(shell curl -s https://api.github.com/repos/LuaLS/lua-language-server/releases/latest | jq -r .tag_name)
@@ -52,11 +46,11 @@ LUA_CPATH := './lua_modules/lib/lua/5.1/?.so;;'
 doc: ./doc/$(PROJECT_NAME).txt ./doc/tags
 
 .PHONY: build
-build: ./lua_modules/bin/nlua ./vendor/shipwright.nvim ./lua_modules/share/lua/5.1/hsluv.lua
+build: ./lua_modules/bin/nlua ./vendor/shipwright.nvim
 	@LUA_PATH=$(LUA_PATH) LUA_CPATH=$(LUA_CPATH) $< -e 'require("shipwright").build()'
 
 .PHONY: test
-test: ./lua_modules/bin/busted ./lua_modules/bin/nlua ./lua_modules/share/lua/5.1/hsluv.lua
+test: ./lua_modules/bin/busted ./lua_modules/bin/nlua
 	@LUA_PATH=$(LUA_PATH) LUA_CPATH=$(LUA_CPATH) $< --lua $(word 2,$^) $(or $(filter-out $@,$(MAKECMDGOALS)),lua/)
 
 .PHONY: install-hooks
@@ -64,7 +58,7 @@ install-hooks:
 	@./git-hooks/install.sh
 
 .PHONY: install-rocks
-install-rocks: ./lua_modules/bin/busted ./lua_modules/bin/nlua ./lua_modules/share/lua/5.1/hsluv.lua
+install-rocks: ./lua_modules/bin/busted ./lua_modules/bin/nlua
 
 .PHONY: install-vendor
 install-vendor: ./vendor/shipwright.nvim ./vendor/panvimdoc/panvimdoc.sh
