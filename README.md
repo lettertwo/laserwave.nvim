@@ -62,6 +62,7 @@ Here are the default settings:
 
 ```lua
 require("laserwave").setup({
+  flavor = "original", -- "original" | "hi_c"
   -- possible modes: "lsp" (semantic highlights) | "treesitter" (no semantic highlights) | "vim" (builtins only)
   syntax_mode = "lsp"
   transparent = false,

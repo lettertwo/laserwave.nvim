@@ -1,4 +1,4 @@
-*laserwave.txt*         For NVIM >= 0.10.0        Last change: 2026 January 21
+*laserwave.txt*         For NVIM >= 0.10.0        Last change: 2026 January 22
 
 ==============================================================================
 Table of Contents                                *laserwave-table-of-contents*
@@ -86,6 +86,7 @@ Here are the default settings:
 
 >lua
     require("laserwave").setup({
+      flavor = "original", -- "original" | "hi_c"
       -- possible modes: "lsp" (semantic highlights) | "treesitter" (no semantic highlights) | "vim" (builtins only)
       syntax_mode = "lsp"
       transparent = false,

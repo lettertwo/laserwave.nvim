@@ -39,7 +39,7 @@ local hi_c = {
 
 ---@class laserwave.Flavor: laserwave.FlavorConfig
 local Flavor = {
-  ---@class laserwave.Flavors
+  ---@enum (key) laserwave.FLAVOR
   flavors = {
     original = original,
     hi_c = hi_c,
@@ -47,21 +47,36 @@ local Flavor = {
   _current = original,
 }
 
----@param input laserwave.FLAVOR | laserwave.FLAVOR_NAME | laserwave.FlavorConfig
-function Flavor.set(input)
-  local flavor
-
-  if type(input) ~= "table" then
-    ---@cast input -laserwave.FlavorConfig
-    local name = require("laserwave").get_flavor(input)
-    if name ~= nil then
-      flavor = Flavor.flavors[name]
-    end
-  else
-    flavor = input
+---@param input string | table
+function Flavor.validate(input)
+  if type(input) == "string" then
+    input = Flavor.flavors[input]
   end
+  vim.validate("flavor", input, "table")
+  vim.validate("flavor.background", input.background, function(val)
+    return val == "dark" or val == "light"
+  end, true, "must be 'dark' or 'light'")
+  for key in pairs(input) do
+    if key ~= "background" then
+      vim.validate("flavor." .. key, original[key], function(val)
+        return type(val) == "string" or type(val.__tostring) == "function"
+      end, true, "must be a string or laserwave.Color")
+    end
+  end
+end
 
-  Flavor._current = flavor or Flavor.flavors.original
+---@param input laserwave.FLAVOR | laserwave.FlavorConfig
+function Flavor.set(input)
+  local flavor = Flavor.flavors.original
+  local ok, err = pcall(Flavor.validate, input)
+  if not ok then
+    vim.notify("Invalid flavor:\n" .. err, vim.log.levels.ERROR, { title = "Laserwave" })
+  elseif type(input) == "table" then
+    flavor = input
+  else
+    flavor = Flavor.flavors[input] or Flavor.flavors.original
+  end
+  Flavor._current = flavor
 end
 
 setmetatable(Flavor, {

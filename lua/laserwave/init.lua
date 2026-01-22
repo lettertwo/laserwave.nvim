@@ -27,62 +27,6 @@
 ---@class laserwave
 local M = {}
 
----@alias laserwave.FLAVOR_NAME "original" | "hi_c"
-
----@enum laserwave.FLAVOR
-M.flavors = { original = 1, hi_c = 2 }
-
----@type laserwave.FLAVOR
-M._flavor = M.flavors.original
-
----@param input laserwave.FLAVOR | laserwave.FLAVOR_NAME
-function M.set_flavor(input)
-  ---@type laserwave.FLAVOR | nil
-  local flavor
-  if type(input == "string") then
-    flavor = M.flavors[input] or nil
-  else
-    for _, id in pairs(M.flavors) do
-      if id == input then
-        flavor = id
-        break
-      end
-    end
-  end
-
-  if flavor == nil then
-    vim.notify("Invalid flavor: " .. input, vim.log.levels.ERROR, { title = "Laserwave" })
-  else
-    M._flavor = flavor
-    local name = M.get_flavor(flavor)
-    if name == "original" then
-      vim.cmd.colorscheme("laserwave")
-    else
-      vim.cmd.colorscheme("laserwave-" .. name)
-    end
-  end
-end
-
----@param input ?(laserwave.FLAVOR | laserwave.FLAVOR_NAME)
----@return laserwave.FLAVOR_NAME
-function M.get_flavor(input)
-  local flavor
-  if type(input == "string") then
-    flavor = M.flavors[input] or nil
-  else
-    flavor = input
-  end
-  flavor = flavor or M._flavor
-
-  for name, id in pairs(M.flavors) do
-    if id == flavor then
-      return name
-    end
-  end
-
-  error("Invalid flavor: " .. input)
-end
-
 ---@return laserwave.Config
 function M.get_config()
   local cfg = M._config
@@ -92,6 +36,22 @@ function M.get_config()
   end
   assert(cfg ~= nil, "Config not initialized")
   return cfg:clone()
+end
+
+---@param opts ?laserwave.Options
+function M.setup(opts)
+  if M._config ~= nil then
+    for name, _ in pairs(package.loaded) do
+      if name:match("^laserwave.flavor") or name:match("^laserwave.palette") or name:match("^laserwave.spec") then
+        vim.notify("Unloading " .. name, vim.log.levels.DEBUG, { title = "Laserwave" })
+        package.loaded[name] = nil
+      end
+    end
+  end
+
+  M._config = require("laserwave.config").parse(opts)
+  local flavor = M._config.flavor or "original"
+  vim.cmd.colorscheme(flavor == "original" and "laserwave" or "laserwave-" .. flavor)
 end
 
 local command_initialized = false
@@ -104,12 +64,21 @@ local function init_command()
     command.add("flavor", {
       nargs = 1,
       impl = function(args)
-        M.set_flavor(args[1])
+        local config = M.get_config()
+        local flavor = args[1]
+        config.flavor = flavor
+        local ok, err = pcall(require("laserwave.config").validate, config)
+        if not ok then
+          vim.notify(tostring(err), vim.log.levels.WARN, { title = "Laserwave" })
+        else
+          M.setup(config)
+          vim.notify(string.format("Set flavor to %s", flavor), vim.log.levels.INFO, { title = "Laserwave" })
+        end
       end,
       complete = function(line)
         return vim.tbl_filter(function(val)
           return vim.startswith(val, line)
-        end, vim.tbl_keys(M.flavors))
+        end, vim.tbl_keys(require("laserwave.flavor").flavors))
       end,
     })
 
@@ -203,12 +172,6 @@ local function init_command()
   end
 
   return command
-end
-
----@param opts ?laserwave.Options
-function M.setup(opts)
-  M._config = require("laserwave.config").parse(opts)
-  M.set_flavor(M.get_flavor())
 end
 
 -- Set up a stub command that will load the full command on first use

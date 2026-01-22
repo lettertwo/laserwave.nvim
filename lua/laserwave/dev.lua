@@ -13,22 +13,6 @@ function M.reset()
   if mt then
     mt.__index = require("laserwave")
   end
-
-  -- Hide all semantic highlights
-  for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do
-    vim.notify("Clearing highlight " .. group, vim.log.levels.DEBUG, { title = "Laserwave" })
-    pcall(vim.api.nvim_set_hl, 0, group, {})
-  end
-  -- Reset all highlights to the defaults
-  vim.cmd("highlight clear")
-end
-
----@param cfg laserwave.Config
----@param flavor laserwave.FLAVOR_NAME
-function M.apply(cfg, flavor)
-  local flavor_result = require("shipwright_build").build_flavor(flavor)
-  vim.notify("Built " .. vim.inspect(flavor_result), vim.log.levels.INFO, { title = "Laserwave" })
-  vim.cmd.colorscheme(flavor ~= "original" and "laserwave-" .. flavor or "laserwave")
 end
 
 ---@param opts ?laserwave.Options
@@ -38,8 +22,8 @@ function M.setup(opts)
   require("laserwave.command").add("compile", {
     impl = function()
       M.reset()
-      M.apply(M.get_config(), M.get_flavor())
       vim.notify("Reloaded!", vim.log.levels.DEBUG, { title = "Laserwave" })
+      require("laserwave").setup()
     end,
   })
 

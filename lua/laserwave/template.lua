@@ -3,6 +3,18 @@ local helpers = require("shipwright.transform.helpers")
 ---@class laserwave.Template
 local Template = {}
 
+---@class laserwave.TemplateInput
+---@field name string
+---@field flavor laserwave.FLAVOR
+---@field background string
+---@field palette laserwave.Palette
+---@field author string?
+---@field license string?
+---@field upstream string?
+---@field blurb string?
+---@field date string?
+---@field time string?
+
 ---@class laserwave.TemplateMetaOptions
 ---@field name? string
 ---@field flavor? string

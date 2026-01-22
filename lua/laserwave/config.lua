@@ -6,16 +6,18 @@ local SYNTAX_MODE = {
 }
 
 ---@class laserwave.Options
----@field syntax_mode ?laserwave.SYNTAX_MODE
----@field terminal_colors ?boolean
----@field transparent ?boolean
----@field italic_comments ?boolean
----@field italic_functions ?boolean
----@field italic_keywords ?boolean
----@field italic_variables ?boolean
----@field plugins ?table<string, boolean>
+---@field flavor laserwave.FLAVOR?
+---@field syntax_mode laserwave.SYNTAX_MODE?
+---@field terminal_colors boolean?
+---@field transparent boolean?
+---@field italic_comments boolean?
+---@field italic_functions boolean?
+---@field italic_keywords boolean?
+---@field italic_variables boolean?
+---@field plugins table<string, boolean>?
 
 ---@class laserwave.Config: laserwave.Options
+---@field flavor laserwave.FLAVOR
 ---@field syntax_mode laserwave.SYNTAX_MODE
 ---@field terminal_colors boolean
 ---@field transparent boolean
@@ -26,6 +28,7 @@ local SYNTAX_MODE = {
 ---@field plugins table<string, boolean>
 ---@field clone fun(self: laserwave.Config): laserwave.Config
 local Config = {
+  flavor = "original",
   syntax_mode = SYNTAX_MODE.lsp,
   transparent = false,
   terminal_colors = true,
@@ -58,6 +61,9 @@ config.SYNTAX_MODE = SYNTAX_MODE
 ---@param opts laserwave.Options
 function config.validate(opts)
   vim.validate("config", opts, "table")
+  if opts.flavor ~= nil then
+    require("laserwave.flavor").validate(opts.flavor)
+  end
   vim.validate("syntax_mode", opts.syntax_mode, function(a)
     return vim.tbl_contains(vim.tbl_values(SYNTAX_MODE), a)
   end, true, string.format("one of: %s", table.concat(vim.tbl_values(SYNTAX_MODE), ", ")))
