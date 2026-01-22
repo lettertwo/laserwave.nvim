@@ -42,7 +42,7 @@ end
 function M.setup(opts)
   if M._config ~= nil then
     for name, _ in pairs(package.loaded) do
-      if name:match("^laserwave.flavor") or name:match("^laserwave.palette") or name:match("^laserwave.spec") then
+      if name:match("^laserwave.flavor") or name:match("^laserwave.palette") or name:match("^laserwave.groups") then
         vim.notify("Unloading " .. name, vim.log.levels.DEBUG, { title = "Laserwave" })
         package.loaded[name] = nil
       end

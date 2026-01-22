@@ -1,4 +1,4 @@
----@type laserwave.Spec
+---@type laserwave.Groups
 --stylua: ignore
 local occurrence = {
   OccurrenceMatch   = "Visual", -- Default is Search

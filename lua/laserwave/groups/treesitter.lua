@@ -5,7 +5,7 @@ local palette = require("laserwave.palette")
 -- See :h treesitter-highlight-groups
 --
 -- Tree-Sitter groups are defined with an "@" symbol
----@type laserwave.Spec
+---@type laserwave.Groups
 --stylua: ignore
 local treesitter = {
   -- Treesitter Context

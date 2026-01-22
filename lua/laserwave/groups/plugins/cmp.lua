@@ -1,6 +1,6 @@
 local palette = require("laserwave.palette")
 
----@type laserwave.Spec
+---@type laserwave.Groups
 --stylua: ignore
 local cmp = {
   CmpItemAbbr           = { fg = palette.HINT},

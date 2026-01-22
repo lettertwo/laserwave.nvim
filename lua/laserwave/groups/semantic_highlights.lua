@@ -7,7 +7,7 @@
 --
 -- See: :h lsp-semantic-highlight
 --
----@type laserwave.Spec
+---@type laserwave.Groups
 --stylua: ignore
 local semantics = {
 	["@lsp.type.enumMember"]                 = "@constant",

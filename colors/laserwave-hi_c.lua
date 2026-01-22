@@ -1,1 +1,1 @@
-require("laserwave.spec").apply("hi_c")
+require("laserwave.groups").apply("hi_c")

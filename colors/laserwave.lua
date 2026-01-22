@@ -1,1 +1,1 @@
-require("laserwave.spec").apply("original")
+require("laserwave.groups").apply("original")

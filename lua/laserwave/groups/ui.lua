@@ -1,6 +1,6 @@
 local palette = require("laserwave.palette")
 
----@type laserwave.Spec
+---@type laserwave.Groups
 --stylua: ignore
 local ui = {
   -- The following are the Neovim (as of 0.12.0-dev-1472+g869e55f2aa) highlight
