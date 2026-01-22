@@ -31,13 +31,6 @@ function command.execute(opts)
     return
   end
   local args = #fargs > 1 and { unpack(fargs, 2) } or {}
-  local range = opts.range -- The number of items in the command range: 0, 1 or 2
-  if range == 1 then
-    args.count = opts.count
-  elseif range == 2 then
-    local Range = require("laserwave.Range")
-    args.range = Range.new(Range.of_line(opts.line1 - 1).start, Range.of_line(opts.line2 - 1).stop)
-  end
   subcommand.impl(args)
 end
 
