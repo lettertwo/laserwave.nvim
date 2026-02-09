@@ -1,7 +1,31 @@
 # laserwave.nvim
 
+<!-- panvimdoc-ignore-start -->
+
+![Laserwave Dashboard]
+
+<!-- panvimdoc-ignore-end -->
+
 A clean 80's synthwave / outrun inspired theme written in Lua ported from
 the Visual Studio Code [LaserWave](https://github.com/Jaredk3nt/laserwave) theme.
+
+<!-- panvimdoc-ignore-start -->
+
+### Original Flavor
+
+|                   |                      |
+| ----------------- | -------------------- |
+| ![Laserwave tsx]  | ![Laserwave Lua]     |
+| ![Laserwave Rust] | ![Laserwave Flavors] |
+
+### Hi-C Flavor
+
+|                             |                       |
+| --------------------------- | --------------------- |
+| ![Laserwave Hi-C Dashboard] | ![Laserwave Hi-C Lua] |
+| ![Laserwave Hi-C Rust]      | ![Laserwave Hi-c tsx] |
+
+<!-- panvimdoc-ignore-end -->
 
 # Installation
 
@@ -100,5 +124,18 @@ MIT License. See [LICENSE](https://github.com/lettertwo/laserwave.nvim/blob/main
 # Contributing
 
 Contributions are welcome! See [CONTRIBUTING](https://github.com/lettertwo/laserwave.nvim/blob/main/CONTRIBUTING.md) for details.
+
+<!-- panvimdoc-ignore-end -->
+<!-- panvimdoc-ignore-start -->
+
+[Laserwave Flavors]: https://raw.githubusercontent.com/lettertwo/laserwave.nvim/media/screenshots/flavors.webp
+[Laserwave Dashboard]: https://raw.githubusercontent.com/lettertwo/laserwave.nvim/media/screenshots/dashboard.webp
+[Laserwave Lua]: https://raw.githubusercontent.com/lettertwo/laserwave.nvim/media/screenshots/lua.webp
+[Laserwave Rust]: https://raw.githubusercontent.com/lettertwo/laserwave.nvim/media/screenshots/rust.webp
+[Laserwave tsx]: https://raw.githubusercontent.com/lettertwo/laserwave.nvim/media/screenshots/tsx.webp
+[Laserwave Hi-C Dashboard]: https://raw.githubusercontent.com/lettertwo/laserwave.nvim/media/screenshots/dashboard-hi_c.webp
+[Laserwave Hi-C Lua]: https://raw.githubusercontent.com/lettertwo/laserwave.nvim/media/screenshots/lua-hi_c.webp
+[Laserwave Hi-C Rust]: https://raw.githubusercontent.com/lettertwo/laserwave.nvim/media/screenshots/rust-hi_c.webp
+[Laserwave Hi-c tsx]: https://raw.githubusercontent.com/lettertwo/laserwave.nvim/media/screenshots/tsx-hi_c.webp
 
 <!-- panvimdoc-ignore-end -->

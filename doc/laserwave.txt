@@ -1,4 +1,4 @@
-*laserwave.txt*         For NVIM >= 0.10.0        Last change: 2026 January 22
+*laserwave.txt*        For NVIM >= 0.10.0        Last change: 2026 February 09
 
 ==============================================================================
 Table of Contents                                *laserwave-table-of-contents*
