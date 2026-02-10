@@ -15,7 +15,7 @@ jobs:
   # Validate conventional commits for PRs
   conventional-commits:
     name: Validate Conventional Commits
-    if: github.event_name == 'pull_request' && github.actor != 'dependabot[bot]'
+    if: github.event_name == 'pull_request' && github.actor != 'dependabot[bot]' && !startsWith(github.head_ref, 'release-please--')
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
@@ -150,6 +150,7 @@ jobs:
   # Run tests on multiple Neovim versions
   test:
     name: Test (Neovim ${{ matrix.nvim-version }})
+    if: github.event_name == 'push' || !startsWith(github.head_ref, 'release-please--')
     strategy:
       matrix:
         nvim-version: [stable, nightly]
@@ -186,6 +187,7 @@ jobs:
   # Type checking
   typecheck:
     name: Type Check (Neovim ${{ matrix.nvim-version }})
+    if: github.event_name == 'push' || !startsWith(github.head_ref, 'release-please--')
     strategy:
       matrix:
         nvim-version: [stable, nightly]
@@ -204,6 +206,7 @@ jobs:
   # Documentation validation and generation
   docs:
     name: Documentation
+    if: github.event_name == 'push' || !startsWith(github.head_ref, 'release-please--')
     runs-on: ubuntu-latest
     permissions:
       contents: write
