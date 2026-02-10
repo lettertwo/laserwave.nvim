@@ -131,7 +131,7 @@ function M.apply(flavor, config)
     vim.api.nvim_set_hl(0, group, {})
   end
 
-  config = config or require("laserwave").get_config()
+  config = config or require("laserwave").get_config(false)
 
   local cache = require("laserwave.cache")
   ---@class laserwave.CacheInputs

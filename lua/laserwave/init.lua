@@ -29,15 +29,16 @@ local M = {}
 
 M.CACHE_VERSION = 1
 
+---@param clone boolean? Whether to return a clone of the config (default: true)
 ---@return laserwave.Config
-function M.get_config()
+function M.get_config(clone)
   local cfg = M._config
   if not cfg then
     M.setup()
     cfg = M._config
   end
   assert(cfg ~= nil, "Config not initialized")
-  return cfg:clone()
+  return clone == false and cfg or cfg:clone()
 end
 
 ---@param opts ?laserwave.Options
@@ -171,11 +172,7 @@ local function init_command()
           require("laserwave.cache").clear()
           vim.notify("Cache cleared", vim.log.levels.INFO, { title = "Laserwave" })
         else
-          vim.notify(
-            string.format("Unknown cache command: %s", args[1]),
-            vim.log.levels.ERROR,
-            { title = "Laserwave" }
-          )
+          vim.notify(string.format("Unknown cache command: %s", args[1]), vim.log.levels.ERROR, { title = "Laserwave" })
         end
       end,
       complete = function()
