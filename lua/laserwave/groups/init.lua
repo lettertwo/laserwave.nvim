@@ -115,6 +115,7 @@ function M.collect(flavor, config)
   terminal_colors["15"] = tostring(palette.terminal.BRIGHT_WHITE)
 
   return {
+    background = palette.background,
     highlights = highlights,
     terminal_colors = terminal_colors,
   }
@@ -133,6 +134,7 @@ function M.apply(flavor, config)
   config = config or require("laserwave").get_config()
 
   local cache = require("laserwave.cache")
+  ---@class laserwave.CacheInputs
   local inputs = {
     cache_version = require("laserwave").CACHE_VERSION,
     flavor = config.flavor,
@@ -152,12 +154,12 @@ function M.apply(flavor, config)
     data = cached
   else
     data = M.collect(flavor, config)
+    ---@cast data +{ inputs: laserwave.CacheInputs }
     data.inputs = inputs
     cache.write(flavor, data)
   end
 
-  local flavor_config = require("laserwave.flavor").flavors[flavor]
-  vim.o.background = flavor_config and flavor_config.background or "dark"
+  vim.o.background = data.background
   vim.o.termguicolors = true
   vim.g.colors_name = flavor == "original" and "laserwave" or "laserwave-" .. flavor
 
