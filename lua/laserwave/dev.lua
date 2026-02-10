@@ -2,6 +2,8 @@
 local M = {}
 
 function M.reset()
+  require("laserwave.cache").clear()
+
   for name, _ in pairs(package.loaded) do
     if name:match("^laserwave.") then
       vim.notify("Unloading " .. name, vim.log.levels.DEBUG, { title = "Laserwave" })

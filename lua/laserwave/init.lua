@@ -27,6 +27,8 @@
 ---@class laserwave
 local M = {}
 
+M.CACHE_VERSION = 1
+
 ---@return laserwave.Config
 function M.get_config()
   local cfg = M._config
@@ -47,6 +49,7 @@ function M.setup(opts)
         package.loaded[name] = nil
       end
     end
+    require("laserwave.cache").clear()
   end
 
   M._config = require("laserwave.config").parse(opts)
@@ -158,6 +161,25 @@ local function init_command()
       end,
       complete = function()
         return vim.tbl_keys(require("laserwave.config").SYNTAX_MODE)
+      end,
+    })
+
+    command.add("cache", {
+      nargs = 1,
+      impl = function(args)
+        if args[1] == "clear" then
+          require("laserwave.cache").clear()
+          vim.notify("Cache cleared", vim.log.levels.INFO, { title = "Laserwave" })
+        else
+          vim.notify(
+            string.format("Unknown cache command: %s", args[1]),
+            vim.log.levels.ERROR,
+            { title = "Laserwave" }
+          )
+        end
+      end,
+      complete = function()
+        return { "clear" }
       end,
     })
 

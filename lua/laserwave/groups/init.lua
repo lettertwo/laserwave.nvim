@@ -32,26 +32,92 @@ local function group_to_highlight(value)
   end)
 end
 
+---@param groups laserwave.Groups
+---@param highlights table<string, vim.api.keyset.highlight>
+---@param extend boolean?
+local function collect_groups(groups, highlights, extend)
+  for name, group in pairs(groups) do
+    local highlight = group_to_highlight(group)
+    if extend and highlights[name] then
+      highlight = vim.tbl_extend("force", highlights[name], highlight)
+    end
+    highlights[name] = highlight
+  end
+end
+
 ---@module "laserwave.groups"
 local M = {}
 
----@param groups laserwave.Groups
----@param extend boolean?
-function M.apply_groups(groups, extend)
-  for name, group in pairs(groups) do
-    local highlight = group_to_highlight(group)
-    if extend then
-      local base = vim.api.nvim_get_hl(0, { name = name }) or {}
-      highlight = vim.tbl_extend("force", base, highlight)
-    end
-    if not pcall(vim.api.nvim_set_hl, 0, name, highlight) then
-      vim.notify(
-        "Failed to set highlight for group: " .. vim.inspect(highlight),
-        vim.log.levels.WARN,
-        { title = "Laserwave" }
-      )
+---@param flavor laserwave.FLAVOR
+---@param config laserwave.Config
+---@return { highlights: table<string, vim.api.keyset.highlight>, terminal_colors: table<string, string> }
+function M.collect(flavor, config)
+  require("laserwave.flavor").set(flavor)
+  local palette = require("laserwave.palette")
+
+  local highlights = {}
+
+  collect_groups(require("laserwave.groups.syntax"), highlights)
+  collect_groups(require("laserwave.groups.ui"), highlights)
+
+  if config.transparent then
+    collect_groups({ Normal = { bg = nil } }, highlights, true)
+  end
+
+  collect_groups({
+    Comment = { italic = config.italic_comments },
+    Function = { italic = config.italic_functions },
+    Statement = { italic = config.italic_keywords },
+    Keyword = { italic = config.italic_keywords },
+    Include = { italic = config.italic_keywords },
+    Identifier = { italic = config.italic_variables },
+  }, highlights, true)
+
+  for key, value in pairs(config.plugins) do
+    if value then
+      local plugin_ok, plugin_result = pcall(require, "laserwave.groups.plugins." .. key)
+      if plugin_ok and plugin_result then
+        collect_groups(plugin_result, highlights)
+      else
+        vim.notify(
+          "Failed to load plugin highlights for " .. key .. ":\n" .. tostring(plugin_result),
+          vim.log.levels.WARN,
+          { title = "Laserwave" }
+        )
+      end
     end
   end
+
+  if config.syntax_mode ~= "vim" then
+    collect_groups(require("laserwave.groups.treesitter"), highlights)
+  end
+
+  if config.syntax_mode == "lsp" then
+    collect_groups(require("laserwave.groups.semantic_highlights"), highlights)
+  end
+
+  local terminal_colors = {}
+  terminal_colors["0"] = tostring(palette.terminal.BLACK)
+  terminal_colors["1"] = tostring(palette.terminal.RED)
+  terminal_colors["2"] = tostring(palette.terminal.GREEN)
+  terminal_colors["3"] = tostring(palette.terminal.YELLOW)
+  terminal_colors["4"] = tostring(palette.terminal.BLUE)
+  terminal_colors["5"] = tostring(palette.terminal.MAGENTA)
+  terminal_colors["6"] = tostring(palette.terminal.CYAN)
+  terminal_colors["7"] = tostring(palette.terminal.WHITE)
+  terminal_colors["8"] = tostring(palette.terminal.BRIGHT_BLACK)
+  terminal_colors["9"] = tostring(palette.terminal.BRIGHT_RED)
+  terminal_colors["10"] = tostring(palette.terminal.BRIGHT_GREEN)
+  terminal_colors["11"] = tostring(palette.terminal.BRIGHT_YELLOW)
+  terminal_colors["12"] = tostring(palette.terminal.BRIGHT_BLUE)
+  terminal_colors["13"] = tostring(palette.terminal.BRIGHT_MAGENTA)
+  terminal_colors["14"] = tostring(palette.terminal.BRIGHT_CYAN)
+  terminal_colors["15"] = tostring(palette.terminal.BRIGHT_WHITE)
+
+  return {
+    highlights = highlights,
+    terminal_colors = terminal_colors,
+  }
 end
 
 ---@param flavor laserwave.FLAVOR
@@ -65,71 +131,50 @@ function M.apply(flavor, config)
   end
 
   config = config or require("laserwave").get_config()
-  require("laserwave.flavor").set(flavor)
-  local palette = require("laserwave.palette")
 
-  vim.o.background = palette.background
+  local cache = require("laserwave.cache")
+  local inputs = {
+    cache_version = require("laserwave").CACHE_VERSION,
+    flavor = config.flavor,
+    syntax_mode = config.syntax_mode,
+    transparent = config.transparent,
+    terminal_colors = config.terminal_colors,
+    italic_comments = config.italic_comments,
+    italic_functions = config.italic_functions,
+    italic_keywords = config.italic_keywords,
+    italic_variables = config.italic_variables,
+    plugins = config.plugins,
+  }
+
+  local data
+  local cached = cache.read(flavor)
+  if cached and vim.deep_equal(cached.inputs, inputs) then
+    data = cached
+  else
+    data = M.collect(flavor, config)
+    data.inputs = inputs
+    cache.write(flavor, data)
+  end
+
+  local flavor_config = require("laserwave.flavor").flavors[flavor]
+  vim.o.background = flavor_config and flavor_config.background or "dark"
   vim.o.termguicolors = true
   vim.g.colors_name = flavor == "original" and "laserwave" or "laserwave-" .. flavor
 
   if config.terminal_colors then
-    vim.g.terminal_color_0 = tostring(palette.terminal.BLACK)
-    vim.g.terminal_color_1 = tostring(palette.terminal.RED)
-    vim.g.terminal_color_2 = tostring(palette.terminal.BLUE)
-    vim.g.terminal_color_3 = tostring(palette.terminal.YELLOW)
-    vim.g.terminal_color_4 = tostring(palette.terminal.BLUE)
-    vim.g.terminal_color_5 = tostring(palette.terminal.MAGENTA)
-    vim.g.terminal_color_6 = tostring(palette.terminal.CYAN)
-    vim.g.terminal_color_7 = tostring(palette.terminal.WHITE)
-    vim.g.terminal_color_8 = tostring(palette.terminal.BRIGHT_BLACK)
-    vim.g.terminal_color_9 = tostring(palette.terminal.BRIGHT_RED)
-    vim.g.terminal_color_10 = tostring(palette.terminal.BRIGHT_GREEN)
-    vim.g.terminal_color_11 = tostring(palette.terminal.BRIGHT_YELLOW)
-    vim.g.terminal_color_12 = tostring(palette.terminal.BRIGHT_BLUE)
-    vim.g.terminal_color_13 = tostring(palette.terminal.BRIGHT_MAGENTA)
-    vim.g.terminal_color_14 = tostring(palette.terminal.BRIGHT_CYAN)
-    vim.g.terminal_color_15 = tostring(palette.terminal.BRIGHT_WHITE)
-  end
-
-  M.apply_groups(require("laserwave.groups.syntax"))
-  M.apply_groups(require("laserwave.groups.ui"))
-
-  if config.transparent then
-    M.apply_groups({ Normal = { bg = nil } }, true)
-  end
-
-  M.apply_groups({
-    Comment = { italic = config.italic_comments },
-    Function = { italic = config.italic_functions },
-    Statement = { italic = config.italic_keywords },
-    Keyword = { italic = config.italic_keywords },
-    Include = { italic = config.italic_keywords },
-    Identifier = { italic = config.italic_variables },
-  }, true)
-
-  -- apply enabled plugin highlights
-  for key, value in pairs(config.plugins) do
-    if value then
-      local plugin_ok, plugin_result = pcall(require, "laserwave.groups.plugins." .. key)
-      if plugin_ok and plugin_result then
-        M.apply_groups(plugin_result)
-      else
-        vim.notify(
-          "Failed to load plugin highlights for " .. key .. ":\n" .. tostring(plugin_result),
-          vim.log.levels.WARN,
-          { title = "Laserwave" }
-        )
-      end
+    for i = 0, 15 do
+      vim.g["terminal_color_" .. i] = data.terminal_colors[tostring(i)]
     end
   end
 
-  -- all syntax modes except "vim" use treesitter highlights
-  if config.syntax_mode ~= "vim" then
-    M.apply_groups(require("laserwave.groups.treesitter"))
-  end
-
-  if config.syntax_mode == "lsp" then
-    M.apply_groups(require("laserwave.groups.semantic_highlights"))
+  for name, highlight in pairs(data.highlights) do
+    if not pcall(vim.api.nvim_set_hl, 0, name, highlight) then
+      vim.notify(
+        "Failed to set highlight for group: " .. vim.inspect(highlight),
+        vim.log.levels.WARN,
+        { title = "Laserwave" }
+      )
+    end
   end
 end
 
