@@ -41,6 +41,7 @@ local Config = {
     cmp = false,
     git = true,
     mini_pick = true,
+    neogit = true,
     neotree = false,
     obsidian = true,
     occurrence = true,
