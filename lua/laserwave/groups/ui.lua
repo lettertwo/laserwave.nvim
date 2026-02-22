@@ -45,7 +45,7 @@ local ui = {
   -- LineNrAbove = {}, -- Line number for when the 'relativenumber' option is set, above the cursor line
   -- LineNrBelow = {}, -- Line number for when the 'relativenumber' option is set, below the cursor line
 
-  Folded     = { fg = palette.LINE_NUM, bg = palette.BG_FOLD }, -- Line used for closed folds
+  Folded     = { fg = palette.FOLD, bg = palette.BG_FOLD }, -- Line used for closed folds
   FoldColumn = { fg = palette.LINE_NUM, bg = palette.BG }, -- 'foldcolumn'
   SignColumn = { fg = palette.LINE_NUM, bg = palette.BG }, -- Column where |signs| are displayed
 

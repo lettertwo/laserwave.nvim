@@ -67,6 +67,7 @@ local ui           = {
   LINE_NUM        = flavor.ROMAN_SILVER:mix(semantics.BG, 50),
   INDENT          = flavor.ROMAN_SILVER:mix(semantics.BG, 80),
   SCOPE           = flavor.AFRICAN_VIOLET:mix(semantics.BG, 40),
+  FOLD            = flavor.OLD_LAVENDER:mix(semantics.GUTTER, 40),
 
   BG_FLOAT       = flavor.background == "light" and semantics.BG:darken(5) or semantics.BG:darken(10),
   BG_SEARCH      = flavor.AFRICAN_VIOLET:mix(semantics.BG, 50),
