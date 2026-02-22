@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.0](https://github.com/lettertwo/laserwave.nvim/compare/v2.0.0...v2.1.0) (2026-02-22)
+
+
+### Features
+
+* **palette:** add fold color ([dd5b8f8](https://github.com/lettertwo/laserwave.nvim/commit/dd5b8f8dda8cdb2457a6275df9b8fe5f32630612))
+* **plugin:** add neogit plugin ([42eb6ed](https://github.com/lettertwo/laserwave.nvim/commit/42eb6ed3bb1d508fbbc376ef59c580b35412c624))
+
 ## [2.0.0](https://github.com/lettertwo/laserwave.nvim/compare/v1.0.0...v2.0.0) (2026-02-10)
 
 
