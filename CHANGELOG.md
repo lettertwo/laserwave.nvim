@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.0.0](https://github.com/lettertwo/laserwave.nvim/compare/v2.1.0...v3.0.0) (2026-05-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* **palette:** define builtin diff groups and remove explicit git/diff plugins
+
+### Bug Fixes
+
+* **palette:** define builtin diff groups and remove explicit git/diff plugins ([b4d8350](https://github.com/lettertwo/laserwave.nvim/commit/b4d8350f5b76d6c539c5fd4ed5f1bb024f508330))
+
 ## [2.1.0](https://github.com/lettertwo/laserwave.nvim/compare/v2.0.0...v2.1.0) (2026-02-22)
 
 
