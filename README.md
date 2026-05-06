@@ -98,7 +98,6 @@ require("laserwave").setup({
   plugins = {
     blink = true,
     cmp = false,
-    git = true,
     mini_pick = true,
     neotree = false,
     obsidian = true,

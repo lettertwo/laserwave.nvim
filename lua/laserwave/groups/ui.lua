@@ -82,9 +82,9 @@ local ui = {
   Search       = { bg = palette.BG_SEARCH }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
   Substitute   = "CurSearch", -- |:substitute| replacement text highlighting
 
-  Add      = { fg = palette.ADD },
-  Change   = { fg = palette.CHANGE },
-  Delete   = { fg = palette.DELETE },
+  Added    = { fg = palette.ADD },
+  Changed  = { fg = palette.CHANGE },
+  Removed  = { fg = palette.DELETE },
 
   DiffAdd      = { fg = palette.ADD, bg = palette.BG_ADD }, -- Diff mode: Added line |diff.txt|
   DiffChange   = { fg = palette.ADD, bg = palette.BG_ADD }, -- Diff mode: Changed line |diff.txt|

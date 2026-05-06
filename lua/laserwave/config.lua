@@ -39,7 +39,6 @@ local Config = {
   plugins = {
     blink = true,
     cmp = false,
-    git = true,
     mini_pick = true,
     neogit = true,
     neotree = false,
