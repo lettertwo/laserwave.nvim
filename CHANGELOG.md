@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.1.0](https://github.com/lettertwo/laserwave.nvim/compare/v3.0.0...v3.1.0) (2026-05-16)
+
+
+### Features
+
+* **config:** add on_apply hook ([3e01604](https://github.com/lettertwo/laserwave.nvim/commit/3e0160472ada838853370f156ed41136f5ad5455))
+
+
+### Bug Fixes
+
+* **palette:** improve readability of diff lines ([2ef4a55](https://github.com/lettertwo/laserwave.nvim/commit/2ef4a551ab0ad3b69c06270812c4450037e14568))
+
 ## [3.0.0](https://github.com/lettertwo/laserwave.nvim/compare/v2.1.0...v3.0.0) (2026-05-06)
 
 
