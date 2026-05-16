@@ -15,6 +15,10 @@ local SYNTAX_MODE = {
 ---@field italic_keywords boolean?
 ---@field italic_variables boolean?
 ---@field plugins table<string, boolean>?
+-- A callback triggered when the configured palette is about
+-- to be applied to highlight groups. You can use it to modify
+-- the resulting colorscheme by returning a modified palette.
+---@field on_apply? fun(palette: laserwave.Palette): laserwave.Palette?
 
 ---@class laserwave.Config: laserwave.Options
 ---@field flavor laserwave.FLAVOR
@@ -26,6 +30,7 @@ local SYNTAX_MODE = {
 ---@field italic_keywords boolean
 ---@field italic_variables boolean
 ---@field plugins table<string, boolean>
+---@field on_apply? fun(palette: laserwave.Palette): laserwave.Palette?
 ---@field clone fun(self: laserwave.Config): laserwave.Config
 local Config = {
   flavor = "original",
@@ -86,6 +91,7 @@ function config.validate(opts)
       return true
     end, "supported plugin")
   end
+  vim.validate("on_apply", opts.on_apply, "function", true)
 end
 
 ---@param opts ?laserwave.Options

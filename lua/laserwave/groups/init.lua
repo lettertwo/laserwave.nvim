@@ -55,6 +55,13 @@ function M.collect(flavor, config)
   require("laserwave.flavor").set(flavor)
   local palette = require("laserwave.palette")
 
+  if type(config.on_apply) == "function" then
+    local custom_palette = config.on_apply(palette)
+    if type(custom_palette) == "table" then
+      palette = vim.tbl_deep_extend("force", palette, custom_palette)
+    end
+  end
+
   local highlights = {}
 
   collect_groups(require("laserwave.groups.syntax"), highlights)
@@ -133,30 +140,36 @@ function M.apply(flavor, config)
 
   config = config or require("laserwave").get_config(false)
 
-  local cache = require("laserwave.cache")
-  ---@class laserwave.CacheInputs
-  local inputs = {
-    cache_version = require("laserwave").CACHE_VERSION,
-    flavor = config.flavor,
-    syntax_mode = config.syntax_mode,
-    transparent = config.transparent,
-    terminal_colors = config.terminal_colors,
-    italic_comments = config.italic_comments,
-    italic_functions = config.italic_functions,
-    italic_keywords = config.italic_keywords,
-    italic_variables = config.italic_variables,
-    plugins = config.plugins,
-  }
-
   local data
-  local cached = cache.read(flavor)
-  if cached and vim.deep_equal(cached.inputs, inputs) then
-    data = cached
-  else
+
+  -- Skip caching if on_apply is defined.
+  if type(config.on_apply) == "function" then
     data = M.collect(flavor, config)
-    ---@cast data +{ inputs: laserwave.CacheInputs }
-    data.inputs = inputs
-    cache.write(flavor, data)
+  else
+    local cache = require("laserwave.cache")
+    ---@class laserwave.CacheInputs
+    local inputs = {
+      cache_version = require("laserwave").CACHE_VERSION,
+      flavor = config.flavor,
+      syntax_mode = config.syntax_mode,
+      transparent = config.transparent,
+      terminal_colors = config.terminal_colors,
+      italic_comments = config.italic_comments,
+      italic_functions = config.italic_functions,
+      italic_keywords = config.italic_keywords,
+      italic_variables = config.italic_variables,
+      plugins = config.plugins,
+    }
+
+    local cached = cache.read(flavor)
+    if cached and vim.deep_equal(cached.inputs, inputs) then
+      data = cached
+    else
+      data = M.collect(flavor, config)
+      ---@cast data +{ inputs: laserwave.CacheInputs }
+      data.inputs = inputs
+      cache.write(flavor, data)
+    end
   end
 
   vim.o.background = data.background
