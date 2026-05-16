@@ -82,9 +82,10 @@ local ui           = {
   BG_HINT   = semantics.HINT:darken(75),
   BG_OK     = semantics.OK:darken(75),
 
-  BG_ADD    = semantics.ADD:mix(semantics.BG, 90),
-  BG_DELETE = semantics.DELETE:mix(semantics.BG, 90),
-  BG_CHANGE = semantics.CHANGE:mix(semantics.BG, 90),
+  BG_ADD         = semantics.ADD:mix(semantics.BG, 90),
+  BG_DELETE      = semantics.DELETE:mix(semantics.BG, 70),
+  BG_CHANGE      = semantics.CHANGE:mix(semantics.BG, 70),
+  BG_TEXT_ADD    = semantics.ADD:mix(semantics.BG, 70),
 }
 
 -- stylua: ignore

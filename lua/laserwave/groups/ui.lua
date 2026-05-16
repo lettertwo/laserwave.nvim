@@ -90,7 +90,7 @@ local ui = {
   DiffChange   = { fg = palette.ADD, bg = palette.BG_ADD }, -- Diff mode: Changed line |diff.txt|
   DiffDelete   = { fg = palette.DELETE, bg = palette.BG_DELETE }, -- Diff mode: Deleted line |diff.txt|
   DiffText     = { fg = palette.CHANGE, bg = palette.BG_CHANGE  }, -- Diff mode: Changed text within a changed line |diff.txt|
-  DiffTextAdd  = { fg = palette.ADD, bg = palette.BG_ADD }, -- Diff mode: Added text within a changed line.  Linked to |hl-DiffText| by default. |diff.txt|
+  DiffTextAdd  = { fg = palette.ADD, bg = palette.BG_TEXT_ADD }, -- Diff mode: Added text within a changed line.  Linked to |hl-DiffText| by default. |diff.txt|
 
   Directory    = { fg = palette.KEYWORD }, -- Directory names (and other special names in listings)
   ErrorMsg     = { fg = palette.ERROR }, -- Error messages on the command line
