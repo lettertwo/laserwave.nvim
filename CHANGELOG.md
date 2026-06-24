@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.2.0](https://github.com/lettertwo/laserwave.nvim/compare/v3.1.0...v3.2.0) (2026-06-24)
+
+
+### Features
+
+* **kitty:** add scroll bar colors ([d49f47e](https://github.com/lettertwo/laserwave.nvim/commit/d49f47e025732eaf33dd5f968ae656647ad9e07e))
+
 ## [3.1.0](https://github.com/lettertwo/laserwave.nvim/compare/v3.0.0...v3.1.0) (2026-05-16)
 
 
