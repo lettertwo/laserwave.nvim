@@ -52,6 +52,10 @@ inactive_tab_background         $tab_inactive_bg
 tab_bar_background              $tab_inactive_bg
 tab_bar_margin_color            $tab_active_bg
 
+#: Scroll bar colors
+
+scrollbar_handle_color          $border_inactive
+scrollbar_track_color           $tab_active_bg
 
 #: Colors for marks (marked text in the terminal)
 
