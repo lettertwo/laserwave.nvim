@@ -1,5 +1,26 @@
 # Changelog
 
+## [4.0.0](https://github.com/lettertwo/laserwave.nvim/compare/v3.1.0...v4.0.0) (2026-10-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* **palette:** remove BG_* variants
+
+### Features
+
+* **kitty:** add scroll bar colors ([d49f47e](https://github.com/lettertwo/laserwave.nvim/commit/d49f47e025732eaf33dd5f968ae656647ad9e07e))
+
+
+### Bug Fixes
+
+* **ui:** make text changes easier to read ([4748ffd](https://github.com/lettertwo/laserwave.nvim/commit/4748ffd21363138529ffc9b3a1368ff4ea2a3fe4))
+
+
+### Code Refactoring
+
+* **palette:** remove BG_* variants ([a91a037](https://github.com/lettertwo/laserwave.nvim/commit/a91a037d083846d6c69db7037685627654be4b24))
+
 ## [3.1.0](https://github.com/lettertwo/laserwave.nvim/compare/v3.0.0...v3.1.0) (2026-05-16)
 
 
