@@ -87,10 +87,10 @@ local ui = {
   Removed  = { fg = palette.DELETE },
 
   DiffAdd      = { fg = palette.ADD, bg = palette.ADD:mix(palette.BG, 90) }, -- Diff mode: Added line |diff.txt|
-  DiffChange   = { fg = palette.ADD, bg = palette.ADD:mix(palette.BG, 90) }, -- Diff mode: Changed line |diff.txt|
-  DiffDelete   = { fg = palette.DELETE, bg = palette.DELETE:mix(palette.BG, 70) }, -- Diff mode: Deleted line |diff.txt|
-  DiffText     = { fg = palette.CHANGE, bg = palette.CHANGE:mix(palette.BG, 70) }, -- Diff mode: Changed text within a changed line |diff.txt|
-  DiffTextAdd  = { fg = palette.ADD, bg = palette.ADD:mix(palette.BG, 70) }, -- Diff mode: Added text within a changed line.  Linked to |hl-DiffText| by default. |diff.txt|
+  DiffChange   = { fg = palette.CHANGE, bg = palette.CHANGE:mix(palette.BG, 90) }, -- Diff mode: Changed line |diff.txt|
+  DiffDelete   = { fg = palette.DELETE, bg = palette.DELETE:mix(palette.BG, 90) }, -- Diff mode: Deleted line |diff.txt|
+  DiffText     = { bg = palette.CHANGE:mix(palette.BG, 70)  }, -- Diff mode: Changed text within a changed line |diff.txt|
+  DiffTextAdd  = { bg = palette.CHANGE:mix(palette.BG, 70) }, -- Diff mode: Added text within a changed line.  Linked to |hl-DiffText| by default. |diff.txt|
 
   Directory    = { fg = palette.KEYWORD }, -- Directory names (and other special names in listings)
   ErrorMsg     = { fg = palette.ERROR }, -- Error messages on the command line
