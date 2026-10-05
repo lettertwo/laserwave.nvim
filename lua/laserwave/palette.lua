@@ -75,17 +75,6 @@ local ui           = {
   BG_CURSOR      = flavor.HOT_PINK:mix(semantics.BG, 75),
   BG_CURSOR_LINE = flavor.AFRICAN_VIOLET:mix(semantics.BG, 85),
   BG_FOLD        = flavor.ROMAN_SILVER:mix(semantics.BG, 75),
-
-  BG_ERROR  = semantics.ERROR:darken(75),
-  BG_WARN   = semantics.WARN:darken(75),
-  BG_INFO   = semantics.INFO:darken(75),
-  BG_HINT   = semantics.HINT:darken(75),
-  BG_OK     = semantics.OK:darken(75),
-
-  BG_ADD         = semantics.ADD:mix(semantics.BG, 90),
-  BG_DELETE      = semantics.DELETE:mix(semantics.BG, 70),
-  BG_CHANGE      = semantics.CHANGE:mix(semantics.BG, 70),
-  BG_TEXT_ADD    = semantics.ADD:mix(semantics.BG, 70),
 }
 
 -- stylua: ignore

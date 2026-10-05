@@ -86,11 +86,11 @@ local ui = {
   Changed  = { fg = palette.CHANGE },
   Removed  = { fg = palette.DELETE },
 
-  DiffAdd      = { fg = palette.ADD, bg = palette.BG_ADD }, -- Diff mode: Added line |diff.txt|
-  DiffChange   = { fg = palette.ADD, bg = palette.BG_ADD }, -- Diff mode: Changed line |diff.txt|
-  DiffDelete   = { fg = palette.DELETE, bg = palette.BG_DELETE }, -- Diff mode: Deleted line |diff.txt|
-  DiffText     = { fg = palette.CHANGE, bg = palette.BG_CHANGE  }, -- Diff mode: Changed text within a changed line |diff.txt|
-  DiffTextAdd  = { fg = palette.ADD, bg = palette.BG_TEXT_ADD }, -- Diff mode: Added text within a changed line.  Linked to |hl-DiffText| by default. |diff.txt|
+  DiffAdd      = { fg = palette.ADD, bg = palette.ADD:mix(palette.BG, 90) }, -- Diff mode: Added line |diff.txt|
+  DiffChange   = { fg = palette.ADD, bg = palette.ADD:mix(palette.BG, 90) }, -- Diff mode: Changed line |diff.txt|
+  DiffDelete   = { fg = palette.DELETE, bg = palette.DELETE:mix(palette.BG, 70) }, -- Diff mode: Deleted line |diff.txt|
+  DiffText     = { fg = palette.CHANGE, bg = palette.CHANGE:mix(palette.BG, 70) }, -- Diff mode: Changed text within a changed line |diff.txt|
+  DiffTextAdd  = { fg = palette.ADD, bg = palette.ADD:mix(palette.BG, 70) }, -- Diff mode: Added text within a changed line.  Linked to |hl-DiffText| by default. |diff.txt|
 
   Directory    = { fg = palette.KEYWORD }, -- Directory names (and other special names in listings)
   ErrorMsg     = { fg = palette.ERROR }, -- Error messages on the command line
@@ -152,11 +152,12 @@ local ui = {
   DiagnosticInfo             = { fg = palette.INFO },    -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
   DiagnosticHint             = { fg = palette.HINT },    -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
   DiagnosticOk               = { fg = palette.OK },      -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-  DiagnosticVirtualTextError = { fg = palette.ERROR, bg = palette.BG_ERROR },     -- Used for "Error" diagnostic virtual text.
-  DiagnosticVirtualTextWarn  = { fg = palette.WARN, bg = palette.BG_WARN }, -- Used for "Warn" diagnostic virtual text.
-  DiagnosticVirtualTextInfo  = { fg = palette.INFO, bg = palette.BG_INFO },       -- Used for "Info" diagnostic virtual text.
-  DiagnosticVirtualTextHint  = { fg = palette.HINT, bg = palette.BG_HINT },       -- Used for "Hint" diagnostic virtual text.
-  DiagnosticVirtualTextOk    = { fg = palette.OK, bg = palette.BG_OK },           -- Used for "Ok" diagnostic virtual text.
+  DiagnosticVirtualTextError = { fg = palette.ERROR, bg = palette.ERROR:darken(75) },     -- Used for "Error" diagnostic virtual text.
+  DiagnosticVirtualTextWarn  = { fg = palette.WARN, bg = palette.WARN:darken(75) }, -- Used for "Warn" diagnostic virtual text.
+  DiagnosticVirtualTextInfo  = { fg = palette.INFO, bg = palette.INFO:darken(75) },       -- Used for "Info" diagnostic virtual text.
+  DiagnosticVirtualTextHint  = { fg = palette.HINT, bg = palette.HINT:darken(75) },       -- Used for "Hint" diagnostic virtual text.
+  DiagnosticVirtualTextOk    = { fg = palette.OK, bg = palette.OK:darken(75) },           -- Used for "Ok" diagnostic virtual text.
+
   DiagnosticUnderlineError   = { undercurl = true, sp = palette.ERROR },   -- Used to underline "Error" diagnostics.
   DiagnosticUnderlineWarn    = { undercurl = true, sp = palette.WARN }, -- Used to underline "Warn" diagnostics.
   DiagnosticUnderlineInfo    = { undercurl = true, sp = palette.INFO },    -- Used to underline "Info" diagnostics.

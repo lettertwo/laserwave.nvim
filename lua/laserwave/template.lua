@@ -351,11 +351,11 @@ local function palette_defaults(palette)
     identifier_fg = palette.VARIABLE,
 
     added_fg = palette.ADD,
-    added_bg = palette.BG_ADD,
+    added_bg = palette.ADD:mix(palette.BG, 90),
     deleted_fg = palette.DELETE,
-    deleted_bg = palette.BG_DELETE,
+    deleted_bg = palette.DELETE:mix(palette.BG, 70),
     changed_fg = palette.CHANGE,
-    changed_bg = palette.BG_CHANGE,
+    changed_bg = palette.CHANGE:mix(palette.BG, 70),
 
     url = palette.terminal.BRIGHT_BLUE,
 

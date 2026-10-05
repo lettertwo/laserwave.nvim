@@ -1,4 +1,4 @@
-## GENERATED ON 2026-01-13 AT 00:21:42
+## GENERATED ON 2026-10-05 AT 17:58:23
 [delta "laserwave-hi_c"]
     # author: Eric Eldredge <lettertwo@gmail.com>
     # license: MIT
@@ -43,7 +43,7 @@
     plus-style = "#1ED3EC"
     plus-emph-style = "#282236" "#1ED3EC"
     minus-style = "#FF52BF"
-    minus-emph-style = "#271E2E" "#FF52BF"
+    minus-emph-style = "#4C2E52" "#FF52BF"
     zero-style = syntax dim
     whitespace-error-style = reverse "#FF3E7B"
     # line numbers
