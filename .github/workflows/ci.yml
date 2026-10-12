@@ -150,7 +150,6 @@ jobs:
   # Run tests on multiple Neovim versions
   test:
     name: Test (Neovim ${{ matrix.nvim-version }})
-    if: github.event_name == 'push' || !startsWith(github.head_ref, 'release-please--')
     strategy:
       matrix:
         nvim-version: [stable, nightly]
@@ -187,7 +186,6 @@ jobs:
   # Type checking
   typecheck:
     name: Type Check (Neovim ${{ matrix.nvim-version }})
-    if: github.event_name == 'push' || !startsWith(github.head_ref, 'release-please--')
     strategy:
       matrix:
         nvim-version: [stable, nightly]
