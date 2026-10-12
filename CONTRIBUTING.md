@@ -37,6 +37,8 @@ make install-hooks
 
 This installs a [commit-msg](https://git-scm.com/docs/githooks#_commit_msg) hook that validates your commit messages locally before they're committed.
 
+It also installs a [pre-commit](https://git-scm.com/docs/githooks#_pre_commit) hook. When a staged file is under `lua/laserwave/`, the hook runs `make cache-key` and stages `lua/laserwave/cache_key.lua`. That file holds a hash of the colorscheme sources, and it invalidates users' highlight caches when the output could change. CI fails when the key is stale, so without the hook run `make cache-key` yourself and commit the result.
+
 **2. Set up the commit message template (optional but recommended):**
 
 ```bash

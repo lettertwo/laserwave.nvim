@@ -39,6 +39,15 @@ else
   exit 1
 fi
 
+# Install pre-commit hook
+if [ -f git-hooks/pre-commit ]; then
+  cp git-hooks/pre-commit "$HOOKS_DIR/pre-commit"
+  chmod +x "$HOOKS_DIR/pre-commit"
+  echo "✓ Installed pre-commit hook to $HOOKS_DIR"
+else
+  echo "Warning: git-hooks/pre-commit not found"
+fi
+
 # Install pre-push hook
 if [ -f git-hooks/pre-push ]; then
   cp git-hooks/pre-push "$HOOKS_DIR/pre-push"
@@ -68,6 +77,7 @@ echo "${GREEN}Git hooks installed successfully!${NC}"
 echo ""
 echo "Installed hooks:"
 echo "  • commit-msg: Validates Conventional Commits format"
+echo "  • pre-commit: Regenerates lua/laserwave/cache_key.lua when lua/laserwave/ changes"
 echo "  • pre-push: Prevents pushing fixup/squash/amend commits"
 echo ""
 echo "To configure the commit message template:"
