@@ -27,8 +27,6 @@
 ---@class laserwave
 local M = {}
 
-M.CACHE_VERSION = 1
-
 ---@param clone boolean? Whether to return a clone of the config (default: true)
 ---@return laserwave.Config
 function M.get_config(clone)

@@ -53,6 +53,11 @@ build: ./lua_modules/bin/nlua ./vendor/shipwright.nvim
 test: ./lua_modules/bin/busted ./lua_modules/bin/nlua
 	@LUA_PATH=$(LUA_PATH) LUA_CPATH=$(LUA_CPATH) $< --lua $(word 2,$^) $(or $(filter-out $@,$(MAKECMDGOALS)),lua/)
 
+# Regenerate the hash that invalidates users' colorscheme caches
+.PHONY: cache-key
+cache-key:
+	@nvim --headless --clean -l scripts/cache_key.lua
+
 .PHONY: install-hooks
 install-hooks:
 	@./git-hooks/install.sh
@@ -70,7 +75,7 @@ install: install-rocks install-vendor install-hooks
 typecheck: VIMRUNTIME := $(shell nvim --headless --noplugin -u /dev/null -c 'echo $$VIMRUNTIME' -c q 2>&1)
 typecheck: CONFIGPATH := $(CURDIR)/.luarc.json
 typecheck: CHECKLEVEL := Warning
-typecheck: PATHS := lua/ tests/
+typecheck: PATHS := lua/ scripts/
 typecheck: ./vendor/lua-language-server/bin/lua-language-server
 	@VIMRUNTIME=$(VIMRUNTIME) $< --check_format pretty --checklevel $(CHECKLEVEL) --configpath $(CONFIGPATH) --check $(PATHS)
 

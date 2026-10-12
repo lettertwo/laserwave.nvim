@@ -149,7 +149,7 @@ function M.apply(flavor, config)
     local cache = require("laserwave.cache")
     ---@class laserwave.CacheInputs
     local inputs = {
-      cache_version = require("laserwave").CACHE_VERSION,
+      cache_key = require("laserwave.cache_key"),
       flavor = config.flavor,
       syntax_mode = config.syntax_mode,
       transparent = config.transparent,

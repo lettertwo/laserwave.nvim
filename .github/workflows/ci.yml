@@ -203,6 +203,30 @@ jobs:
           level: warning
           nvim-version: ${{ matrix.nvim-version }}
 
+  # The cache key must match the sources it hashes
+  cache-key:
+    name: Cache Key
+    if: github.event_name == 'push' || !startsWith(github.head_ref, 'release-please--')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v6
+
+      - name: Setup Neovim
+        uses: rhysd/action-setup-vim@v1
+        with:
+          neovim: true
+          version: stable
+
+      - name: Check cache key is up-to-date
+        run: |
+          make cache-key
+          if ! git diff --exit-code lua/laserwave/cache_key.lua; then
+            echo "✗ lua/laserwave/cache_key.lua is stale"
+            echo "Run 'make cache-key' and commit the result"
+            exit 1
+          fi
+
   # Documentation validation and generation
   docs:
     name: Documentation

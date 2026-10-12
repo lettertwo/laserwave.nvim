@@ -1,0 +1,33 @@
+#!/bin/sh
+#
+# Git pre-commit hook that keeps lua/laserwave/cache_key.lua in sync
+#
+# When any staged path is under lua/laserwave/, this regenerates the cache key
+# and stages it. The key hashes the working tree, so a partly staged file can
+# yield a key that doesn't match the commit; CI catches that case.
+#
+# This hook also chains to the global pre-commit hook if one exists.
+#
+# To install this hook, run: make install-hooks
+#
+
+if git diff --cached --name-only | grep -q '^lua/laserwave/'; then
+  make cache-key > /dev/null || exit 1
+  git add lua/laserwave/cache_key.lua
+fi
+
+# Chain to global hook if it exists
+GLOBAL_HOOKS_PATH=$(git config --global --get core.hooksPath || echo "")
+
+if [ -n "$GLOBAL_HOOKS_PATH" ]; then
+  # Expand ~ to home directory
+  GLOBAL_HOOKS_PATH="${GLOBAL_HOOKS_PATH/#\~/$HOME}"
+  GLOBAL_HOOK="$GLOBAL_HOOKS_PATH/pre-commit"
+
+  if [ -x "$GLOBAL_HOOK" ]; then
+    "$GLOBAL_HOOK" "$@"
+    exit $?
+  fi
+fi
+
+exit 0
