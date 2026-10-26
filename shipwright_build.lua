@@ -57,6 +57,7 @@ function M.build_flavor(flavor)
     ghostty   = M.run_transform(require("laserwave.transform.ghostty"),   ctx, "dist/ghostty/" .. ctx.name),
     textmate  = M.run_transform(require("laserwave.transform.textmate"),  ctx, "dist/" .. ctx.name .. ".tmTheme"),
     delta     = M.run_transform(require("laserwave.transform.delta"),     ctx, "dist/delta/" .. ctx.name .. ".gitconfig"),
+    hunk      = M.run_transform(require("laserwave.transform.hunk"),      ctx, "dist/hunk/" .. ctx.name .. ".ts"),
     yazi      = {
       flavor  = M.run_transform(require("laserwave.transform.yazi"),      ctx, "dist/yazi/" .. ctx.name .. ".yazi/flavor.toml"),
       tmtheme = M.run_transform(require("laserwave.transform.textmate"),  ctx, "dist/yazi/" .. ctx.name .. ".yazi/tmtheme.xml"),
